@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import Computer from './pages/Computer'
+import Television from './pages/Television'
+import Smartphone from './pages/Smartphone'
+import Internet from './pages/Internet'
+import Streaming from './pages/Streaming'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <>
+    <Navbar />
+    <div className='container'>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/computer" element={<Computer />} />
+        <Route path="/television" element={<Television />} />
+        <Route path="/smartphone" element={<Smartphone />} />
+        <Route path="/internet" element={<Internet />} />
+        <Route path="/streaming" element={<Streaming />} />
+      </Routes>
     </div>
-  );
+  </>
+  )
 }
 
 export default App;
