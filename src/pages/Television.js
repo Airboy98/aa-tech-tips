@@ -1,4 +1,6 @@
+import ExampleAccordion from "../components/ExampleAccordion";
 import "./styles.css";
+// import samsung from "./samsung.png";
 
 export default function Television() {
   return (
@@ -9,15 +11,45 @@ export default function Television() {
       <h3>Roku</h3>
       <h3>Chromecast</h3>
       <h3>Apple TV</h3>
-      <h2>Common Brands</h2>
-      <ul>
-        <li>Samsung</li>
-        <li>LG</li>
-        <li>Sony</li>
-        <li>Toshiba</li>
-        <li>HiSense</li>
-        <li>TCL</li>
-      </ul>
+      <div>
+        Common Brands
+        <ul>
+          <li>
+            <img
+              src="./images/samsung.png"
+              alt="Samsung"
+              width="100"
+              height="50"
+            />
+          </li>
+          <li>
+            <img src="./images/LG.png" alt="LG" width="100" height="50" />
+          </li>
+          <li>
+            <img src="./images/sony.png" alt="Sony" width="100" height="50" />
+          </li>
+          <li>
+            <img
+              src="./images/toshiba.png"
+              alt="Toshiba"
+              width="100"
+              height="50"
+            />
+          </li>
+          <li>
+            <img
+              src="./images/hisense.png"
+              alt="HiSense"
+              width="100"
+              height="50"
+            />
+          </li>
+          <li>
+            <img src="./images/TCL.png" alt="TCL" width="100" height="50" />
+          </li>
+        </ul>
+        <ExampleAccordion />
+      </div>
     </>
   );
 }

@@ -13,18 +13,14 @@ body {
   color: white;
 }
 
-.container {
-  margin: 1rem;
-  text-align: center;
-}
-
 ul {
-  padding: 10;
-  margin: 10;
+  padding: 10px;
+  margin: 5%;
   list-style: none;
   display: flex;
   /* align-items: center; */
-  gap: 10rem;
+  gap: 10%;
+  border: solid;
 }
 
 ol {
@@ -32,9 +28,10 @@ ol {
   padding: 1;
   margin: 1;
   list-style: decimal;
-  /* display: flex; */
-  align-items: left;
+  display: table;
+  align-items: center;
   gap: 3rem;
+  text-align: center;
 }
 
 a {
