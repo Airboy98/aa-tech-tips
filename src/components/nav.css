@@ -23,11 +23,12 @@ body {
   justify-content: space-between;
   align-items: stretch;
   gap: 2rem;
-  padding: 0 1rem;
+  padding: 0rem;
 }
 
 .site-title {
   font-size: 2rem;
+  margin: 0rem;
 }
 
 .nav ul {
@@ -36,7 +37,7 @@ body {
   list-style: none;
   display: flex;
   /* align-items: center; */
-  gap: 0rem;
+  gap: 0.25rem;
 }
 
 .nav a {
@@ -46,6 +47,11 @@ body {
   display: flex;
   align-items: center;
   padding: 0.25rem;
+}
+
+.hamburger-menu {
+  background-color: inherit;
+  align-items: center;
 }
 
 .nav li.active {

@@ -15,27 +15,27 @@ body {
 
 ul {
   padding: 10px;
-  margin: 5%;
+  /* margin: 5%; */
   list-style: none;
-  display: flex;
+  /* display: flex; */
   /* align-items: center; */
   gap: 10%;
-  border: solid;
+  /* border: solid; */
 }
 
 ol {
   /* background-color: #920f0f; */
-  padding: 1;
-  margin: 1;
+  /* padding: 1; */
+  /* margin: 1; */
   list-style: decimal;
-  display: table;
+  /* display: table; */
   align-items: center;
-  gap: 3rem;
+  /* gap: 3rem; */
   text-align: center;
 }
 
 a {
-  color: red;
+  color: blue;
   text-decoration: underline;
   height: 100%;
   /* display: flex; */
@@ -54,3 +54,16 @@ a:hover {
 /* .nav li:visited {
   background-color: violet;
 } */
+
+.collapsible-trigger {
+  font-weight: bold;
+  cursor: pointer;
+  /* font-size: larger; */
+}
+
+.collapsible-content {
+  /* display: none; */
+  background-color: white;
+  color: black;
+  /* Styles applied when opened... */
+}
