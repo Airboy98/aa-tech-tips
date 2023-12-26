@@ -9,8 +9,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
+  /* text-align: right; */
 }
 
 ul {
@@ -23,14 +24,20 @@ ul {
   /* border: solid; */
 }
 
+li {
+  /* padding: 10px; */
+}
+
 ol {
   /* background-color: #920f0f; */
   /* padding: 1; */
   /* margin: 1; */
-  list-style: decimal;
-  /* display: table; */
-  align-items: center;
+  list-style:decimal;
+  /* display:flexbox; */
+  /* align-items:baseline; */
   /* gap: 3rem; */
+  /* display:inline-block; */
+  /* list-style-position:inside; */
   text-align: center;
 }
 
@@ -39,8 +46,8 @@ a {
   text-decoration: underline;
   height: 100%;
   /* display: flex; */
-  align-items: center;
-  /* padding: 0.25rem; */
+  align-items: left;
+  padding: 1rem;
 }
 
 a.active {
@@ -48,7 +55,7 @@ a.active {
 }
 
 a:hover {
-  background-color: #777;
+  /* background-color: #777; */
 }
 
 /* .nav li:visited {
@@ -58,12 +65,16 @@ a:hover {
 .collapsible-trigger {
   font-weight: bold;
   cursor: pointer;
-  /* font-size: larger; */
+  font-size:x-large;
+  align-items: right;
+  
 }
 
 .collapsible-content {
   /* display: none; */
   background-color: white;
-  color: black;
+  /* color: red; */
+  /* text-align: left; */
+
   /* Styles applied when opened... */
 }

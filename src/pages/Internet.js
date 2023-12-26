@@ -4,8 +4,9 @@ export default function Internet() {
   return (
     <>
       <h1>Internet Troubleshooting</h1>
+      <hr></hr>
       <Collapsible
-        trigger={<h2 className="collapsible-trigger">Internet Browsers</h2>}
+        trigger={<button className="collapsible-trigger">Internet Browsers</button>}
       >
         <h3>Safari</h3>
         <h3>Internet Explorer</h3>
@@ -15,6 +16,9 @@ export default function Internet() {
         <h3>Opera</h3>
         <h3>Brave</h3>
       </Collapsible>
+    <Collapsible trigger={<button className="collapsible-trigger">Installing Extensions</button>}
+    ></Collapsible>
     </>
+
   );
 }

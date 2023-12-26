@@ -6,9 +6,10 @@ export default function Television() {
   return (
     <>
       <h1>Television Troubleshooting</h1>
+      <hr></hr>
       <Collapsible
         trigger={
-          <h2 className="collapsible-trigger">Manufacturer Support Websites</h2>
+          <button className="collapsible-trigger">Manufacturer Support Websites</button>
         }
       >
         NOTE: TV model number/names are usually found on a sticker on the back
@@ -22,7 +23,7 @@ export default function Television() {
               rel="noopener noreferrer"
             >
               <img
-                src="./images/samsung.png"
+                src="./images/brands/samsung.png"
                 alt="Samsung"
                 width="100"
                 height="50"
@@ -35,7 +36,7 @@ export default function Television() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="./images/LG.png" alt="LG" width="100" height="50" />
+              <img src="./images/brands/LG.png" alt="LG" width="100" height="50" />
             </a>
           </li>
           <li>
@@ -44,7 +45,7 @@ export default function Television() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="./images/sony.png" alt="Sony" width="100" height="50" />
+              <img src="./images/brands/sony.png" alt="Sony" width="100" height="50" />
             </a>
           </li>
           <li>
@@ -54,7 +55,7 @@ export default function Television() {
               rel="noopener noreferrer"
             >
               <img
-                src="./images/toshiba.png"
+                src="./images/brands/toshiba.png"
                 alt="Toshiba"
                 width="100"
                 height="50"
@@ -68,8 +69,8 @@ export default function Television() {
               rel="noopener noreferrer"
             >
               <img
-                src="./images/hisense.png"
-                alt="HiSense"
+                src="./images/brands/hisense.png"
+                alt="Hisense"
                 width="100"
                 height="50"
               />
@@ -81,13 +82,22 @@ export default function Television() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="./images/TCL.png" alt="TCL" width="100" height="50" />
+              <img src="./images/brands/TCL.png" alt="TCL" width="100" height="50" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.sharptvusa.com/support"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="./images/brands/sharp.png" alt="Sharp" width="100" height="50" />
             </a>
           </li>
         </ul>
       </Collapsible>
       <Collapsible
-        trigger={<h2 className="collapsible-trigger">Streaming Devices</h2>}
+        trigger={<button className="collapsible-trigger">Streaming Devices</button>}
       >
         {/* <div className="collapsible-content"> */}
         <h3>
@@ -101,7 +111,7 @@ export default function Television() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Amazon Fire TV Stick
+            <img src="./images/devices/amazon-fire-tv-stick.png" alt="Amazon Fire TV Stick" width="100" height="50" />
           </a>
         </h3>
         <h3>
@@ -109,8 +119,7 @@ export default function Television() {
             href="https://support.roku.com/"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            Roku
+          ><img src="./images/devices/roku.png" alt="Roku" width="100" height="50" />
           </a>
         </h3>
         <h3>
@@ -119,7 +128,7 @@ export default function Television() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Chromecast
+            <img src="./images/devices/chromecast.svg" alt="Chromecast" width="100" height="50" />
           </a>
         </h3>
         <h3>
@@ -128,13 +137,13 @@ export default function Television() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Apple TV
+            <img src="./images/devices/appletv.png" alt="Apple TV" width="100" height="50" />
           </a>
         </h3>
         {/* </div> */}
       </Collapsible>
       <Collapsible
-        trigger={<h2 className="collapsible-trigger">Install Smart TV App</h2>}
+        trigger={<button className="collapsible-trigger">Install Smart TV App</button>}
       >
         NOTE: Steps and procedures vary greatly depending on TV make/model
         <ul>
@@ -150,7 +159,7 @@ export default function Television() {
         </ul>
       </Collapsible>
       <Collapsible
-        trigger={<h2 className="collapsible-trigger">Delete Smart TV App</h2>}
+        trigger={<button className="collapsible-trigger">Delete Smart TV App</button>}
       >
         NOTE: Steps and procedures vary greatly depending on TV make/model
         <ul>
@@ -159,7 +168,7 @@ export default function Television() {
             to delete
           </li>
           <li>
-            Use the remote's option button (some makes/models require tapping
+            Use the remote's option button (some makes/models require pressing
             and holding the select button) on the app
           </li>
           <li>

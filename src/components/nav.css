@@ -29,6 +29,7 @@ body {
 .site-title {
   font-size: 2rem;
   margin: 0rem;
+  text-decoration:line-through;
 }
 
 .nav ul {
@@ -37,7 +38,7 @@ body {
   list-style: none;
   display: flex;
   /* align-items: center; */
-  gap: 0.25rem;
+  gap: 0rem;
 }
 
 .nav a {

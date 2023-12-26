@@ -6,6 +6,7 @@ import Smartphone from "./pages/Smartphone";
 import Internet from "./pages/Internet";
 import Streaming from "./pages/Streaming";
 import { Route, Routes } from "react-router-dom";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -13,12 +14,13 @@ function App() {
       <Navbar />
       <div className="container">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/computer" element={<Computer />} />
           <Route path="/television" element={<Television />} />
           <Route path="/smartphone" element={<Smartphone />} />
           <Route path="/internet" element={<Internet />} />
           <Route path="/streaming" element={<Streaming />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </div>
     </>
