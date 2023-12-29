@@ -14,7 +14,7 @@ function App() {
       <Navbar />
       <div className="container">
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/computer" element={<Computer />} />
           <Route path="/television" element={<Television />} />
           <Route path="/smartphone" element={<Smartphone />} />

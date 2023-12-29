@@ -9,7 +9,7 @@ export default function Television() {
       <hr></hr>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Manufacturer Support Websites</button>
+          <button className="collapsible-trigger">TV Manufacturers</button>
         }
       >
         NOTE: TV model number/names are usually found on a sticker on the back
@@ -94,6 +94,15 @@ export default function Television() {
               <img src="./images/brands/sharp.png" alt="Sharp" width="100" height="50" />
             </a>
           </li>
+          <li>
+            <a
+              href="https://support.vizio.com/s/?language=en_US"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="./images/brands/vizio.png" alt="Sharp" width="100" height="50" />
+            </a>
+          </li>
         </ul>
       </Collapsible>
       <Collapsible
@@ -141,6 +150,23 @@ export default function Television() {
           </a>
         </h3>
         {/* </div> */}
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Cast from Phone to TV</button>}
+      >
+        NOTE: Not all smart TVs have Airplay/cast from phone functionality
+        <ul>
+          <li>
+            Open the desired phone app you wish to cast to TV
+          </li>
+          <li>Start playing a video/movie</li>
+          <li>
+            Tap the fullscreen icon <img src="./images/menu/fullscreen.png" height="15" width="15"/>
+          </li>
+          <li>
+          Tap the cast to TV icon <img src="./images/menu/cast.png" height="15" width="15"/> or Airplay icons <img src="./images/menu/airplay.png" height="15" width="30"/>
+          </li>
+        </ul>
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Install Smart TV App</button>}

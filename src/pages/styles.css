@@ -38,10 +38,10 @@ ol {
   /* gap: 3rem; */
   /* display:inline-block; */
   /* list-style-position:inside; */
-  text-align: center;
+  text-align: left;
 }
 
-a {
+.printers a {
   color: blue;
   text-decoration: underline;
   height: 100%;
@@ -49,6 +49,7 @@ a {
   align-items: left;
   padding: 1rem;
 }
+
 
 a.active {
   background-color: #555;
@@ -58,13 +59,13 @@ a:hover {
   /* background-color: #777; */
 }
 
-/* .nav li:visited {
-  background-color: violet;
+/* a:visited {
+  color: blue;
 } */
 
 .collapsible-trigger {
   font-weight: bold;
-  cursor: pointer;
+  cursor:pointer;
   font-size:x-large;
   align-items: right;
   

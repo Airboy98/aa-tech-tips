@@ -15,7 +15,7 @@ export default function Navbar() {
   // ]}>
     <nav className="nav">
       
-      <Link to="/home" className="site-title">
+      <Link to="/" className="site-title">
         AA Tech Support
       </Link>
       

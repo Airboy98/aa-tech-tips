@@ -63,6 +63,11 @@ export default function Computer() {
           <li>Search for the desired app</li>
           <li>Select the app in the results and click Install</li>
         </ul>
+        OR
+        <ul>
+          <li>Navigate to the website to find the desired app</li>
+          <li>Once downloaded, click the .dmg installer on the desktop to install</li>
+        </ul>
       </Collapsible>
       <Collapsible
         trigger={
@@ -74,11 +79,32 @@ export default function Computer() {
         <li>Search for the desired app</li>
         <li>Select the app in the results and click Install</li>
         </ul>
+        OR
+        <ul>
+          <li>Navigate to the website to find the desired program</li>
+          <li>Once downloaded, click the .exe installer to install</li>
+        </ul>
       </Collapsible>
+      <Collapsible trigger={
+        <button className="collapsible-trigger">Thumb/Flash/Exernal Drives</button>
+      }
+      >
+        <h3>Drive Formatting</h3>
+      <ul>
+        <li>Connect the drive via USB to your laptop/desktop computer</li>
+        <li>In macOS, open <b>Disk Utility</b> or Windows, open <b>Windows Explorer</b></li>
+        <li>Find the drive in the side panel on the left and select it</li>
+        <li>Click the Format option and specify a format type</li>
+        <li>NTFS (Windows), APFS (macOS), FAT32(4GB file size limit)/exFAT (cross platform)
+        </li>
+      </ul>
+      </Collapsible>
+
       <Collapsible trigger={
       <button className="collapsible-trigger">Printers</button>
       }
       >
+        <div className="printers">
         <ul>
           <li>
             <a href="https://www.brother-usa.com/home/printers-fax" target="_blank" rel="noopener noreferrer"><img src="./images/printers/brother.png" alt="Brother" width="100" height="50" /></a><br></br><a href="https://www.brother-usa.com/brother-support/" target="_blank" rel="noopener noreferrer">Support</a><a href="https://www.brother-usa.com/brother-support/driver-downloads" target="_blank" rel="noopener noreferrer">Drivers</a>
@@ -93,22 +119,9 @@ export default function Computer() {
             <a href="https://www.usa.canon.com/printers" target="_blank" rel="noopener noreferrer"><img src="./images/printers/canon.png" alt="Canon" width="100" height="50" /></a><br></br><a href="https://www.usa.canon.com/support" target="_blank" rel="noopener noreferrer">Support</a><a href="https://www.usa.canon.com/support/software-and-drivers" target="_blank" rel="noopener noreferrer">Drivers</a>
           </li>
         </ul>
+        </div>
       </Collapsible>
-      <Collapsible trigger={
-        <button className="collapsible-trigger">External Drives</button>
-      }
-      ></Collapsible>
     
-      <Collapsible trigger={
-        <button className="collapsible-trigger">Thumb/Flash Drives</button>
-      }
-      >
-      <ul>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-      </ul>
-      </Collapsible>
     </>
   );
 }
