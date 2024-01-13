@@ -19,7 +19,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/youtube.png"
+                  src="/images/streaming/youtube.png"
                   alt="Youtube"
                   width="100"
                   height="50"
