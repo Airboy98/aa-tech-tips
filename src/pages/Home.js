@@ -1,9 +1,9 @@
 export default function Home() {
   return (
-    <h1>
-      WELCOME TO AA TECH SUPPORT
+    <>
+      <h1>WELCOME TO AA TECH TIPS</h1>
       <hr></hr>
-      Need IT help? Select a troubleshooting category above.
-    </h1>
+      <h1>Need IT help or looking for some tips? Select a category above.</h1>
+    </>
   );
 }

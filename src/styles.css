@@ -1,0 +1,134 @@
+/* google font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins";
+  background-color: white;
+  color: black;
+  /* text-align: right; */
+}
+
+.container {
+  margin: 0rem;
+  text-align: center;
+}
+
+table,
+td,
+th {
+  border: 1px solid;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  /* display: inline; */
+  /* align-items: center; */
+  /* gap: 10%; */
+  /* border: solid; */
+}
+
+li {
+  /* padding: 0px; */
+}
+
+ol {
+  /* background-color: #920f0f; */
+  /* padding: 10px; */
+  /* margin: 1px; */
+  list-style: decimal;
+  /* display:flexbox; */
+  /* align-items:baseline; */
+  /* gap: 3rem; */
+  display: inline-block;
+  /* list-style-position:inside; */
+  text-align: left;
+}
+
+.printers a {
+  color: blue;
+  text-decoration: underline;
+  height: 100%;
+  /* display: inline-box; */
+  align-items: left;
+  padding: 1rem;
+}
+
+a.active {
+  /* background-color: #555; */
+}
+
+a:hover {
+  /* background-color: #777; */
+}
+
+/* a:visited {
+  color: blue;
+} */
+
+.collapsible-trigger {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: x-large;
+  align-items: right;
+  display: inline-block;
+}
+
+.collapsible-content {
+  /* display: inline-block; */
+  background-color: white;
+  /* color: red; */
+  /* text-align: left; */
+
+  /* Styles applied when opened... */
+}
+
+/* new workout form */
+label,
+input {
+  display: block;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  align-items: center;
+}
+form button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
+}
