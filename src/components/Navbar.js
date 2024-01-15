@@ -36,7 +36,8 @@ export default function Navbar() {
     //   { label: "Streaming", href: "/streaming" },
     // ]}>
     <nav className="nav">
-      <Link to="/home" className="site-title">
+      {/* add home to the below path="/" to point the site-title to /home if enabled in App.js */}
+      <Link to="/" className="site-title">
         AA Tech Tips
       </Link>
       {showButton && (
