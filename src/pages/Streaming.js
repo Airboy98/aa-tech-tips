@@ -33,7 +33,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/youtubetv.png"
+                  src="images/streaming/youtubetv.png"
                   alt="Youtube"
                   width="100"
                   height="50"
@@ -49,7 +49,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/netflix.png"
+                  src="images/streaming/netflix.png"
                   alt="Netflix"
                   width="100"
                   height="50"
@@ -63,7 +63,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/prime.png"
+                  src="images/streaming/prime.png"
                   alt="Prime Video"
                   width="100"
                   height="50"
@@ -79,7 +79,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/hbo.png"
+                  src="images/streaming/hbo.png"
                   alt="HBO Max"
                   width="100"
                   height="50"
@@ -93,7 +93,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/hulu.png"
+                  src="images/streaming/hulu.png"
                   alt="Hulu"
                   width="100"
                   height="50"
@@ -109,7 +109,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/peacock.png"
+                  src="images/streaming/peacock.png"
                   alt="Peacock"
                   width="100"
                   height="50"
@@ -123,7 +123,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/disney.png"
+                  src="images/streaming/disney.png"
                   alt="Disney+"
                   width="100"
                   height="50"
@@ -139,7 +139,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/paramount.png"
+                  src="images/streaming/paramount.png"
                   alt="Paramount+"
                   width="100"
                   height="50"
@@ -153,7 +153,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/discovery.png"
+                  src="images/streaming/discovery.png"
                   alt="Discovery+"
                   width="100"
                   height="50"
@@ -169,7 +169,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/appletvplus.png"
+                  src="images/streaming/appletvplus.png"
                   alt="Apple TV+"
                   width="100"
                   height="50"
@@ -183,7 +183,7 @@ export default function Streaming() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/streaming/espnplus.png"
+                  src="images/streaming/espnplus.png"
                   alt="ESPN+"
                   width="100"
                   height="50"

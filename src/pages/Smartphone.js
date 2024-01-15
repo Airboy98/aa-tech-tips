@@ -68,7 +68,7 @@ export default function Smartphone() {
           <li>
             Tap the TIMER circle button{" "}
             <img
-              src="./images/menu/camera-timer-icon.png"
+              src="images/menu/camera-timer-icon.png"
               height="15"
               width="15"
               alt="camera-timer icon"

@@ -163,7 +163,7 @@ export default function Computer() {
                       rel="noopener noreferrer"
                     >
                       <img
-                        src="./images/printers/brother.png"
+                        src="images/printers/brother.png"
                         alt="Brother"
                         width="100"
                         height="50"
@@ -194,7 +194,7 @@ export default function Computer() {
                       rel="noopener noreferrer"
                     >
                       <img
-                        src="./images/printers/hp.png"
+                        src="images/printers/hp.png"
                         alt="HP"
                         width="100"
                         height="50"
@@ -229,7 +229,7 @@ export default function Computer() {
                       rel="noopener noreferrer"
                     >
                       <img
-                        src="./images/printers/epson.png"
+                        src="images/printers/epson.png"
                         alt="Epson"
                         width="100"
                         height="50"
@@ -260,7 +260,7 @@ export default function Computer() {
                       rel="noopener noreferrer"
                     >
                       <img
-                        src="./images/printers/canon.png"
+                        src="images/printers/canon.png"
                         alt="Canon"
                         width="100"
                         height="50"

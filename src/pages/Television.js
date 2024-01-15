@@ -20,7 +20,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/televisions/samsung.png"
+                  src="images/televisions/samsung.png"
                   alt="Samsung"
                   width="100"
                   height="50"
@@ -34,7 +34,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/televisions/LG.png"
+                  src="images/televisions/LG.png"
                   alt="LG"
                   width="100"
                   height="50"
@@ -50,7 +50,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/televisions/sony.png"
+                  src="images/televisions/sony.png"
                   alt="Sony"
                   width="100"
                   height="50"
@@ -64,7 +64,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/televisions/toshiba.png"
+                  src="images/televisions/toshiba.png"
                   alt="Toshiba"
                   width="100"
                   height="50"
@@ -80,7 +80,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/televisions/hisense.png"
+                  src="images/televisions/hisense.png"
                   alt="Hisense"
                   width="100"
                   height="50"
@@ -94,7 +94,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/televisions/TCL.png"
+                  src="images/televisions/TCL.png"
                   alt="TCL"
                   width="100"
                   height="50"
@@ -110,7 +110,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/televisions/sharp.png"
+                  src="images/televisions/sharp.png"
                   alt="Sharp"
                   width="100"
                   height="50"
@@ -124,7 +124,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/televisions/vizio.png"
+                  src="images/televisions/vizio.png"
                   alt="Sharp"
                   width="100"
                   height="50"
@@ -153,7 +153,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/devices/amazon-fire-tv-stick.png"
+                  src="images/devices/amazon-fire-tv-stick.png"
                   alt="Amazon Fire TV Stick"
                   width="100"
                   height="50"
@@ -167,7 +167,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/devices/roku.png"
+                  src="images/devices/roku.png"
                   alt="Roku"
                   width="100"
                   height="50"
@@ -183,7 +183,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/devices/chromecast1.png"
+                  src="images/devices/chromecast1.png"
                   alt="Chromecast"
                   width="100"
                   height="50"
@@ -197,7 +197,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/devices/appletv.png"
+                  src="images/devices/appletv.png"
                   alt="Apple TV"
                   width="100"
                   height="50"
@@ -217,13 +217,12 @@ export default function Television() {
           <li>Start playing a video/movie</li>
           <li>
             Tap the fullscreen icon{" "}
-            <img src="./images/menu/fullscreen.png" height="15" width="15" />
+            <img src="images/menu/fullscreen.png" height="15" width="15" />
           </li>
           <li>
             Tap the cast to TV icon{" "}
-            <img src="./images/menu/cast.png" height="15" width="15" /> or
-            Airplay icons{" "}
-            <img src="./images/menu/airplay.png" height="15" width="30" />
+            <img src="images/menu/cast.png" height="15" width="15" /> or Airplay
+            icons <img src="images/menu/airplay.png" height="15" width="30" />
           </li>
         </ol>
         <h5>

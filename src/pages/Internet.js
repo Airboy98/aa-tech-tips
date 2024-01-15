@@ -21,20 +21,12 @@ export default function Internet() {
             <tr>
               <td>Safari</td>
               <td>
-                <img
-                  src="./images/logos/safari.png"
-                  height="20"
-                  width="20"
-                ></img>
+                <img src="images/logos/safari.png" height="20" width="20"></img>
               </td>
               <td>
+                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
                 <img
-                  src="./images/logos/apple.svg"
-                  height="20"
-                  width="20"
-                ></img>{" "}
-                <img
-                  src="./images/logos/windows.png"
+                  src="images/logos/windows.png"
                   height="20"
                   width="20"
                 ></img>
@@ -44,20 +36,12 @@ export default function Internet() {
             <tr>
               <td>Google Chrome</td>
               <td>
-                <img
-                  src="./images/logos/chrome.png"
-                  height="20"
-                  width="20"
-                ></img>
+                <img src="images/logos/chrome.png" height="20" width="20"></img>
               </td>
               <td>
+                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
                 <img
-                  src="./images/logos/apple.svg"
-                  height="20"
-                  width="20"
-                ></img>{" "}
-                <img
-                  src="./images/logos/windows.png"
+                  src="images/logos/windows.png"
                   height="20"
                   width="20"
                 ></img>
@@ -68,19 +52,15 @@ export default function Internet() {
               <td>Mozilla Firefox</td>
               <td>
                 <img
-                  src="./images/logos/firefox.png"
+                  src="images/logos/firefox.png"
                   height="20"
                   width="20"
                 ></img>
               </td>
               <td>
+                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
                 <img
-                  src="./images/logos/apple.svg"
-                  height="20"
-                  width="20"
-                ></img>{" "}
-                <img
-                  src="./images/logos/windows.png"
+                  src="images/logos/windows.png"
                   height="20"
                   width="20"
                 ></img>
@@ -90,16 +70,12 @@ export default function Internet() {
             <tr>
               <td>Microsoft Edge</td>
               <td>
-                <img src="./images/logos/edge.jpg" height="20" width="20"></img>
+                <img src="images/logos/edge.jpg" height="20" width="20"></img>
               </td>
               <td>
+                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
                 <img
-                  src="./images/logos/apple.svg"
-                  height="20"
-                  width="20"
-                ></img>{" "}
-                <img
-                  src="./images/logos/windows.png"
+                  src="images/logos/windows.png"
                   height="20"
                   width="20"
                 ></img>
@@ -109,20 +85,12 @@ export default function Internet() {
             <tr>
               <td>Opera</td>
               <td>
-                <img
-                  src="./images/logos/opera.png"
-                  height="20"
-                  width="20"
-                ></img>
+                <img src="images/logos/opera.png" height="20" width="20"></img>
               </td>
               <td>
+                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
                 <img
-                  src="./images/logos/apple.svg"
-                  height="20"
-                  width="20"
-                ></img>{" "}
-                <img
-                  src="./images/logos/windows.png"
+                  src="images/logos/windows.png"
                   height="20"
                   width="20"
                 ></img>
@@ -132,20 +100,12 @@ export default function Internet() {
             <tr>
               <td>Brave</td>
               <td>
-                <img
-                  src="./images/logos/brave.png"
-                  height="20"
-                  width="20"
-                ></img>
+                <img src="images/logos/brave.png" height="20" width="20"></img>
               </td>
               <td>
+                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
                 <img
-                  src="./images/logos/apple.svg"
-                  height="20"
-                  width="20"
-                ></img>{" "}
-                <img
-                  src="./images/logos/windows.png"
+                  src="images/logos/windows.png"
                   height="20"
                   width="20"
                 ></img>
@@ -156,19 +116,15 @@ export default function Internet() {
               <td>Internet Explorer</td>
               <td>
                 <img
-                  src="./images/logos/explorer.png"
+                  src="images/logos/explorer.png"
                   height="20"
                   width="20"
                 ></img>
               </td>
               <td>
+                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
                 <img
-                  src="./images/logos/apple.svg"
-                  height="20"
-                  width="20"
-                ></img>{" "}
-                <img
-                  src="./images/logos/windows.png"
+                  src="images/logos/windows.png"
                   height="20"
                   width="20"
                 ></img>

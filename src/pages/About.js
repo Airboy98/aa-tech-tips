@@ -11,7 +11,7 @@ export default function About() {
       links to brand websites are provided.
       <br></br>
       <br></br>
-      <img src="./images/moon2.jpg" height="250" width="200" />
+      <img src="images/moon2.jpg" height="250" width="200" />
       {/* <br></br> */}
       <h4>Aaron Turner - Webmaster</h4>
     </>
