@@ -54,7 +54,7 @@ export default function Navbar() {
           <CustomLink to="/internet">Internet</CustomLink>
           <CustomLink to="/streaming">Streaming</CustomLink>
           {/* <CustomLink to="/contact">Contact Us</CustomLink> */}
-          <CustomLink to="/appointment">Appointment</CustomLink>
+          {/* <CustomLink to="/appointment">Appointment</CustomLink> */}
           <CustomLink to="/about">About</CustomLink>
         </ul>
       ) : null}
