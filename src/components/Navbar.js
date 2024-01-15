@@ -41,7 +41,7 @@ export default function Navbar() {
       </Link>
       {showButton && (
         <button onClick={toggleMenu} className="hamburger-menu">
-          <img src="/images/hamburger.svg" />
+          <img src="/images/hamburger.png" alt="" height="40" width="40" />
         </button>
       )}
       {/* <Menu isOpen={isOpen} right={true}> */}
@@ -63,7 +63,7 @@ export default function Navbar() {
   );
 }
 
-function CustomLink({ to, children, ...props }) {
+export function CustomLink({ to, children, ...props }) {
   const resolvedPath = useResolvedPath(to);
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
