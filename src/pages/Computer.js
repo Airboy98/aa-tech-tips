@@ -32,6 +32,11 @@ export default function Computer() {
           <li>Click "Scan Now" button to scan your system for any malware</li>
           <li>Quarantine any detected files once the scan is complete</li>
         </ol>
+        <h5>
+          NOTE: Symptoms of malware (such as viruses and trojans) include random
+          pop-ups, slow loading, compromised accounts, and fraulent
+          transactions.
+        </h5>
         {/* </div> */}
       </Collapsible>
       <Collapsible

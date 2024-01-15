@@ -20,7 +20,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/brands/samsung.png"
+                  src="./images/televisions/samsung.png"
                   alt="Samsung"
                   width="100"
                   height="50"
@@ -34,7 +34,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/brands/LG.png"
+                  src="./images/televisions/LG.png"
                   alt="LG"
                   width="100"
                   height="50"
@@ -50,7 +50,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/brands/sony.png"
+                  src="./images/televisions/sony.png"
                   alt="Sony"
                   width="100"
                   height="50"
@@ -64,7 +64,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/brands/toshiba.png"
+                  src="./images/televisions/toshiba.png"
                   alt="Toshiba"
                   width="100"
                   height="50"
@@ -80,7 +80,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/brands/hisense.png"
+                  src="./images/televisions/hisense.png"
                   alt="Hisense"
                   width="100"
                   height="50"
@@ -94,7 +94,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/brands/TCL.png"
+                  src="./images/televisions/TCL.png"
                   alt="TCL"
                   width="100"
                   height="50"
@@ -110,7 +110,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/brands/sharp.png"
+                  src="./images/televisions/sharp.png"
                   alt="Sharp"
                   width="100"
                   height="50"
@@ -124,7 +124,7 @@ export default function Television() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="./images/brands/vizio.png"
+                  src="./images/televisions/vizio.png"
                   alt="Sharp"
                   width="100"
                   height="50"
