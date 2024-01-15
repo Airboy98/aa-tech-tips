@@ -36,7 +36,7 @@ export default function Navbar() {
     //   { label: "Streaming", href: "/streaming" },
     // ]}>
     <nav className="nav">
-      <Link to="/" className="site-title">
+      <Link to="/home" className="site-title">
         AA Tech Tips
       </Link>
       {showButton && (
