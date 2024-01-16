@@ -1,10 +1,10 @@
-// import from ./components/Button
 import Collapsible from "react-collapsible";
+import "./computer.css";
 
 export default function Computer() {
   return (
     <>
-      <h1>Computer</h1>
+      <h1>Computer Tips</h1>
       <hr></hr>
       <Collapsible
         trigger={
