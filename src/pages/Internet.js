@@ -1,9 +1,10 @@
 import Collapsible from "react-collapsible";
+import "./internet.css";
 
 export default function Internet() {
   return (
     <>
-      <h1>Internet</h1>
+      <h1>Internet Tips</h1>
       <hr></hr>
       <Collapsible
         trigger={
@@ -34,7 +35,7 @@ export default function Internet() {
               <td bgcolor="green"></td>
             </tr>
             <tr>
-              <td>Google Chrome</td>
+              <td>Chrome</td>
               <td>
                 <img src="images/logos/chrome.png" height="20" width="20"></img>
               </td>
@@ -49,7 +50,7 @@ export default function Internet() {
               <td bgcolor="green"></td>
             </tr>
             <tr>
-              <td>Mozilla Firefox</td>
+              <td>Firefox</td>
               <td>
                 <img
                   src="images/logos/firefox.png"
@@ -68,7 +69,7 @@ export default function Internet() {
               <td bgcolor="green"></td>
             </tr>
             <tr>
-              <td>Microsoft Edge</td>
+              <td>Edge</td>
               <td>
                 <img src="images/logos/edge.jpg" height="20" width="20"></img>
               </td>
@@ -113,7 +114,7 @@ export default function Internet() {
               <td bgcolor="green"></td>
             </tr>
             <tr>
-              <td>Internet Explorer</td>
+              <td>Explorer</td>
               <td>
                 <img
                   src="images/logos/explorer.png"

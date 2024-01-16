@@ -1,9 +1,10 @@
 import Collapsible from "react-collapsible";
+// import "./streaming.css";
 
 export default function Streaming() {
   return (
     <>
-      <h1>Streaming</h1>
+      <h1>Streaming Tips</h1>
       <hr></hr>
       <Collapsible
         trigger={

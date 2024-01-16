@@ -1,7 +1,7 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { bubble as Menu, right } from "react-burger-menu";
-import "./nav.css";
+import "./navbar.css";
 import { BurgerMenu } from "react-burger-menu";
 
 export default function Navbar() {
@@ -35,32 +35,33 @@ export default function Navbar() {
     //   { label: "Internet", href: "/internet" },
     //   { label: "Streaming", href: "/streaming" },
     // ]}>
-    <nav className="nav">
-      {/* add home to the below path="/" to point the site-title to /home if enabled in App.js */}
-      <Link to="/" className="site-title">
-        AA Tech Tips
-      </Link>
-      {showButton && (
-        <button onClick={toggleMenu} className="hamburger-menu">
-          <img src="images/hamburger.png" alt="" height="40" width="40" />
-        </button>
-      )}
-      {/* <Menu isOpen={isOpen} right={true}> */}
-      {!showButton || isOpen ? (
-        <ul className="menu-items">
-          <CustomLink to="/computer">Computer</CustomLink>
-          <CustomLink to="/television">Television</CustomLink>
-          <CustomLink to="/smartphone">Smartphone</CustomLink>
-          <CustomLink to="/internet">Internet</CustomLink>
-          <CustomLink to="/streaming">Streaming</CustomLink>
-          {/* <CustomLink to="/contact">Contact Us</CustomLink> */}
-          {/* <CustomLink to="/appointment">Appointment</CustomLink> */}
-          <CustomLink to="/about">About</CustomLink>
-        </ul>
-      ) : null}
-      {/* </Menu> */}
-    </nav>
-    // </BurgerMenu>
+    <header>
+      <nav className="nav">
+        {/* add home to the below path="/" to point the site-title to /home if enabled in App.js */}
+        <Link to="/" className="site-title">
+          AA Tech Tips
+        </Link>
+        {showButton && (
+          <button onClick={toggleMenu} className="hamburger-menu">
+            <img src="images/hamburger.png" alt="" height="40" width="40" />
+          </button>
+        )}
+        {/* <Menu isOpen={isOpen} right={true}> */}
+        {!showButton || isOpen ? (
+          <ul className="menu-items">
+            <CustomLink to="/computer">Computer</CustomLink>
+            <CustomLink to="/television">Television</CustomLink>
+            <CustomLink to="/smartphone">Smartphone</CustomLink>
+            <CustomLink to="/internet">Internet</CustomLink>
+            <CustomLink to="/streaming">Streaming</CustomLink>
+            {/* <CustomLink to="/contact">Contact Us</CustomLink> */}
+            {/* <CustomLink to="/appointment">Appointment</CustomLink> */}
+            <CustomLink to="/about">About</CustomLink>
+          </ul>
+        ) : null}
+        {/* </Menu> */}
+      </nav>
+    </header>
   );
 }
 

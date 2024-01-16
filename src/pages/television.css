@@ -1,0 +1,62 @@
+table {
+  border: 1px solid;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  /* display: inline; */
+  /* align-items: center; */
+  /* gap: 10%; */
+  /* border: solid; */
+}
+
+li {
+  /* padding: 0px; */
+}
+
+ol {
+  /* background-color: #920f0f; */
+  /* padding: 10px; */
+  /* margin: 1px; */
+  list-style: decimal;
+  /* display:flexbox; */
+  /* align-items:baseline; */
+  /* gap: 3rem; */
+  display: inline-block;
+  /* list-style-position:inside; */
+  text-align: left;
+}
+
+a.active {
+  /* background-color: #555; */
+}
+
+a:hover {
+  /* background-color: #777; */
+}
+
+a:visited {
+  color: blue;
+}
+
+.collapsible-trigger {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: x-large;
+  align-items: right;
+  display: inline-block;
+}
+
+.collapsible-content {
+  /* display: inline-block; */
+  background-color: white;
+  /* color: red; */
+  /* text-align: left; */
+
+  /* Styles applied when opened... */
+}

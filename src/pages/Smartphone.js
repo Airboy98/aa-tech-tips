@@ -1,9 +1,10 @@
 import Collapsible from "react-collapsible";
+import "./smartphone.css";
 
 export default function Smartphone() {
   return (
     <>
-      <h1>Smartphone</h1>
+      <h1>Smartphone Tips</h1>
       <hr></hr>
       <h1>iPhone</h1>
       <Collapsible

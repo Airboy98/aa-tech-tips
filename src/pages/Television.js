@@ -1,10 +1,10 @@
 import Collapsible from "react-collapsible";
-// import samsung from "./samsung.png";
+import "./television.css";
 
 export default function Television() {
   return (
     <>
-      <h1>Television</h1>
+      <h1>Television Tips</h1>
       <hr></hr>
       <Collapsible
         trigger={

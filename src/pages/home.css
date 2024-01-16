@@ -1,0 +1,47 @@
+h2 {
+  padding: 0px;
+  margin: 0px;
+}
+
+ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  /* display: inline; */
+  /* align-items: center; */
+  /* gap: 10%; */
+  /* border: solid; */
+}
+
+li {
+  /* padding: 0px; */
+}
+
+a.active {
+  /* background-color: #555; */
+}
+
+a:hover {
+  /* background-color: #777; */
+}
+
+a:visited {
+  color: blue;
+}
+
+.collapsible-trigger {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: x-large;
+  align-items: right;
+  display: inline-block;
+}
+
+.collapsible-content {
+  /* display: inline-block; */
+  background-color: white;
+  /* color: red; */
+  /* text-align: left; */
+
+  /* Styles applied when opened... */
+}
