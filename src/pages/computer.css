@@ -1,10 +1,23 @@
-table,
-td,
-th {
+.printers table {
+  padding: 10px 0px 0px 0px;
+  margin: 0px;
+  display: inline-block;
+  border-spacing: 0px;
+}
+
+.printers td {
   border: 1px solid;
+  padding: 0px;
+  margin: 0px;
+}
+
+.printers tr {
   padding: 10px;
-  margin: 10px;
-  /* display: inline-block; */
+}
+
+.printers ul {
+  list-style: none;
+  text-align: center;
 }
 
 li {

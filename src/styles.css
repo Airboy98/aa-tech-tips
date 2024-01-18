@@ -19,3 +19,7 @@ body {
   margin: 0rem;
   text-align: center;
 }
+
+li {
+  text-align: left;
+}

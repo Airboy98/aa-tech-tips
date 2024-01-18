@@ -11,128 +11,130 @@ export default function Television() {
           <button className="collapsible-trigger">TV Manufacturers</button>
         }
       >
-        <table>
-          <tr>
-            <td>
-              <a
-                href="https://www.samsung.com/us/support/contact/?model=N0002200"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/televisions/samsung.png"
-                  alt="Samsung"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://www.lg.com/us/support"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/televisions/LG.png"
-                  alt="LG"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://www.sony.com/electronics/support/televisions-projectors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/televisions/sony.png"
-                  alt="Sony"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://www.toshibatv-usa.com/support"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/televisions/toshiba.png"
-                  alt="Toshiba"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://www.hisense-usa.com/support"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/televisions/hisense.png"
-                  alt="Hisense"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://support.tcl.com/us"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/televisions/TCL.png"
-                  alt="TCL"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://www.sharptvusa.com/support"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/televisions/sharp.png"
-                  alt="Sharp"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://support.vizio.com/s/?language=en_US"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/televisions/vizio.png"
-                  alt="Sharp"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-          </tr>
-        </table>
+        <div className="television">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://www.samsung.com/us/support/contact/?model=N0002200"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/televisions/samsung.png"
+                    alt="Samsung"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.lg.com/us/support"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/televisions/LG.png"
+                    alt="LG"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.sony.com/electronics/support/televisions-projectors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/televisions/sony.png"
+                    alt="Sony"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.toshibatv-usa.com/support"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/televisions/toshiba.png"
+                    alt="Toshiba"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.hisense-usa.com/support"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/televisions/hisense.png"
+                    alt="Hisense"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://support.tcl.com/us"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/televisions/TCL.png"
+                    alt="TCL"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.sharptvusa.com/support"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/televisions/sharp.png"
+                    alt="Sharp"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://support.vizio.com/s/?language=en_US"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/televisions/vizio.png"
+                    alt="Sharp"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
         <h5>
           NOTE: TV model number/names are usually found on a sticker on the back
           of the TV. Navigate to your brand's website above and input the model
@@ -144,68 +146,70 @@ export default function Television() {
           <button className="collapsible-trigger">Streaming Devices</button>
         }
       >
-        <table>
-          <tr>
-            <td>
-              <a
-                href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GHH5TUHA7677G4HJ"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/devices/amazon-fire-tv-stick.png"
-                  alt="Amazon Fire TV Stick"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://support.roku.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/devices/roku.png"
-                  alt="Roku"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://support.google.com/chromecast/chromecast/?hl=en&sjid=890919833032057258-NC#topic=3058948"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/devices/chromecast1.png"
-                  alt="Chromecast"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://support.apple.com/apple-tv"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="images/devices/appletv.png"
-                  alt="Apple TV"
-                  width="100"
-                  height="50"
-                />
-              </a>
-            </td>
-          </tr>
-        </table>
+        <div className="television">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GHH5TUHA7677G4HJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/devices/amazon-fire-tv-stick.png"
+                    alt="Amazon Fire TV Stick"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://support.roku.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/devices/roku.png"
+                    alt="Roku"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://support.google.com/chromecast/chromecast/?hl=en&sjid=890919833032057258-NC#topic=3058948"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/devices/chromecast1.png"
+                    alt="Chromecast"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://support.apple.com/apple-tv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/devices/appletv.png"
+                    alt="Apple TV"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
       </Collapsible>
       <Collapsible
         trigger={

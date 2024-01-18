@@ -6,12 +6,10 @@ export default function Internet() {
     <>
       <h1>Internet Tips</h1>
       <hr></hr>
-      <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Internet Browsers</button>
-        }
-      >
-        <div className="internet">
+      <div className="internet">
+        <Collapsible
+          trigger={<button className="collapsible-trigger">Browsers</button>}
+        >
           <table>
             <tr>
               <th>Browser Name</th>
@@ -45,7 +43,8 @@ export default function Internet() {
                   src="images/logos/windows.png"
                   height="20"
                   width="20"
-                ></img>
+                ></img>{" "}
+                <img src="images/logos/chrome.png" height="20" width="20"></img>
               </td>
               <td bgcolor="green"></td>
             </tr>
@@ -64,7 +63,9 @@ export default function Internet() {
                   src="images/logos/windows.png"
                   height="20"
                   width="20"
-                ></img>
+                ></img>{" "}
+                <img src="images/logos/chrome.png" height="20" width="20"></img>
+                *
               </td>
               <td bgcolor="green"></td>
             </tr>
@@ -94,7 +95,9 @@ export default function Internet() {
                   src="images/logos/windows.png"
                   height="20"
                   width="20"
-                ></img>
+                ></img>{" "}
+                <img src="images/logos/chrome.png" height="20" width="20"></img>
+                *
               </td>
               <td bgcolor="green"></td>
             </tr>
@@ -109,7 +112,9 @@ export default function Internet() {
                   src="images/logos/windows.png"
                   height="20"
                   width="20"
-                ></img>
+                ></img>{" "}
+                <img src="images/logos/chrome.png" height="20" width="20"></img>
+                *
               </td>
               <td bgcolor="green"></td>
             </tr>
@@ -133,29 +138,85 @@ export default function Internet() {
               <td bgcolor="red"></td>
             </tr>
           </table>
-        </div>
-      </Collapsible>
-      <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Installing Extensions</button>
-        }
-      >
-        <ol>
-          <li>
-            Using your browser of choice, navigate to the Manage Extensions menu
-            in your browser settings
-          </li>
-          <li>
-            Find the link to the extension store in Manage Extensions menu
-          </li>
-          <li>Search for the desired extension in the store</li>
-          <li>Click the Add to browser button</li>
-        </ol>
-        <h5>
-          NOTE: Adding ad blocking extensions like uBlock Origin or AdBlock Plus
-          is a great way to improve your internet browsing experience
-        </h5>
-      </Collapsible>
+          <h5>
+            NOTE: * indicates these browsers aren't natively supported on
+            chromeOS but can be installed after enabling Linux apps by following{" "}
+            <a href="https://www.howtogeek.com/777839/can-you-use-other-browsers-on-a-chromebook/#install-linux-browsers-on-a-chromebook">
+              these
+            </a>{" "}
+            steps
+          </h5>
+        </Collapsible>
+        <Collapsible
+          trigger={
+            <button className="collapsible-trigger">Browsing 101</button>
+          }
+        >
+          Browsing the internet today is riskier than ever before. Use the below
+          tactics to stay safe and keep your data secure!
+          <ul>
+            <li>
+              <strong>Always</strong> be cautious when clicking on links in
+              websites or emails. Phishing is a common cybersecurity attack that
+              tries to prey on users thinking they're visiting a safe website
+              that looks authentic and prompts for entering credentials but
+              actually steals your data! Make sure to verify you recognize the
+              URL of the website you're about to visit!
+            </li>
+            <li>
+              Some websites have pesky ads and pop-ups that take focus when
+              you're trying to navigate. Use an ad-block extension to mitigate
+              these, including ads that play before videos.
+            </li>
+            <li>
+              Create bookmarks for commonly visited websites. Toggle on your
+              browser's bookmark bar for easy access to these. You can even
+              group them by categories and put them in folders to stay
+              organized!
+            </li>
+          </ul>
+        </Collapsible>
+        <Collapsible
+          trigger={
+            <button className="collapsible-trigger">
+              Installing Extensions
+            </button>
+          }
+        >
+          <ol>
+            <li>
+              Using your browser of choice, navigate to the Manage Extensions
+              menu in your browser settings
+            </li>
+            <li>
+              Find the link to the extension store in Manage Extensions menu
+            </li>
+            <li>Search for the desired extension in the store</li>
+            <li>Click the Add to browser button</li>
+          </ol>
+          <h5>
+            NOTE: Adding ad blocking extensions like uBlock Origin or AdBlock
+            Plus is a great way to improve your security while browsing
+          </h5>
+        </Collapsible>
+        <Collapsible
+          trigger={
+            <button className="collapsible-trigger">Search Engines</button>
+          }
+        >
+          <ul>
+            <li>Google</li>
+            <li>Yahoo</li>
+            <li>Bing</li>
+            <li>DuckDuckGo</li>
+            <li>Brave</li>
+          </ul>
+          <h5>
+            NOTE: Popular search engines like Google, Bing and Yahoo are
+            notorious for censoring search results according to a left-wing bias
+          </h5>
+        </Collapsible>
+      </div>
     </>
   );
 }
