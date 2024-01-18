@@ -1,50 +1,14 @@
-/* google font */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
-
-* {
-  box-sizing: border-box;
-}
-
-:root {
-  --primary: #1aac83;
-  --error: #e7195a;
-}
-
-body {
-  margin: 0;
-  font-family: "Poppins";
-  background-color: white;
-  color: black;
-  /* text-align: right; */
-}
-
-.container {
-  margin: 0rem;
-  text-align: center;
-}
-
-h2 {
-  padding: 0px;
-  margin: 0px;
-}
-
-table,
-td,
-th {
-  border: 10px solid;
+.streaming table {
   padding: 10px;
-  margin: 10px;
+  margin: 0px;
   display: inline-block;
+  border-spacing: 0px;
 }
 
-ul {
-  padding: 0px;
+.streaming td {
+  border: 1px solid;
+  padding: 10px;
   margin: 0px;
-  list-style: none;
-  /* display: inline; */
-  /* align-items: center; */
-  /* gap: 10%; */
-  /* border: solid; */
 }
 
 li {

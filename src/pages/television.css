@@ -1,18 +1,17 @@
-table {
-  border: 1px solid;
+.television table {
   padding: 10px;
-  margin: 10px;
+  margin: 0px;
   display: inline-block;
+  border-spacing: 0px;
 }
 
-ul {
-  padding: 0px;
+.television td {
+  border: 1px solid;
+  padding: 10px;
   margin: 0px;
-  list-style: none;
   /* display: inline; */
   /* align-items: center; */
   /* gap: 10%; */
-  /* border: solid; */
 }
 
 li {

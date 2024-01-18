@@ -1,20 +1,21 @@
 h2 {
   padding: 0px;
   margin: 0px;
+  text-align: center;
 }
 
-ul {
+.links ul {
   padding: 0px;
   margin: 0px;
   list-style: none;
   /* display: inline; */
-  /* align-items: center; */
   /* gap: 10%; */
   /* border: solid; */
 }
 
-li {
+.links li {
   /* padding: 0px; */
+  text-align: center;
 }
 
 a.active {

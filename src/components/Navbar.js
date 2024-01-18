@@ -39,7 +39,7 @@ export default function Navbar() {
       <nav className="nav">
         {/* add home to the below path="/" to point the site-title to /home if enabled in App.js */}
         <Link to="/" className="site-title">
-          AA Tech Tips
+          <img src="site-logo.png" alt="" height="50" width="50" />
         </Link>
         {showButton && (
           <button onClick={toggleMenu} className="hamburger-menu">
