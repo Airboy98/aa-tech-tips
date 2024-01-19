@@ -6,7 +6,7 @@ export default function Smartphone() {
     <>
       <h1>Smartphone Tips</h1>
       <hr></hr>
-      <h1>iPhone</h1>
+      <h2>iPhone</h2>
       <Collapsible
         trigger={<button className="collapsible-trigger">Photo Editing</button>}
       >
@@ -108,7 +108,7 @@ export default function Smartphone() {
           <li>Enter new passcode</li>
         </ol>
       </Collapsible>
-      <h1>Android</h1>
+      <h2>Android</h2>
       <Collapsible
         trigger={<button className="collapsible-trigger">Photo Editing</button>}
       >

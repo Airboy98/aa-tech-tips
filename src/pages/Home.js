@@ -10,7 +10,6 @@ export default function Home() {
         Need IT help or looking for some tips? Please select a category. Click
         the logo at the top left to return home.
       </h2>
-      <br></br>
       <div className="links">
         <ul>
           <h2>

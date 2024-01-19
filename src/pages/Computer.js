@@ -286,12 +286,12 @@ export default function Computer() {
               </ul>
             </tr>
           </table>
-          <h5>
-            NOTE: Printer model number/names are usually found on a sticker on
-            the back of the printer. Navigate to your brand's website above and
-            input the model number/name.
-          </h5>
         </div>
+        <h5>
+          NOTE: Printer model number/names are usually found on a sticker on the
+          back of the printer. Navigate to your brand's website above and input
+          the model number/name.
+        </h5>
       </Collapsible>
     </>
   );
