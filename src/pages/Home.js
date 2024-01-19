@@ -36,6 +36,10 @@ export default function Home() {
           </h2>
         </ul>
       </div>
+      <h5>
+        Need more help or have feedback? Send an email to{" "}
+        <a href="mailto:feedback@aatechtips.com">feedback@aatechtips.com</a>
+      </h5>
     </>
   );
 }
