@@ -36,11 +36,14 @@ a:visited {
 .collapsible-trigger {
   font-weight: bold;
   cursor: pointer;
-  font-size: x-large;
+  font-size: 20px;
   align-items: right;
   display: inline-block;
-  background-color: lightgray;
-  color: black;
+  background-color: white;
+  color: #0f3455;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
 }
 
 .collapsible-content {

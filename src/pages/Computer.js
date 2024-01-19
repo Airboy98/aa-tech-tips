@@ -42,40 +42,40 @@ export default function Computer() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Photo Sharing</button>}
       >
-        <div className="collapsible-content">
-          <ol>
-            <li>
-              Login to{" "}
-              <a
-                href="https://drive.google.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Google Drive
-              </a>{" "}
-              with your Google Account or create one if necessary
-            </li>
-            <li>
-              Navigate to <b>My Drive</b> on the left side panel
-            </li>
-            <li>
-              Open up Finder (macOS) or Windows Explorer (Windows) and find the
-              photos you'd like to share
-            </li>
-            <li>
-              Drag and drop the folder or picture files from Finder or Windows
-              Explorer into <b>My Drive</b>
-            </li>
-            <li>
-              Right click the folder or picture files and hover over{" "}
-              <b>Share</b> in the context menu
-            </li>
-            <li>
-              Select <b>Copy Link</b> to copy the picture URL to share or select{" "}
-              <b>Share</b> to choose an account to share to
-            </li>
-          </ol>
-        </div>
+        {/* <div className="collapsible-content"> */}
+        <ol>
+          <li>
+            Login to{" "}
+            <a
+              href="https://drive.google.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Drive
+            </a>{" "}
+            with your Google Account or create one if necessary
+          </li>
+          <li>
+            Navigate to <b>My Drive</b> on the left side panel
+          </li>
+          <li>
+            Open up Finder (macOS) or Windows Explorer (Windows) and find the
+            photos you'd like to share
+          </li>
+          <li>
+            Drag and drop the folder or picture files from Finder or Windows
+            Explorer into <b>My Drive</b>
+          </li>
+          <li>
+            Right click the folder or picture files and hover over <b>Share</b>{" "}
+            in the context menu
+          </li>
+          <li>
+            Select <b>Copy Link</b> to copy the picture URL to share or select{" "}
+            <b>Share</b> to choose an account to share to
+          </li>
+        </ol>
+        {/* </div> */}
       </Collapsible>
       <Collapsible
         trigger={
