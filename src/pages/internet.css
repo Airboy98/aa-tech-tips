@@ -1,15 +1,14 @@
 .internet table {
-  display: table;
   border-collapse: separate;
   border-spacing: 0px;
   /* border: 1px solid; */
-  padding: 10px;
-  margin: 0px;
+  padding: 0px;
+  margin: 10px;
   display: inline-block;
 }
 
 .internet td {
-  padding: 5px 0px 3px 0px;
+  padding: 3px 0px 0px 0px;
   margin: 0px;
   border: 1px solid;
 }
@@ -26,7 +25,15 @@
 
 .internet li {
   padding: 0px;
+  /* text-align: left; */
+}
+
+.internet ul {
+  display: inline-block;
   text-align: left;
+  list-style: disc;
+  /* padding: 0px; */
+  /* margin: 10px; */
 }
 
 ol {
@@ -40,33 +47,4 @@ ol {
   display: inline-block;
   /* list-style-position:inside; */
   text-align: center;
-}
-
-a.active {
-  /* background-color: #555; */
-}
-
-a:hover {
-  /* background-color: #777; */
-}
-
-a:visited {
-  color: blue;
-}
-
-.collapsible-trigger {
-  font-weight: bold;
-  cursor: pointer;
-  font-size: x-large;
-  align-items: right;
-  display: inline-block;
-}
-
-.collapsible-content {
-  /* display: inline-block; */
-  background-color: white;
-  /* color: red; */
-  /* text-align: left; */
-
-  /* Styles applied when opened... */
 }

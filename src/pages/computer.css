@@ -1,27 +1,34 @@
 .printers table {
-  padding: 10px 0px 0px 0px;
-  margin: 0px;
+  padding: 0px;
+  margin: 10px;
   display: inline-block;
   border-spacing: 0px;
 }
 
 .printers td {
   border: 1px solid;
-  padding: 0px;
+  padding: 3px 0px 0px 0px;
   margin: 0px;
 }
 
 .printers tr {
-  padding: 10px;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
 }
 
 .printers ul {
   list-style: none;
-  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+  display: inline-block;
 }
 
-li {
-  /* padding: 0px; */
+.printers li {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
 }
 
 ol {
@@ -38,38 +45,5 @@ ol {
 }
 
 .printers a {
-  color: blue;
-  text-decoration: underline;
-  height: 100%;
-  /* display: inline-box; */
-  padding: 1rem;
-}
-
-a.active {
-  /* background-color: #555; */
-}
-
-a:hover {
-  /* background-color: #777; */
-}
-
-a:visited {
-  color: blue;
-}
-
-.collapsible-trigger {
-  font-weight: bold;
-  cursor: pointer;
-  font-size: x-large;
-  align-items: right;
-  display: inline-block;
-}
-
-.collapsible-content {
-  /* display: inline-block; */
-  background-color: black;
-  /* color: red; */
-  /* text-align: left; */
-
-  /* Styles applied when opened... */
+  padding: 0.5rem;
 }

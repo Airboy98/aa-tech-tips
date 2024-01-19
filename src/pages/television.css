@@ -1,6 +1,6 @@
 .television table {
-  padding: 10px;
-  margin: 0px;
+  padding: 0px;
+  margin: 10px;
   display: inline-block;
   border-spacing: 0px;
 }
@@ -29,33 +29,4 @@ ol {
   display: inline-block;
   /* list-style-position:inside; */
   text-align: left;
-}
-
-a.active {
-  /* background-color: #555; */
-}
-
-a:hover {
-  /* background-color: #777; */
-}
-
-a:visited {
-  color: blue;
-}
-
-.collapsible-trigger {
-  font-weight: bold;
-  cursor: pointer;
-  font-size: x-large;
-  align-items: right;
-  display: inline-block;
-}
-
-.collapsible-content {
-  /* display: inline-block; */
-  background-color: white;
-  /* color: red; */
-  /* text-align: left; */
-
-  /* Styles applied when opened... */
 }

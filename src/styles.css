@@ -10,8 +10,8 @@
 body {
   margin: 0;
   font-family: "Poppins";
-  background-color: white;
-  color: black;
+  background-color: #3c709f;
+  color: white;
   /* text-align: right; */
 }
 
@@ -20,6 +20,34 @@ body {
   text-align: center;
 }
 
-li {
+/* li {
   text-align: left;
+} */
+
+table {
+  background-color: white;
+  color: black;
+}
+
+a:visited {
+  color: blue;
+}
+
+.collapsible-trigger {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: x-large;
+  align-items: right;
+  display: inline-block;
+  background-color: lightgray;
+  color: black;
+}
+
+.collapsible-content {
+  /* display: inline-block; */
+  background-color: black;
+  /* color: red; */
+  /* text-align: left; */
+
+  /* Styles applied when opened... */
 }
