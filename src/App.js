@@ -12,9 +12,9 @@ import Appointment from "./pages/Appointment";
 function App() {
   return (
     <>
-      <HashRouter>
-        <Navbar />
-        <div className="container">
+      <div className="container">
+        <HashRouter>
+          <Navbar />
           <Routes>
             {/* add home to the below path="/" to force the homepage at /home */}
             <Route path="/" element={<Home />} />
@@ -26,8 +26,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/appointment" element={<Appointment />} />
           </Routes>
-        </div>
-      </HashRouter>
+        </HashRouter>
+      </div>
     </>
   );
 }

@@ -12,17 +12,34 @@ body {
   font-family: "Poppins";
   background-color: #3c709f;
   color: white;
+  height: 100%;
   /* text-align: right; */
 }
 
 .container {
   margin: 0rem;
   text-align: center;
+  padding-bottom: 0px;
 }
 
-/* li {
-  text-align: left;
-} */
+footer {
+  /* background-color: #0f3455; */
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: stretch; */
+  /* gap: 2rem; */
+  /* padding: 0px;
+  margin: 0px; */
+  /* position: inherit; */
+  /* left: 0;
+  bottom: 0;
+  right: 0; */
+}
+
+p {
+  padding: 0px;
+  margin: 0px;
+}
 
 table {
   background-color: white;
