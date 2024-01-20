@@ -12,6 +12,7 @@ export default function Home() {
       </h2>
       <div className="links">
         <ul>
+          <h2>Tech 101 (coming soon)</h2>
           <h2>
             <CustomLink to="/computer">Computer</CustomLink>
           </h2>
@@ -19,14 +20,15 @@ export default function Home() {
             <CustomLink to="/television">Television</CustomLink>
           </h2>
           <h2>
-            <CustomLink to="/smartphone">Smartphone</CustomLink>
+            <CustomLink to="/internet">Internet</CustomLink>
           </h2>
           <h2>
-            <CustomLink to="/internet">Internet</CustomLink>
+            <CustomLink to="/smartphone">Smartphone</CustomLink>
           </h2>
           <h2>
             <CustomLink to="/streaming">Streaming</CustomLink>
           </h2>
+          <h2>Wearables (like Apple Watch and Fitbit - coming soon)</h2>
           {/* <CustomLink to="/contact">Contact Us</CustomLink> */}
           {/* <h2>
           <CustomLink to="/appointment">Appointment</CustomLink>
