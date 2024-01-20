@@ -51,8 +51,8 @@ export default function Navbar() {
           <ul className="menu-items">
             <CustomLink to="/computer">Computer</CustomLink>
             <CustomLink to="/television">Television</CustomLink>
-            <CustomLink to="/smartphone">Smartphone</CustomLink>
             <CustomLink to="/internet">Internet</CustomLink>
+            <CustomLink to="/smartphone">Smartphone</CustomLink>
             <CustomLink to="/streaming">Streaming</CustomLink>
             {/* <CustomLink to="/contact">Contact Us</CustomLink> */}
             {/* <CustomLink to="/appointment">Appointment</CustomLink> */}
