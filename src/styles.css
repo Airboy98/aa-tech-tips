@@ -47,14 +47,13 @@ table {
 }
 
 a {
-  color: #242494;
+  color: #0f3455;
 }
 
 .collapsible-trigger {
   font-weight: bold;
   cursor: pointer;
   font-size: 20px;
-  align-items: right;
   display: inline-block;
   background-color: white;
   color: black;

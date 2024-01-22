@@ -1,39 +1,32 @@
-.internet table {
+.tech table {
   border-collapse: separate;
   border-spacing: 0px;
   /* border: 1px solid; */
   padding: 0px;
   margin: 10px;
   display: inline-block;
+  background-color: #0f3455;
+  color: white;
 }
 
-.internet td {
-  padding: 3px 0px 0px 0px;
-  margin: 0px;
+td,
+th {
   border: 1px solid;
+  padding: 5px;
 }
 
-.internet th {
-  padding: 3px;
-  margin: 0px;
-  border: 1px solid;
-  /* display: inline; */
-  /* align-items: center; */
-  /* gap: 10%; */
-  /* border: solid; */
-}
-
-.internet li {
-  padding: 0px;
-  /* text-align: left; */
-}
-
-.internet ul {
-  display: inline-block;
-  text-align: left;
+ul {
   list-style: disc;
-  /* padding: 10px;
-  margin: 10px; */
+  /* margin: 0px; */
+  /* padding: 0px; */
+  text-align: left;
+  display: inline-block;
+}
+
+.printers li {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
 }
 
 ol {
@@ -46,5 +39,9 @@ ol {
   /* gap: 3rem; */
   display: inline-block;
   /* list-style-position:inside; */
-  text-align: center;
+  text-align: left;
+}
+
+.printers a {
+  padding: 0.5rem;
 }
