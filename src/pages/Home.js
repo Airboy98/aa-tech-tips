@@ -4,15 +4,18 @@ import "./home.css";
 export default function Home() {
   return (
     <>
-      <h1>AA TECH TIPS</h1>
+      <h1>AA Tech Tips</h1>
       <hr></hr>
-      <h2>
-        Need IT help or looking for some tips? Please select a category. Click
-        the logo at the top left to return home.
-      </h2>
+      <h3>
+        Need IT help or looking for some tips? Select a category below or choose
+        Tech 101 to start with the basics! Select the logo at the top left to
+        return here.
+      </h3>
       <div className="links">
         <ul>
-          <h2>Tech 101 (coming soon)</h2>
+          <h2>
+            <CustomLink to="/tech101">Tech 101</CustomLink>
+          </h2>
           <h2>
             <CustomLink to="/computer">Computer</CustomLink>
           </h2>

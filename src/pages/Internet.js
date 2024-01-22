@@ -196,37 +196,6 @@ export default function Internet() {
         </Collapsible>
         <Collapsible
           trigger={
-            <button className="collapsible-trigger">Browsing 101</button>
-          }
-        >
-          <h4>
-            Browsing the internet today is riskier than ever before. Use the
-            below tactics to stay safe and keep your data secure!
-          </h4>
-          <ul>
-            <li>
-              <strong>Always</strong> be cautious when clicking on links in
-              websites or emails. Phishing is a common cybersecurity attack that
-              tries to prey on users thinking they're visiting a safe website
-              that looks authentic and prompts for entering credentials but
-              actually steals your data! Make sure to verify you recognize the
-              URL of the website you're about to visit!
-            </li>
-            <li>
-              Some websites have pesky ads and pop-ups that take focus when
-              you're trying to navigate. Use an ad-block extension to mitigate
-              these, including ads that play before videos.
-            </li>
-            <li>
-              Create bookmarks for commonly visited websites. Toggle on your
-              browser's bookmark bar for easy access to these. You can even
-              group them by categories and put them in folders to stay
-              organized!
-            </li>
-          </ul>
-        </Collapsible>
-        <Collapsible
-          trigger={
             <button className="collapsible-trigger">
               Installing Extensions
             </button>

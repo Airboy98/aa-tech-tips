@@ -49,6 +49,7 @@ export default function Navbar() {
         {/* <Menu isOpen={isOpen} right={true}> */}
         {!showButton || isOpen ? (
           <ul className="menu-items">
+            <CustomLink to="/tech101">Tech 101</CustomLink>
             <CustomLink to="/computer">Computer</CustomLink>
             <CustomLink to="/television">Television</CustomLink>
             <CustomLink to="/internet">Internet</CustomLink>

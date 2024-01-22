@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import Tech101 from "./pages/Tech101";
 import Computer from "./pages/Computer";
 import Television from "./pages/Television";
 import Smartphone from "./pages/Smartphone";
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             {/* add home to the below path="/" to force the homepage at /home */}
             <Route path="/" element={<Home />} />
+            <Route path="/tech101" element={<Tech101 />} />
             <Route path="/computer" element={<Computer />} />
             <Route path="/television" element={<Television />} />
             <Route path="/smartphone" element={<Smartphone />} />
