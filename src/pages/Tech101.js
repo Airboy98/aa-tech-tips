@@ -63,7 +63,8 @@ export default function Tech101() {
             <tr>
               <td>Streaming</td>
               <td>
-                A platform (either paid or free) used to view videos on demand
+                Watching on a platform (either paid or free) to view videos on
+                demand
               </td>
               <td>Netflix, Prime Video</td>
             </tr>
