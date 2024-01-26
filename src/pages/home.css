@@ -1,5 +1,5 @@
 .links h2 {
-  padding: 0px;
+  padding: 2px;
   margin: 0px;
   text-align: center;
 }
@@ -16,4 +16,5 @@
 .links li {
   /* padding: 0px; */
   text-align: center;
+  list-style: none;
 }

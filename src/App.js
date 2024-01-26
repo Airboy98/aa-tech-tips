@@ -6,6 +6,7 @@ import Television from "./pages/Television";
 import Smartphone from "./pages/Smartphone";
 import Internet from "./pages/Internet";
 import Streaming from "./pages/Streaming";
+import Wearable from "./pages/Wearable";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Appointment from "./pages/Appointment";
@@ -25,6 +26,7 @@ function App() {
             <Route path="/smartphone" element={<Smartphone />} />
             <Route path="/internet" element={<Internet />} />
             <Route path="/streaming" element={<Streaming />} />
+            <Route path="/wearable" element={<Wearable />} />
             <Route path="/about" element={<About />} />
             <Route path="/appointment" element={<Appointment />} />
           </Routes>

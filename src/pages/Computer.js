@@ -165,8 +165,8 @@ export default function Computer() {
                       <img
                         src="images/printers/brother.png"
                         alt="Brother"
-                        width="100"
-                        height="50"
+                        width="150"
+                        height="40"
                       />
                     </a>
                     <br></br>
@@ -196,8 +196,8 @@ export default function Computer() {
                       <img
                         src="images/printers/hp.png"
                         alt="HP"
-                        width="100"
-                        height="50"
+                        width="150"
+                        height="35"
                       />
                     </a>
                     <br></br>
@@ -231,8 +231,8 @@ export default function Computer() {
                       <img
                         src="images/printers/epson.png"
                         alt="Epson"
-                        width="100"
-                        height="50"
+                        width="150"
+                        height="40"
                       />
                     </a>
                     <br></br>
@@ -262,8 +262,8 @@ export default function Computer() {
                       <img
                         src="images/printers/canon.png"
                         alt="Canon"
-                        width="100"
-                        height="50"
+                        width="150"
+                        height="40"
                       />
                     </a>
                     <br></br>

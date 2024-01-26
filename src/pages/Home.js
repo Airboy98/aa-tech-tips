@@ -6,11 +6,14 @@ export default function Home() {
     <>
       <h1>AA Tech Tips</h1>
       <hr></hr>
-      <h3>
-        Need IT help or looking for some tips? Select a category below or choose
-        Tech 101 to start with the basics! Select the logo at the top left to
-        return here.
-      </h3>
+      <h4>
+        Need IT help or looking for some tips? Start with the basics with Tech
+        101 or select another category below!<br></br>
+        <br></br>Tap the logo in the top left corner to return here and navigate
+        the site with the{" "}
+        <img src="images/hamburger.png" height="20" width="20" /> menu (on
+        smartphones) in the top right corner.
+      </h4>
       <div className="links">
         <ul>
           <h2>
@@ -31,7 +34,9 @@ export default function Home() {
           <h2>
             <CustomLink to="/streaming">Streaming</CustomLink>
           </h2>
-          <h2>Wearables (like Apple Watch and Fitbit - coming soon)</h2>
+          <h2>
+            <CustomLink to="/wearable">Wearable</CustomLink>
+          </h2>
           {/* <CustomLink to="/contact">Contact Us</CustomLink> */}
           {/* <h2>
           <CustomLink to="/appointment">Appointment</CustomLink>

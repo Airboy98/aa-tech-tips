@@ -54,7 +54,7 @@ export default function Streaming() {
                     src="images/streaming/netflix.png"
                     alt="Netflix"
                     width="100"
-                    height="50"
+                    height="30"
                   />
                 </a>
               </td>
@@ -84,7 +84,7 @@ export default function Streaming() {
                     src="images/streaming/hbo.png"
                     alt="HBO Max"
                     width="100"
-                    height="50"
+                    height="35"
                   />
                 </a>
               </td>
@@ -114,7 +114,7 @@ export default function Streaming() {
                     src="images/streaming/peacock.png"
                     alt="Peacock"
                     width="100"
-                    height="50"
+                    height="30"
                   />
                 </a>
               </td>
@@ -144,7 +144,7 @@ export default function Streaming() {
                     src="images/streaming/paramount.png"
                     alt="Paramount+"
                     width="100"
-                    height="50"
+                    height="30"
                   />
                 </a>
               </td>
@@ -174,7 +174,7 @@ export default function Streaming() {
                     src="images/streaming/appletvplus.png"
                     alt="Apple TV+"
                     width="100"
-                    height="50"
+                    height="40"
                   />
                 </a>
               </td>

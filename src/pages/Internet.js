@@ -222,59 +222,60 @@ export default function Internet() {
             <button className="collapsible-trigger">Search Engines</button>
           }
         >
-          {/* <div className="links"> */}
-          <ul>
-            <li>
-              <a
-                href="https://www.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Google
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://search.yahoo.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Yahoo
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.bing.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Bing
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://duckduckgo.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                DuckDuckGo
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://search.brave.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Brave
-              </a>
-            </li>
-          </ul>
+          <div className="links">
+            <ul>
+              <li>
+                <a
+                  href="https://www.google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://search.yahoo.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Yahoo
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.bing.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Bing
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://duckduckgo.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  DuckDuckGo
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://search.brave.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Brave
+                </a>
+              </li>
+            </ul>
+          </div>
+
           <h5>
             NOTE: Popular search engines like Google, Bing and Yahoo are
             notorious for taking a left-wing bias and censoring search results
           </h5>
-          {/* </div> */}
         </Collapsible>
       </div>
     </>
