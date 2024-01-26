@@ -46,6 +46,7 @@ export default function Navbar() {
               <CustomLink to="/internet">Internet</CustomLink>
               <CustomLink to="/smartphone">Smartphone</CustomLink>
               <CustomLink to="/streaming">Streaming</CustomLink>
+              <CustomLink to="/wearable">Wearable</CustomLink>
               {/* <CustomLink to="/appointment">Appointment</CustomLink> */}
               <CustomLink to="/about">About</CustomLink>
             </ul>
@@ -59,6 +60,7 @@ export default function Navbar() {
             <CustomLink to="/internet">Internet</CustomLink>
             <CustomLink to="/smartphone">Smartphone</CustomLink>
             <CustomLink to="/streaming">Streaming</CustomLink>
+            <CustomLink to="/wearable">Wearable</CustomLink>
             {/* <CustomLink to="/appointment">Appointment</CustomLink> */}
             <CustomLink to="/about">About</CustomLink>
           </ol>

@@ -17,10 +17,10 @@ export default function About() {
       links to brand websites are provided.
       <br></br>
       <br></br>
-      If you have any suggestions, feedback, or additions to the site, I can be
-      reached at the email address below.<br></br> I'm also available for local
-      in-person IT appointments (with hourly service fee) should this website
-      not suffice.
+      If you have any suggestions, feedback, or additions to the site, please
+      send them to the email address below.<br></br> I'm also available for
+      local in-person IT appointments (with hourly service fee) should this
+      website not suffice.
       <br></br>
       <br></br>
       <img src="images/moon2.jpg" height="250" width="200" />

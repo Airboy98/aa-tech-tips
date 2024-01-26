@@ -23,6 +23,10 @@ ul {
   display: inline-block;
 }
 
+.tech li {
+  padding: 10px;
+}
+
 .printers li {
   text-align: center;
   padding: 0px;
