@@ -7,8 +7,9 @@ export default function Home() {
       <h1>AA Tech Tips</h1>
       <hr></hr>
       <h4>
-        Need IT help or looking for some tips? Start with the basics with Tech
-        101 or select another category below!<br></br>
+        Need IT help or looking for some tips? Start with the basics and tap
+        Tech 101 below or select another category! Tap the buttons on each page
+        to expand and collapse the tips.<br></br>
         <br></br>Tap the logo in the top left corner to return here and navigate
         the site with the{" "}
         <img src="images/hamburger.png" height="20" width="20" /> menu (on

@@ -7,39 +7,6 @@ export default function Computer() {
       <h1>Computer Tips</h1>
       <hr></hr>
       <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Malware Removal</button>
-        }
-      >
-        {/* <div className="collapsible-content"> */}
-        <ol>
-          <li>
-            Click{" "}
-            <a href="https://www.malwarebytes.com/mwb-download/thankyou">
-              here
-            </a>{" "}
-            to download Malwarebytes (automatically detects Windows or Mac)
-          </li>
-          <li>
-            Once downloaded (check Downloads folder), double click the MBSetup
-            file (.exe for Windows and .dmg for Mac)
-          </li>
-          <li>
-            Follow on screen prompts to install Malwarebytes (you may need to
-            enable full access on MacOS or run as admin on Windows)
-          </li>
-          <li>Open Malwarebytes if it doesn't automatically open</li>
-          <li>Click "Scan Now" button to scan your system for any malware</li>
-          <li>Quarantine any detected files once the scan is complete</li>
-        </ol>
-        <h5>
-          NOTE: Symptoms of malware (such as viruses and trojans) include random
-          pop-ups, slow loading, compromised accounts, and fraulent
-          transactions.
-        </h5>
-        {/* </div> */}
-      </Collapsible>
-      <Collapsible
         trigger={<button className="collapsible-trigger">Photo Sharing</button>}
       >
         {/* <div className="collapsible-content"> */}
@@ -75,6 +42,39 @@ export default function Computer() {
             <b>Share</b> to choose an account to share to
           </li>
         </ol>
+        {/* </div> */}
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Malware Removal</button>
+        }
+      >
+        {/* <div className="collapsible-content"> */}
+        <ol>
+          <li>
+            Click{" "}
+            <a href="https://www.malwarebytes.com/mwb-download/thankyou">
+              here
+            </a>{" "}
+            to download Malwarebytes (automatically detects Windows or Mac)
+          </li>
+          <li>
+            Once downloaded (check Downloads folder), double click the MBSetup
+            file (.exe for Windows and .dmg for Mac)
+          </li>
+          <li>
+            Follow on screen prompts to install Malwarebytes (you may need to
+            enable full access on MacOS or run as admin on Windows)
+          </li>
+          <li>Open Malwarebytes if it doesn't automatically open</li>
+          <li>Click "Scan Now" button to scan your system for any malware</li>
+          <li>Quarantine any detected files once the scan is complete</li>
+        </ol>
+        <h5>
+          NOTE: Symptoms of malware (such as viruses and trojans) include random
+          pop-ups, slow loading, phishing emails requesting to change password,
+          compromised accounts, and fraulent transactions.
+        </h5>
         {/* </div> */}
       </Collapsible>
       <Collapsible
@@ -124,6 +124,7 @@ export default function Computer() {
           <li>Once downloaded, click the .exe installer to install</li>
         </ol>
       </Collapsible>
+
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Drive Formatting</button>
@@ -289,8 +290,8 @@ export default function Computer() {
         </div>
         <h5>
           NOTE: Printer model number/names are usually found on a sticker on the
-          back of the printer. Navigate to your brand's website above and input
-          the model number/name.
+          back of the printer or printed on the front. Navigate to your brand's
+          website above and input the model number/name.
         </h5>
       </Collapsible>
     </>
