@@ -10,7 +10,7 @@ export default function Navbar() {
     const handleResize = () => {
       // Adjust the value as needed to determine when to show the button
       setshowBurger(window.innerWidth < 768);
-      setIsOpen(false); // Close the menu if the button is hidden
+      // setIsOpen(false); // Close the menu if the button is hidden
     };
 
     window.addEventListener("resize", handleResize);
@@ -20,9 +20,7 @@ export default function Navbar() {
   });
 
   const toggleMenu = () => {
-    if (showBurger) {
-      setIsOpen(!isOpen);
-    }
+    setIsOpen(false);
   };
 
   return (
@@ -72,11 +70,15 @@ export default function Navbar() {
 }
 
 export function CustomLink({ to, children, ...props }) {
+  const toggleMenu = () => {
+    console.log("this should close menu");
+  };
+
   const resolvedPath = useResolvedPath(to);
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
   return (
-    <li className={isActive ? "active" : ""}>
+    <li className={isActive ? "active" : ""} onClick={toggleMenu}>
       <Link to={to} {...props}>
         {children}
       </Link>

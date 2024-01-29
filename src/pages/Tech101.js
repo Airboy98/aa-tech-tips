@@ -1,5 +1,6 @@
 import Collapsible from "react-collapsible";
 import "./tech101.css";
+import { CustomLink } from "../components/Navbar";
 
 export default function Tech101() {
   return (
@@ -107,8 +108,11 @@ export default function Tech101() {
             <th>Word or Phrase</th>
             <th>Definition</th>
             <tr>
-              <td>GPU (Graphics Processing Unit)</td>
-              <td>A computer peripheral used to render graphics on a screen</td>
+              <td>GPU (Graphics Processing Unit) / Graphics Card</td>
+              <td>
+                A computer peripheral dedicated to rendering graphics on a
+                screen
+              </td>
             </tr>
             <tr>
               <td>HDD (Hard Disk Drive)</td>
@@ -122,6 +126,20 @@ export default function Tech101() {
               <td>
                 A digital technology that transmits audio/video used with TVs
                 and monitors
+              </td>
+            </tr>
+            <tr>
+              <td>Monitor</td>
+              <td>
+                A screen connected by a cable to a desktop or built-in to a
+                laptop
+              </td>
+            </tr>
+            <tr>
+              <td>Phishing</td>
+              <td>
+                A malicious act of fooling a user to click a link spoofing a
+                seemingly legit website
               </td>
             </tr>
             <tr>
@@ -284,6 +302,16 @@ export default function Tech101() {
               Apple devices.
             </li>
             <li>
+              <b>Don't believe the hype!</b> Getting a computer with a new super
+              expensive GPU is excessive for most people unless you do some
+              serious photo/video editing or play modern games at high graphics
+              settings. Even lower-end dedicated GPUs aren't necessary for basic
+              web browsing and watching videos so an integrated GPU will
+              probably suffice. For most people, 8GB of RAM is enough these days
+              unless you like to multi-task and have a lot of programs and
+              browser tabs open at once.
+            </li>
+            <li>
               <b>Shop around!</b> There's so many options when it comes to
               buying a new device and stores often have plenty of sales going on
               around holidays. Don't be pressured to make a quick decision
@@ -296,7 +324,7 @@ export default function Tech101() {
               desktop, use a tool like{" "}
               <a href="https://pcpartpicker.com/">pcpartpicker.com</a> to ensure
               optimal compatibility with every peripheral before you even buy.
-              It also gives you a few retailer options to see prices at a
+              It also gives you a few retailer options to compare prices at a
               glance.
             </li>
             <li>
@@ -337,13 +365,63 @@ export default function Tech101() {
               <b>Block those ads!</b> Some websites have pesky ads and pop-ups
               that take focus when you're trying to browse. Use an ad-block
               extension to mitigate these, including ads that play before videos
-              like on Youtube.
+              like on Youtube. Check the Internet page for more info and tips.
             </li>
             <li>
               <b>Bookmark that site!</b> Create bookmarks for commonly visited
               websites. Toggle on your browser's bookmark bar for easy access to
               these to see them at all times. You can even group them by
               categories and put them in folders to stay organized!
+            </li>
+          </ul>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Battery Tips</button>}
+      >
+        <h4>
+          Generally speaking, most modern devices these days have built-in
+          rechargable Lithium-ion batteries. This battery technology allows for
+          longer charge times, extended life span and quicker recharge times.
+          Make sure to keep in mind the following to ensure peak performance and
+          longevity!
+        </h4>
+        <div className="tech">
+          <ul>
+            <li>
+              <b>Fully discharge sparingly!</b> It's not good for your device's
+              battery health to be constantly discharged from 100% down to 0%.
+              If you can help it, try to limit a full discharge to once a week.
+              A full discharge also allows for your device's battery to
+              recalibrate to take a more accurate reading when done sparingly.
+            </li>
+            <li>
+              <b>Don't top up all the time!</b> Constantly putting your device
+              on the charger puts strain and extra wear and tear on the device's
+              battery. If your battery life is at 70% for example, it's not
+              necessary to bring it back up to 100% asap unless absolutely
+              necessary, like if you're not able to charge it for awhile.
+            </li>
+            <li>
+              <b>Replacement time?</b> Is your phone or laptop not lasting you
+              through the day anymore? You might not need to buy an entirely new
+              device! Most devices these days allow you to check out your
+              device's battery health but sometimes it's buried in the settings
+              menu. On iPhone, battery health can be found under Settings {"->"}{" "}
+              Battery {"->"} Battery Health & Charging {"->"} Maximum Capacity.
+              If your device's battery health is below 80%, it may be worth
+              looking into purchasing a replacement battery. For example,
+              without Apple Care, an iPhone replacement battery can be bought
+              and installed for under $100, check{" "}
+              <a
+                href="https://support.apple.com/iphone/repair/battery-replacement"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                here
+              </a>{" "}
+              for details. Other devices may have user replaceable batteries
+              that can be purchased from retailers like Amazon.
             </li>
           </ul>
         </div>
