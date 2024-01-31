@@ -392,7 +392,7 @@ export default function Tech101() {
       </Collapsible>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Digital Photo Album</button>
+          <button className="collapsible-trigger">Digital Photo Frame</button>
         }
       >
         <h4>
