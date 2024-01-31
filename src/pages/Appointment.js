@@ -12,7 +12,7 @@ export default function Appointment() {
     <>
       <h1>Appointment</h1>
       <hr></hr>
-      <div className="workouts">
+      <div className="appointments">
         {appointments &&
           appointments.map((appointment) => (
             <AppointmentDetails
