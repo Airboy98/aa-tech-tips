@@ -219,7 +219,9 @@ export default function Tech101() {
       </Collapsible>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Purchasing Advice</button>
+          <button className="collapsible-trigger">
+            Tech Purchasing Advice
+          </button>
         }
       >
         <h4>
@@ -335,6 +337,101 @@ export default function Tech101() {
               <a href="https://www.rtings.com/">rtings.com</a> can be an
               excellent resource to rely on to get some in-depth details and
               comparisons between similar products.
+            </li>
+          </ul>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Password Management</button>
+        }
+      >
+        <h4>
+          Almost every website these days requires an account and some
+          complicated string for a password. Keep in mind the following to
+          safely store these passwords!
+        </h4>
+        <div className="tech">
+          <ul>
+            <li>
+              <b>Keep a physical copy in a binder.</b> Physically record your
+              passwords on standard 8.5"x11" inch ruled filler paper to fit in a
+              standard binder. Use the lines on the paper to neatly arrange your
+              accounts in a table and sort them by category. For example, you
+              could write the category "Finance" at the top of the page and draw
+              a table with these 4 columns on the first line:{" "}
+              <b>[Account Name] | [User Name] | [Password] | [Date Updated]</b>.
+              Leave extra space in the password field so that when you need to
+              update the password, you can write the new one, cross out the old
+              one and note the date of the change in the Date Updated field.
+              This physical copy can also be a printed out version of the
+              digital copy below. Keep this binder in a very secure, discreet
+              place, away from your computer.
+            </li>
+            <li>
+              <b>Store a digital copy on a flash drive.</b> Use a spreadsheet
+              program (Google Sheets, Microsoft Excel, iWork Numbers) to create
+              a similar table mentioned above with the same headers. At the top
+              of the spreadsheet:{" "}
+              <b>[Account Name] | [User Name] | [Password] | [Date Updated]</b>{" "}
+              and make these headers bold for clarity. Type the corresponding
+              data in each field and password protect this file. Plug in a flash
+              drive and drag and drop the file onto the drive. Remove the
+              original file on the computer so the only copy exists on the flash
+              drive. Keep this flash drive in a very secure, discreet place,
+              away from your computer.
+            </li>
+            <li>
+              <b>Be redundant!</b> Employ both of the above strategies to have 2
+              secure copies of your account passwords. It may be a pain but just
+              remember to keep them in sync and update them simultaneously when
+              an account needs a password change!
+            </li>
+          </ul>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Digital Photo Album</button>
+        }
+      >
+        <h4>
+          Sharing family photos is easier and more popular now than ever before
+          since we all have a great camera available at all times in our pocket!
+        </h4>
+        <div className="tech">
+          <ul>
+            <li>
+              <b>View photos from the cloud!</b>{" "}
+              <a
+                href="https://www.skylightframe.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Skylight
+              </a>{" "}
+              is an excellent cloud-based digital photo frame perfect for
+              sending and viewing family photos. The concept is simple:{" "}
+              <a
+                href="https://www.amazon.com/Skylight-Frame-Digital-Picture-Anywhere/dp/B01N7ENHO6/?th=1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                purchase a frame
+              </a>
+              , plug in and setup with the touchscreen to connect to WiFi, pick
+              a unique email address for your frame, give your family this email
+              address to send photos to and they appear instantly on the frame!
+            </li>
+            <li>
+              <b>Download the app for convenience and customization!</b> Once
+              you{" "}
+              <a href="https://apps.apple.com/us/app/skylight-app/id1438779037">
+                download the app
+              </a>
+              , you'll have access to all photos sent to your frame. You can
+              even organize them by album and choose which to display on the
+              frame!
             </li>
           </ul>
         </div>

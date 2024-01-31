@@ -125,9 +125,15 @@ export default function Wearable() {
           <li>Drag the circle from left to right to activate</li>
         </ol>
         <h5>
-          NOTE: Activating SOS will contact emergency services! Tap{" "}
-          <a href="https://support.apple.com/en-us/108374">here</a> to learn
-          more about this.
+          NOTE: Activating SOS will contact emergency services! Check{" "}
+          <a
+            href="https://support.apple.com/en-us/108374"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            here
+          </a>{" "}
+          to learn more about this.
         </h5>
       </Collapsible>
       <Collapsible

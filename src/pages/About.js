@@ -19,8 +19,9 @@ export default function About() {
         <br></br> If you have any suggestions, feedback, or additions to the
         site, please send them to the email address below.
         <br></br>
-        <br></br> I'm also available for local in-person IT appointments (with
-        hourly service fee) should this website not suffice.
+        <br></br> I'm also available for local in-person one-on-one IT lessons
+        and service appointments (with hourly service fee) should this website
+        not suffice.
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">About Me</button>}
