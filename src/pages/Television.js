@@ -24,7 +24,7 @@ export default function Television() {
                     src="images/televisions/samsung.png"
                     alt="Samsung"
                     width="100"
-                    height="50"
+                    height="15"
                   />
                 </a>
               </td>
@@ -68,7 +68,7 @@ export default function Television() {
                     src="images/televisions/toshiba.png"
                     alt="Toshiba"
                     width="100"
-                    height="50"
+                    height="30"
                   />
                 </a>
               </td>
@@ -126,7 +126,37 @@ export default function Television() {
                 >
                   <img
                     src="images/televisions/vizio.png"
-                    alt="Sharp"
+                    alt="Vizio"
+                    width="100"
+                    height="30"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.usa.philips.com/c-m-so/tv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/televisions/philips.png"
+                    alt="Philips"
+                    width="100"
+                    height="20"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://onntvsupport.com/roku-tv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/televisions/onn.png"
+                    alt="Onn."
                     width="100"
                     height="50"
                   />
