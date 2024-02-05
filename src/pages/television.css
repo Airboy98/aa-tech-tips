@@ -14,8 +14,8 @@
   /* gap: 10%; */
 }
 
-li {
-  /* padding: 0px; */
+.inputs li {
+  padding: 10px;
 }
 
 ol {

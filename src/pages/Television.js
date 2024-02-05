@@ -306,6 +306,144 @@ export default function Television() {
           NOTE: Steps and procedures vary greatly depending on TV make/model
         </h5>
       </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Display Inputs</button>
+        }
+      >
+        <h4>
+          At first glance, older electronic devices might seem to be
+          incompatible with modern TVs but they can still be used! It just takes
+          an extra device to get them to be compatible. Keep in mind the
+          following when dealing with older devices like VCRs, DVD players and
+          old game consoles.
+        </h4>
+        <div className="television">
+          <table>
+            <tr>
+              <th>Input</th>
+              <th>Example Devices</th>
+            </tr>
+            <tr>
+              <td>
+                USB Type A<br></br>
+                <img
+                  src="images/ports/usb-type-a.png"
+                  alt="USB Type-A"
+                  width="100"
+                  height="50"
+                />
+              </td>
+              <td>
+                Keyboard,<br></br>Charging brick
+              </td>
+            </tr>
+            <tr>
+              <td>
+                USB Type C<br></br>
+                <img
+                  src="images/ports/usb-type-c.png"
+                  alt="USB Type-C"
+                  width="100"
+                  height="50"
+                />
+              </td>
+              <td>
+                iPad Pro,<br></br>Android phone
+              </td>
+            </tr>
+            <tr>
+              <td>
+                HDMI<br></br>
+                <img
+                  src="images/ports/hdmi.png"
+                  alt="HDMI"
+                  width="125"
+                  height="50"
+                />
+              </td>
+              <td>
+                Blu-ray player,<br></br>game console
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Coaxial<br></br>
+                <img
+                  src="images/ports/coaxial.png"
+                  alt="Coaxial"
+                  width="50"
+                  height="50"
+                />
+              </td>
+              <td>Cable</td>
+            </tr>
+            <tr>
+              <td>
+                S-Video<br></br>
+                <img
+                  src="images/ports/s-video.png"
+                  alt="S-Video"
+                  width="70"
+                  height="50"
+                />
+              </td>
+              <td>Video camera</td>
+            </tr>
+            <tr>
+              <td>
+                Composite / RCA<br></br>
+                <img
+                  src="images/ports/composite.png"
+                  alt="Composite"
+                  width="150"
+                  height="50"
+                />
+              </td>
+              <td>VCR, Wii, N64</td>
+            </tr>
+            <tr>
+              <td>
+                Component<br></br>
+                <img
+                  src="images/ports/component.png"
+                  alt="Component"
+                  width="200"
+                  height="50"
+                />
+              </td>
+              <td>
+                DVD player,<br></br>HD Wii connector
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div className="inputs">
+          <ul>
+            <li>
+              <b>Convert that signal!</b> When it comes to modern devices hooked
+              up to TVs, nearly everything uses a digital signal these days with
+              an HDMI connection. If you still have an older device that uses a
+              standard composite connection, this is a surprisingly simple
+              hurdle to overcome with an affordable handy little ADC (analog to
+              digital converter) like{" "}
+              <a
+                href="https://www.amazon.com/Converter-ABLEWE-Composite-Supporting-Blue-Ray/dp/B07RX69KR8/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                this
+              </a>
+              . Once you connect this box up to power (usually over USB Type-A
+              that some TVs have a spare port for in the back), plug in the
+              composite cables from the older device into the corresponding
+              ports and connect a standard HDMI cable to the ADC and the TV.
+              Voila! Your analog signal from the older device is now converted
+              to digital and can be used with the modern TV!
+            </li>
+          </ul>
+        </div>
+      </Collapsible>
     </>
   );
 }
