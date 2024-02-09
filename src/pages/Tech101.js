@@ -57,6 +57,13 @@ export default function Tech101() {
               <td>ARRIS Surfboard</td>
             </tr>
             <tr>
+              <td>Remote (cloud connection)</td>
+              <td>
+                Accessing something over the internet as opposed to locally
+              </td>
+              <td>TeamViewer, VNC</td>
+            </tr>
+            <tr>
               <td>Router</td>
               <td>A device that broadcasts internet over Wi-Fi or LAN</td>
               <td>Cisco E1000, TP-Link AX3000</td>
@@ -324,22 +331,78 @@ export default function Tech101() {
             <li>
               <b>Use online tools!</b> If you're in the market to build a
               desktop, use a tool like{" "}
-              <a href="https://pcpartpicker.com/">pcpartpicker.com</a> to ensure
-              optimal compatibility with every peripheral before you even buy.
-              It also gives you a few retailer options to compare prices at a
-              glance.
+              <a
+                href="https://pcpartpicker.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                pcpartpicker.com
+              </a>{" "}
+              to ensure optimal compatibility with every peripheral before you
+              even buy. It also gives you a few retailer options to compare
+              prices at a glance.
             </li>
             <li>
               <b>Read some reviews!</b> Make sure to first read reviews of the
               product you intend to buy before purchasing. Some devices on
               Amazon have thousands of reviews describing issues with products
               that may effect you. When it comes to buying a new TV,{" "}
-              <a href="https://www.rtings.com/">rtings.com</a> can be an
-              excellent resource to rely on to get some in-depth details and
-              comparisons between similar products.
+              <a
+                href="https://www.rtings.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                rtings.com
+              </a>{" "}
+              can be an excellent resource to rely on to get some in-depth
+              details and comparisons between similar products.
             </li>
           </ul>
         </div>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">
+            Tech Remote Assistance
+          </button>
+        }
+      >
+        <h4>
+          Getting tech assistance may be the most ideal in person but a close
+          second is using TeamViewer to have a trusted technician remotely
+          access and control your computer. You will have the ability to control
+          your computer the entire time.
+        </h4>
+        <ol>
+          <li>
+            Select your platform{" "}
+            <a
+              href="https://www.teamviewer.com/en-us/download/windows/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>{" "}
+            and download TeamViewer QuickSupport (
+            <a href="https://download.teamviewer.com/download/TeamViewerQS_x64.exe">
+              Download (64-bit)
+            </a>{" "}
+            for Windows and{" "}
+            <a href="https://download.teamviewer.com/download/TeamViewerQS.dmg">
+              Download
+            </a>{" "}
+            for macOS)
+          </li>
+          <li>Open the downloaded file (.exe on Windows and .dmg on macOS)</li>
+          <li>
+            Check the box in the window that opens to accept EULA and hit
+            continue
+          </li>
+          <li>
+            Type in the session code provided by whoever is remotely assisting
+            you
+          </li>
+        </ol>
       </Collapsible>
       <Collapsible
         trigger={
