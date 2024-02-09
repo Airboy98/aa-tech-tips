@@ -326,7 +326,7 @@ export default function Television() {
             </tr>
             <tr>
               <td>
-                USB Type A<br></br>
+                USB Type-A<br></br>
                 <img
                   src="images/ports/usb-type-a.png"
                   alt="USB Type-A"
@@ -340,7 +340,7 @@ export default function Television() {
             </tr>
             <tr>
               <td>
-                USB Type C<br></br>
+                USB Type-C<br></br>
                 <img
                   src="images/ports/usb-type-c.png"
                   alt="USB Type-C"
@@ -368,7 +368,7 @@ export default function Television() {
             </tr>
             <tr>
               <td>
-                Coaxial<br></br>
+                Coaxial / ANT<br></br>
                 <img
                   src="images/ports/coaxial.png"
                   alt="Coaxial"

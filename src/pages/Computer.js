@@ -124,7 +124,52 @@ export default function Computer() {
           <li>Once downloaded, click the .exe installer to install</li>
         </ol>
       </Collapsible>
-
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Remote Desktop Access</button>
+        }
+      >
+        <ol>
+          <li>
+            Install{" "}
+            <a
+              href="https://www.realvnc.com/en/connect/download/vnc/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              VNC Server
+            </a>{" "}
+            (Windows, macOS, and Linux compatible) on the computer you want to
+            remotely access
+          </li>
+          <li>Create a RealVNC account and login to VNC Server</li>
+          <li>
+            Add the computer to your RealVNC address book as a cloud connection
+          </li>
+          <li>
+            Install VNC Viewer{" ("}
+            <a
+              href="https://www.realvnc.com/en/connect/download/viewer/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              program
+            </a>{" "}
+            or{" "}
+            <a
+              href="https://apps.apple.com/us/app/realvnc-viewer-remote-desktop/id352019548"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              app
+            </a>
+            {") "}
+            on the device you want to remotely connect from
+          </li>
+          <li>Login to your RealVNC account in VNC Viewer</li>
+          <li>Open VNC Viewer and select the computer to remotely access</li>
+        </ol>
+      </Collapsible>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Drive Formatting</button>

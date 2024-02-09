@@ -79,6 +79,27 @@ export default function Smartphone() {
       </Collapsible>
       <Collapsible
         trigger={
+          <button className="collapsible-trigger">
+            FaceTime Screen Sharing
+          </button>
+        }
+      >
+        <ol>
+          <li>
+            Open the <b>FaceTime</b> app
+          </li>
+          <li>Choose a contact to initiate a FaceTime Audio or Video</li>
+          <li>
+            After the call connects, tap the Screen Share button next to the end
+            call red button
+          </li>
+          <li>
+            The person on the other end of the call can now see your screen
+          </li>
+        </ol>
+      </Collapsible>
+      <Collapsible
+        trigger={
           <button className="collapsible-trigger">Timed Picture Capture</button>
         }
       >
@@ -101,6 +122,7 @@ export default function Smartphone() {
           <li>Tap the shutter circle button</li>
         </ol>
       </Collapsible>
+
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Change Background</button>
@@ -114,6 +136,7 @@ export default function Smartphone() {
           <li>Tap Lockscreen or Homescreen and set photo</li>
         </ol>
       </Collapsible>
+
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Change Passcode</button>
