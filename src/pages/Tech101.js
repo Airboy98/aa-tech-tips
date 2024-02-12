@@ -370,12 +370,22 @@ export default function Tech101() {
         <h4>
           Getting tech assistance may be the most ideal in person but a close
           second is using TeamViewer to have a trusted technician remotely
-          access and control your computer. You will have the ability to control
-          your computer the entire time.
+          access and control your computer, whether you're using a Windows
+          machine or a Mac. You will have the ability to control your computer
+          the entire time.
         </h4>
         <ol>
           <li>
-            Select your platform{" "}
+            Download the latest version of TeamViewer QuickSupport for your
+            platform:{" "}
+            <a href="https://download.teamviewer.com/download/TeamViewerQS_x64.exe">
+              Download for Windows
+            </a>{" "}
+            or{" "}
+            <a href="https://download.teamviewer.com/download/TeamViewerQS.dmg">
+              Download for macOS
+            </a>{" "}
+            (or go{" "}
             <a
               href="https://www.teamviewer.com/en-us/download/windows/"
               target="_blank"
@@ -383,24 +393,25 @@ export default function Tech101() {
             >
               here
             </a>{" "}
-            and download TeamViewer QuickSupport (
-            <a href="https://download.teamviewer.com/download/TeamViewerQS_x64.exe">
-              Download (64-bit)
-            </a>{" "}
-            for Windows and{" "}
-            <a href="https://download.teamviewer.com/download/TeamViewerQS.dmg">
-              Download
-            </a>{" "}
-            for macOS)
+            to download an older version)
           </li>
-          <li>Open the downloaded file (.exe on Windows and .dmg on macOS)</li>
+          <li>
+            Open the newly downloaded file (file ending in .exe on Windows and
+            .dmg on macOS) in Windows Explorer (Windows) or Finder (macOS)
+          </li>
           <li>
             Check the box in the window that opens to accept EULA and hit
             continue
           </li>
           <li>
+            macOS ONLY: Follow the on-screen prompts and links to provide full
+            access in System Preferences, using the lock icon in the bottom left
+            corner of System Preferences when necessary to unlock and edit
+            settings
+          </li>
+          <li>
             Type in the session code provided by whoever is remotely assisting
-            you
+            you (older versions of TeamViewer ask to share Partner ID)
           </li>
         </ol>
       </Collapsible>
