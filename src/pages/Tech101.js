@@ -19,7 +19,9 @@ export default function Tech101() {
             <th>Examples</th>
             <tr>
               <td>App</td>
-              <td>Commonly used to refer to phone-based installed programs</td>
+              <td>
+                Commonly used to refer to smartphone-based installed programs
+              </td>
               <td>Phone, Contacts, Mail</td>
             </tr>
             <tr>
@@ -150,6 +152,12 @@ export default function Tech101() {
               </td>
             </tr>
             <tr>
+              <td>PSU (Power Supply Unit)</td>
+              <td>
+                A computer peripheral that provides power to internal components
+              </td>
+            </tr>
+            <tr>
               <td>RAM (Random Access Memory)</td>
               <td>
                 A computer peripheral used to store data on a computer while
@@ -182,15 +190,23 @@ export default function Tech101() {
                 A complex program using an LLM to generate human-like responses,
                 code, pictures, etc.
               </td>
-              <td>ChatGPT, Bard, Copilot</td>
+              <td>ChatGPT, Gemini, Copilot</td>
             </tr>
             <tr>
               <td>AR (Augmented Reality)</td>
               <td>
-                Wearable glasses or head mounted display that superimposes data
+                An experience using a head-mounted device that superimposes data
                 in front of the user's eyes{" "}
               </td>
-              <td>Google Glass, Microsoft Hololens</td>
+              <td>Apple Vision Pro, Meta Quest</td>
+            </tr>
+            <tr>
+              <td>Cloud Computing</td>
+              <td>
+                Utilizing powerful servers in remote data warehouses to process
+                large amounts of data
+              </td>
+              <td>AWS, Azure, GCP</td>
             </tr>
             <tr>
               <td>DL (Deep Learning)</td>
@@ -216,8 +232,8 @@ export default function Tech101() {
             <tr>
               <td>VR (Virtual Reality)</td>
               <td>
-                A simulated experience by using a head-mounted device to immerse
-                the user in a virtual world
+                A simulated experience using a head-mounted device to fully
+                immerse the user in a virtual world
               </td>
               <td>Apple Vision Pro, Meta Quest</td>
             </tr>
@@ -428,8 +444,17 @@ export default function Tech101() {
         <div className="tech">
           <ul>
             <li>
+              <b>Don't keep it simple!</b> The simpler a password is (such as
+              "Password123"), the less secure the account is and you run the
+              risk of your data being compromised! Choose a word or sentence you
+              can easily remember and mix in a few numbers or special characters
+              in place of letters (ex: swap "e" for "3" or "a" for "@"). Salt
+              your password with extra numbers or characters at the end for an
+              added level of security.
+            </li>
+            <li>
               <b>Keep a physical copy in a binder.</b> Physically record your
-              passwords on standard 8.5"x11" inch ruled filler paper to fit in a
+              passwords on standard 8.5x11 inch ruled filler paper to fit in a
               standard binder. Use the lines on the paper to neatly arrange your
               accounts in a table and sort them by category. For example, you
               could write the category "Finance" at the top of the page and draw
