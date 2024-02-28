@@ -93,6 +93,10 @@ export default function Wearable() {
             family photos!)
           </li>
         </ol>
+        <h5>
+          NOTE: The above feature is available if your iPhone is within range
+          (about 30 feet over Bluetooth)
+        </h5>
       </Collapsible>
       <Collapsible
         trigger={
@@ -133,7 +137,7 @@ export default function Wearable() {
           >
             here
           </a>{" "}
-          to learn more about this.
+          to learn more about this
         </h5>
       </Collapsible>
       <Collapsible
@@ -145,15 +149,16 @@ export default function Wearable() {
             (pre-watchOS 10) to bring up Control Center
           </li>
           <li>Scroll through button options and tap the iPhone icon</li>
-          <li>
-            If your iPhone is within range (about 30 feet over Bluetooth), a
-            sound will play
-          </li>
+          <li>A pulse sound will play over your iPhone's speakers</li>
           <li>
             Tap and hold on iPhone icon to play the sound and flash the
             flashlight
           </li>
         </ol>
+        <h5>
+          NOTE: The above feature is available if your iPhone is within range
+          (about 30 feet over Bluetooth)
+        </h5>
       </Collapsible>
     </>
   );

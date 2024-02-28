@@ -90,13 +90,17 @@ export default function Smartphone() {
           </li>
           <li>Choose a contact to initiate a FaceTime Audio or Video</li>
           <li>
-            After the call connects, tap the Screen Share button next to the end
-            call red button
+            After the call connects, tap the Screen Share button next to the red
+            end call button
           </li>
           <li>
             The person on the other end of the call can now see your screen
           </li>
         </ol>
+        <h5>
+          NOTE: The above feature is available for the latest iOS and may not be
+          available on older versions
+        </h5>
       </Collapsible>
       <Collapsible
         trigger={

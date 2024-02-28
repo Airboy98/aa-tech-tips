@@ -168,7 +168,7 @@ export default function Television() {
         <h5>
           NOTE: TV model number/names are usually found on a sticker on the back
           of the TV. Navigate to your brand's website above and input the model
-          number/name.
+          number/name
         </h5>
       </Collapsible>
       <Collapsible
@@ -368,7 +368,7 @@ export default function Television() {
             </tr>
             <tr>
               <td>
-                Coaxial / ANT<br></br>
+                Coaxial / Antenna<br></br>
                 <img
                   src="images/ports/coaxial.png"
                   alt="Coaxial"

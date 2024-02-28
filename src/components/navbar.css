@@ -20,7 +20,7 @@ header {
   justify-content: space-between;
   align-items: stretch;
   gap: 2rem;
-  padding: 0rem;
+  padding: 0rem 0rem 0rem 0rem;
 }
 
 .site-title {
@@ -38,7 +38,7 @@ header {
   gap: 0rem;
 }
 .nav ol {
-  padding: 0;
+  padding: 0rem;
   margin: 0;
   list-style: none;
   display: flex;

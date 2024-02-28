@@ -564,10 +564,16 @@ export default function Tech101() {
               like on Youtube. Check the Internet page for more info and tips.
             </li>
             <li>
-              <b>Bookmark that site!</b> Create bookmarks for commonly visited
-              websites. Toggle on your browser's bookmark bar for easy access to
-              these to see them at all times. You can even group them by
-              categories and put them in folders to stay organized!
+              <b>Take advantage of bookmarks!</b> Create bookmarks for commonly
+              visited websites. Toggle on your browser's bookmark bar for easy
+              access to see them at all times. You can even group them by
+              categories and put them in folders to stay organized. It's also
+              beneficial to use the same browser across devices. For example, if
+              you're a Chrome user, login to the same Google account in Chrome
+              on all devices to sync bookmarks and access them on each device.
+              This also applies to other browsers like Safari, so if you have a
+              Macbook and an iPhone and use the default Safari browser, you'll
+              be able to see the same bookmarks on each device.
             </li>
           </ul>
         </div>
