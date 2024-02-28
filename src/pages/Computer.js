@@ -73,7 +73,7 @@ export default function Computer() {
         <h5>
           NOTE: Symptoms of malware (such as viruses and trojans) include random
           pop-ups, slow loading, phishing emails requesting to change password,
-          compromised accounts, and fraulent transactions.
+          compromised accounts, and fraulent transactions
         </h5>
         {/* </div> */}
       </Collapsible>
@@ -336,7 +336,7 @@ export default function Computer() {
         <h5>
           NOTE: Printer model number/names are usually found on a sticker on the
           back of the printer or printed on the front. Navigate to your brand's
-          website above and input the model number/name.
+          website above and input the model number/name
         </h5>
       </Collapsible>
     </>

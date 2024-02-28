@@ -16,12 +16,10 @@ export default function About() {
         This site (pronounced double-a-tech-tips) offers helpful tech tips, info
         and streamlines resolving common issues with modern tech. Along with the
         tips, helpful links to brand websites are provided.<br></br>
-        <br></br> If you have any suggestions, feedback, or additions to the
-        site, please send them to the email address below.
+        <br></br> If you want to request an appointment or have any suggestions,
+        feedback, or additions to the site, please send them to the appropriate
+        email address below.
         <br></br>
-        <br></br> I'm also available for local in-person one-on-one IT lessons
-        and service appointments (with hourly service fee) should this website
-        not suffice.
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">About Me</button>}
@@ -30,23 +28,27 @@ export default function About() {
         This site is, first and foremost, an opportunity the Lord has given me
         to assist and serve others with technology. Watermark Community Church
         in Dallas, Texas is my home church and I get the opportunity to serve
-        with them at the 4pm service and Legacy group on occasion. I graduated
+        with them at the 4pm Sunday service and the Legacy ministry. I graduated
         with a BS in CS from Texas Tech in 2019 and worked as IT support
         on-campus for dorm hall students for 4 years. I wanted to use that
         experience to create and maintain this website to help out those who may
         be less technologically inclined as well as provide some useful info for
         more technical users.
+        <br></br>
+        <img src="images/moon2.jpg" height="250" width="200" />
       </Collapsible>
       <br></br>
-      <img src="images/moon2.jpg" height="250" width="200" />
-      {/* <br></br> */}
       <footer>
         <p>Developed and Designed by Aaron Turner</p>
         <p>AA Tech Tips Est. 2024</p>
         <p>
-          <strong>
+          <b>
+            <a href="mailto:appointment@aatechtips.com">
+              appointment@aatechtips.com
+            </a>
+            <br></br>
             <a href="mailto:feedback@aatechtips.com">feedback@aatechtips.com</a>
-          </strong>
+          </b>
         </p>
         <p>Copyright © 2024 - All Rights Reserved</p>
         <br></br>
