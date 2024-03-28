@@ -38,10 +38,14 @@ header {
   gap: 0rem;
 }
 .nav ol {
-  padding: 0rem;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
   list-style: none;
   display: flex;
+}
+
+.nav li {
+  padding: 0px 5px 0px 5px;
 }
 
 .nav a {

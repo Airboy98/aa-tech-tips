@@ -9,7 +9,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleResize = () => {
       // Adjust the value as needed to determine when to show the button
-      setshowBurger(window.innerWidth < 768);
+      setshowBurger(window.innerWidth < 920);
       // setIsOpen(false); // Close the menu if the button is hidden
     };
 
