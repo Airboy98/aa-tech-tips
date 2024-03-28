@@ -54,8 +54,8 @@ export default function Appointment() {
       >
         <h3>$50/hr (Zelle or Apple Pay)</h3>
         <h4>
-          For more limited assistance, I can assist remotely via TeamViewer
-          (refer to Tech 101 for setup) to help with the following:
+          For more limited assistance, I can assist remotely via Zoom (refer to
+          Tech 101 for instructions) to help with the following:
         </h4>
         <ul>
           <li>
