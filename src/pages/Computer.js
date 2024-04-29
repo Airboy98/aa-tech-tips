@@ -126,6 +126,61 @@ export default function Computer() {
       </Collapsible>
       <Collapsible
         trigger={
+          <button className="collapsible-trigger">
+            Useful Keyboard Shortcuts
+          </button>
+        }
+      >
+        <div className="tech">
+          <table>
+            <th>Action</th>
+            <th>Windows</th>
+            <th>macOS</th>
+            <tr>
+              <td>Select All</td>
+              <td>ctrl+a</td>
+              <td>cmd+a</td>
+            </tr>
+            <tr>
+              <td>Copy Selection</td>
+              <td>ctrl+c</td>
+              <td>cmd+c</td>
+            </tr>
+            <tr>
+              <td>Cut Selection</td>
+              <td>ctrl+x</td>
+              <td>cmd+x</td>
+            </tr>
+            <tr>
+              <td>Paste Selection</td>
+              <td>ctrl+v</td>
+              <td>cmd+v</td>
+            </tr>
+            <tr>
+              <td>Undo</td>
+              <td>ctrl+z</td>
+              <td>cmd+z</td>
+            </tr>
+            <tr>
+              <td>Redo</td>
+              <td>ctrl+y</td>
+              <td>cmd+y / cmd+shift+z</td>
+            </tr>
+            <tr>
+              <td>Screen Snip (crosshairs)</td>
+              <td>windows+shift+s</td>
+              <td>cmd+shift+4</td>
+            </tr>
+            <tr>
+              <td>Full Screen Shot</td>
+              <td>print screen</td>
+              <td>cmd+shift+3</td>
+            </tr>
+          </table>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={
           <button className="collapsible-trigger">Remote Desktop Access</button>
         }
       >
@@ -193,7 +248,6 @@ export default function Computer() {
           erased!
         </h5>
       </Collapsible>
-
       <Collapsible
         trigger={<button className="collapsible-trigger">Printers</button>}
       >
