@@ -1,6 +1,8 @@
 import Collapsible from "react-collapsible";
 import "./tech101.css";
 import { CustomLink } from "../components/Navbar";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
 
 export default function Tech101() {
   return (
