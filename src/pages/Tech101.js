@@ -3,8 +3,21 @@ import "./tech101.css";
 import { CustomLink } from "../components/Navbar";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { Tooltip } from "primereact/tooltip";
+import { Card } from "primereact/card";
+import React, { useState } from "react";
 
 export default function Tech101() {
+  const [hoveredText, setHoveredText] = useState(null);
+  const handleMouseEnter = (text) => {
+    setHoveredText(text);
+  };
+  const handleMouseLeave = () => {
+    setHoveredText(null);
+  };
+  const tableData = [
+    { text: "Phone, Contacts, Mail", imageSrc: "/images/retailers/amazon.png" },
+  ];
   return (
     <>
       <h1>Tech 101</h1>
@@ -16,96 +29,107 @@ export default function Tech101() {
       >
         <div className="tech">
           <table>
-            <th>Word or Phrase</th>
-            <th>Definition</th>
-            <th>Examples</th>
-            <tr>
-              <td>App</td>
-              <td>
-                Commonly used to refer to smartphone-based installed programs
-              </td>
-              <td>Phone, Contacts, Mail</td>
-            </tr>
-            <tr>
-              <td>Cloud</td>
-              <td>
-                Umbrella term for referring to storing data on remote servers
-              </td>
-              <td>iCloud, OneDrive</td>
-            </tr>
-            <tr>
-              <td>iOS</td>
-              <td>Apple's proprietary operating system on iPhones</td>
-              <td>iOS 16, iOS 17</td>
-            </tr>
-            <tr>
-              <td>ISP (Internet Service Provider)</td>
-              <td>
-                A company that provides internet connection over copper or fiber
-              </td>
-              <td>AT&T, Spectrum</td>
-            </tr>
-            <tr>
-              <td>LAN (Local Area Network)</td>
-              <td>A local network of interconnected devices</td>
-              <td>Internet connected devices at home</td>
-            </tr>
-            <tr>
-              <td>macOS</td>
-              <td>Apple's proprietary operating system on Macs</td>
-              <td>macOS 14 Sonoma</td>
-            </tr>
-            <tr>
-              <td>Modem</td>
-              <td>A device connected to an ISP that enables internet access</td>
-              <td>ARRIS Surfboard</td>
-            </tr>
-            <tr>
-              <td>Remote (cloud connection)</td>
-              <td>
-                Accessing something over the internet as opposed to locally
-              </td>
-              <td>TeamViewer, VNC</td>
-            </tr>
-            <tr>
-              <td>Router</td>
-              <td>A device that broadcasts internet over Wi-Fi or LAN</td>
-              <td>Cisco E1000, TP-Link AX3000</td>
-            </tr>
-            <tr>
-              <td>Streaming</td>
-              <td>
-                Watching on a platform (either paid or free) to view videos on
-                demand
-              </td>
-              <td>Netflix, Prime Video</td>
-            </tr>
-            <tr>
-              <td>Smartphone</td>
-              <td>A modern day internet connected cellphone that uses apps</td>
-              <td>iPhone 15, Galaxy S24</td>
-            </tr>
-            <tr>
-              <td>Tablet</td>
-              <td>An internet connected, large screen app-based device</td>
-              <td>iPad</td>
-            </tr>
-            <tr>
-              <td>watchOS</td>
-              <td>Apple's proprietary operating system on Apple Watches</td>
-              <td>watchOS 9, watchOS 10</td>
-            </tr>
-            <tr>
-              <td>Wearable</td>
-              <td>A wearable device with built-in sensors and other tech</td>
-              <td>Apple Watch, Fitbit, Google Glass</td>
-            </tr>
+            <thead>
+              <tr>
+                <th>Word or Phrase</th>
+                <th>Definition</th>
+                <th>Examples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App</td>
+                <td>
+                  Commonly used to refer to smartphone-based installed programs
+                </td>
+                <td>Phone, Contacts, Mail</td>
+              </tr>
+              <tr>
+                <td>Cloud</td>
+                <td>
+                  Umbrella term for referring to storing data on remote servers
+                </td>
+                <td>iCloud, OneDrive</td>
+              </tr>
+              <tr>
+                <td>iOS</td>
+                <td>Apple's proprietary operating system on iPhones</td>
+                <td>iOS 16, iOS 17</td>
+              </tr>
+              <tr>
+                <td>ISP (Internet Service Provider)</td>
+                <td>
+                  A company that provides internet connection over copper or
+                  fiber
+                </td>
+                <td>AT&T, Spectrum</td>
+              </tr>
+              <tr>
+                <td>LAN (Local Area Network)</td>
+                <td>A local network of interconnected devices</td>
+                <td>Internet connected devices at home</td>
+              </tr>
+              <tr>
+                <td>macOS</td>
+                <td>Apple's proprietary operating system on Macs</td>
+                <td>macOS 14 Sonoma</td>
+              </tr>
+              <tr>
+                <td>Modem</td>
+                <td>
+                  A device connected to an ISP that enables internet access
+                </td>
+                <td>ARRIS Surfboard</td>
+              </tr>
+              <tr>
+                <td>Remote (cloud connection)</td>
+                <td>
+                  Accessing something over the internet as opposed to locally
+                </td>
+                <td>TeamViewer, VNC</td>
+              </tr>
+              <tr>
+                <td>Router</td>
+                <td>A device that broadcasts internet over Wi-Fi or LAN</td>
+                <td>Cisco E1000, TP-Link AX3000</td>
+              </tr>
+              <tr>
+                <td>Streaming</td>
+                <td>
+                  Watching on a platform (either paid or free) to view videos on
+                  demand
+                </td>
+                <td>Netflix, Prime Video</td>
+              </tr>
+              <tr>
+                <td>Smartphone</td>
+                <td>
+                  A modern day internet connected cellphone that uses apps
+                </td>
+                <td>iPhone 15, Galaxy S24</td>
+              </tr>
+              <tr>
+                <td>Tablet</td>
+                <td>An internet connected, large screen app-based device</td>
+                <td>iPad</td>
+              </tr>
+              <tr>
+                <td>watchOS</td>
+                <td>Apple's proprietary operating system on Apple Watches</td>
+                <td>watchOS 9, watchOS 10</td>
+              </tr>
+              <tr>
+                <td>Wearable</td>
+                <td>A wearable device with built-in sensors and other tech</td>
+                <td>Apple Watch, Fitbit, Google Glass</td>
+              </tr>
 
-            <tr>
-              <td>Windows</td>
-              <td>Microsoft's proprietary operating system</td>
-              <td>Windows XP, Windows 11</td>
-            </tr>
+              <tr>
+                <td>Windows</td>
+                <td>Microsoft's proprietary operating system</td>
+                <td>Windows XP, Windows 11</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </Collapsible>
@@ -116,63 +140,70 @@ export default function Tech101() {
       >
         <div className="tech">
           <table>
-            <th>Word or Phrase</th>
-            <th>Definition</th>
-            <tr>
-              <td>GPU (Graphics Processing Unit) / Graphics Card</td>
-              <td>
-                A computer peripheral dedicated to rendering graphics on a
-                screen
-              </td>
-            </tr>
-            <tr>
-              <td>HDD (Hard Disk Drive)</td>
-              <td>
-                A mechanical, platter-based storage device with slow access
-                speeds
-              </td>
-            </tr>
-            <tr>
-              <td>HDMI (High-Definition Multimedia Interface)</td>
-              <td>
-                A digital technology that transmits audio/video used with TVs
-                and monitors
-              </td>
-            </tr>
-            <tr>
-              <td>Monitor</td>
-              <td>
-                A screen connected by a cable to a desktop or built-in to a
-                laptop
-              </td>
-            </tr>
-            <tr>
-              <td>Phishing</td>
-              <td>
-                A malicious act of fooling a user to click a link spoofing a
-                seemingly legit website
-              </td>
-            </tr>
-            <tr>
-              <td>PSU (Power Supply Unit)</td>
-              <td>
-                A computer peripheral that provides power to internal components
-              </td>
-            </tr>
-            <tr>
-              <td>RAM (Random Access Memory)</td>
-              <td>
-                A computer peripheral used to store data on a computer while
-                powered on
-              </td>
-            </tr>
-            <tr>
-              <td>SSD (Solid State Drive)</td>
-              <td>
-                A non-mechanical, flash-based storage device with fast access
-                speeds
-              </td>
-            </tr>
+            <thead>
+              <tr>
+                <th>Word or Phrase</th>
+                <th>Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GPU (Graphics Processing Unit) / Graphics Card</td>
+                <td>
+                  A computer peripheral dedicated to rendering graphics on a
+                  screen
+                </td>
+              </tr>
+              <tr>
+                <td>HDD (Hard Disk Drive)</td>
+                <td>
+                  A mechanical, platter-based storage device with slow access
+                  speeds
+                </td>
+              </tr>
+              <tr>
+                <td>HDMI (High-Definition Multimedia Interface)</td>
+                <td>
+                  A digital technology that transmits audio/video used with TVs
+                  and monitors
+                </td>
+              </tr>
+              <tr>
+                <td>Monitor</td>
+                <td>
+                  A screen connected by a cable to a desktop or built-in to a
+                  laptop
+                </td>
+              </tr>
+              <tr>
+                <td>Phishing</td>
+                <td>
+                  A malicious act of fooling a user to click a link spoofing a
+                  seemingly legit website
+                </td>
+              </tr>
+              <tr>
+                <td>PSU (Power Supply Unit)</td>
+                <td>
+                  A computer peripheral that provides power to internal
+                  components
+                </td>
+              </tr>
+              <tr>
+                <td>RAM (Random Access Memory)</td>
+                <td>
+                  A computer peripheral used to store data on a computer while
+                  powered on
+                </td>
+              </tr>
+              <tr>
+                <td>SSD (Solid State Drive)</td>
+                <td>
+                  A non-mechanical, flash-based storage device with fast access
+                  speeds
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </Collapsible>
@@ -183,62 +214,70 @@ export default function Tech101() {
       >
         <div className="tech">
           <table>
-            <th>Word or Phrase</th>
-            <th>Definition</th>
-            <th>Examples</th>
-            <tr>
-              <td>AI (Artificial Intelligence)</td>
-              <td>
-                A complex program using an LLM to generate human-like responses,
-                code, pictures, etc.
-              </td>
-              <td>ChatGPT, Gemini, Copilot</td>
-            </tr>
-            <tr>
-              <td>AR (Augmented Reality)</td>
-              <td>
-                An experience using a head-mounted device that superimposes data
-                in front of the user's eyes{" "}
-              </td>
-              <td>Apple Vision Pro, Meta Quest</td>
-            </tr>
-            <tr>
-              <td>Cloud Computing</td>
-              <td>
-                Utilizing powerful servers in remote data warehouses to process
-                large amounts of data
-              </td>
-              <td>AWS, Azure, GCP</td>
-            </tr>
-            <tr>
-              <td>DL (Deep Learning)</td>
-              <td>
-                A subset of ML which focuses on learning by simulating human
-                neural networks
-              </td>
-              <td>Tesla Full Self-Driving</td>
-            </tr>
-            <tr>
-              <td>LLM (Large Language Model)</td>
-              <td>A deep learning model pre-trained on vast amounts of data</td>
-              <td>GPT, LLaMa, LaMDA</td>
-            </tr>
-            <tr>
-              <td>ML (Machine Learning)</td>
-              <td>
-                A branch of AI which focuses on using data and algorithms to
-                learn and refine accuracy
-              </td>
-              <td>Facial recognition</td>
-            </tr>
-            <tr>
-              <td>VR (Virtual Reality)</td>
-              <td>
-                A simulated experience using a head-mounted device to fully
-                immerse the user in a virtual world
-              </td>
-              <td>Apple Vision Pro, Meta Quest</td>
-            </tr>
+            <thead>
+              <tr>
+                <th>Word or Phrase</th>
+                <th>Definition</th>
+                <th>Examples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AI (Artificial Intelligence)</td>
+                <td>
+                  A complex program using an LLM to generate human-like
+                  responses, code, pictures, etc.
+                </td>
+                <td>ChatGPT, Gemini, Copilot</td>
+              </tr>
+              <tr>
+                <td>AR (Augmented Reality)</td>
+                <td>
+                  An experience using a head-mounted device that superimposes
+                  data in front of the user's eyes{" "}
+                </td>
+                <td>Apple Vision Pro, Meta Quest</td>
+              </tr>
+              <tr>
+                <td>Cloud Computing</td>
+                <td>
+                  Utilizing powerful servers in remote data warehouses to
+                  process large amounts of data
+                </td>
+                <td>AWS, Azure, GCP</td>
+              </tr>
+              <tr>
+                <td>DL (Deep Learning)</td>
+                <td>
+                  A subset of ML which focuses on learning by simulating human
+                  neural networks
+                </td>
+                <td>Tesla Full Self-Driving</td>
+              </tr>
+              <tr>
+                <td>LLM (Large Language Model)</td>
+                <td>
+                  A deep learning model pre-trained on vast amounts of data
+                </td>
+                <td>GPT, LLaMa, LaMDA</td>
+              </tr>
+              <tr>
+                <td>ML (Machine Learning)</td>
+                <td>
+                  A branch of AI which focuses on using data and algorithms to
+                  learn and refine accuracy
+                </td>
+                <td>Facial recognition</td>
+              </tr>
+              <tr>
+                <td>VR (Virtual Reality)</td>
+                <td>
+                  A simulated experience using a head-mounted device to fully
+                  immerse the user in a virtual world
+                </td>
+                <td>Apple Vision Pro, Meta Quest</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </Collapsible>
@@ -255,66 +294,68 @@ export default function Tech101() {
         </h4>
         <div className="television">
           <table>
-            <tr>
-              <td>
-                <a
-                  href="https://www.amazon.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/retailers/amazon.png"
-                    alt="Amazon"
-                    width="150"
-                    height="50"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://www.newegg.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/retailers/newegg.png"
-                    alt="Newegg"
-                    width="150"
-                    height="50"
-                  />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="https://www.bestbuy.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/retailers/bestbuy.svg"
-                    alt="Best Buy"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://www.microcenter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/retailers/microcenter.svg"
-                    alt="Newegg"
-                    width="150"
-                    height="50"
-                  />
-                </a>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.amazon.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/retailers/amazon.png"
+                      alt="Amazon"
+                      width="150"
+                      height="50"
+                    />
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://www.newegg.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/retailers/newegg.png"
+                      alt="Newegg"
+                      width="150"
+                      height="50"
+                    />
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.bestbuy.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/retailers/bestbuy.svg"
+                      alt="Best Buy"
+                      width="100"
+                      height="50"
+                    />
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://www.microcenter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/retailers/microcenter.svg"
+                      alt="Newegg"
+                      width="150"
+                      height="50"
+                    />
+                  </a>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div className="tech">
@@ -423,7 +464,56 @@ export default function Tech101() {
               added level of security.
             </li>
             <li>
-              <b>Keep a physical copy in a binder.</b> Physically record your
+              <b>Use a password manager!</b> Most common web browsers have a
+              built-in password manager but using a dedicated password manager
+              service is even more secure and most have a mobile app too. Some
+              common ones are{" "}
+              <a
+                href="https://1password.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                1Password
+              </a>
+              ,{" "}
+              <a
+                href="https://www.dashlane.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Dashlane
+              </a>
+              ,{" "}
+              <a
+                href="https://keepass.info/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                KeePass
+              </a>
+              ,{" "}
+              <a
+                href="https://www.lastpass.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LastPass
+              </a>
+              , and{" "}
+              <a
+                href="https://www.roboform.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RoboForm
+              </a>
+              . Keep in mind that while these are secure services, they have a
+              small chance of being compromised if servers are breached so one
+              of the below options may be preferred if you want a non-cloud
+              solution.
+            </li>
+            <li>
+              <b>Keep a physical copy in a binder!</b> Physically record your
               passwords on standard 8.5x11 inch ruled filler paper to fit in a
               standard binder. Use the lines on the paper to neatly arrange your
               accounts in a table and sort them by category. For example, you
@@ -438,7 +528,7 @@ export default function Tech101() {
               place, away from your computer.
             </li>
             <li>
-              <b>Store a digital copy on a flash drive.</b> Use a spreadsheet
+              <b>Store a digital copy on a flash drive!</b> Use a spreadsheet
               program (Google Sheets, Microsoft Excel, iWork Numbers) to create
               a similar table mentioned above with the same headers. At the top
               of the spreadsheet:{" "}
@@ -451,10 +541,10 @@ export default function Tech101() {
               away from your computer.
             </li>
             <li>
-              <b>Be redundant!</b> Employ both of the above strategies to have 2
-              secure copies of your account passwords. It may be a pain but just
-              remember to keep them in sync and update them simultaneously when
-              an account needs a password change!
+              <b>Be redundant!</b> Employ a few strategies above to have
+              multiple secure copies of your account passwords. It may be a pain
+              but just remember to keep them in sync and update them
+              simultaneously when an account needs a password change!
             </li>
           </ul>
         </div>
@@ -531,7 +621,16 @@ export default function Tech101() {
               <b>Block those ads!</b> Some websites have pesky ads and pop-ups
               that take focus when you're trying to browse. Use an ad-block
               extension to mitigate these, including ads that play before videos
-              like on Youtube. Check the Internet page for more info and tips.
+              like on Youtube. Alternatively, use a browser like{" "}
+              <a
+                href="https://brave.com/download/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Brave
+              </a>{" "}
+              that includes a build-in ad blocker. Check the Internet page for
+              more info and tips.
             </li>
             <li>
               <b>Take advantage of bookmarks!</b> Create bookmarks for commonly

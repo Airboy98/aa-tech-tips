@@ -1,3 +1,4 @@
+import React from "react";
 import { CustomLink } from "../components/Navbar";
 import "./home.css";
 
