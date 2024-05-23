@@ -27,10 +27,8 @@ ul {
   padding: 10px;
 }
 
-.printers li {
-  text-align: center;
-  padding: 0px;
-  margin: 0px;
+.tech a {
+  color: white;
 }
 
 ol {
@@ -44,8 +42,4 @@ ol {
   display: inline-block;
   /* list-style-position:inside; */
   text-align: left;
-}
-
-.printers a {
-  padding: 0.5rem;
 }

@@ -28,7 +28,7 @@ export default function About() {
         This site is, first and foremost, an opportunity the Lord has given me
         to assist and serve others with technology. Watermark Community Church
         in Dallas, Texas is my home church and I get the opportunity to serve
-        with them at the 4pm Sunday service and the Legacy ministry. I graduated
+        ocassionally during Sunday services and the Legacy ministry. I graduated
         with a BS in CS from Texas Tech in 2019 and worked as IT support
         on-campus for dorm hall students for 4 years. I wanted to use that
         experience to create and maintain this website to help out those who may

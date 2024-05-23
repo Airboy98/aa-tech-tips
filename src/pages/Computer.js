@@ -9,7 +9,6 @@ export default function Computer() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Photo Sharing</button>}
       >
-        {/* <div className="collapsible-content"> */}
         <ol>
           <li>
             Login to{" "}
@@ -208,7 +207,7 @@ export default function Computer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              program
+              desktop client
             </a>{" "}
             or{" "}
             <a
@@ -247,6 +246,56 @@ export default function Computer() {
           NOTE: Use caution when formatting as ALL drive contents will be
           erased!
         </h5>
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Local Backup</button>}
+      >
+        <h4>
+          It is highly advised to keep a backup of your files locally.
+          Regardless of the platform, there are 2 main methods of backing up:
+          full system backups and manual backups. For quick read/write speeds
+          and durability, it is recommended to use an SSD as an external drive
+          but HDDs are the more cost efficient option for mass storage.
+        </h4>
+        <ul className="tech">
+          <li>
+            <b>Use a utility program to keep full system backups.</b> macOS has
+            a built-in utility called Time Machine that allows you to use an
+            entire external drive as a Time Machine Backup and can periodically
+            perform a backup automatically for you based on configuration. For
+            Windows users, there's a{" "}
+            <a
+              href="https://www.pcworld.com/article/407021/best-windows-backup-software.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              number of options
+            </a>{" "}
+            available, most of them paid. The top free one is{" "}
+            <a
+              href="https://www.fbackup.com/fbackup.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              fbackup
+            </a>
+            .
+          </li>
+          <li>
+            <b>
+              Drag and drop files onto an external drive for manual backups.
+            </b>{" "}
+            Ensure that the drive is properly formatted for your OS using the
+            above tip and connect it your computer via USB. Once detected, you
+            can essentially treat the drive just like you would the built-in
+            drive as it should show up similarly under drives connected. Try to
+            stay organized and create concise and succinct folder names to hold
+            any important files you'd like to keep as a backup. Copy (not cut)
+            files from your computer's drive and paste them onto the external
+            drive. Alternatively, you can drag and drop files easily if you have
+            2 file explorer windows open.
+          </li>
+        </ul>
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Printers</button>}

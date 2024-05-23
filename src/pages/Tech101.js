@@ -38,6 +38,13 @@ export default function Tech101() {
             </thead>
             <tbody>
               <tr>
+                <td>Android</td>
+                <td>
+                  Google's proprietary operating system for phones and tablets
+                </td>
+                <td>Android 14</td>
+              </tr>
+              <tr>
                 <td>App</td>
                 <td>
                   Commonly used to refer to smartphone-based installed programs
@@ -49,7 +56,7 @@ export default function Tech101() {
                 <td>
                   Umbrella term for referring to storing data on remote servers
                 </td>
-                <td>iCloud, OneDrive</td>
+                <td>iCloud, OneDrive, Google Drive</td>
               </tr>
               <tr>
                 <td>iOS</td>
@@ -645,6 +652,196 @@ export default function Tech101() {
               be able to see the same bookmarks on each device.
             </li>
           </ul>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Cloud Storage</button>}
+      >
+        <h4>
+          While most of the major brands have a Cloud service, none of them are
+          locked to their own platform so you are free to use iCloud on Windows
+          or Google Drive on iPhone. By default, each service provides storage
+          to users with the free base tier: 5GB for iCloud, 5GB for OneDrive,
+          15GB Google Drive, and 10GB for iDrive.
+        </h4>
+        <div className="tech">
+          <table>
+            <thead>
+              <tr>
+                <th>Cloud Service</th>
+                <th>Platform</th>
+                <th>Desktop Client</th>
+                <th>Mobile App</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.icloud.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    iCloud
+                  </a>
+                </td>
+                <td>Apple</td>
+                <td>
+                  <a
+                    href="https://apps.microsoft.com/detail/9pktq5699m62?cid=icloudweb2023&rtc=1&hl=en-us&gl=US"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Windows
+                  </a>
+                  <span> | macOS</span>
+                </td>
+                <td>
+                  <a
+                    href="https://apps.apple.com/us/app/files/id1232058109"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    iPhone
+                  </a>
+                  <span> | </span>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=mt.io.syncforicloud&hl=en_US&gl=US"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Android
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://onedrive.live.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    OneDrive
+                  </a>
+                </td>
+                <td>Microsoft</td>
+                <td>
+                  <a
+                    href="https://www.microsoft.com/en-us/microsoft-365/onedrive/download"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Windows
+                  </a>
+                  <span> | </span>
+                  <a
+                    href="https://apps.apple.com/us/app/onedrive/id823766827?mt=12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    macOS
+                  </a>
+                </td>
+                <td>
+                  <a href="https://apps.apple.com/us/app/microsoft-onedrive/id477537958">
+                    iPhone
+                  </a>
+                  <span> | </span>
+                  <a href="https://play.google.com/store/apps/details?id=com.microsoft.skydrive&hl=en_US&gl=US">
+                    Android
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://drive.google.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Google Drive
+                  </a>
+                </td>
+                <td>Google</td>
+                <td>
+                  <a
+                    href="https://www.google.com/drive/download/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Windows
+                  </a>
+                  <span> | </span>
+                  <a
+                    href="https://www.google.com/drive/download/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    macOS
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://apps.apple.com/au/app/google-drive/id507874739?platform=iphone"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    iPhone
+                  </a>
+                  <span> | </span>
+                  <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs&hl=en_US&gl=US">
+                    Android
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.idrive.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    iDrive
+                  </a>
+                </td>
+                <td>Agnostic</td>
+                <td>
+                  <a
+                    href="https://www.idrive.com/online-backup-download"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Windows
+                  </a>
+                  <span> | </span>
+                  <a
+                    href="https://www.idrive.com/online-backup-download"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    macOS
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://apps.apple.com/us/app/idrive-online-backup/id427956708"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    iPhone
+                  </a>
+                  <span> | </span>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.prosoftnet.android.idriveonline&hl=en_US&gl=US"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Android
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </Collapsible>
       <Collapsible
