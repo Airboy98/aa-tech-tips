@@ -9,18 +9,21 @@ export default function Navbar() {
   useEffect(() => {
     const handleResize = () => {
       // Adjust the value as needed to determine when to show the button
-      setshowBurger(window.innerWidth < 920);
-      // setIsOpen(false); // Close the menu if the button is hidden
+      setshowBurger(window.innerWidth < 940);
+      if (window.innerWidth >= 940) {
+        setIsOpen(false); // Close the menu if the window width is greater than or equal to 940
+      }
     };
 
     window.addEventListener("resize", handleResize);
     handleResize(); // Run initially
 
     return () => window.removeEventListener("resize", handleResize);
-  });
+  }, []);
 
   const toggleMenu = () => {
-    setIsOpen(false);
+    setIsOpen(!isOpen);
+    console.log("menu is toggled");
   };
 
   return (
@@ -38,7 +41,9 @@ export default function Navbar() {
         {showBurger ? (
           <div className="sidebar">
             <ul>
-              <CustomLink to="/tech101">Tech 101</CustomLink>
+              <CustomLink to="/tech101" onClick={console.log("test")}>
+                Tech 101
+              </CustomLink>
               <CustomLink to="/computer">Computer</CustomLink>
               <CustomLink to="/television">Television</CustomLink>
               <CustomLink to="/internet">Internet</CustomLink>

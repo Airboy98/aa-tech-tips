@@ -7,7 +7,7 @@ import Smartphone from "./pages/Smartphone";
 import Internet from "./pages/Internet";
 import Streaming from "./pages/Streaming";
 import Wearable from "./pages/Wearable";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Appointment from "./pages/Appointment";
 
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <div className="container">
-        <HashRouter>
+        <BrowserRouter>
           <Navbar />
           <Routes>
             {/* add home to the below path="/" to force the homepage at /home */}
@@ -30,7 +30,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/appointment" element={<Appointment />} />
           </Routes>
-        </HashRouter>
+        </BrowserRouter>
       </div>
     </>
   );
