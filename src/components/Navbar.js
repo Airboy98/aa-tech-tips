@@ -23,39 +23,56 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    console.log("menu is toggled");
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
   };
 
   return (
     <header>
       <nav className="nav">
-        {/* add home to the below path="/" to point the site-title to /home if enabled in App.js */}
         <Link to="/" className="site-title">
           <img src="site-logo.png" alt="" height="50" width="50" />
         </Link>
         {showBurger && (
           <label className="hamburger-menu">
-            <input type="checkbox" />
+            <input type="checkbox" checked={isOpen} onChange={toggleMenu} />
           </label>
         )}
         {showBurger ? (
-          <div className="sidebar">
+          <div className={`sidebar ${isOpen ? "open" : ""}`}>
             <ul>
-              <CustomLink to="/tech101" onClick={console.log("test")}>
+              <CustomLink to="/tech101" onClick={closeMenu}>
                 Tech 101
               </CustomLink>
-              <CustomLink to="/computer">Computer</CustomLink>
-              <CustomLink to="/television">Television</CustomLink>
-              <CustomLink to="/internet">Internet</CustomLink>
-              <CustomLink to="/smartphone">Smartphone</CustomLink>
-              <CustomLink to="/streaming">Streaming</CustomLink>
-              <CustomLink to="/wearable">Wearable</CustomLink>
-              <CustomLink to="/appointment">Appointment</CustomLink>
-              <CustomLink to="/about">About</CustomLink>
+              <CustomLink to="/computer" onClick={closeMenu}>
+                Computer
+              </CustomLink>
+              <CustomLink to="/television" onClick={closeMenu}>
+                Television
+              </CustomLink>
+              <CustomLink to="/internet" onClick={closeMenu}>
+                Internet
+              </CustomLink>
+              <CustomLink to="/smartphone" onClick={closeMenu}>
+                Smartphone
+              </CustomLink>
+              <CustomLink to="/streaming" onClick={closeMenu}>
+                Streaming
+              </CustomLink>
+              <CustomLink to="/wearable" onClick={closeMenu}>
+                Wearable
+              </CustomLink>
+              <CustomLink to="/appointment" onClick={closeMenu}>
+                Appointment
+              </CustomLink>
+              <CustomLink to="/about" onClick={closeMenu}>
+                About
+              </CustomLink>
             </ul>
           </div>
         ) : (
-          // <div className="menu-items">
           <ol>
             <CustomLink to="/tech101">Tech 101</CustomLink>
             <CustomLink to="/computer">Computer</CustomLink>
@@ -67,23 +84,18 @@ export default function Navbar() {
             <CustomLink to="/appointment">Appointment</CustomLink>
             <CustomLink to="/about">About</CustomLink>
           </ol>
-          // </div>
         )}
       </nav>
     </header>
   );
 }
 
-export function CustomLink({ to, children, ...props }) {
-  const toggleMenu = () => {
-    console.log("this should close menu");
-  };
-
+export function CustomLink({ to, children, onClick, ...props }) {
   const resolvedPath = useResolvedPath(to);
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
   return (
-    <li className={isActive ? "active" : ""} onClick={toggleMenu}>
+    <li className={isActive ? "active" : ""} onClick={onClick}>
       <Link to={to} {...props}>
         {children}
       </Link>
