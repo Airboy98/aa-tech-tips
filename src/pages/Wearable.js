@@ -95,7 +95,7 @@ export default function Wearable() {
         </ol>
         <h5>
           NOTE: The above feature is available if your iPhone is within range
-          (about 30 feet over Bluetooth)
+          (about 30 feet over Bluetooth).
         </h5>
       </Collapsible>
       <Collapsible
@@ -137,7 +137,7 @@ export default function Wearable() {
           >
             here
           </a>{" "}
-          to learn more about this
+          to learn more about this.
         </h5>
       </Collapsible>
       <Collapsible
@@ -157,7 +157,7 @@ export default function Wearable() {
         </ol>
         <h5>
           NOTE: The above feature is available if your iPhone is within range
-          (about 30 feet over Bluetooth)
+          (about 30 feet over Bluetooth).
         </h5>
       </Collapsible>
     </>

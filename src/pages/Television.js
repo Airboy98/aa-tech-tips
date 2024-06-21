@@ -168,7 +168,7 @@ export default function Television() {
         <h5>
           NOTE: TV model number/names are usually found on a sticker on the back
           of the TV. Navigate to your brand's website above and input the model
-          number/name
+          number/name.
         </h5>
       </Collapsible>
       <Collapsible
@@ -251,16 +251,32 @@ export default function Television() {
           <li>Start playing a video/movie</li>
           <li>
             Tap the fullscreen icon{" "}
-            <img src="images/menu/fullscreen.png" height="15" width="15" />
+            <img
+              src="images/menu/fullscreen.png"
+              height="15"
+              width="15"
+              alt="fullscreen icon"
+            />
           </li>
           <li>
             Tap the cast to TV icon{" "}
-            <img src="images/menu/cast.png" height="15" width="15" /> or Airplay
-            icons <img src="images/menu/airplay.png" height="15" width="30" />
+            <img
+              src="images/menu/cast.png"
+              height="15"
+              width="15"
+              alt="cast icon"
+            />{" "}
+            or Airplay icons{" "}
+            <img
+              src="images/menu/airplay.png"
+              height="15"
+              width="30"
+              alt="airplay icon"
+            />
           </li>
         </ol>
         <h5>
-          NOTE: Not all smart TVs have Airplay/cast from phone functionality
+          NOTE: Not all smart TVs have Airplay/cast from phone functionality.
         </h5>
       </Collapsible>
       <Collapsible
@@ -280,7 +296,7 @@ export default function Television() {
           <li>Select the app and hit INSTALL or DOWNLOAD</li>
         </ol>
         <h5>
-          NOTE: Steps and procedures vary greatly depending on TV make/model
+          NOTE: Steps and procedures vary greatly depending on TV make/model.
         </h5>
       </Collapsible>
       <Collapsible
@@ -303,7 +319,7 @@ export default function Television() {
           </li>
         </ol>
         <h5>
-          NOTE: Steps and procedures vary greatly depending on TV make/model
+          NOTE: Steps and procedures vary greatly depending on TV make/model.
         </h5>
       </Collapsible>
       <Collapsible
@@ -312,11 +328,8 @@ export default function Television() {
         }
       >
         <h4>
-          At first glance, older electronic devices might seem to be
-          incompatible with modern TVs but they can still be used! It just takes
-          an extra device to get them to be compatible. Keep in mind the
-          following when dealing with older devices like VCRs, DVD players and
-          old game consoles.
+          Most modern TVs have reduced the type of ports available to the top 4
+          below and may have HDMI ports on the back and side.
         </h4>
         <div className="television">
           <table>
@@ -335,7 +348,7 @@ export default function Television() {
                 />
               </td>
               <td>
-                Keyboard,<br></br>Charging brick
+                Streaming stick<br></br>power
               </td>
             </tr>
             <tr>
@@ -349,7 +362,7 @@ export default function Television() {
                 />
               </td>
               <td>
-                iPad Pro,<br></br>Android phone
+                Streaming stick<br></br>power
               </td>
             </tr>
             <tr>
@@ -363,7 +376,7 @@ export default function Television() {
                 />
               </td>
               <td>
-                Blu-ray player,<br></br>game console
+                Blu-ray player,<br></br>game console,<br></br>streaming stick
               </td>
             </tr>
             <tr>
@@ -376,7 +389,9 @@ export default function Television() {
                   height="50"
                 />
               </td>
-              <td>Cable</td>
+              <td>
+                Cable,<br></br>satellite
+              </td>
             </tr>
             <tr>
               <td>

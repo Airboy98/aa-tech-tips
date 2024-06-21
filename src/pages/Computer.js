@@ -72,7 +72,7 @@ export default function Computer() {
         <h5>
           NOTE: Symptoms of malware (such as viruses and trojans) include random
           pop-ups, slow loading, phishing emails requesting to change password,
-          compromised accounts, and fraulent transactions
+          compromised accounts, and fraulent transactions.
         </h5>
         {/* </div> */}
       </Collapsible>
@@ -248,6 +248,127 @@ export default function Computer() {
         </h5>
       </Collapsible>
       <Collapsible
+        trigger={<button className="collapsible-trigger">Common Inputs</button>}
+      >
+        <h4>
+          A myriad of devices can be connected to a computer although modern
+          laptops usually need the aid of a USB Type-C dock or adapter to
+          provide access to more common ports.
+        </h4>
+        <div className="television">
+          <table>
+            <tr>
+              <th>Input</th>
+              <th>Example Devices</th>
+            </tr>
+            <tr>
+              <td>
+                USB Type-A<br></br>
+                <img
+                  src="images/ports/usb-type-a.png"
+                  alt="USB Type-A"
+                  width="100"
+                  height="50"
+                />
+              </td>
+              <td>
+                Keyboard,<br></br>Mouse
+              </td>
+            </tr>
+            <tr>
+              <td>
+                USB Type-B<br></br>
+                <img
+                  src="images/ports/usb-type-b.png"
+                  alt="USB Type-b"
+                  width="100"
+                  height="75"
+                />
+              </td>
+              <td>Printer</td>
+            </tr>
+            <tr>
+              <td>
+                USB Type-C<br></br>
+                <img
+                  src="images/ports/usb-type-c.png"
+                  alt="USB Type-C"
+                  width="100"
+                  height="50"
+                />
+              </td>
+              <td>
+                Dock,<br></br>Flash drive,<br></br>Phone cable
+              </td>
+            </tr>
+            <tr>
+              <td>
+                HDMI<br></br>
+                <img
+                  src="images/ports/hdmi.png"
+                  alt="HDMI"
+                  width="125"
+                  height="50"
+                />
+              </td>
+              <td>Monitor</td>
+            </tr>
+            <tr>
+              <td>
+                DisplayPort<br></br>
+                <img
+                  src="images/ports/dp.png"
+                  alt="HDMI"
+                  width="125"
+                  height="50"
+                />
+              </td>
+              <td>Monitor</td>
+            </tr>
+            <tr>
+              <td>
+                DVI<br></br>
+                <img
+                  src="images/ports/dvi.png"
+                  alt="HDMI"
+                  width="200"
+                  height="75"
+                />
+              </td>
+              <td>Monitor</td>
+            </tr>
+            <tr>
+              <td>
+                VGA<br></br>
+                <img
+                  src="images/ports/vga.png"
+                  alt="HDMI"
+                  width="200"
+                  height="75"
+                />
+              </td>
+              <td>Monitor</td>
+            </tr>
+            <tr>
+              <td>
+                Ethernet / RJ45<br></br>
+                <img
+                  src="images/ports/ethernet.png"
+                  alt="Ethernet"
+                  width="100"
+                  height="50"
+                />
+              </td>
+              <td>Router</td>
+            </tr>
+          </table>
+        </div>
+        <h5>
+          NOTE: Colors of ports may vary slightly based on port version. Size
+          roughly to scale.
+        </h5>
+      </Collapsible>
+      <Collapsible
         trigger={<button className="collapsible-trigger">Local Backup</button>}
       >
         <h4>
@@ -297,6 +418,7 @@ export default function Computer() {
           </li>
         </ul>
       </Collapsible>
+
       <Collapsible
         trigger={<button className="collapsible-trigger">Printers</button>}
       >
@@ -436,10 +558,27 @@ export default function Computer() {
             </tr>
           </table>
         </div>
+        <ul className="tech">
+          <li>
+            <b>Print with a cable.</b> Depending on your computer's OS, plugging
+            in a printer with a USB Type-B cable (see above Common Inputs tip)
+            to your computer may be enough to use your printer. Otherwise,
+            you'll have to download drivers using the above links for your
+            printer's brand.
+          </li>
+          <li>
+            <b>Print wirelessly!</b> This setup is a little more involved and
+            drivers and printer utilities have to be installed based on your
+            specific printer model. Use the above links to navigate to your
+            printer brand's website to download them. You may have to connect
+            your printer to your home network by navigating the printer's
+            interface as well.
+          </li>
+        </ul>
         <h5>
           NOTE: Printer model number/names are usually found on a sticker on the
           back of the printer or printed on the front. Navigate to your brand's
-          website above and input the model number/name
+          website above and input the model number/name.
         </h5>
       </Collapsible>
     </>
