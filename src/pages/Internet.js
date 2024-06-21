@@ -193,7 +193,7 @@ export default function Internet() {
           >
             these
           </a>{" "}
-          steps
+          steps.
         </h5>
       </Collapsible>
       <Collapsible
@@ -214,7 +214,7 @@ export default function Internet() {
         </ol>
         <h5>
           NOTE: Adding ad blocking extensions like uBlock Origin or AdBlock Plus
-          is a great way to improve your security while browsing
+          is a great way to improve your security while browsing.
         </h5>
       </Collapsible>
       <Collapsible
@@ -274,7 +274,7 @@ export default function Internet() {
 
         <h5>
           NOTE: Popular search engines like Google, Bing and Yahoo are notorious
-          for taking a left-wing bias and censoring search results
+          for taking a left-wing bias and censoring search results.
         </h5>
       </Collapsible>
     </>

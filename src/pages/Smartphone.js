@@ -54,7 +54,7 @@ export default function Smartphone() {
         </ol>
         <h5>
           NOTE: The above feature is available for the latest iOS and may not be
-          available on older versions
+          available on older versions.
         </h5>
       </Collapsible>
       <Collapsible
@@ -99,7 +99,7 @@ export default function Smartphone() {
         </ol>
         <h5>
           NOTE: The above feature is available for the latest iOS and may not be
-          available on older versions
+          available on older versions.
         </h5>
       </Collapsible>
       <Collapsible
