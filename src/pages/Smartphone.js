@@ -60,22 +60,30 @@ export default function Smartphone() {
       <Collapsible
         trigger={
           <button className="collapsible-trigger">
-            Flashlight Variable Brightness
+            Analyze Text in Picture
           </button>
         }
       >
         <ol>
           <li>
-            Swipe down from top right corner of screen (or swipe up from bottom
-            on iPhones with home button) to open Notification Center
+            Open the <b>Camera</b> app
           </li>
-          <li>Tap and hold on flashlight icon</li>
+          <li>Take a picture of a subject with text</li>
+          <li>Bring up that recently captured photo</li>
+          <li>Tap the square icon with 2 lines in the lower right corner</li>
           <li>
-            Swipe up or directly tap on segments to turn on flashlight at that
-            level of brightness
+            Links to websites will appear at the bottom and text can be
+            highlighted and copied
           </li>
-          <li>Enabling flashlight now defaults to that level of brightness</li>
         </ol>
+        <br></br>
+        <img
+          src="images/smartphones/analyze.jpg"
+          height="500"
+          width="250"
+          alt="camera-timer icon"
+        />
+        <h5>NOTE: The above feature is available in iOS 15 and later.</h5>
       </Collapsible>
       <Collapsible
         trigger={
@@ -101,6 +109,26 @@ export default function Smartphone() {
           NOTE: The above feature is available for the latest iOS and may not be
           available on older versions.
         </h5>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">
+            Flashlight Variable Brightness
+          </button>
+        }
+      >
+        <ol>
+          <li>
+            Swipe down from top right corner of screen (or swipe up from bottom
+            on iPhones with home button) to open Notification Center
+          </li>
+          <li>Tap and hold on flashlight icon</li>
+          <li>
+            Swipe up or directly tap on segments to turn on flashlight at that
+            level of brightness
+          </li>
+          <li>Enabling flashlight now defaults to that level of brightness</li>
+        </ol>
       </Collapsible>
       <Collapsible
         trigger={
