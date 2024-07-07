@@ -35,8 +35,9 @@ export default function About() {
         who may be less technologically inclined as well as provide some useful
         info for more technical users.
         <br></br>
-        <img src="images/moon2.jpg" height="250" width="200" />
+        <img src="images/selfie.png" height="220" width="200" />
       </Collapsible>
+
       <br></br>
       <footer>
         <p>Developed and Designed by Aaron Turner</p>
