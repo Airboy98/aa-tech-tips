@@ -5,6 +5,7 @@ import { useAppointmentsContext } from "../hooks/useAppointmentsContext";
 import AppointmentDetails from "../components/AppointmentDetails";
 import AppointmentForm from "../components/AppointmentForm";
 import Collapsible from "react-collapsible";
+import Calendly from "../components/Calendly";
 
 export default function Appointment() {
   const { appointments, dispatch } = useAppointmentsContext();
@@ -13,22 +14,19 @@ export default function Appointment() {
     <>
       <h1>Appointment</h1>
       <hr></hr>
-      <h2>
-        Request an appointment by sending an email to{" "}
-        <a href="mailto:appointment@aatechtips.com">
-          appointment@aatechtips.com
-        </a>
-      </h2>
+
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">In-Person Assistance</button>
+          <button className="collapsible-trigger">
+            In-Person Appointment Details
+          </button>
         }
       >
         <h3>$75/hr (cash or check)</h3>
         <h4>
           For the most extensive IT assistance, I can assist via an in-person IT
-          appointment and come over to a local Dallas address of your choosing
-          to help with the following:
+          appointment and come over to a local DFW address of your choosing to
+          help with various IT issues such as:
         </h4>
         <ul>
           <li>
@@ -45,17 +43,20 @@ export default function Appointment() {
           </li>
           <li>Program/App Installation or Removal</li>
           <li>Malware/Virus Removal</li>
+          <li>Any other tech related issues</li>
         </ul>
       </Collapsible>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Remote Assistance</button>
+          <button className="collapsible-trigger">
+            Remote Appointment Details
+          </button>
         }
       >
         <h3>$50/hr (Zelle or Apple Pay)</h3>
         <h4>
           For more limited assistance, I can assist remotely via Zoom (refer to
-          Tech 101 for instructions) to help with the following:
+          Tech 101 for instructions) to help with basic IT issues such as:
         </h4>
         <ul>
           <li>
@@ -65,8 +66,22 @@ export default function Appointment() {
           <li>Data Transfer (flash/thumb drive required)</li>
           <li>Program/App Installation or Removal</li>
           <li>Malware/Virus Removal</li>
+          <li>Any tech related questions</li>
         </ul>
       </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Book Appointment</button>
+        }
+      >
+        <Calendly />
+      </Collapsible>
+      <h5>
+        Send any appointment inquiries to{" "}
+        <a href="mailto:appointment@aatechtips.com">
+          appointment@aatechtips.com
+        </a>
+      </h5>
       {/* <div className="appointments">
         {appointments &&
           appointments.map((appointment) => (

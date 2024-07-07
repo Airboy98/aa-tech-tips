@@ -49,11 +49,8 @@ export default function Home() {
         </ul>
       </div>
       <h5>
-        Need more help or have feedback? Send an email to{" "}
-        <a href="mailto:appointment@aatechtips.com">
-          appointment@aatechtips.com
-        </a>{" "}
-        or <a href="mailto:feedback@aatechtips.com">feedback@aatechtips.com</a>
+        Suggestions or feedback? Send an email to{" "}
+        <a href="mailto:feedback@aatechtips.com">feedback@aatechtips.com</a>
       </h5>
     </>
   );
