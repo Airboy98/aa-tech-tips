@@ -166,6 +166,21 @@ export default function Computer() {
               <td>cmd+y / cmd+shift+z</td>
             </tr>
             <tr>
+              <td>Print</td>
+              <td>ctrl+p</td>
+              <td>cmd+p</td>
+            </tr>
+            <tr>
+              <td>Reset Graphics</td>
+              <td>windows+ctrl+shift+b</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td>Task Manager / Activity Monitor</td>
+              <td>ctrl+shift+esc</td>
+              <td>cmd+option+esc</td>
+            </tr>
+            <tr>
               <td>Screen Snip (crosshairs)</td>
               <td>windows+shift+s</td>
               <td>cmd+shift+4</td>
