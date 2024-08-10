@@ -4,7 +4,23 @@ import "./computer.css";
 export default function Computer() {
   return (
     <>
-      <h1>Computer Tips</h1>
+      <h1>
+        {/* <img
+          src="images/devices/laptop.png"
+          alt="Amazon"
+          width="70"
+          height="60"
+          style={{ marginRight: "25px" }} 
+        />*/}
+        Computer Tips
+        {/* <img
+          src="images/devices/keyboard.png"
+          alt="Amazon"
+          width="90"
+          height="40"
+          style={{ marginLeft: "25px" }}
+        /> */}
+      </h1>
       <hr></hr>
       <Collapsible
         trigger={<button className="collapsible-trigger">Photo Sharing</button>}
@@ -171,12 +187,15 @@ export default function Computer() {
               <td>cmd+p</td>
             </tr>
             <tr>
+              <td>l</td>
+            </tr>
+            <tr>
               <td>Reset Graphics</td>
               <td>windows+ctrl+shift+b</td>
               <td>N/A</td>
             </tr>
             <tr>
-              <td>Task Manager / Activity Monitor</td>
+              <td>Task Monitor</td>
               <td>ctrl+shift+esc</td>
               <td>cmd+option+esc</td>
             </tr>

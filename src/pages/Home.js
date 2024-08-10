@@ -1,11 +1,30 @@
 import React from "react";
+import Collapsible from "react-collapsible";
 import { CustomLink } from "../components/Navbar";
 import "./home.css";
 
 export default function Home() {
   return (
     <>
-      <h1>AA Tech Tips</h1>
+      <span bgcolor="red">
+        <h1>
+          <img
+            src="images/logos/question-phone-colored.png"
+            alt="Amazon"
+            width="60"
+            height="60"
+            style={{ marginRight: "25px" }}
+          />
+          AA Tech Tips
+          <img
+            src="images/logos/question-computer-colored.png"
+            alt="Amazon"
+            width="60"
+            height="60"
+            style={{ marginLeft: "25px" }}
+          />
+        </h1>
+      </span>
       <hr></hr>
       <h4>
         Need IT help or looking for some tips? Select a category below or start
@@ -17,37 +36,37 @@ export default function Home() {
         smartphones).
       </h4>
       <div className="links">
-        <ul>
-          <h2>
-            <CustomLink to="/tech101">Tech 101</CustomLink>
-          </h2>
-          <h2>
-            <CustomLink to="/computer">Computer</CustomLink>
-          </h2>
-          <h2>
-            <CustomLink to="/television">Television</CustomLink>
-          </h2>
-          <h2>
-            <CustomLink to="/internet">Internet</CustomLink>
-          </h2>
-          <h2>
-            <CustomLink to="/smartphone">Smartphone</CustomLink>
-          </h2>
-          <h2>
-            <CustomLink to="/streaming">Streaming</CustomLink>
-          </h2>
-          <h2>
-            <CustomLink to="/wearable">Wearable</CustomLink>
-          </h2>
-          {/* <CustomLink to="/contact">Contact Us</CustomLink> */}
-          <h2>
-            <CustomLink to="/appointment">Appointment</CustomLink>
-          </h2>
-          <h2>
-            <CustomLink to="/about">About</CustomLink>
-          </h2>
-        </ul>
+        <CustomLink to="/tech101">
+          <button>Tech 101</button>
+        </CustomLink>
+        <div className="button-grid">
+          <CustomLink to="/computer">
+            <button>Computer</button>
+          </CustomLink>
+          <CustomLink to="/television">
+            <button>Television</button>
+          </CustomLink>
+          <CustomLink to="/internet">
+            <button>Internet</button>
+          </CustomLink>
+          <CustomLink to="/smartphone">
+            <button>Smartphone</button>
+          </CustomLink>
+          <CustomLink to="/streaming">
+            <button>Streaming</button>
+          </CustomLink>
+          <CustomLink to="/wearable">
+            <button>Wearable</button>
+          </CustomLink>
+        </div>
+        <CustomLink to="/appointment">
+          <button>Appointment</button>
+        </CustomLink>
+        <CustomLink to="/about">
+          <button>About</button>
+        </CustomLink>
       </div>
+
       <h5>
         Suggestions or feedback? Send an email to{" "}
         <a href="mailto:feedback@aatechtips.com">feedback@aatechtips.com</a>
