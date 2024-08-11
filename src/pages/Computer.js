@@ -4,24 +4,25 @@ import "./computer.css";
 export default function Computer() {
   return (
     <>
-      <h1>
-        {/* <img
+      <div className="section-header">
+        <h1>
+          {/* <img
           src="images/devices/laptop.png"
           alt="Amazon"
           width="70"
           height="60"
           style={{ marginRight: "25px" }} 
         />*/}
-        Computer Tips
-        {/* <img
+          Computer Tips
+          {/* <img
           src="images/devices/keyboard.png"
           alt="Amazon"
           width="90"
           height="40"
           style={{ marginLeft: "25px" }}
         /> */}
-      </h1>
-      <hr></hr>
+        </h1>
+      </div>
       <Collapsible
         trigger={<button className="collapsible-trigger">Photo Sharing</button>}
       >

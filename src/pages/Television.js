@@ -4,8 +4,9 @@ import "./television.css";
 export default function Television() {
   return (
     <>
-      <h1>Television Tips</h1>
-      <hr></hr>
+      <div className="section-header">
+        <h1>Television Tips</h1>
+      </div>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">TV Manufacturers</button>

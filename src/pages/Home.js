@@ -6,26 +6,26 @@ import "./home.css";
 export default function Home() {
   return (
     <>
-      <span bgcolor="red">
+      <div className="section-header">
         <h1>
-          <img
-            src="images/logos/question-phone-colored.png"
+          {/* <img
+            src="images/logos/question-phone.png"
             alt="Amazon"
             width="60"
             height="60"
             style={{ marginRight: "25px" }}
-          />
+          /> */}
           AA Tech Tips
-          <img
-            src="images/logos/question-computer-colored.png"
+          {/* <img
+            src="images/logos/question-computer.png"
             alt="Amazon"
             width="60"
             height="60"
             style={{ marginLeft: "25px" }}
-          />
+          /> */}
         </h1>
-      </span>
-      <hr></hr>
+      </div>
+      {/* <hr></hr> */}
       <h4>
         Need IT help or looking for some tips? Select a category below or start
         with the basics and tap Tech 101. Tap the buttons on each page to expand

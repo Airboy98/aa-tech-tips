@@ -5,8 +5,9 @@ import Collapsible from "react-collapsible";
 export default function About() {
   return (
     <>
-      <h1>About</h1>
-      <hr></hr>
+      <div className="section-header">
+        <h1>About</h1>
+      </div>
 
       <Collapsible
         trigger={<button className="collapsible-trigger">This Website</button>}
