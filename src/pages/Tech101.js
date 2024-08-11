@@ -20,8 +20,9 @@ export default function Tech101() {
   ];
   return (
     <>
-      <h1>Tech 101</h1>
-      <hr></hr>
+      <div className="section-header">
+        <h1>Tech 101</h1>
+      </div>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Common Vocabulary</button>

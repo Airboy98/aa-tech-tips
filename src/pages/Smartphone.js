@@ -4,8 +4,9 @@ import "./smartphone.css";
 export default function Smartphone() {
   return (
     <>
-      <h1>Smartphone Tips</h1>
-      <hr></hr>
+      <div className="section-header">
+        <h1>Smartphone Tips</h1>
+      </div>
       <h2>iPhone</h2>
       <Collapsible
         trigger={<button className="collapsible-trigger">Photo Editing</button>}

@@ -4,8 +4,9 @@ import "./streaming.css";
 export default function Streaming() {
   return (
     <>
-      <h1>Streaming Tips</h1>
-      <hr></hr>
+      <div className="section-header">
+        <h1>Streaming Tips</h1>
+      </div>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Streaming Services</button>

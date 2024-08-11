@@ -4,8 +4,9 @@ import "./wearable.css";
 export default function Wearable() {
   return (
     <>
-      <h1>Wearable Tips</h1>
-      <hr></hr>
+      <div className="section-header">
+        <h1>Wearable Tips</h1>
+      </div>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Wearable Brands</button>

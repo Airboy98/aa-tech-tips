@@ -40,15 +40,18 @@ a {
 }
 
 .collapsible-trigger {
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 20px;
-  display: inline-block;
-  background-color: white;
-  color: black;
-  padding: 10px;
-  margin: 5px;
+  padding: 15px 30px;
+  /* width: 100%; */
+  font-size: 18px;
   border-radius: 50px;
+  background-color: #0f3455;
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  color: white;
+  /* border: none; */
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .collapsible-content {
