@@ -18,6 +18,21 @@ body {
   /* text-align: right; */
 }
 
+.section-header {
+  background-image: url("~/public/images/menu/home-header.jpg");
+  /* background-color: white; */
+  background-size: cover; /* Ensure the image covers the entire header */
+  background-position: center; /* Center the image within the header */
+  color: white; /* Text color */
+  padding: 1px;
+  /* border-radius: 80px; */
+  /* align-items: center; */
+  justify-content: center;
+  text-shadow: 1px 1px 1px black, -1px 1px 1px black;
+  /* height: 100px; */
+  /* margin-bottom: 20px; */
+}
+
 .container {
   margin: 0rem 0rem 0rem 0rem;
   text-align: center;
