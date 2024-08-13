@@ -32,7 +32,7 @@ export default function Navbar() {
   return (
     <header>
       <nav className="nav">
-        <Link to="/" className="site-title">
+        <Link to="/" className="site-title" onClick={closeMenu}>
           <img src="site-logo.png" alt="" height="50" width="50" />
         </Link>
         {showBurger && (
