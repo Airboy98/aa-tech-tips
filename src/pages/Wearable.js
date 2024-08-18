@@ -7,76 +7,7 @@ export default function Wearable() {
       <div className="section-header">
         <h1>Wearable Tips</h1>
       </div>
-      <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Wearable Brands</button>
-        }
-      >
-        <div className="television">
-          <table>
-            <tr>
-              <td>
-                <a
-                  href="https://www.apple.com/watch/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/wearables/apple-watch.png"
-                    alt="Samsung"
-                    width="150"
-                    height="35"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://www.samsung.com/us/watches/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/wearables/galaxy-watch.svg"
-                    alt="LG"
-                    width="150"
-                    height="60"
-                  />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="https://www.fitbit.com/global/us/home"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/wearables/fitbit.png"
-                    alt="Sony"
-                    width="150"
-                    height="40"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://store.google.com/category/watches?hl=en-US"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/wearables/pixel-watch.png"
-                    alt="Toshiba"
-                    width="150"
-                    height="60"
-                  />
-                </a>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </Collapsible>
+
       <h2>Apple Watch</h2>
       <Collapsible
         trigger={
@@ -160,6 +91,77 @@ export default function Wearable() {
           NOTE: The above feature is available if your iPhone is within range
           (about 30 feet over Bluetooth).
         </h5>
+      </Collapsible>
+      <h2>Hardware</h2>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Wearable Brands</button>
+        }
+      >
+        <div className="television">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://www.apple.com/watch/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/wearables/apple-watch.png"
+                    alt="Samsung"
+                    width="150"
+                    height="35"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.samsung.com/us/watches/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/wearables/galaxy-watch.svg"
+                    alt="LG"
+                    width="150"
+                    height="60"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.fitbit.com/global/us/home"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/wearables/fitbit.png"
+                    alt="Sony"
+                    width="150"
+                    height="40"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://store.google.com/category/watches?hl=en-US"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/wearables/pixel-watch.png"
+                    alt="Toshiba"
+                    width="150"
+                    height="60"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
       </Collapsible>
     </>
   );

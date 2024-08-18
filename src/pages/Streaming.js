@@ -7,6 +7,7 @@ export default function Streaming() {
       <div className="section-header">
         <h1>Streaming Tips</h1>
       </div>
+      <h2>Software</h2>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Streaming Services</button>
@@ -188,6 +189,77 @@ export default function Streaming() {
                   <img
                     src="images/streaming/espnplus.png"
                     alt="ESPN+"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </Collapsible>
+      <h2>Hardware</h2>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Streaming Devices</button>
+        }
+      >
+        <div className="television">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GHH5TUHA7677G4HJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/devices/amazon-fire-tv-stick.png"
+                    alt="Amazon Fire TV Stick"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://support.roku.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/devices/roku.png"
+                    alt="Roku"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://support.google.com/chromecast/chromecast/?hl=en&sjid=890919833032057258-NC#topic=3058948"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/devices/chromecast1.png"
+                    alt="Chromecast"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://support.apple.com/apple-tv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/devices/appletv.png"
+                    alt="Apple TV"
                     width="100"
                     height="50"
                   />

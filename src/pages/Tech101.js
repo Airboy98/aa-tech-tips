@@ -23,6 +23,8 @@ export default function Tech101() {
       <div className="section-header">
         <h1>Tech 101</h1>
       </div>
+      <h2>Beginner</h2>
+
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Common Vocabulary</button>
@@ -136,154 +138,6 @@ export default function Tech101() {
                 <td>Windows</td>
                 <td>Microsoft's proprietary operating system</td>
                 <td>Windows XP, Windows 11</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </Collapsible>
-      <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Computer Vocabulary</button>
-        }
-      >
-        <div className="tech">
-          <table>
-            <thead>
-              <tr>
-                <th>Word or Phrase</th>
-                <th>Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>GPU (Graphics Processing Unit) / Graphics Card</td>
-                <td>
-                  A computer peripheral dedicated to rendering graphics on a
-                  screen
-                </td>
-              </tr>
-              <tr>
-                <td>HDD (Hard Disk Drive)</td>
-                <td>
-                  A mechanical, platter-based storage device with slow access
-                  speeds
-                </td>
-              </tr>
-              <tr>
-                <td>HDMI (High-Definition Multimedia Interface)</td>
-                <td>
-                  A digital technology that transmits audio/video used with TVs
-                  and monitors
-                </td>
-              </tr>
-              <tr>
-                <td>Monitor</td>
-                <td>
-                  A screen connected by a cable to a desktop or built-in to a
-                  laptop
-                </td>
-              </tr>
-              <tr>
-                <td>Phishing</td>
-                <td>
-                  A malicious act of fooling a user to click a link spoofing a
-                  seemingly legit website
-                </td>
-              </tr>
-              <tr>
-                <td>PSU (Power Supply Unit)</td>
-                <td>
-                  A computer peripheral that provides power to internal
-                  components
-                </td>
-              </tr>
-              <tr>
-                <td>RAM (Random Access Memory)</td>
-                <td>
-                  A computer peripheral used to store data on a computer while
-                  powered on
-                </td>
-              </tr>
-              <tr>
-                <td>SSD (Solid State Drive)</td>
-                <td>
-                  A non-mechanical, flash-based storage device with fast access
-                  speeds
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </Collapsible>
-      <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Advanced Vocabulary</button>
-        }
-      >
-        <div className="tech">
-          <table>
-            <thead>
-              <tr>
-                <th>Word or Phrase</th>
-                <th>Definition</th>
-                <th>Examples</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>AI (Artificial Intelligence)</td>
-                <td>
-                  A complex program using an LLM to generate human-like
-                  responses, code, pictures, etc.
-                </td>
-                <td>ChatGPT, Gemini, Copilot</td>
-              </tr>
-              <tr>
-                <td>AR (Augmented Reality)</td>
-                <td>
-                  An experience using a head-mounted device that superimposes
-                  data in front of the user's eyes{" "}
-                </td>
-                <td>Apple Vision Pro, Meta Quest</td>
-              </tr>
-              <tr>
-                <td>Cloud Computing</td>
-                <td>
-                  Utilizing powerful servers in remote data warehouses to
-                  process large amounts of data
-                </td>
-                <td>AWS, Azure, GCP</td>
-              </tr>
-              <tr>
-                <td>DL (Deep Learning)</td>
-                <td>
-                  A subset of ML which focuses on learning by simulating human
-                  neural networks
-                </td>
-                <td>Tesla Full Self-Driving</td>
-              </tr>
-              <tr>
-                <td>LLM (Large Language Model)</td>
-                <td>
-                  A deep learning model pre-trained on vast amounts of data
-                </td>
-                <td>GPT, LLaMa, LaMDA</td>
-              </tr>
-              <tr>
-                <td>ML (Machine Learning)</td>
-                <td>
-                  A branch of AI which focuses on using data and algorithms to
-                  learn and refine accuracy
-                </td>
-                <td>Facial recognition</td>
-              </tr>
-              <tr>
-                <td>VR (Virtual Reality)</td>
-                <td>
-                  A simulated experience using a head-mounted device to fully
-                  immerse the user in a virtual world
-                </td>
-                <td>Apple Vision Pro, Meta Quest</td>
               </tr>
             </tbody>
           </table>
@@ -429,26 +283,180 @@ export default function Tech101() {
       </Collapsible>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">
-            Tech Remote Assistance
-          </button>
+          <button className="collapsible-trigger">Browsing the Web</button>
         }
       >
         <h4>
-          Getting tech assistance may be the most ideal in person but a close
-          second is using Zoom to have a trusted technician remotely view and/or
-          control your computer, whether you're using a Windows machine or a
-          Mac. You will have the ability to control your computer the entire
-          time.
+          Browsing the internet today is riskier than ever before. Use the below
+          tactics to stay safe and keep your data secure!
         </h4>
-        <ol>
-          <li>Click the Zoom meeting link the technician provides</li>
-          <li>
-            On the pre-meeting screen, enable your mic and enter your name
-            before hitting "Join" button.
-          </li>
-          <li>Click the "Share" button to start sharing your screen.</li>
-        </ol>
+        <div className="tech">
+          <ul>
+            <li>
+              <b>Check that link!</b> Always be cautious when clicking on links
+              in websites or emails. Phishing is a common cybersecurity attack
+              that tries to prey on users thinking they're visiting a safe
+              website that looks authentic and prompts for entering credentials
+              but actually steals your data! Make sure to verify you recognize
+              the URL of the website you're about to visit! Hovering over links
+              in a browser should show the URL at the bottom left corner and
+              hovering over links in an email should have a URL pop-up on
+              screen.
+            </li>
+            <li>
+              <b>Block those ads!</b> Some websites have pesky ads and pop-ups
+              that take focus when you're trying to browse. Use an ad-block
+              extension to mitigate these, including ads that play before videos
+              like on Youtube. Alternatively, use a browser like{" "}
+              <a
+                href="https://brave.com/download/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Brave
+              </a>{" "}
+              that includes a build-in ad blocker. Check the Internet page for
+              more info and tips.
+            </li>
+            <li>
+              <b>Take advantage of bookmarks!</b> Create bookmarks for commonly
+              visited websites. Toggle on your browser's bookmark bar for easy
+              access to see them at all times. You can even group them by
+              categories and put them in folders to stay organized. It's also
+              beneficial to use the same browser across devices. For example, if
+              you're a Chrome user, login to the same Google account in Chrome
+              on all devices to sync bookmarks and access them on each device.
+              This also applies to other browsers like Safari, so if you have a
+              Macbook and an iPhone and use the default Safari browser, you'll
+              be able to see the same bookmarks on each device.
+            </li>
+          </ul>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Battery Tips</button>}
+      >
+        <h4>
+          Generally speaking, most modern devices these days have built-in
+          rechargable Lithium-ion batteries. This battery technology allows for
+          longer charge times, extended life span and quicker recharge times.
+          Make sure to keep in mind the following to ensure peak performance and
+          longevity!
+        </h4>
+        <div className="tech">
+          <ul>
+            <li>
+              <b>Fully discharge sparingly!</b> It's not good for your device's
+              battery health to be constantly discharged from 100% down to 0%.
+              If you can help it, try to limit a full discharge to once a week.
+              A full discharge also allows for your device's battery to
+              recalibrate to take a more accurate reading when done sparingly.
+            </li>
+            <li>
+              <b>Don't top up all the time!</b> Constantly putting your device
+              on the charger puts strain and extra wear and tear on the device's
+              battery. If your battery life is at 70% for example, it's not
+              necessary to bring it back up to 100% asap unless absolutely
+              necessary, like if you're not able to charge it for awhile.
+            </li>
+            <li>
+              <b>Replacement time?</b> Is your phone or laptop not lasting you
+              through the day anymore? You might not need to buy an entirely new
+              device! Most devices these days allow you to check out your
+              device's battery health but sometimes it's buried in the settings
+              menu. On iPhone, battery health can be found under Settings {"->"}{" "}
+              Battery {"->"} Battery Health & Charging {"->"} Maximum Capacity.
+              If your device's battery health is below 80%, it may be worth
+              looking into purchasing a replacement battery. For example,
+              without Apple Care, an iPhone replacement battery can be bought
+              and installed for under $100, check{" "}
+              <a
+                href="https://support.apple.com/iphone/repair/battery-replacement"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                here
+              </a>{" "}
+              for details. Other devices may have user replaceable batteries
+              that can be purchased from retailers like Amazon.
+            </li>
+          </ul>
+        </div>
+      </Collapsible>
+      <h2>Intermediate</h2>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Computer Vocabulary</button>
+        }
+      >
+        <div className="tech">
+          <table>
+            <thead>
+              <tr>
+                <th>Word or Phrase</th>
+                <th>Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GPU (Graphics Processing Unit) / Graphics Card</td>
+                <td>
+                  A computer peripheral dedicated to rendering graphics on a
+                  screen
+                </td>
+              </tr>
+              <tr>
+                <td>HDD (Hard Disk Drive)</td>
+                <td>
+                  A mechanical, platter-based storage device with slow access
+                  speeds
+                </td>
+              </tr>
+              <tr>
+                <td>HDMI (High-Definition Multimedia Interface)</td>
+                <td>
+                  A digital technology that transmits audio/video used with TVs
+                  and monitors
+                </td>
+              </tr>
+              <tr>
+                <td>Monitor</td>
+                <td>
+                  A screen connected by a cable to a desktop or built-in to a
+                  laptop
+                </td>
+              </tr>
+              <tr>
+                <td>Phishing</td>
+                <td>
+                  A malicious act of fooling a user to click a link spoofing a
+                  seemingly legit website
+                </td>
+              </tr>
+              <tr>
+                <td>PSU (Power Supply Unit)</td>
+                <td>
+                  A computer peripheral that provides power to internal
+                  components
+                </td>
+              </tr>
+              <tr>
+                <td>RAM (Random Access Memory)</td>
+                <td>
+                  A computer peripheral used to store data on a computer while
+                  powered on
+                </td>
+              </tr>
+              <tr>
+                <td>SSD (Solid State Drive)</td>
+                <td>
+                  A non-mechanical, flash-based storage device with fast access
+                  speeds
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </Collapsible>
       <Collapsible
         trigger={
@@ -559,6 +567,29 @@ export default function Tech101() {
       </Collapsible>
       <Collapsible
         trigger={
+          <button className="collapsible-trigger">
+            Tech Remote Assistance
+          </button>
+        }
+      >
+        <h4>
+          Getting tech assistance may be the most ideal in person but a close
+          second is using Zoom to have a trusted technician remotely view and/or
+          control your computer, whether you're using a Windows machine or a
+          Mac. You will have the ability to control your computer the entire
+          time.
+        </h4>
+        <ol>
+          <li>Click the Zoom meeting link the technician provides</li>
+          <li>
+            On the pre-meeting screen, enable your mic and enter your name
+            before hitting "Join" button.
+          </li>
+          <li>Click the "Share" button to start sharing your screen.</li>
+        </ol>
+      </Collapsible>
+      <Collapsible
+        trigger={
           <button className="collapsible-trigger">Digital Photo Frame</button>
         }
       >
@@ -603,58 +634,164 @@ export default function Tech101() {
           </ul>
         </div>
       </Collapsible>
+      <h2>Advanced</h2>
+
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Browsing the Web</button>
+          <button className="collapsible-trigger">Advanced Vocabulary</button>
         }
       >
-        <h4>
-          Browsing the internet today is riskier than ever before. Use the below
-          tactics to stay safe and keep your data secure!
-        </h4>
         <div className="tech">
-          <ul>
-            <li>
-              <b>Check that link!</b> Always be cautious when clicking on links
-              in websites or emails. Phishing is a common cybersecurity attack
-              that tries to prey on users thinking they're visiting a safe
-              website that looks authentic and prompts for entering credentials
-              but actually steals your data! Make sure to verify you recognize
-              the URL of the website you're about to visit! Hovering over links
-              in a browser should show the URL at the bottom left corner and
-              hovering over links in an email should have a URL pop-up on
-              screen.
-            </li>
-            <li>
-              <b>Block those ads!</b> Some websites have pesky ads and pop-ups
-              that take focus when you're trying to browse. Use an ad-block
-              extension to mitigate these, including ads that play before videos
-              like on Youtube. Alternatively, use a browser like{" "}
-              <a
-                href="https://brave.com/download/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Brave
-              </a>{" "}
-              that includes a build-in ad blocker. Check the Internet page for
-              more info and tips.
-            </li>
-            <li>
-              <b>Take advantage of bookmarks!</b> Create bookmarks for commonly
-              visited websites. Toggle on your browser's bookmark bar for easy
-              access to see them at all times. You can even group them by
-              categories and put them in folders to stay organized. It's also
-              beneficial to use the same browser across devices. For example, if
-              you're a Chrome user, login to the same Google account in Chrome
-              on all devices to sync bookmarks and access them on each device.
-              This also applies to other browsers like Safari, so if you have a
-              Macbook and an iPhone and use the default Safari browser, you'll
-              be able to see the same bookmarks on each device.
-            </li>
-          </ul>
+          <table>
+            <thead>
+              <tr>
+                <th>Word or Phrase</th>
+                <th>Definition</th>
+                <th>Examples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AI (Artificial Intelligence)</td>
+                <td>
+                  A complex program using an LLM to generate human-like
+                  responses, code, pictures, etc.
+                </td>
+                <td>ChatGPT, Gemini, Copilot</td>
+              </tr>
+              <tr>
+                <td>AR (Augmented Reality)</td>
+                <td>
+                  An experience using a head-mounted device that superimposes
+                  data in front of the user's eyes{" "}
+                </td>
+                <td>Apple Vision Pro, Meta Quest</td>
+              </tr>
+              <tr>
+                <td>Cloud Computing</td>
+                <td>
+                  Utilizing powerful servers in remote data warehouses to
+                  process large amounts of data
+                </td>
+                <td>AWS, Azure, GCP</td>
+              </tr>
+              <tr>
+                <td>DL (Deep Learning)</td>
+                <td>
+                  A subset of ML which focuses on learning by simulating human
+                  neural networks
+                </td>
+                <td>Tesla Full Self-Driving</td>
+              </tr>
+              <tr>
+                <td>IoT (Internet of Things)</td>
+                <td>A network of smart devices connected to the internet</td>
+                <td>Nest thermostat, Ring doorbell</td>
+              </tr>
+              <tr>
+                <td>LLM (Large Language Model)</td>
+                <td>
+                  A deep learning model pre-trained on vast amounts of data
+                </td>
+                <td>GPT, LLaMa, LaMDA</td>
+              </tr>
+              <tr>
+                <td>ML (Machine Learning)</td>
+                <td>
+                  A branch of AI which focuses on using data and algorithms to
+                  learn and refine accuracy
+                </td>
+                <td>Facial recognition</td>
+              </tr>
+              <tr>
+                <td>VR (Virtual Reality)</td>
+                <td>
+                  A simulated experience using a head-mounted device to fully
+                  immerse the user in a virtual world
+                </td>
+                <td>Apple Vision Pro, Meta Quest</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </Collapsible>
+
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">
+            Artificial Intelligence
+          </button>
+        }
+      >
+        <h3>Chat Bots</h3>
+        <div className="television">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://chatgpt.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/ai/chatgpt.png"
+                      alt="Amazon"
+                      width="150"
+                      height="50"
+                    />
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://copilot.microsoft.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/ai/copilot.png"
+                      alt="Newegg"
+                      width="150"
+                      height="50"
+                    />
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://gemini.google.com/app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/ai/gemini.png"
+                      alt="Best Buy"
+                      width="150"
+                      height="50"
+                    />
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://x.ai/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/ai/grok.png"
+                      alt="Newegg"
+                      width="150"
+                      height="50"
+                    />
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Collapsible>
+
       <Collapsible
         trigger={<button className="collapsible-trigger">Cloud Storage</button>}
       >
@@ -843,56 +980,6 @@ export default function Tech101() {
               </tr>
             </tbody>
           </table>
-        </div>
-      </Collapsible>
-      <Collapsible
-        trigger={<button className="collapsible-trigger">Battery Tips</button>}
-      >
-        <h4>
-          Generally speaking, most modern devices these days have built-in
-          rechargable Lithium-ion batteries. This battery technology allows for
-          longer charge times, extended life span and quicker recharge times.
-          Make sure to keep in mind the following to ensure peak performance and
-          longevity!
-        </h4>
-        <div className="tech">
-          <ul>
-            <li>
-              <b>Fully discharge sparingly!</b> It's not good for your device's
-              battery health to be constantly discharged from 100% down to 0%.
-              If you can help it, try to limit a full discharge to once a week.
-              A full discharge also allows for your device's battery to
-              recalibrate to take a more accurate reading when done sparingly.
-            </li>
-            <li>
-              <b>Don't top up all the time!</b> Constantly putting your device
-              on the charger puts strain and extra wear and tear on the device's
-              battery. If your battery life is at 70% for example, it's not
-              necessary to bring it back up to 100% asap unless absolutely
-              necessary, like if you're not able to charge it for awhile.
-            </li>
-            <li>
-              <b>Replacement time?</b> Is your phone or laptop not lasting you
-              through the day anymore? You might not need to buy an entirely new
-              device! Most devices these days allow you to check out your
-              device's battery health but sometimes it's buried in the settings
-              menu. On iPhone, battery health can be found under Settings {"->"}{" "}
-              Battery {"->"} Battery Health & Charging {"->"} Maximum Capacity.
-              If your device's battery health is below 80%, it may be worth
-              looking into purchasing a replacement battery. For example,
-              without Apple Care, an iPhone replacement battery can be bought
-              and installed for under $100, check{" "}
-              <a
-                href="https://support.apple.com/iphone/repair/battery-replacement"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                here
-              </a>{" "}
-              for details. Other devices may have user replaceable batteries
-              that can be purchased from retailers like Amazon.
-            </li>
-          </ul>
         </div>
       </Collapsible>
     </>

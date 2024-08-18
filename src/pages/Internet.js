@@ -7,8 +7,11 @@ export default function Internet() {
       <div className="section-header">
         <h1>Internet Tips</h1>
       </div>
+      <h2>Browser</h2>
       <Collapsible
-        trigger={<button className="collapsible-trigger">Browsers</button>}
+        trigger={
+          <button className="collapsible-trigger">Common Browsers</button>
+        }
       >
         <div className="internet">
           <table>
@@ -278,6 +281,7 @@ export default function Internet() {
           for taking a left-wing bias and censoring search results.
         </h5>
       </Collapsible>
+      <h2>IoT (Internet of Things) coming soon!</h2>
     </>
   );
 }

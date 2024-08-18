@@ -15,13 +15,9 @@ export default function Appointment() {
       <div className="section-header">
         <h1>Appointment</h1>
       </div>
-
+      <h2>Appointment Details</h2>
       <Collapsible
-        trigger={
-          <button className="collapsible-trigger">
-            In-Person Appointment Details
-          </button>
-        }
+        trigger={<button className="collapsible-trigger">In-Person</button>}
       >
         <h3>$75/hr (cash or check)</h3>
         <h4>
@@ -48,11 +44,7 @@ export default function Appointment() {
         </ul>
       </Collapsible>
       <Collapsible
-        trigger={
-          <button className="collapsible-trigger">
-            Remote Appointment Details
-          </button>
-        }
+        trigger={<button className="collapsible-trigger">Remote</button>}
       >
         <h3>$50/hr (Zelle or Apple Pay)</h3>
         <h4>
@@ -70,7 +62,7 @@ export default function Appointment() {
           <li>Any tech related questions</li>
         </ul>
       </Collapsible>
-
+      <h2>Booking</h2>
       <Calendly />
       <h5>
         Send any appointment inquiries to{" "}
