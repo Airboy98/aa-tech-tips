@@ -26,7 +26,7 @@ export default function Home() {
         </h1>
       </div>
       {/* <hr></hr> */}
-      <h2>Dashboard</h2>
+      <h2>Menu</h2>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Click or Tap Here</button>
