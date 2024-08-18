@@ -12,17 +12,19 @@
 
 .links button {
   padding: 15px 30px;
-  width: 100%;
+  width: 180px;
+  /* width: 100%; */
   font-size: 18px;
   border-radius: 50px;
   background-color: #0f3455;
   font-family: "Poetsen One", sans-serif;
-  font-weight: 400;
+  /* font-weight: 400; */
   color: white;
   /* border: none; */
   cursor: pointer;
   margin-top: 5px;
   margin-bottom: 5px;
+  border: 2px solid white;
 }
 
 .links h2 {
@@ -36,6 +38,7 @@
   padding: 0px;
   margin: 0px;
   list-style: none;
+  text-align: center;
 }
 
 .links li {

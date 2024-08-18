@@ -23,43 +23,8 @@ export default function Computer() {
         /> */}
         </h1>
       </div>
-      <Collapsible
-        trigger={<button className="collapsible-trigger">Photo Sharing</button>}
-      >
-        <ol>
-          <li>
-            Login to{" "}
-            <a
-              href="https://drive.google.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Google Drive
-            </a>{" "}
-            with your Google Account or create one if necessary
-          </li>
-          <li>
-            Navigate to <b>My Drive</b> on the left side panel
-          </li>
-          <li>
-            Open up Finder (macOS) or Windows Explorer (Windows) and find the
-            photos you'd like to share
-          </li>
-          <li>
-            Drag and drop the folder or picture files from Finder or Windows
-            Explorer into <b>My Drive</b>
-          </li>
-          <li>
-            Right click the folder or picture files and hover over <b>Share</b>{" "}
-            in the context menu
-          </li>
-          <li>
-            Select <b>Copy Link</b> to copy the picture URL to share or select{" "}
-            <b>Share</b> to choose an account to share to
-          </li>
-        </ol>
-        {/* </div> */}
-      </Collapsible>
+      <h2>Software</h2>
+
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Malware Removal</button>
@@ -188,11 +153,8 @@ export default function Computer() {
               <td>cmd+p</td>
             </tr>
             <tr>
-              <td>l</td>
-            </tr>
-            <tr>
-              <td>Reset Graphics</td>
-              <td>windows+ctrl+shift+b</td>
+              <td>Reset GPU</td>
+              <td>win+ctrl+shift+b</td>
               <td>N/A</td>
             </tr>
             <tr>
@@ -260,200 +222,43 @@ export default function Computer() {
         </ol>
       </Collapsible>
       <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Drive Formatting</button>
-        }
+        trigger={<button className="collapsible-trigger">Photo Sharing</button>}
       >
         <ol>
-          <li>Connect the drive via USB to your laptop/desktop computer</li>
           <li>
-            In macOS, open <b>Disk Utility</b> or Windows, open{" "}
-            <b>Windows Explorer</b>
+            Login to{" "}
+            <a
+              href="https://drive.google.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Drive
+            </a>{" "}
+            with your Google Account or create one if necessary
           </li>
-          <li>Find the drive in the side panel on the left and select it</li>
-          <li>Click the Format option and specify a format type</li>
           <li>
-            NTFS (Windows), APFS (macOS), FAT32(4GB file size limit)/exFAT
-            (cross platform)
+            Navigate to <b>My Drive</b> on the left side panel
+          </li>
+          <li>
+            Open up Finder (macOS) or Windows Explorer (Windows) and find the
+            photos you'd like to share
+          </li>
+          <li>
+            Drag and drop the folder or picture files from Finder or Windows
+            Explorer into <b>My Drive</b>
+          </li>
+          <li>
+            Right click the folder or picture files and hover over <b>Share</b>{" "}
+            in the context menu
+          </li>
+          <li>
+            Select <b>Copy Link</b> to copy the picture URL to share or select{" "}
+            <b>Share</b> to choose an account to share to
           </li>
         </ol>
-        <h5>
-          NOTE: Use caution when formatting as ALL drive contents will be
-          erased!
-        </h5>
+        {/* </div> */}
       </Collapsible>
-      <Collapsible
-        trigger={<button className="collapsible-trigger">Common Inputs</button>}
-      >
-        <h4>
-          A myriad of devices can be connected to a computer although modern
-          laptops usually need the aid of a USB Type-C dock or adapter to
-          provide access to more common ports.
-        </h4>
-        <div className="television">
-          <table>
-            <tr>
-              <th>Input</th>
-              <th>Example Devices</th>
-            </tr>
-            <tr>
-              <td>
-                USB Type-A<br></br>
-                <img
-                  src="images/ports/usb-type-a.png"
-                  alt="USB Type-A"
-                  width="100"
-                  height="50"
-                />
-              </td>
-              <td>
-                Keyboard,<br></br>Mouse
-              </td>
-            </tr>
-            <tr>
-              <td>
-                USB Type-B<br></br>
-                <img
-                  src="images/ports/usb-type-b.png"
-                  alt="USB Type-b"
-                  width="100"
-                  height="75"
-                />
-              </td>
-              <td>Printer</td>
-            </tr>
-            <tr>
-              <td>
-                USB Type-C<br></br>
-                <img
-                  src="images/ports/usb-type-c.png"
-                  alt="USB Type-C"
-                  width="100"
-                  height="50"
-                />
-              </td>
-              <td>
-                Dock,<br></br>Flash drive,<br></br>Phone cable
-              </td>
-            </tr>
-            <tr>
-              <td>
-                HDMI<br></br>
-                <img
-                  src="images/ports/hdmi.png"
-                  alt="HDMI"
-                  width="125"
-                  height="50"
-                />
-              </td>
-              <td>Monitor</td>
-            </tr>
-            <tr>
-              <td>
-                DisplayPort<br></br>
-                <img
-                  src="images/ports/dp.png"
-                  alt="HDMI"
-                  width="125"
-                  height="50"
-                />
-              </td>
-              <td>Monitor</td>
-            </tr>
-            <tr>
-              <td>
-                DVI<br></br>
-                <img
-                  src="images/ports/dvi.png"
-                  alt="HDMI"
-                  width="200"
-                  height="75"
-                />
-              </td>
-              <td>Monitor</td>
-            </tr>
-            <tr>
-              <td>
-                VGA<br></br>
-                <img
-                  src="images/ports/vga.png"
-                  alt="HDMI"
-                  width="200"
-                  height="75"
-                />
-              </td>
-              <td>Monitor</td>
-            </tr>
-            <tr>
-              <td>
-                Ethernet / RJ45<br></br>
-                <img
-                  src="images/ports/ethernet.png"
-                  alt="Ethernet"
-                  width="100"
-                  height="50"
-                />
-              </td>
-              <td>Router</td>
-            </tr>
-          </table>
-        </div>
-        <h5>
-          NOTE: Colors of ports may vary slightly based on port version. Size
-          roughly to scale.
-        </h5>
-      </Collapsible>
-      <Collapsible
-        trigger={<button className="collapsible-trigger">Local Backup</button>}
-      >
-        <h4>
-          It is highly advised to keep a backup of your files locally.
-          Regardless of the platform, there are 2 main methods of backing up:
-          full system backups and manual backups. For quick read/write speeds
-          and durability, it is recommended to use an SSD as an external drive
-          but HDDs are the more cost efficient option for mass storage.
-        </h4>
-        <ul className="tech">
-          <li>
-            <b>Use a utility program to keep full system backups.</b> macOS has
-            a built-in utility called Time Machine that allows you to use an
-            entire external drive as a Time Machine Backup and can periodically
-            perform a backup automatically for you based on configuration. For
-            Windows users, there's a{" "}
-            <a
-              href="https://www.pcworld.com/article/407021/best-windows-backup-software.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              number of options
-            </a>{" "}
-            available, most of them paid. The top free one is{" "}
-            <a
-              href="https://www.fbackup.com/fbackup.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              fbackup
-            </a>
-            .
-          </li>
-          <li>
-            <b>
-              Drag and drop files onto an external drive for manual backups.
-            </b>{" "}
-            Ensure that the drive is properly formatted for your OS using the
-            above tip and connect it your computer via USB. Once detected, you
-            can essentially treat the drive just like you would the built-in
-            drive as it should show up similarly under drives connected. Try to
-            stay organized and create concise and succinct folder names to hold
-            any important files you'd like to keep as a backup. Copy (not cut)
-            files from your computer's drive and paste them onto the external
-            drive. Alternatively, you can drag and drop files easily if you have
-            2 file explorer windows open.
-          </li>
-        </ul>
-      </Collapsible>
-
+      <h2>Hardware</h2>
       <Collapsible
         trigger={<button className="collapsible-trigger">Printers</button>}
       >
@@ -615,6 +420,201 @@ export default function Computer() {
           back of the printer or printed on the front. Navigate to your brand's
           website above and input the model number/name.
         </h5>
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Common Inputs</button>}
+      >
+        <h4>
+          A myriad of devices can be connected to a computer although modern
+          laptops usually need the aid of a USB Type-C dock or adapter to
+          provide access to more common ports.
+        </h4>
+        <div className="television">
+          <table>
+            <tr>
+              <th>Input</th>
+              <th>Example Devices</th>
+            </tr>
+            <tr>
+              <td>
+                USB Type-A<br></br>
+                <img
+                  src="images/ports/usb-type-a.png"
+                  alt="USB Type-A"
+                  width="100"
+                  height="50"
+                />
+              </td>
+              <td>
+                Keyboard,<br></br>Mouse
+              </td>
+            </tr>
+            <tr>
+              <td>
+                USB Type-B<br></br>
+                <img
+                  src="images/ports/usb-type-b.png"
+                  alt="USB Type-b"
+                  width="100"
+                  height="75"
+                />
+              </td>
+              <td>Printer</td>
+            </tr>
+            <tr>
+              <td>
+                USB Type-C<br></br>
+                <img
+                  src="images/ports/usb-type-c.png"
+                  alt="USB Type-C"
+                  width="100"
+                  height="50"
+                />
+              </td>
+              <td>
+                Dock,<br></br>Flash drive,<br></br>Phone cable
+              </td>
+            </tr>
+            <tr>
+              <td>
+                HDMI<br></br>
+                <img
+                  src="images/ports/hdmi.png"
+                  alt="HDMI"
+                  width="125"
+                  height="50"
+                />
+              </td>
+              <td>Monitor</td>
+            </tr>
+            <tr>
+              <td>
+                DisplayPort<br></br>
+                <img
+                  src="images/ports/dp.png"
+                  alt="HDMI"
+                  width="125"
+                  height="50"
+                />
+              </td>
+              <td>Monitor</td>
+            </tr>
+            <tr>
+              <td>
+                DVI<br></br>
+                <img
+                  src="images/ports/dvi.png"
+                  alt="HDMI"
+                  width="200"
+                  height="75"
+                />
+              </td>
+              <td>Monitor</td>
+            </tr>
+            <tr>
+              <td>
+                VGA<br></br>
+                <img
+                  src="images/ports/vga.png"
+                  alt="HDMI"
+                  width="200"
+                  height="75"
+                />
+              </td>
+              <td>Monitor</td>
+            </tr>
+            <tr>
+              <td>
+                Ethernet / RJ45<br></br>
+                <img
+                  src="images/ports/ethernet.png"
+                  alt="Ethernet"
+                  width="100"
+                  height="50"
+                />
+              </td>
+              <td>Router</td>
+            </tr>
+          </table>
+        </div>
+        <h5>
+          NOTE: Colors of ports may vary slightly based on port version. Size
+          roughly to scale.
+        </h5>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Drive Formatting</button>
+        }
+      >
+        <ol>
+          <li>Connect the drive via USB to your laptop/desktop computer</li>
+          <li>
+            In macOS, open <b>Disk Utility</b> or Windows, open{" "}
+            <b>Windows Explorer</b>
+          </li>
+          <li>Find the drive in the side panel on the left and select it</li>
+          <li>Click the Format option and specify a format type</li>
+          <li>
+            NTFS (Windows), APFS (macOS), FAT32(4GB file size limit)/exFAT
+            (cross platform)
+          </li>
+        </ol>
+        <h5>
+          NOTE: Use caution when formatting as ALL drive contents will be
+          erased!
+        </h5>
+      </Collapsible>
+
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Local Backup</button>}
+      >
+        <h4>
+          It is highly advised to keep a backup of your files locally.
+          Regardless of the platform, there are 2 main methods of backing up:
+          full system backups and manual backups. For quick read/write speeds
+          and durability, it is recommended to use an SSD as an external drive
+          but HDDs are the more cost efficient option for mass storage.
+        </h4>
+        <ul className="tech">
+          <li>
+            <b>Use a utility program to keep full system backups.</b> macOS has
+            a built-in utility called Time Machine that allows you to use an
+            entire external drive as a Time Machine Backup and can periodically
+            perform a backup automatically for you based on configuration. For
+            Windows users, there's a{" "}
+            <a
+              href="https://www.pcworld.com/article/407021/best-windows-backup-software.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              number of options
+            </a>{" "}
+            available, most of them paid. The top free one is{" "}
+            <a
+              href="https://www.fbackup.com/fbackup.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              fbackup
+            </a>
+            .
+          </li>
+          <li>
+            <b>
+              Drag and drop files onto an external drive for manual backups.
+            </b>{" "}
+            Ensure that the drive is properly formatted for your OS using the
+            above tip and connect it your computer via USB. Once detected, you
+            can essentially treat the drive just like you would the built-in
+            drive as it should show up similarly under drives connected. Try to
+            stay organized and create concise and succinct folder names to hold
+            any important files you'd like to keep as a backup. Copy (not cut)
+            files from your computer's drive and paste them onto the external
+            drive. Alternatively, you can drag and drop files easily if you have
+            2 file explorer windows open.
+          </li>
+        </ul>
       </Collapsible>
     </>
   );

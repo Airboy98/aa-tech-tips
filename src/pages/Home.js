@@ -26,15 +26,22 @@ export default function Home() {
         </h1>
       </div>
       {/* <hr></hr> */}
-      <h4>
-        Need IT help or looking for some tips? Select a category below or start
-        with the basics and tap Tech 101. Tap the buttons on each page to expand
-        and collapse the tips.<br></br>
-        <br></br>Tap the logo in the top left corner to return here and navigate
-        the site with the links in the top right corner (or{" "}
-        <img src="images/hamburger.png" height="20" width="20" /> menu on
-        smartphones).
-      </h4>
+      <h2>Dashboard</h2>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Click or Tap Here</button>
+        }
+      >
+        <h4>
+          Need IT help or looking for some tips? Select a category below or
+          start with the basics and tap Tech 101. Tap the buttons on each page
+          to expand and collapse the tips.<br></br>
+          <br></br>Tap the logo in the top left corner to return here and
+          navigate the site with the links in the top right corner (or{" "}
+          <img src="images/hamburger.png" height="20" width="20" /> menu on
+          smartphones).
+        </h4>
+      </Collapsible>
       <div className="links">
         <CustomLink to="/tech101">
           <button>Tech 101</button>

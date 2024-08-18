@@ -8,9 +8,9 @@ export default function About() {
       <div className="section-header">
         <h1>About</h1>
       </div>
-
+      <h2>This Website</h2>
       <Collapsible
-        trigger={<button className="collapsible-trigger">This Website</button>}
+        trigger={<button className="collapsible-trigger">Purpose</button>}
       >
         {/* <br></br>
         <br></br> */}
@@ -22,8 +22,9 @@ export default function About() {
         email address below.
         <br></br>
       </Collapsible>
+      <h2>Me</h2>
       <Collapsible
-        trigger={<button className="collapsible-trigger">About Me</button>}
+        trigger={<button className="collapsible-trigger">Background</button>}
       >
         {/* <h2>About Me</h2> */}
         This site is, first and foremost, an opportunity the Lord has given me

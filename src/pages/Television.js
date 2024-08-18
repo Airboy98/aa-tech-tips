@@ -7,6 +7,89 @@ export default function Television() {
       <div className="section-header">
         <h1>Television Tips</h1>
       </div>
+      <h2>Software</h2>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Cast from Phone to TV</button>
+        }
+      >
+        <ol>
+          <li>Open the desired phone app you wish to cast to TV</li>
+          <li>Start playing a video/movie</li>
+          <li>
+            Tap the fullscreen icon{" "}
+            <img
+              src="images/menu/fullscreen.png"
+              height="15"
+              width="15"
+              alt="fullscreen icon"
+            />
+          </li>
+          <li>
+            Tap the cast to TV icon{" "}
+            <img
+              src="images/menu/cast.png"
+              height="15"
+              width="15"
+              alt="cast icon"
+            />{" "}
+            or Airplay icons{" "}
+            <img
+              src="images/menu/airplay.png"
+              height="15"
+              width="30"
+              alt="airplay icon"
+            />
+          </li>
+        </ol>
+        <h5>
+          NOTE: Not all smart TVs have Airplay/cast from phone functionality.
+        </h5>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Install Smart TV App</button>
+        }
+      >
+        <ol>
+          <li>
+            On your TV's dashboard/home screen, navigate to APPS or APP STORE
+          </li>
+          <li>Locate the option that says DOWNLOAD or SEARCH</li>
+          <li>
+            Using the onscreen keyboard that should pop up, type in the app and
+            search
+          </li>
+          <li>Select the app and hit INSTALL or DOWNLOAD</li>
+        </ol>
+        <h5>
+          NOTE: Steps and procedures vary greatly depending on TV make/model.
+        </h5>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Delete Smart TV App</button>
+        }
+      >
+        <ol>
+          <li>
+            On your TV's dashboard/home screen, navigate to the app you'd like
+            to delete
+          </li>
+          <li>
+            Use the remote's option button (some makes/models require pressing
+            and holding the select button) on the app
+          </li>
+          <li>
+            In the context menu that pops up, select the option DELETE or
+            UNINSTALL or REMOVE
+          </li>
+        </ol>
+        <h5>
+          NOTE: Steps and procedures vary greatly depending on TV make/model.
+        </h5>
+      </Collapsible>
+      <h2>Hardware</h2>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">TV Manufacturers</button>
@@ -170,157 +253,6 @@ export default function Television() {
           NOTE: TV model number/names are usually found on a sticker on the back
           of the TV. Navigate to your brand's website above and input the model
           number/name.
-        </h5>
-      </Collapsible>
-      <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Streaming Devices</button>
-        }
-      >
-        <div className="television">
-          <table>
-            <tr>
-              <td>
-                <a
-                  href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GHH5TUHA7677G4HJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/devices/amazon-fire-tv-stick.png"
-                    alt="Amazon Fire TV Stick"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://support.roku.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/devices/roku.png"
-                    alt="Roku"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="https://support.google.com/chromecast/chromecast/?hl=en&sjid=890919833032057258-NC#topic=3058948"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/devices/chromecast1.png"
-                    alt="Chromecast"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://support.apple.com/apple-tv"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/devices/appletv.png"
-                    alt="Apple TV"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </Collapsible>
-      <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Cast from Phone to TV</button>
-        }
-      >
-        <ol>
-          <li>Open the desired phone app you wish to cast to TV</li>
-          <li>Start playing a video/movie</li>
-          <li>
-            Tap the fullscreen icon{" "}
-            <img
-              src="images/menu/fullscreen.png"
-              height="15"
-              width="15"
-              alt="fullscreen icon"
-            />
-          </li>
-          <li>
-            Tap the cast to TV icon{" "}
-            <img
-              src="images/menu/cast.png"
-              height="15"
-              width="15"
-              alt="cast icon"
-            />{" "}
-            or Airplay icons{" "}
-            <img
-              src="images/menu/airplay.png"
-              height="15"
-              width="30"
-              alt="airplay icon"
-            />
-          </li>
-        </ol>
-        <h5>
-          NOTE: Not all smart TVs have Airplay/cast from phone functionality.
-        </h5>
-      </Collapsible>
-      <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Install Smart TV App</button>
-        }
-      >
-        <ol>
-          <li>
-            On your TV's dashboard/home screen, navigate to APPS or APP STORE
-          </li>
-          <li>Locate the option that says DOWNLOAD or SEARCH</li>
-          <li>
-            Using the onscreen keyboard that should pop up, type in the app and
-            search
-          </li>
-          <li>Select the app and hit INSTALL or DOWNLOAD</li>
-        </ol>
-        <h5>
-          NOTE: Steps and procedures vary greatly depending on TV make/model.
-        </h5>
-      </Collapsible>
-      <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Delete Smart TV App</button>
-        }
-      >
-        <ol>
-          <li>
-            On your TV's dashboard/home screen, navigate to the app you'd like
-            to delete
-          </li>
-          <li>
-            Use the remote's option button (some makes/models require pressing
-            and holding the select button) on the app
-          </li>
-          <li>
-            In the context menu that pops up, select the option DELETE or
-            UNINSTALL or REMOVE
-          </li>
-        </ol>
-        <h5>
-          NOTE: Steps and procedures vary greatly depending on TV make/model.
         </h5>
       </Collapsible>
       <Collapsible
