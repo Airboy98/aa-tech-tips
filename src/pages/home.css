@@ -27,6 +27,11 @@
   border: 2px solid white;
 }
 
+.links button:hover {
+  background-color: #19578d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .links h2 {
   padding: 2px;
   margin: 0px;
