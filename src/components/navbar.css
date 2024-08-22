@@ -159,7 +159,7 @@ header {
 .sidebar {
   transition: translate var(--animation-timing);
   translate: 100%;
-  /* padding: 0px 35% 0px 0px; */
+  /* padding: 0px 50%; */
   padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
   background-color: var(--background);
   color: var(--foreground);
