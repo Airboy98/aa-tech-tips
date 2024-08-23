@@ -9,7 +9,7 @@
 
 body {
   margin: 0rem 0rem 1rem 0rem;
-  font-family: "Moderustic", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   background-color: #3c709f;
   /* #3c709f */
   color: white;
@@ -60,7 +60,7 @@ a {
   font-size: 18px;
   border-radius: 50px;
   background-color: #0f3455;
-  font-family: "Moderustic", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: bold;
