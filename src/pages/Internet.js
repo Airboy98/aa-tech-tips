@@ -281,7 +281,145 @@ export default function Internet() {
           for taking a left-wing bias and censoring search results.
         </h5>
       </Collapsible>
-      <h2>IoT (Internet of Things) coming soon!</h2>
+      <h2>IoT (Internet of Things)</h2>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Smart Speakers</button>
+        }
+      >
+        <div className="television">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://www.samsung.com/us/support/contact/?model=N0002200"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/iot/echo.png"
+                    alt="Samsung"
+                    width="100"
+                    height="25"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.apple.com/homepod/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/iot/homepod.png"
+                    alt="LG"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.sonos.com/en-us/shop/smart-speakers"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/iot/sonos.png"
+                    alt="Sony"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://store.google.com/us/category/nest_speakers?hl=en-US"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/iot/nest.png"
+                    alt="Toshiba"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Smart Home</button>}
+      >
+        <div className="television">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://store.google.com/us/category/connected_home?hl=en-US"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/iot/nest.png"
+                    alt="Nest"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ring.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/iot/ring.svg"
+                    alt="Ring"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.philips-hue.com/en-us"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/iot/hue.png"
+                    alt="Philips Hue"
+                    width="75"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.lg.com/us/lg-thinq"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/iot/thinq.png"
+                    alt="LG Thinq"
+                    width="100"
+                    height="15"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </Collapsible>
     </>
   );
 }
