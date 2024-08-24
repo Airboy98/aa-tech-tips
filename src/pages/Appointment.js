@@ -15,7 +15,7 @@ export default function Appointment() {
       <div className="section-header">
         <h1>Appointment</h1>
       </div>
-      <h2>Appointment Details</h2>
+      <h2>Details</h2>
       <Collapsible
         trigger={<button className="collapsible-trigger">In-Person</button>}
       >
