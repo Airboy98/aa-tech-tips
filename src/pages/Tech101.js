@@ -150,10 +150,11 @@ export default function Tech101() {
           </button>
         }
       >
-        <h4>
-          It can feel overwhelming when you need to purchase a new computer or
-          replacement TV. Keep in mind these tips during the buying process.
-        </h4>
+        <ul>
+          It can feel <b>overwhelming</b> when you need to purchase a{" "}
+          <b>new computer</b> or <b>replacement TV</b>. Keep in mind these tips
+          during the buying process.
+        </ul>
         <div className="television">
           <table>
             <tbody>
@@ -286,10 +287,11 @@ export default function Tech101() {
           <button className="collapsible-trigger">Browsing the Web</button>
         }
       >
-        <h4>
-          Browsing the internet today is riskier than ever before. Use the below
-          tactics to stay safe and keep your data secure!
-        </h4>
+        <ul>
+          Browsing the internet today is <b>riskier</b> than ever before. Use
+          the below tactics to <b>stay safe</b> and keep your <b>data secure</b>
+          !
+        </ul>
         <div className="tech">
           <ul>
             <li>
@@ -315,8 +317,9 @@ export default function Tech101() {
               >
                 Brave
               </a>{" "}
-              that includes a build-in ad blocker. Check the Internet page for
-              more info and tips.
+              that includes a built-in ad blocker. Check the{" "}
+              <a href="https://www.aatechtips.com/internet">Internet page</a>{" "}
+              for more info and tips.
             </li>
             <li>
               <b>Take advantage of bookmarks!</b> Create bookmarks for commonly
@@ -336,13 +339,13 @@ export default function Tech101() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Battery Tips</button>}
       >
-        <h4>
+        <ul>
           Generally speaking, most modern devices these days have built-in
-          rechargable Lithium-ion batteries. This battery technology allows for
-          longer charge times, extended life span and quicker recharge times.
-          Make sure to keep in mind the following to ensure peak performance and
-          longevity!
-        </h4>
+          rechargable <b>Lithium-ion batteries</b>. This battery technology
+          allows for longer charge times, extended life span and quicker
+          recharge times. Make sure to keep in mind the following to ensure{" "}
+          <b>peak performance</b> and <b>longevity</b>!
+        </ul>
         <div className="tech">
           <ul>
             <li>
@@ -463,11 +466,11 @@ export default function Tech101() {
           <button className="collapsible-trigger">Password Management</button>
         }
       >
-        <h4>
-          Almost every website these days requires an account and some
-          complicated string for a password. Keep in mind the following to
-          safely store these passwords!
-        </h4>
+        <ul>
+          Almost every website these days requires an <b>account</b> and some
+          complicated <b>string</b> for a <b>password</b>. Keep in mind the
+          following to keep them secure!
+        </ul>
         <div className="tech">
           <ul>
             <li>
@@ -572,13 +575,13 @@ export default function Tech101() {
           </button>
         }
       >
-        <h4>
+        <ul>
           Getting tech assistance may be the most ideal in person but a close
           second is using Zoom to have a trusted technician remotely view and/or
           control your computer, whether you're using a Windows machine or a
           Mac. You will have the ability to control your computer the entire
           time.
-        </h4>
+        </ul>
         <ol>
           <li>Click the Zoom meeting link the technician provides</li>
           <li>
@@ -593,10 +596,10 @@ export default function Tech101() {
           <button className="collapsible-trigger">Digital Photo Frame</button>
         }
       >
-        <h4>
+        <ul>
           Sharing family photos is easier and more popular now than ever before
           since we all have a great camera available at all times in our pocket!
-        </h4>
+        </ul>
         <div className="tech">
           <ul>
             <li>
@@ -723,7 +726,12 @@ export default function Tech101() {
           </button>
         }
       >
-        <h3>Chat Bots</h3>
+        <h3>Generative Chatbots</h3>
+        <ul>
+          The below AI tools are interacted with via <b>prompts</b>:
+          specifically worded queries to generate text or image responses and
+          can be iteratively refined.
+        </ul>
         <div className="television">
           <table>
             <tbody>
@@ -790,18 +798,63 @@ export default function Tech101() {
             </tbody>
           </table>
         </div>
+        <h3>Examples</h3>
+        <div className="tech">
+          <table>
+            <th>AI</th>
+            <th>Prompt</th>
+            <th>Final Output</th>
+            <tr>
+              <td>Copilot</td>
+              <td>Generate a picture of the grand canyon full of plant life</td>
+              <td>
+                <img
+                  src="images/ai/prompt1.png"
+                  alt="prompt1"
+                  width="150"
+                  height="150"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>ChatGPT</td>
+              <td>Generate an image of a field of puppies</td>
+              <td>
+                <img
+                  src="images/ai/prompt2.png"
+                  alt="prompt2"
+                  width="150"
+                  height="150"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>ChatGPT</td>
+              <td>
+                1. Tell me about the Gospels of the Bible<br></br>
+                <br></br>2. Shorten that to summarize in 2 sentences
+              </td>
+              <td>
+                <img
+                  src="images/ai/prompt3.png"
+                  alt="prompt3"
+                  width="150"
+                  height="100"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
       </Collapsible>
 
       <Collapsible
         trigger={<button className="collapsible-trigger">Cloud Storage</button>}
       >
-        <h4>
-          While most of the major brands have a Cloud service, none of them are
-          locked to their own platform so you are free to use iCloud on Windows
-          or Google Drive on iPhone. By default, each service provides storage
-          to users with the free base tier: 5GB for iCloud, 5GB for OneDrive,
-          15GB Google Drive, and 10GB for iDrive.
-        </h4>
+        <ul>
+          While most of the major brands have a <b>cloud service</b>, none of
+          them are locked to their own platform so you are free to use{" "}
+          <b>iCloud</b> on Windows or <b>Google Drive</b> on iPhone.
+        </ul>
         <div className="tech">
           <table>
             <thead>
@@ -810,6 +863,7 @@ export default function Tech101() {
                 <th>Platform</th>
                 <th>Desktop Client</th>
                 <th>Mobile App</th>
+                <th>Free Tier</th>
               </tr>
             </thead>
             <tbody>
@@ -830,9 +884,9 @@ export default function Tech101() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Windows
+                    Windows<br></br>
                   </a>
-                  <span> | macOS</span>
+                  macOS
                 </td>
                 <td>
                   <a
@@ -842,7 +896,7 @@ export default function Tech101() {
                   >
                     iPhone
                   </a>
-                  <span> | </span>
+                  <br></br>
                   <a
                     href="https://play.google.com/store/apps/details?id=mt.io.syncforicloud&hl=en_US&gl=US"
                     target="_blank"
@@ -851,6 +905,7 @@ export default function Tech101() {
                     Android
                   </a>
                 </td>
+                <td>5GB</td>
               </tr>
               <tr>
                 <td>
@@ -871,7 +926,7 @@ export default function Tech101() {
                   >
                     Windows
                   </a>
-                  <span> | </span>
+                  <br></br>
                   <a
                     href="https://apps.apple.com/us/app/onedrive/id823766827?mt=12"
                     target="_blank"
@@ -884,11 +939,12 @@ export default function Tech101() {
                   <a href="https://apps.apple.com/us/app/microsoft-onedrive/id477537958">
                     iPhone
                   </a>
-                  <span> | </span>
+                  <br></br>
                   <a href="https://play.google.com/store/apps/details?id=com.microsoft.skydrive&hl=en_US&gl=US">
                     Android
                   </a>
                 </td>
+                <td>5GB</td>
               </tr>
               <tr>
                 <td>
@@ -909,7 +965,7 @@ export default function Tech101() {
                   >
                     Windows
                   </a>
-                  <span> | </span>
+                  <br></br>
                   <a
                     href="https://www.google.com/drive/download/"
                     target="_blank"
@@ -926,11 +982,12 @@ export default function Tech101() {
                   >
                     iPhone
                   </a>
-                  <span> | </span>
+                  <br></br>
                   <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs&hl=en_US&gl=US">
                     Android
                   </a>
                 </td>
+                <td>15GB</td>
               </tr>
               <tr>
                 <td>
@@ -951,7 +1008,7 @@ export default function Tech101() {
                   >
                     Windows
                   </a>
-                  <span> | </span>
+                  <br></br>
                   <a
                     href="https://www.idrive.com/online-backup-download"
                     target="_blank"
@@ -968,7 +1025,7 @@ export default function Tech101() {
                   >
                     iPhone
                   </a>
-                  <span> | </span>
+                  <br></br>
                   <a
                     href="https://play.google.com/store/apps/details?id=com.prosoftnet.android.idriveonline&hl=en_US&gl=US"
                     target="_blank"
@@ -977,6 +1034,7 @@ export default function Tech101() {
                     Android
                   </a>
                 </td>
+                <td>10GB</td>
               </tr>
             </tbody>
           </table>

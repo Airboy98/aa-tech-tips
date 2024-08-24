@@ -260,10 +260,11 @@ export default function Television() {
           <button className="collapsible-trigger">Display Inputs</button>
         }
       >
-        <h4>
-          Most modern TVs have reduced the type of ports available to the top 4
-          below and may have HDMI ports on the back and side.
-        </h4>
+        <ul>
+          Most modern TVs have reduced the type of <b>ports available</b> to the
+          top 4 below and may have <b>HDMI</b> and <b>USB</b> ports on the back
+          and side.
+        </ul>
         <div className="television">
           <table>
             <tr>

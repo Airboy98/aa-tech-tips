@@ -292,7 +292,7 @@ export default function Internet() {
             <tr>
               <td>
                 <a
-                  href="https://www.samsung.com/us/support/contact/?model=N0002200"
+                  href="https://www.amazon.com/smart-home-devices/b?ie=UTF8&node=9818047011"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

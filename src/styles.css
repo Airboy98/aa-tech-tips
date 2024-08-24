@@ -43,13 +43,17 @@ p {
   margin: 0px;
 }
 
+ul {
+  padding: 0px 50px 0px 50px;
+}
+
 table {
   background-color: white;
   color: black;
 }
 
 a {
-  color: white;
+  color: rgb(209, 209, 70);
   font-weight: bold;
   font-style: normal;
 }
@@ -91,4 +95,9 @@ h2 {
   color: black; /* Text color */
   padding: 8px 16px; /* Space around the text */
   margin-bottom: 16px; /* Space below each heading */
+}
+
+h4 {
+  padding: 0px 50px 0px 50px;
+  /* text-align: left; */
 }
