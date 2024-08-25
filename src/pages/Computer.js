@@ -7,20 +7,20 @@ export default function Computer() {
       <div className="section-header">
         <h1>
           {/* <img
-          src="images/devices/laptop.png"
-          alt="Amazon"
-          width="70"
-          height="60"
-          style={{ marginRight: "25px" }} 
-        />*/}
-          Computer Tips
+            src="images/devices/laptop.png"
+            alt="Amazon"
+            width="70"
+            height="60"
+            style={{ marginRight: "25px" }}
+          /> */}
+          Computer
           {/* <img
-          src="images/devices/keyboard.png"
-          alt="Amazon"
-          width="90"
-          height="40"
-          style={{ marginLeft: "25px" }}
-        /> */}
+            src="images/devices/keyboard.png"
+            alt="Amazon"
+            width="90"
+            height="40"
+            style={{ marginLeft: "25px" }}
+          /> */}
         </h1>
       </div>
       <h2>Software</h2>

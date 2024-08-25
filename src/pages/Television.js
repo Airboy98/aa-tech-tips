@@ -5,7 +5,7 @@ export default function Television() {
   return (
     <>
       <div className="section-header">
-        <h1>Television Tips</h1>
+        <h1>Television</h1>
       </div>
       <h2>Software</h2>
       <Collapsible

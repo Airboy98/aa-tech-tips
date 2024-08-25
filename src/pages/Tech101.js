@@ -67,41 +67,9 @@ export default function Tech101() {
                 <td>iOS 16, iOS 17</td>
               </tr>
               <tr>
-                <td>ISP (Internet Service Provider)</td>
-                <td>
-                  A company that provides internet connection over copper or
-                  fiber
-                </td>
-                <td>AT&T, Spectrum</td>
-              </tr>
-              <tr>
-                <td>LAN (Local Area Network)</td>
-                <td>A local network of interconnected devices</td>
-                <td>Internet connected devices at home</td>
-              </tr>
-              <tr>
                 <td>macOS</td>
                 <td>Apple's proprietary operating system on Macs</td>
                 <td>macOS 14 Sonoma</td>
-              </tr>
-              <tr>
-                <td>Modem</td>
-                <td>
-                  A device connected to an ISP that enables internet access
-                </td>
-                <td>ARRIS Surfboard</td>
-              </tr>
-              <tr>
-                <td>Remote (cloud connection)</td>
-                <td>
-                  Accessing something over the internet as opposed to locally
-                </td>
-                <td>TeamViewer, VNC</td>
-              </tr>
-              <tr>
-                <td>Router</td>
-                <td>A device that broadcasts internet over Wi-Fi or LAN</td>
-                <td>Cisco E1000, TP-Link AX3000</td>
               </tr>
               <tr>
                 <td>Streaming</td>
@@ -423,10 +391,28 @@ export default function Tech101() {
                 </td>
               </tr>
               <tr>
+                <td>ISP (Internet Service Provider)</td>
+                <td>
+                  A company (like AT&T) that provides internet connection over
+                  copper or fiber
+                </td>
+              </tr>
+              <tr>
+                <td>LAN (Local Area Network)</td>
+                <td>A local network of interconnected devices</td>
+              </tr>
+              <tr>
+                <td>Modem</td>
+                <td>
+                  A device connected to an ISP that enables internet access
+                </td>
+              </tr>
+
+              <tr>
                 <td>Monitor</td>
                 <td>
-                  A screen connected by a cable to a desktop or built-in to a
-                  laptop
+                  A screen connected by a video cable to a desktop or built-in
+                  to a laptop
                 </td>
               </tr>
               <tr>
@@ -451,10 +437,34 @@ export default function Tech101() {
                 </td>
               </tr>
               <tr>
+                <td>Remote (cloud connection)</td>
+                <td>
+                  Accessing something over the internet as opposed to locally
+                </td>
+              </tr>
+              <tr>
+                <td>Router</td>
+                <td>A device that broadcasts internet over Wi-Fi or LAN</td>
+              </tr>
+              <tr>
                 <td>SSD (Solid State Drive)</td>
                 <td>
                   A non-mechanical, flash-based storage device with fast access
                   speeds
+                </td>
+              </tr>
+              <tr>
+                <td>Wired Internet (Ethernet)</td>
+                <td>
+                  A wired connection using an Ethernet cable to connect to the
+                  internet
+                </td>
+              </tr>
+              <tr>
+                <td>Wi-Fi</td>
+                <td>
+                  A wireless signal broadcasted by a router to connect to the
+                  internet
                 </td>
               </tr>
             </tbody>

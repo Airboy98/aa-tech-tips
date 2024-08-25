@@ -5,7 +5,7 @@ export default function Wearable() {
   return (
     <>
       <div className="section-header">
-        <h1>Wearable Tips</h1>
+        <h1>Wearable</h1>
       </div>
 
       <h2>Apple Watch</h2>
@@ -95,7 +95,7 @@ export default function Wearable() {
       <h2>Hardware</h2>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Wearable Brands</button>
+          <button className="collapsible-trigger">Wearable Devices</button>
         }
       >
         <div className="television">

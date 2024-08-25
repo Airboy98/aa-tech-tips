@@ -5,7 +5,7 @@ export default function Smartphone() {
   return (
     <>
       <div className="section-header">
-        <h1>Smartphone Tips</h1>
+        <h1>Smartphone</h1>
       </div>
       <h2>iPhone</h2>
       <Collapsible
