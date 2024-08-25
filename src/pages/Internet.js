@@ -5,7 +5,7 @@ export default function Internet() {
   return (
     <>
       <div className="section-header">
-        <h1>Internet Tips</h1>
+        <h1>Internet</h1>
       </div>
       <h2>Browser</h2>
       <Collapsible

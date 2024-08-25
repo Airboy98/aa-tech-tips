@@ -5,7 +5,7 @@ export default function Streaming() {
   return (
     <>
       <div className="section-header">
-        <h1>Streaming Tips</h1>
+        <h1>Streaming</h1>
       </div>
       <h2>Software</h2>
       <Collapsible
