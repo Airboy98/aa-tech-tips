@@ -281,12 +281,100 @@ export default function Internet() {
           for taking a left-wing bias and censoring search results.
         </h5>
       </Collapsible>
+      <h2>Connections</h2>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Wi-Fi vs Wired</button>
+        }
+      >
+        <ul>
+          With modern devices and a standard <b>ISP</b> package, for most uses,
+          a <b>Wi-Fi</b> connection to your devices is adequate. However, if you
+          want to fully utilize your internet speed, a <b>wired</b> connection
+          to your <b>router</b> with an <b>Ethernet</b> cable is the way to go
+          with the devices that support it.
+        </ul>
+        <div className="tech">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Wi-Fi</th>
+                <th>Wired</th>
+                <th>Explanation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Convenience</td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td></td>
+                <td>Wi-Fi is wireless</td>
+              </tr>
+              <tr>
+                <td>Interference</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>Wired doesn't broadcast any RF</td>
+              </tr>
+              <tr>
+                <td>Speed</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>Wired has a direct connection to the router</td>
+              </tr>
+              <tr>
+                <td>Stability</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>Wired doesn't have fluctuations because of interference</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h5>
+          NOTE: Devices like desktops and some laptops (natively or via an{" "}
+          <a href="https://www.amazon.com/USB-Ethernet-Adapter-Gigabit-Switch/dp/B09GRL3VCN/ref=sr_1_2?sr=8-2">
+            adapter
+          </a>
+          ) support a wired connection with an Ethernet port (see the Common
+          Inputs tip <a href="https://www.aatechtips.com/computer">here</a>)
+        </h5>
+      </Collapsible>
+      {/* <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Choosing an ISP</button>
+        }
+      ></Collapsible> */}
       <h2>IoT (Internet of Things)</h2>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Smart Speakers</button>
         }
       >
+        <ul>
+          Most Big Tech companies these days have a <b>Smart Speaker</b> that
+          allows you to interact with their proprietary <b>smart assistant</b>.
+          For example, Apple has <b>Siri</b>, Amazon uses <b>Alexa</b> and
+          Google uses <b>Google Assistant</b> and they can each be summoned by
+          name.
+        </ul>
         <div className="television">
           <table>
             <tr>
@@ -355,6 +443,15 @@ export default function Internet() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Smart Home</button>}
       >
+        <ul>
+          It is easier now than ever before to create a unified experience with
+          a wide range of <b>Smart Home</b> devices all connected and interacted
+          with your smartphone. Most devices can be integrated with{" "}
+          <a href="https://support.google.com/chromecast/answer/7071794?hl=en&co=GENIE.Platform%3DAndroid">
+            Google Home
+          </a>{" "}
+          or <a href="https://www.apple.com/home-app/">Apple Home</a>.
+        </ul>
         <div className="television">
           <table>
             <tr>
