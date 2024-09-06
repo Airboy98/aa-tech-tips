@@ -433,7 +433,7 @@ export default function Internet() {
                     target="_blank"
                   >
                     <div className="search">
-                      <input type="text" name="q" placeholder="Search" />
+                      <input type="text" name="text" placeholder="Search" />
                     </div>
                     <button type="submit">
                       <span
