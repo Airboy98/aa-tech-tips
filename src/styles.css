@@ -38,13 +38,18 @@ body {
   padding-bottom: 0px;
 }
 
-p {
+footer {
   padding: 0px;
   margin: 0px;
 }
 
+p {
+  text-align: left;
+  padding: 0px 20px 0px 20px;
+}
+
 ul {
-  padding: 0px 50px 0px 50px;
+  padding: 0px 20px 20px 20px;
 }
 
 ol {

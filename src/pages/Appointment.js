@@ -21,11 +21,9 @@ export default function Appointment() {
       >
         <h3>$75/hr (cash or check)</h3>
         <h4>
-          <ul>
-            For the most extensive IT assistance, I can assist via an in-person
-            IT appointment and come over to a local DFW address of your choosing
-            to help with various IT issues such as:
-          </ul>
+          For the most extensive IT assistance, I can assist via an in-person IT
+          appointment and come over to a local DFW address of your choosing to
+          help with various IT issues such as:
         </h4>
         <ul>
           <li>
@@ -50,10 +48,8 @@ export default function Appointment() {
       >
         <h3>$50/hr (Zelle or Apple Pay)</h3>
         <h4>
-          <ul>
-            For more limited assistance, I can assist remotely via Zoom (refer
-            to Tech 101 for instructions) to help with basic IT issues such as:
-          </ul>
+          For more limited assistance, I can assist remotely via Zoom (refer to
+          Tech 101 for instructions) to help with basic IT issues such as:
         </h4>
         <ul>
           <li>
