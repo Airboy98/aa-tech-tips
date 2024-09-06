@@ -118,11 +118,10 @@ export default function Tech101() {
           </button>
         }
       >
-        <ul>
-          It can feel <b>overwhelming</b> when you need to purchase a{" "}
-          <b>new computer</b> or <b>replacement TV</b>. Keep in mind these tips
-          during the buying process.
-        </ul>
+        <h4>
+          It can feel overwhelming when you need to purchase a new computer or
+          replacement TV. Keep in mind these tips during the buying process.
+        </h4>
         <div className="television">
           <table>
             <tbody>
@@ -255,11 +254,10 @@ export default function Tech101() {
           <button className="collapsible-trigger">Browsing the Web</button>
         }
       >
-        <ul>
-          Browsing the internet today is <b>riskier</b> than ever before. Use
-          the below tactics to <b>stay safe</b> and keep your <b>data secure</b>
-          !
-        </ul>
+        <h4>
+          Browsing the internet today is riskier than ever before. Use the below
+          tactics to stay safe and keep your data secure !
+        </h4>
         <div className="tech">
           <ul>
             <li>
@@ -307,13 +305,13 @@ export default function Tech101() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Battery Tips</button>}
       >
-        <ul>
+        <h4>
           Generally speaking, most modern devices these days have built-in
-          rechargable <b>Lithium-ion batteries</b>. This battery technology
-          allows for longer charge times, extended life span and quicker
-          recharge times. Make sure to keep in mind the following to ensure{" "}
-          <b>peak performance</b> and <b>longevity</b>!
-        </ul>
+          rechargable Lithium-ion batteries. This battery technology allows for
+          longer charge times, extended life span and quicker recharge times.
+          Make sure to keep in mind the following to ensure peak performance and
+          longevity!
+        </h4>
         <div className="tech">
           <ul>
             <li>
@@ -476,11 +474,11 @@ export default function Tech101() {
           <button className="collapsible-trigger">Password Management</button>
         }
       >
-        <ul>
-          Almost every website these days requires an <b>account</b> and some
-          complicated <b>string</b> for a <b>password</b>. Keep in mind the
-          following to keep them secure!
-        </ul>
+        <h4>
+          Almost every website these days requires an account and some
+          complicated string for a password. Keep in mind the following to keep
+          them secure!
+        </h4>
         <div className="tech">
           <ul>
             <li>
@@ -575,6 +573,15 @@ export default function Tech101() {
               but just remember to keep them in sync and update them
               simultaneously when an account needs a password change!
             </li>
+            <li>
+              <b>Make use of MFA!</b> In addition to just a password, some
+              websites require MFA which stands for multi-factor authentication.
+              Even though it can be a bit tedious to setup, it is highly
+              recommended to add an extra layer of security. MFA can be done a
+              few ways, one being a OTP (one-time password) texted to your phone
+              and another way uses an authenticator app paired with your account
+              to generate a temporary code that lasts a few seconds.
+            </li>
           </ul>
         </div>
       </Collapsible>
@@ -585,13 +592,13 @@ export default function Tech101() {
           </button>
         }
       >
-        <ul>
+        <h4>
           Getting tech assistance may be the most ideal in person but a close
           second is using Zoom to have a trusted technician remotely view and/or
           control your computer, whether you're using a Windows machine or a
           Mac. You will have the ability to control your computer the entire
           time.
-        </ul>
+        </h4>
         <ol>
           <li>Click the Zoom meeting link the technician provides</li>
           <li>
@@ -606,10 +613,10 @@ export default function Tech101() {
           <button className="collapsible-trigger">Digital Photo Frame</button>
         }
       >
-        <ul>
+        <h4>
           Sharing family photos is easier and more popular now than ever before
           since we all have a great camera available at all times in our pocket!
-        </ul>
+        </h4>
         <div className="tech">
           <ul>
             <li>
@@ -737,11 +744,11 @@ export default function Tech101() {
         }
       >
         <h3>Generative Chatbots</h3>
-        <ul>
-          The below AI tools are interacted with via <b>prompts</b>:
-          specifically worded queries to generate text or image responses and
-          can be iteratively refined.
-        </ul>
+        <h4>
+          The below AI tools are interacted with via prompts: specifically
+          worded queries to generate text or image responses and can be
+          iteratively refined.
+        </h4>
         <div className="television">
           <table>
             <tbody>
@@ -860,17 +867,17 @@ export default function Tech101() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Cloud Storage</button>}
       >
-        <ul>
+        <h4>
           While most of the major brands have a <b>cloud service</b>, none of
           them are locked to their own platform so you are free to use{" "}
           <b>iCloud</b> on Windows or <b>Google Drive</b> on iPhone.
-        </ul>
+        </h4>
         <div className="tech">
           <table>
             <thead>
               <tr>
                 <th>Cloud Service</th>
-                <th>Platform</th>
+                <th>Brand</th>
                 <th>Desktop Client</th>
                 <th>Mobile App</th>
                 <th>Free Tier</th>
@@ -1045,6 +1052,53 @@ export default function Tech101() {
                   </a>
                 </td>
                 <td>10GB</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.idrive.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Dropbox
+                  </a>
+                </td>
+                <td>Agnostic</td>
+                <td>
+                  <a
+                    href="https://www.dropbox.com/desktop"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Windows
+                  </a>
+                  <br></br>
+                  <a
+                    href="https://www.dropbox.com/desktop"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    macOS
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://apps.apple.com/us/app/dropbox-files-photo-storage/id327630330"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    iPhone
+                  </a>
+                  <br></br>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.dropbox.android&hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Android
+                  </a>
+                </td>
+                <td>2GB</td>
               </tr>
             </tbody>
           </table>

@@ -14,7 +14,7 @@ export default function About() {
       >
         {/* <br></br>
         <br></br> */}
-        <ul>
+        <p>
           This site (pronounced double-a-tech-tips) offers helpful tech tips,
           info and streamlines resolving common issues with modern tech. Along
           with the tips, helpful links to brand websites are provided.
@@ -25,13 +25,13 @@ export default function About() {
           </a>{" "}
           or send any suggestions, feedback, or additions to the site to the
           appropriate email address below.
-        </ul>
+        </p>
       </Collapsible>
       <h2>Me</h2>
       <Collapsible
         trigger={<button className="collapsible-trigger">Background</button>}
       >
-        <ul>
+        <p>
           This site is, first and foremost, an opportunity the Lord has given me
           to assist and serve others with technology. Watermark Community Church
           in Dallas, Texas is my home church and I get the opportunity to serve
@@ -41,24 +41,23 @@ export default function About() {
           that experience to create and maintain this website to help out those
           who may be less technologically inclined as well as provide some
           useful info for more technical users.
-        </ul>
+        </p>
         <img src="images/selfie.png" height="220" width="200" />
       </Collapsible>
 
       <br></br>
       <footer>
-        <p>Developed and Designed by Aaron Turner</p>
-        <p>AA Tech Tips Est. 2024</p>
-        <p>
-          <b>
-            <a href="mailto:appointment@aatechtips.com">
-              appointment@aatechtips.com
-            </a>
-            <br></br>
-            <a href="mailto:feedback@aatechtips.com">feedback@aatechtips.com</a>
-          </b>
-        </p>
-        <p>Copyright © 2024 - All Rights Reserved</p>
+        Developed and Designed by Aaron Turner
+        <br></br>
+        AA Tech Tips Est. 2024
+        <br></br>
+        <a href="mailto:appointment@aatechtips.com">
+          appointment@aatechtips.com
+        </a>
+        <br></br>
+        <a href="mailto:feedback@aatechtips.com">feedback@aatechtips.com</a>
+        <br></br>
+        Copyright © 2024 - All Rights Reserved
         <br></br>
       </footer>
     </>

@@ -13,7 +13,7 @@ export default function Internet() {
           <button className="collapsible-trigger">Common Browsers</button>
         }
       >
-        <div className="internet">
+        <div className="tech">
           <table>
             <tr>
               <th>Browser Name</th>
@@ -34,10 +34,12 @@ export default function Internet() {
               <td>
                 <img src="images/logos/safari.png" height="20" width="20"></img>
               </td>
-              <td>
-                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
+              <td style={{ textAlign: "left" }}>
+                <img src="images/logos/apple.png" height="20" width="20"></img>{" "}
               </td>
-              <td bgcolor="green"></td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
             </tr>
             <tr>
               <td>
@@ -52,8 +54,8 @@ export default function Internet() {
               <td>
                 <img src="images/logos/chrome.png" height="20" width="20"></img>
               </td>
-              <td>
-                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
+              <td style={{ textAlign: "left" }}>
+                <img src="images/logos/apple.png" height="20" width="20"></img>{" "}
                 <img
                   src="images/logos/windows.png"
                   height="20"
@@ -61,7 +63,9 @@ export default function Internet() {
                 ></img>{" "}
                 <img src="images/logos/chrome.png" height="20" width="20"></img>
               </td>
-              <td bgcolor="green"></td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
             </tr>
             <tr>
               <td>
@@ -80,8 +84,8 @@ export default function Internet() {
                   width="20"
                 ></img>
               </td>
-              <td>
-                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
+              <td style={{ textAlign: "left" }}>
+                <img src="images/logos/apple.png" height="20" width="20"></img>{" "}
                 <img
                   src="images/logos/windows.png"
                   height="20"
@@ -90,7 +94,9 @@ export default function Internet() {
                 <img src="images/logos/chrome.png" height="20" width="20"></img>
                 *
               </td>
-              <td bgcolor="green"></td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
             </tr>
             <tr>
               <td>
@@ -103,42 +109,19 @@ export default function Internet() {
                 </a>
               </td>
               <td>
-                <img src="images/logos/edge.jpg" height="20" width="20"></img>
+                <img src="images/logos/edge.png" height="20" width="20"></img>
               </td>
-              <td>
-                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
+              <td style={{ textAlign: "left" }}>
+                <img src="images/logos/apple.png" height="20" width="20"></img>{" "}
                 <img
                   src="images/logos/windows.png"
                   height="20"
                   width="20"
                 ></img>
               </td>
-              <td bgcolor="green"></td>
-            </tr>
-            <tr>
               <td>
-                <a
-                  href="https://www.opera.com/download"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Opera
-                </a>
+                <span className="material-symbols-outlined">check_circle</span>
               </td>
-              <td>
-                <img src="images/logos/opera.png" height="20" width="20"></img>
-              </td>
-              <td>
-                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
-                <img
-                  src="images/logos/windows.png"
-                  height="20"
-                  width="20"
-                ></img>{" "}
-                <img src="images/logos/chrome.png" height="20" width="20"></img>
-                *
-              </td>
-              <td bgcolor="green"></td>
             </tr>
             <tr>
               <td>
@@ -153,8 +136,8 @@ export default function Internet() {
               <td>
                 <img src="images/logos/brave.png" height="20" width="20"></img>
               </td>
-              <td>
-                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
+              <td style={{ textAlign: "left" }}>
+                <img src="images/logos/apple.png" height="20" width="20"></img>{" "}
                 <img
                   src="images/logos/windows.png"
                   height="20"
@@ -163,7 +146,67 @@ export default function Internet() {
                 <img src="images/logos/chrome.png" height="20" width="20"></img>
                 *
               </td>
-              <td bgcolor="green"></td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://duckduckgo.com/windows?origin=funnel_home_google__details"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  DuckDuckGo
+                </a>
+              </td>
+              <td>
+                <img
+                  src="images/logos/duckduckgo.png"
+                  height="20"
+                  width="20"
+                ></img>
+              </td>
+              <td style={{ textAlign: "left" }}>
+                <img src="images/logos/apple.png" height="20" width="20"></img>{" "}
+                <img
+                  src="images/logos/windows.png"
+                  height="20"
+                  width="20"
+                ></img>{" "}
+                <img src="images/logos/chrome.png" height="20" width="20"></img>
+                *
+              </td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.opera.com/download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Opera
+                </a>
+              </td>
+              <td>
+                <img src="images/logos/opera.png" height="20" width="20"></img>
+              </td>
+              <td style={{ textAlign: "left" }}>
+                <img src="images/logos/apple.png" height="20" width="20"></img>{" "}
+                <img
+                  src="images/logos/windows.png"
+                  height="20"
+                  width="20"
+                ></img>{" "}
+                <img src="images/logos/chrome.png" height="20" width="20"></img>
+                *
+              </td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
             </tr>
             <tr>
               <td>Explorer</td>
@@ -174,15 +217,15 @@ export default function Internet() {
                   width="20"
                 ></img>
               </td>
-              <td>
-                <img src="images/logos/apple.svg" height="20" width="20"></img>{" "}
+              <td style={{ textAlign: "left" }}>
+                <img src="images/logos/apple.png" height="20" width="20"></img>{" "}
                 <img
                   src="images/logos/windows.png"
                   height="20"
                   width="20"
                 ></img>
               </td>
-              <td bgcolor="red"></td>
+              <td></td>
             </tr>
           </table>
         </div>
@@ -226,54 +269,185 @@ export default function Internet() {
           <button className="collapsible-trigger">Search Engines</button>
         }
       >
-        <div className="links">
-          <ul>
-            <li>
-              <a
-                href="https://www.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Google
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://search.yahoo.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Yahoo
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.bing.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Bing
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://duckduckgo.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                DuckDuckGo
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://search.brave.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Brave
-              </a>
-            </li>
-          </ul>
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <img
+                    src="images/logos/google.png"
+                    alt="Google logo"
+                    width="75"
+                    height="25"
+                  />
+                </td>
+                <td>
+                  <form
+                    action="https://www.google.com/search"
+                    method="get"
+                    target="_blank"
+                  >
+                    <div className="search">
+                      <input type="text" name="q" placeholder="Search" />
+                    </div>
+                    <button type="submit">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="images/logos/yahoo.png"
+                    alt="Yahoo logo"
+                    width="75"
+                    height="25"
+                  />
+                </td>
+                <td>
+                  <form
+                    action="https://search.yahoo.com/search"
+                    method="get"
+                    target="_blank"
+                  >
+                    <div className="search">
+                      <input type="text" name="p" placeholder="Search" />
+                    </div>
+                    <button type="submit">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="images/logos/bing.png"
+                    alt="Bing logo"
+                    width="75"
+                    height="25"
+                  />
+                </td>
+                <td>
+                  <form
+                    action="https://www.bing.com/search"
+                    method="get"
+                    target="_blank"
+                  >
+                    <div className="search">
+                      <input type="text" name="q" placeholder="Search" />
+                    </div>
+                    <button type="submit">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="images/logos/duckduckgo2.png"
+                    alt="DuckDuckGo logo"
+                    width="75"
+                    height="25"
+                  />
+                </td>
+                <td>
+                  <form
+                    action="https://duckduckgo.com/html"
+                    method="get"
+                    target="_blank"
+                  >
+                    <div className="search">
+                      <input type="text" name="q" placeholder="Search" />
+                    </div>
+                    <button type="submit">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="images/logos/bravesearch.png"
+                    alt="Brave logo"
+                    width="75"
+                    height="25"
+                  />
+                </td>
+                <td>
+                  <form
+                    action="https://search.brave.com/search"
+                    method="get"
+                    target="_blank"
+                  >
+                    <div className="search">
+                      <input type="text" name="q" placeholder="Search" />
+                    </div>
+                    <button type="submit">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="images/logos/yandex.png"
+                    alt="Yandex logo"
+                    width="75"
+                    height="25"
+                  />
+                </td>
+                <td>
+                  <form
+                    action="https://yandex.com/search"
+                    method="get"
+                    target="_blank"
+                  >
+                    <div className="search">
+                      <input type="text" name="q" placeholder="Search" />
+                    </div>
+                    <button type="submit">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <h5>
@@ -287,13 +461,12 @@ export default function Internet() {
           <button className="collapsible-trigger">Wi-Fi vs Wired</button>
         }
       >
-        <ul>
-          With modern devices and a standard <b>ISP</b> package, for most uses,
-          a <b>Wi-Fi</b> connection to your devices is adequate. However, if you
-          want to fully utilize your internet speed, a <b>wired</b> connection
-          to your <b>router</b> with an <b>Ethernet</b> cable is the way to go
-          with the devices that support it.
-        </ul>
+        <h4>
+          With modern devices and a standard ISP package, for most uses, a Wi-Fi
+          connection to your devices is adequate. However, if you want to fully
+          utilize your internet speed, a wired connection to your router with an
+          Ethernet cable is the way to go with the devices that support it.
+        </h4>
         <div className="tech">
           <table>
             <thead>
@@ -357,24 +530,81 @@ export default function Internet() {
           Inputs tip <a href="https://www.aatechtips.com/computer">here</a>)
         </h5>
       </Collapsible>
-      {/* <Collapsible
+      <Collapsible
         trigger={
           <button className="collapsible-trigger">Choosing an ISP</button>
         }
-      ></Collapsible> */}
+      >
+        <h4>
+          Keep in mind the following when browsing around for an ISP (Internet
+          Service Provider).
+        </h4>
+        <div className="tech">
+          <table>
+            <thead>
+              <tr>
+                <th>Phrase</th>
+                <th>Definition</th>
+                <th>Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Download Speed</td>
+                <td>
+                  Transferring to your device, measured in megabits per second
+                  (Mbps)
+                </td>
+                <td>Basic internet browsing, video streaming</td>
+              </tr>
+              <tr>
+                <td>Upload Speed</td>
+                <td>
+                  Transferring from your device, measured in megabits per second
+                  (Mbps)
+                </td>
+                <td>Uploading photos, videos to YouTube</td>
+              </tr>
+              <tr>
+                <td>Connection Type</td>
+                <td>
+                  The cable wired to your home to provide internet, fiber being
+                  the optimal choice
+                </td>
+                <td>Fiber optic, copper</td>
+              </tr>
+              <tr>
+                <td>Ping</td>
+                <td>
+                  How quickly your device gets a response from a server,
+                  measured in milliseconds (ms)
+                </td>
+                <td>Responsive online gaming</td>
+              </tr>
+              <tr>
+                <td>Jitter</td>
+                <td>
+                  Fluctuations in the speed of data downloaded, measured in
+                  milliseconds (ms)
+                </td>
+                <td>Clarity in video calls</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Collapsible>
       <h2>IoT (Internet of Things)</h2>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Smart Speakers</button>
         }
       >
-        <ul>
-          Most Big Tech companies these days have a <b>Smart Speaker</b> that
-          allows you to interact with their proprietary <b>smart assistant</b>.
-          For example, Apple has <b>Siri</b>, Amazon uses <b>Alexa</b> and
-          Google uses <b>Google Assistant</b> and they can each be summoned by
-          name.
-        </ul>
+        <h4>
+          Most Big Tech companies these days have a Smart Speaker that allows
+          you to interact with their proprietary smart assistant. For example,
+          Apple has Siri, Amazon uses Alexa and Google uses Google Assistant and
+          they can each be summoned by name.
+        </h4>
         <div className="television">
           <table>
             <tr>
@@ -443,15 +673,17 @@ export default function Internet() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Smart Home</button>}
       >
-        <ul>
+        <h4>
           It is easier now than ever before to create a unified experience with
-          a wide range of <b>Smart Home</b> devices all connected and interacted
-          with your smartphone. Most devices can be integrated with{" "}
+          a wide range of Smart Home devices all connected and interacted with
+          your smartphone. Most devices can be integrated with{" "}
           <a href="https://support.google.com/chromecast/answer/7071794?hl=en&co=GENIE.Platform%3DAndroid">
             Google Home
           </a>{" "}
-          or <a href="https://www.apple.com/home-app/">Apple Home</a>.
-        </ul>
+          or <a href="https://www.apple.com/home-app/">Apple Home</a> or a more
+          privacy focused alternative such as{" "}
+          <a href="https://www.home-assistant.io/">Home Assistant</a>.
+        </h4>
         <div className="television">
           <table>
             <tr>
