@@ -552,16 +552,16 @@ export default function Internet() {
               <tr>
                 <td>Download Speed</td>
                 <td>
-                  Transferring to your device, measured in megabits per second
-                  (Mbps)
+                  Transferring data to your device, measured in megabits per
+                  second (Mbps)
                 </td>
                 <td>Basic internet browsing, video streaming</td>
               </tr>
               <tr>
                 <td>Upload Speed</td>
                 <td>
-                  Transferring from your device, measured in megabits per second
-                  (Mbps)
+                  Transferring data from your device, measured in megabits per
+                  second (Mbps)
                 </td>
                 <td>Uploading photos, videos to YouTube</td>
               </tr>
@@ -588,6 +588,38 @@ export default function Internet() {
                   milliseconds (ms)
                 </td>
                 <td>Clarity in video calls</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form
+                    action="https://broadbandnow.com/zip"
+                    method="get"
+                    target="_blank"
+                  >
+                    <div className="search">
+                      <input
+                        type="text"
+                        name="zip"
+                        placeholder="Enter ZIP to search ISPs"
+                      />
+                    </div>
+                    <button type="submit">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
               </tr>
             </tbody>
           </table>
