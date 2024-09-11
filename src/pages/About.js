@@ -15,16 +15,22 @@ export default function About() {
         {/* <br></br>
         <br></br> */}
         <p>
-          This site (pronounced double-a-tech-tips) offers helpful tech tips,
-          info and streamlines resolving common issues with modern tech. Along
-          with the tips, helpful links to brand websites are provided.
+          This site (pronounced double-a-tech-tips) is, first and foremost, an
+          opportunity the Lord has given me to assist and serve others with
+          technology. It offers helpful tech tips, information, infographics,
+          useful step-by-step instructions and streamlines resolving common
+          issues with modern tech. Along with the tips, helpful links to brand
+          websites are provided to those seeking assistance and making informed
+          tech decisions.
           <br></br>
           <br></br>
+          Feel free to{" "}
           <a href="https://www.aatechtips.com/appointment">
-            Book an appointment
+            book an appointment
           </a>{" "}
-          or send any suggestions, feedback, or additions to the site to the
-          appropriate email address below.
+          (in-person exclusive to DFW residents) or send any suggestions,
+          feedback, or additions to the site to the appropriate email address
+          below.
         </p>
       </Collapsible>
       <h2>Me</h2>
@@ -32,15 +38,17 @@ export default function About() {
         trigger={<button className="collapsible-trigger">Background</button>}
       >
         <p>
-          This site is, first and foremost, an opportunity the Lord has given me
-          to assist and serve others with technology. Watermark Community Church
-          in Dallas, Texas is my home church and I get the opportunity to serve
-          ocassionally during Sunday services and with the Legacy ministry. I
-          graduated with a BS in CS from Texas Tech in 2019 and worked as IT
-          support on-campus for dorm hall students for 4 years. I wanted to use
-          that experience to create and maintain this website to help out those
-          who may be less technologically inclined as well as provide some
-          useful info for more technical users.
+          Watermark Community Church in Dallas, Texas is my home church and I
+          get the opportunity to serve ocassionally during Sunday services and
+          with the Legacy ministry. I graduated with a BS in Computer Science
+          from Texas Tech in 2019 and worked as IT support on-campus for dorm
+          hall students for 4 years. I have had 2 technical consulting jobs with
+          numerous projects ranging from software development, data manipulation
+          and migration to the cloud, and system administrator experience. I
+          wanted to use this skillset to create and maintain this website to
+          help out those who are less technologically inclined as well as
+          provide some useful information for more technical users with bleeding
+          edge technologies like cloud and AI.
         </p>
         <img src="images/selfie.png" height="220" width="200" />
       </Collapsible>
