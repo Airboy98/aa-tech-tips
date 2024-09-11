@@ -40,7 +40,9 @@ export default function About() {
         <p>
           Watermark Community Church in Dallas, Texas is my home church and I
           get the opportunity to serve ocassionally during Sunday services and
-          with the Legacy ministry. I graduated with a BS in Computer Science
+          with the Legacy ministry. I am a professing Bible-believing Christian
+          and the Lord has gifted me with a passion for assisting and teaching
+          others about technology. I graduated with a BS in Computer Science
           from Texas Tech in 2019 and worked as IT support on-campus for dorm
           hall students for 4 years. I have had 2 technical consulting jobs with
           numerous projects ranging from software development, data manipulation
