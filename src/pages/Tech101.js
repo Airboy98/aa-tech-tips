@@ -441,6 +441,13 @@ export default function Tech101() {
                 </td>
               </tr>
               <tr>
+                <td>Refresh Rate</td>
+                <td>
+                  The number of times per second (hertz) a screen updates its
+                  image
+                </td>
+              </tr>
+              <tr>
                 <td>Router</td>
                 <td>A device that broadcasts internet over Wi-Fi or LAN</td>
               </tr>

@@ -53,10 +53,7 @@ export default function Smartphone() {
             Tap SHARED ALBUM to select a pre-existing album or create a new one
           </li>
         </ol>
-        <h5>
-          NOTE: The above feature is available for the latest iOS and may not be
-          available on older versions.
-        </h5>
+        <h5>NOTE: The above feature is available in iOS 16 and later.</h5>
       </Collapsible>
       <Collapsible
         trigger={
