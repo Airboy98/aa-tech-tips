@@ -707,12 +707,12 @@ export default function Internet() {
       >
         <h4>
           It is easier now than ever before to create a unified experience with
-          a wide range of Smart Home devices all connected and interacted with
-          your smartphone. Most devices can be integrated with{" "}
+          a wide range of Smart Home devices all connected to and interacted
+          with via your smartphone. Most devices can be integrated with{" "}
           <a href="https://support.google.com/chromecast/answer/7071794?hl=en&co=GENIE.Platform%3DAndroid">
             Google Home
           </a>{" "}
-          or <a href="https://www.apple.com/home-app/">Apple Home</a> or a more
+          and <a href="https://www.apple.com/home-app/">Apple Home</a> or a more
           privacy focused alternative such as{" "}
           <a href="https://www.home-assistant.io/">Home Assistant</a>.
         </h4>

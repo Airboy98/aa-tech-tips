@@ -13,6 +13,7 @@ export default function Streaming() {
           <button className="collapsible-trigger">Streaming Services</button>
         }
       >
+        <h4>Big Media</h4>
         <div className="streaming">
           <table>
             <tr>
@@ -38,7 +39,7 @@ export default function Streaming() {
                 >
                   <img
                     src="images/streaming/youtubetv.png"
-                    alt="Youtube"
+                    alt="Youtube TV"
                     width="100"
                     height="50"
                   />
@@ -189,6 +190,101 @@ export default function Streaming() {
                   <img
                     src="images/streaming/espnplus.png"
                     alt="ESPN+"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h4>Alternative Media</h4>
+        <div className="streaming">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://www.pureflix.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/streaming/pureflix.png"
+                    alt="PureFlix"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://mycuestreaming.com/landing_pages/cue0321/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/streaming/cue.png"
+                    alt="Cue"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.yippee.tv/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/streaming/yippee.png"
+                    alt="Yippee"
+                    width="85"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://watch.redeemtv.com/home"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/streaming/redeem.png"
+                    alt="Redeem TV"
+                    width="100"
+                    height="30"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.christiancinema.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/streaming/christian-cinema.jpg"
+                    alt="Christian Cinema"
+                    width="100"
+                    height="25"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.rightnowmedia.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/streaming/right-now-media.png"
+                    alt="RightNow Media"
                     width="100"
                     height="50"
                   />

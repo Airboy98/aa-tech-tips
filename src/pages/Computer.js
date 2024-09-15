@@ -1,6 +1,7 @@
+import React from "react";
 import Collapsible from "react-collapsible";
 import "./computer.css";
-
+import { Card } from "primereact/card";
 export default function Computer() {
   return (
     <>
@@ -163,12 +164,12 @@ export default function Computer() {
               <td>cmd+option+esc</td>
             </tr>
             <tr>
-              <td>Screen Snip (crosshairs)</td>
-              <td>windows+shift+s</td>
+              <td>Screen Snip</td>
+              <td>win+shift+s</td>
               <td>cmd+shift+4</td>
             </tr>
             <tr>
-              <td>Full Screen Shot</td>
+              <td>Screen Shot</td>
               <td>print screen</td>
               <td>cmd+shift+3</td>
             </tr>
@@ -422,6 +423,67 @@ export default function Computer() {
         </h5>
       </Collapsible>
       <Collapsible
+        trigger={<button className="collapsible-trigger">Monitors</button>}
+      >
+        <div className="tech">
+          <ul>
+            <li>
+              <b>Extend your desktop.</b> Both Windows and macOS include support
+              for a multi-monitor setup. If your laptop or desktop has extra
+              display ports (see Common Inputs below for visual aide), connect
+              the proper cable to your monitor and your computer. Depending on
+              the OS, extra configuration may be required to correctly detect
+              the new monitor and arrange it properly in{" "}
+              <a
+                href="images/monitors/windows.png"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Display settings
+              </a>{" "}
+              for Windows and{" "}
+              <a
+                href="images/monitors/macos.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                System Preferences
+              </a>{" "}
+              for macOS.
+            </li>
+            <li>
+              <b>Refresh your monitor.</b> Modern day monitors have at least a
+              60hz refresh rate which means the screen refreshes 60 times per
+              second. Simply put, the higher the refresh rate, the smoother the
+              experience is. This makes for a more pleasant experience when
+              viewing high framerate videos and playing games. The refresh rate
+              of your monitor can be found in{" "}
+              <a
+                href="images/monitors/windows2.png"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Advanced display settings
+              </a>{" "}
+              in Windows and{" "}
+              <a
+                href="images/monitors/macOS2.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                System Preferences
+              </a>{" "}
+              in macOS. Sometimes the refresh rate needs to be toggled in the
+              monitor's OSD (on-screen display) menu as well, using the
+              monitor's physical buttons.
+            </li>
+            {/* <li>
+              <b>Increase the resolution.</b>
+            </li> */}
+          </ul>
+        </div>
+      </Collapsible>
+      <Collapsible
         trigger={<button className="collapsible-trigger">Common Inputs</button>}
       >
         <h4>
@@ -542,6 +604,7 @@ export default function Computer() {
           roughly to scale.
         </h5>
       </Collapsible>
+
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Drive Formatting</button>
