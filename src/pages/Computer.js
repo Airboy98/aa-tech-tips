@@ -443,7 +443,7 @@ export default function Computer() {
               </a>{" "}
               for Windows and{" "}
               <a
-                href="images/monitors/macos.jpg"
+                href="images/monitors/macOS.jpg"
                 target="_blank"
                 rel="noopener noreferrer"
               >
