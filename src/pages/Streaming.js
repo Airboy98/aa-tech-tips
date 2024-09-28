@@ -365,6 +365,45 @@ export default function Streaming() {
           </table>
         </div>
       </Collapsible>
+      <h2>Movies and Shows</h2>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Where to Stream</button>
+        }
+      >
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form
+                    action="https://www.justwatch.com/us/search"
+                    method="get"
+                    target="_blank"
+                  >
+                    <div className="search">
+                      <input
+                        type="search"
+                        name="q"
+                        placeholder="Search for movie or show"
+                        required
+                      />
+                    </div>
+                    <button type="submit">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Collapsible>
     </>
   );
 }

@@ -826,7 +826,7 @@ export default function Tech101() {
         <div className="tech">
           <table>
             <th>AI</th>
-            <th>Prompt</th>
+            <th>Prompt(s) </th>
             <th>Final Output</th>
             <tr>
               <td>Copilot</td>
