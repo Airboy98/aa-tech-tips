@@ -218,7 +218,7 @@ export default function Streaming() {
               </td>
               <td>
                 <a
-                  href="https://mycuestreaming.com/landing_pages/cue0321/"
+                  href="https://cuebroadcast.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -285,6 +285,36 @@ export default function Streaming() {
                   <img
                     src="images/streaming/right-now-media.png"
                     alt="RightNow Media"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://rumble.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/streaming/rumble.png"
+                    alt="Rumble"
+                    width="100"
+                    height="25"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.brighteon.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/streaming/brighteon.svg"
+                    alt="Brighteon"
                     width="100"
                     height="50"
                   />

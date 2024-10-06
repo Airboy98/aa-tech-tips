@@ -711,7 +711,12 @@ export default function Internet() {
           with via your smartphone. Most devices can be integrated with{" "}
           <a href="https://support.google.com/chromecast/answer/7071794?hl=en&co=GENIE.Platform%3DAndroid">
             Google Home
-          </a>{" "}
+          </a>
+          {", "}
+          <a href="https://www.samsung.com/us/support/owners/app/smartthings">
+            Samsung SmartThings
+          </a>
+          {", "}
           and <a href="https://www.apple.com/home-app/">Apple Home</a> or a more
           privacy focused alternative such as{" "}
           <a href="https://www.home-assistant.io/">Home Assistant</a>.
