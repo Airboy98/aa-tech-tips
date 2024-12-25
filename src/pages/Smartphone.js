@@ -7,6 +7,230 @@ export default function Smartphone() {
       <div className="section-header">
         <h1>Smartphone</h1>
       </div>
+      <h2>Connections</h2>
+
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Choosing a Carrier</button>
+        }
+      >
+        <h4>
+          Keep in mind the following when browsing around for a mobile carrier:
+        </h4>
+        <div className="tech">
+          <table>
+            <thead>
+              <tr>
+                <th>Phrase</th>
+                <th>Definition</th>
+                <th>Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Coverage</td>
+                <td>The geographical area where a carrier provides service</td>
+                <td>Urban vs rural areas</td>
+              </tr>
+              <tr>
+                <td>Data Cap</td>
+                <td>
+                  The amount of data provided per billing cycle, measured in
+                  gigabytes (GB)
+                </td>
+                <td>Unlimited vs limited data</td>
+              </tr>
+              <tr>
+                <td>Network Technology</td>
+                <td>
+                  The type of network used, such as 4G LTE or 5G, affecting
+                  speed and performance
+                </td>
+                <td>5G for faster speeds</td>
+              </tr>
+              <tr>
+                <td>Roaming Charges</td>
+                <td>
+                  Additional costs incurred when using the phone outside a
+                  carrier's network
+                </td>
+                <td>International travel</td>
+              </tr>
+              <tr>
+                <td>Throttling</td>
+                <td>
+                  Reduced download and upload speeds after a certain amount of
+                  data has been used
+                </td>
+                <td>Data-intensive activities</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>Big Carriers</h4>
+        <div className="television">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://www.att.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/att.webp"
+                    alt="AT&T"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.tmobile.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/tmobile.png"
+                    alt="T-Mobile"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.verizon.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/verizon.png"
+                    alt="Verizon"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h4>Alternative Carriers</h4>
+        <div className="television">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://www.boostmobile.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/boost.png"
+                    alt="Boost Mobile"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.mintmobile.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/mint.png"
+                    alt="Mint Mobile"
+                    width="100"
+                    height="25"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://www.uscellular.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/uscellular.svg"
+                    alt="US Cellular"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.puretalkusa.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/puretalk.png"
+                    alt="Pure Talk"
+                    width="100"
+                    height="25"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        {/* <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form
+                    action="https://bestneighborhood.org/mobile-providers-in-your-area/"
+                    method="get"
+                    target="_blank"
+                  >
+                    <div className="search">
+                      <input placeholder="Enter Address to search Carrier Coverage" />
+                    </div>
+                    <button type="submit">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> */}
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Personal Hotspot</button>
+        }
+      >
+        <ol>
+          <li>
+            Open the <b>Settings</b> app
+          </li>
+          <li>
+            Enable <b>Personal Hotspot</b> (iPhone) or <b>Mobile Hotspot</b>{" "}
+            (Android)
+          </li>
+          <li>Configure the password for the hotspot</li>
+          <li>On your separate device, view Wi-Fi networks</li>
+          <li>
+            Connect to the hotspot (phone name) and enter the password
+            configured
+          </li>
+        </ol>
+        <h5>NOTE: Verify that your phone plan allows for hotspot usage.</h5>
+      </Collapsible>
       <h2>iPhone</h2>
       <Collapsible
         trigger={<button className="collapsible-trigger">Photo Editing</button>}
@@ -33,7 +257,6 @@ export default function Smartphone() {
           </li>
         </ol>
       </Collapsible>
-
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Shared Photo Album</button>
@@ -152,7 +375,6 @@ export default function Smartphone() {
           <li>Tap the shutter circle button</li>
         </ol>
       </Collapsible>
-
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Change Background</button>
@@ -166,7 +388,6 @@ export default function Smartphone() {
           <li>Tap Lockscreen or Homescreen and set photo</li>
         </ol>
       </Collapsible>
-
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Change Passcode</button>

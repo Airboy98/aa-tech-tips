@@ -537,7 +537,7 @@ export default function Internet() {
       >
         <h4>
           Keep in mind the following when browsing around for an ISP (Internet
-          Service Provider).
+          Service Provider):
         </h4>
         <div className="tech">
           <table>
