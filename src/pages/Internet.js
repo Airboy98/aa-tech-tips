@@ -522,12 +522,12 @@ export default function Internet() {
           </table>
         </div>
         <h5>
-          NOTE: Devices like desktops and some laptops (natively or via an{" "}
+          NOTE: Devices like desktops and laptops (natively or via an{" "}
           <a href="https://www.amazon.com/USB-Ethernet-Adapter-Gigabit-Switch/dp/B09GRL3VCN/ref=sr_1_2?sr=8-2">
             adapter
           </a>
           ) support a wired connection with an Ethernet port (see the Common
-          Inputs tip <a href="https://www.aatechtips.com/computer">here</a>)
+          Inputs tip <a href="https://www.aatechtips.com/computer">here</a>).
         </h5>
       </Collapsible>
       <Collapsible

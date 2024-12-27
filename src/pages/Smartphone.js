@@ -41,6 +41,14 @@ export default function Smartphone() {
                 <td>Unlimited vs limited data</td>
               </tr>
               <tr>
+                <td>eSIM</td>
+                <td>
+                  A digital SIM card enabling alternate carriers and data plans
+                  on one device
+                </td>
+                <td>Multiple phone plans</td>
+              </tr>
+              <tr>
                 <td>Network Technology</td>
                 <td>
                   The type of network used, such as 4G LTE or 5G, affecting
@@ -55,6 +63,14 @@ export default function Smartphone() {
                   carrier's network
                 </td>
                 <td>International travel</td>
+              </tr>
+              <tr>
+                <td>SIM</td>
+                <td>
+                  A small card inserted into the phone, storing phone plan data
+                  and phone number
+                </td>
+                <td>Required for cellular connectivity</td>
               </tr>
               <tr>
                 <td>Throttling</td>
@@ -181,33 +197,17 @@ export default function Smartphone() {
             </tr>
           </table>
         </div>
-        {/* <div className="internet">
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <form
-                    action="https://bestneighborhood.org/mobile-providers-in-your-area/"
-                    method="get"
-                    target="_blank"
-                  >
-                    <div className="search">
-                      <input placeholder="Enter Address to search Carrier Coverage" />
-                    </div>
-                    <button type="submit">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: "24px", color: "white" }}
-                      >
-                        search
-                      </span>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div> */}
+        <h5>
+          NOTE: Check{" "}
+          <a
+            href="https://coveragemap.com/cell-phone-coverage"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            carrier coverage
+          </a>{" "}
+          in your area before committing to a plan.
+        </h5>
       </Collapsible>
       <Collapsible
         trigger={
@@ -229,7 +229,10 @@ export default function Smartphone() {
             configured
           </li>
         </ol>
-        <h5>NOTE: Verify that your phone plan allows for hotspot usage.</h5>
+        <h5>
+          NOTE: Verify that your phone plan allows for hotspot usage. Some plans
+          differentiate cell data and hotspot data.
+        </h5>
       </Collapsible>
       <h2>iPhone</h2>
       <Collapsible
