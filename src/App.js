@@ -10,6 +10,7 @@ import Wearable from "./pages/Wearable";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Appointment from "./pages/Appointment";
+// import Sonic from "/Sonic";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/wearable" element={<Wearable />} />
             <Route path="/about" element={<About />} />
             <Route path="/appointment" element={<Appointment />} />
+            {/* <Route path="/sonic" element={<Sonic />} /> */}
           </Routes>
         </BrowserRouter>
       </div>

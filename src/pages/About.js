@@ -1,6 +1,7 @@
 // import "./about.css";
 
 import Collapsible from "react-collapsible";
+import { CustomLink } from "../components/Navbar";
 
 export default function About() {
   return (
@@ -53,14 +54,12 @@ export default function About() {
           edge technologies like cloud and AI.
         </p>
         <img src="images/selfie.png" height="220" width="200" />
+        <br></br>
+        <a href="/sonic/" target="_blank" rel="noopener noreferrer">
+          <img src="images/sonic.png" alt="Youtube" width="50" height="50" />
+        </a>
       </Collapsible>
-      <a
-        href="https://www.aatechtips.com/sonic"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img src="images/sonic.png" alt="Youtube" width="50" height="50" />
-      </a>
+
       <br></br>
       <footer>
         Developed and Designed by Aaron Turner
