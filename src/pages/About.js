@@ -54,7 +54,13 @@ export default function About() {
         </p>
         <img src="images/selfie.png" height="220" width="200" />
       </Collapsible>
-
+      <a
+        href="https://www.aatechtips.com/sonic"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="images/sonic.png" alt="Youtube" width="50" height="50" />
+      </a>
       <br></br>
       <footer>
         Developed and Designed by Aaron Turner
