@@ -53,7 +53,7 @@ export default function About() {
           provide some useful information for more technical users with bleeding
           edge technologies like cloud and AI.
         </p>
-        <a href="/sonic/" target="_blank" rel="noopener noreferrer">
+        <a href="/sonic" target="_blank" rel="noopener noreferrer">
           <img src="images/selfie.png" height="220" width="200" />
         </a>
       </Collapsible>
