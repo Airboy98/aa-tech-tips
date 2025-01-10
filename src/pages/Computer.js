@@ -402,7 +402,7 @@ export default function Computer() {
         <ul className="tech">
           <li>
             <b>Print with a cable.</b> Depending on your computer's OS, plugging
-            in a printer with a USB Type-B cable (see above Common Inputs tip)
+            in a printer with a USB Type-B cable (see below Common Inputs tip)
             to your computer may be enough to use your printer. Otherwise,
             you'll have to download drivers using the above links for your
             printer's brand.
