@@ -1,5 +1,8 @@
 import Collapsible from "react-collapsible";
 import "./streaming.css";
+import MovieSearch from "../components/MovieSearch";
+const API_KEY = "b32ac76c26554d2985c4740b888a60d7";
+const BASE_URL = "https://api.themoviedb.org/3";
 
 export default function Streaming() {
   return (
@@ -433,6 +436,11 @@ export default function Streaming() {
             </tbody>
           </table>
         </div>
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Now Playing</button>}
+      >
+        <MovieSearch />
       </Collapsible>
     </>
   );
