@@ -1,10 +1,18 @@
 import Collapsible from "react-collapsible";
 import "./streaming.css";
 import MovieSearch from "../components/MovieSearch";
+import { useState } from "react";
+import NowPlaying from "../components/NowPlaying";
 const API_KEY = "b32ac76c26554d2985c4740b888a60d7";
 const BASE_URL = "https://api.themoviedb.org/3";
 
 export default function Streaming() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
     <>
       <div className="section-header">
@@ -410,19 +418,22 @@ export default function Streaming() {
               <tr>
                 <td>
                   <form
-                    action="https://www.justwatch.com/us/search"
-                    method="get"
-                    target="_blank"
+                    onSubmit={(e) => e.preventDefault()}
+                    // action="https://www.justwatch.com/us/search"
+                    // method="get"
+                    // target="_blank"
                   >
                     <div className="search">
                       <input
                         type="search"
                         name="q"
-                        placeholder="Search for movie or show"
+                        placeholder="Search for a movie"
                         required
+                        value={searchQuery}
+                        onChange={handleSearchChange}
                       />
                     </div>
-                    <button type="submit">
+                    <button>
                       <span
                         className="material-symbols-outlined"
                         style={{ fontSize: "24px", color: "white" }}
@@ -436,11 +447,13 @@ export default function Streaming() {
             </tbody>
           </table>
         </div>
+        <MovieSearch searchQuery={searchQuery} />
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Now Playing</button>}
       >
-        <MovieSearch />
+        <br></br>
+        <NowPlaying />
       </Collapsible>
     </>
   );
