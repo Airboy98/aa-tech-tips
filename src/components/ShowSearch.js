@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from "react";
 
-function MovieSearch({ searchQuery }) {
+function ShowSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
   const [watchProviders, setWatchProviders] = useState(null);
 
-  const searchMovie = (query) => {
+  const searchShow = (query) => {
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=b32ac76c26554d2985c4740b888a60d7&query=${query}&include_adult=false&watch_region=US`
+      `https://api.themoviedb.org/3/search/tv?api_key=b32ac76c26554d2985c4740b888a60d7&query=${query}&include_adult=false&watch_region=US`
     )
       .then((res) => res.json())
       .then((json) => {
         if (json.results && json.results.length > 0) {
-          const movie = json.results[0];
-          setSearchResult(movie);
-          fetchWatchProviders(movie.id);
+          const show = json.results[0];
+          setSearchResult(show);
+          fetchWatchProviders(show.id);
         } else {
           setSearchResult(null);
           setWatchProviders(null);
         }
       })
       .catch((error) => {
-        console.error("Error searching for movie:", error);
+        console.error("Error searching for show:", error);
         setSearchResult(null);
         setWatchProviders(null);
       });
   };
 
-  const fetchWatchProviders = (movieId) => {
+  const fetchWatchProviders = (showId) => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=b32ac76c26554d2985c4740b888a60d7`
+      `https://api.themoviedb.org/3/tv/${showId}/watch/providers?api_key=b32ac76c26554d2985c4740b888a60d7`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -46,7 +46,7 @@ function MovieSearch({ searchQuery }) {
 
   useEffect(() => {
     if (searchQuery) {
-      searchMovie(searchQuery);
+      searchShow(searchQuery);
     }
   }, [searchQuery]);
   // console.log(searchResult);
@@ -66,8 +66,8 @@ function MovieSearch({ searchQuery }) {
                     src={`https://image.tmdb.org/t/p/w500${searchResult.poster_path}`}
                     alt={searchResult.title}
                   />
-                  <h1>{searchResult.title}</h1>
-                  <h4>{searchResult.release_date}</h4>
+                  <h1>{searchResult.name}</h1>
+                  <h4>{searchResult.first_air_date}</h4>
                   {watchProviders && (
                     <div>
                       {watchProviders && watchProviders.flatrate ? (
@@ -98,4 +98,4 @@ function MovieSearch({ searchQuery }) {
   );
 }
 
-export default MovieSearch;
+export default ShowSearch;
