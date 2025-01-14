@@ -3,14 +3,23 @@ import "./streaming.css";
 import MovieSearch from "../components/MovieSearch";
 import { useState } from "react";
 import NowPlaying from "../components/NowPlaying";
+import ShowSearch from "../components/ShowSearch";
 const API_KEY = "b32ac76c26554d2985c4740b888a60d7";
 const BASE_URL = "https://api.themoviedb.org/3";
 
 export default function Streaming() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchMovie, setSearchMovie] = useState("");
+  const [searchShow, setSearchShow] = useState("");
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+  const handleSearchMovie = (e) => {
+    e.preventDefault();
+    const movie = e.target.elements.q.value;
+    setSearchMovie(movie);
+  };
+  const handleSearchShow = (e) => {
+    e.preventDefault();
+    const show = e.target.elements.q.value;
+    setSearchShow(show);
   };
 
   return (
@@ -409,7 +418,7 @@ export default function Streaming() {
       <h2>Movies and Shows</h2>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Where to Stream</button>
+          <button className="collapsible-trigger">Search for Movies</button>
         }
       >
         <div className="internet">
@@ -417,20 +426,12 @@ export default function Streaming() {
             <tbody>
               <tr>
                 <td>
-                  <form
-                    onSubmit={(e) => e.preventDefault()}
-                    // action="https://www.justwatch.com/us/search"
-                    // method="get"
-                    // target="_blank"
-                  >
+                  <form onSubmit={handleSearchMovie}>
                     <div className="search">
                       <input
                         type="search"
                         name="q"
-                        placeholder="Search for a movie"
-                        required
-                        value={searchQuery}
-                        onChange={handleSearchChange}
+                        placeholder="Search for a movie..."
                       />
                     </div>
                     <button>
@@ -447,7 +448,41 @@ export default function Streaming() {
             </tbody>
           </table>
         </div>
-        <MovieSearch searchQuery={searchQuery} />
+        <MovieSearch searchQuery={searchMovie} />
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Search for Shows</button>
+        }
+      >
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form onSubmit={handleSearchShow}>
+                    <div className="search">
+                      <input
+                        type="search"
+                        name="q"
+                        placeholder="Search for a show..."
+                      />
+                    </div>
+                    <button>
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ShowSearch searchQuery={searchShow} />
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Now Playing</button>}

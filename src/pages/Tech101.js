@@ -256,20 +256,20 @@ export default function Tech101() {
       >
         <h4>
           Browsing the internet today is riskier than ever before. Use the below
-          tactics to stay safe and keep your data secure !
+          tactics to stay safe and keep your data secure!
         </h4>
         <div className="tech">
           <ul>
             <li>
               <b>Check that link!</b> Always be cautious when clicking on links
-              in websites or emails. Phishing is a common cybersecurity attack
-              that tries to prey on users thinking they're visiting a safe
-              website that looks authentic and prompts for entering credentials
-              but actually steals your data! Make sure to verify you recognize
-              the URL of the website you're about to visit! Hovering over links
-              in a browser should show the URL at the bottom left corner and
-              hovering over links in an email should have a URL pop-up on
-              screen.
+              in websites, emails and texts. Phishing (smishing when done via
+              SMS aka texts) is a common cybersecurity attack that tries to prey
+              on users thinking they're visiting a safe website that looks
+              authentic and prompts for entering credentials but actually steals
+              your data! Make sure to verify you recognize the URL of the
+              website you're about to visit. Hovering over links in a browser
+              should show the URL at the bottom left corner and hovering over
+              links in an email should have a URL pop-up on screen.
             </li>
             <li>
               <b>Block those ads!</b> Some websites have pesky ads and pop-ups
