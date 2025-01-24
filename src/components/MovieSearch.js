@@ -6,7 +6,7 @@ function MovieSearch({ searchQuery }) {
 
   const searchMovie = (query) => {
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=b32ac76c26554d2985c4740b888a60d7&query=${query}&include_adult=false&watch_region=US`
+      `https://api.themoviedb.org/3/search/movie?api_key=b32ac76c26554d2985c4740b888a60d7&query=${query}`
     )
       .then((res) => res.json())
       .then((json) => {
