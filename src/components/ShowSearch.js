@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+const API_KEY = "b32ac76c26554d2985c4740b888a60d7";
+const BASE_URL = "https://api.themoviedb.org/3";
 
 function ShowSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
@@ -6,9 +8,7 @@ function ShowSearch({ searchQuery }) {
   const [certification, setCertification] = useState(null);
 
   const searchShow = (query) => {
-    fetch(
-      `https://api.themoviedb.org/3/search/tv?api_key=b32ac76c26554d2985c4740b888a60d7&query=${query}`
-    )
+    fetch(`${BASE_URL}/search/tv?api_key=${API_KEY}&query=${query}`)
       .then((res) => res.json())
       .then((json) => {
         if (json.results && json.results.length > 0) {
@@ -31,9 +31,7 @@ function ShowSearch({ searchQuery }) {
   };
 
   const fetchWatchProviders = (showId) => {
-    fetch(
-      `https://api.themoviedb.org/3/tv/${showId}/watch/providers?api_key=b32ac76c26554d2985c4740b888a60d7`
-    )
+    fetch(`${BASE_URL}/tv/${showId}/watch/providers?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
         if (json.results && json.results.US) {
@@ -49,17 +47,7 @@ function ShowSearch({ searchQuery }) {
   };
 
   const fetchCertification = (showId) => {
-    fetch(
-      /*************  ✨ Codeium Command 🌟  *************/
-      `https://api.themoviedb.org/3/tv/${showId}/content_ratings?api_key=b32ac76c26554d2985c4740b888a60d7`
-
-      // returns an object with a results property containing an array of objects with the following shape:
-      // {
-      //   iso_3166_1: string,
-      //   rating: string,
-      // }
-      /******  c11d6c99-d008-411a-ad82-24c37626c5bc  *******/
-    )
+    fetch(`${BASE_URL}/tv/${showId}/content_ratings?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
         if (json.results) {
@@ -109,8 +97,12 @@ function ShowSearch({ searchQuery }) {
                         <div>
                           {watchProviders.flatrate.map((provider) => (
                             <img
+                              style={{
+                                width: "45px",
+                                height: "45px",
+                              }}
                               key={provider.provider_id}
-                              src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`}
+                              src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
                               alt={provider.provider_name}
                               title={provider.provider_name}
                             />

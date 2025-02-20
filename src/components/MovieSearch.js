@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+const API_KEY = "b32ac76c26554d2985c4740b888a60d7";
+const BASE_URL = "https://api.themoviedb.org/3";
 
 function MovieSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
@@ -6,9 +8,7 @@ function MovieSearch({ searchQuery }) {
   const [certification, setCertification] = useState(null);
 
   const searchMovie = (query) => {
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=b32ac76c26554d2985c4740b888a60d7&query=${query}`
-    )
+    fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
       .then((res) => res.json())
       .then((json) => {
         if (json.results && json.results.length > 0) {
@@ -31,9 +31,7 @@ function MovieSearch({ searchQuery }) {
   };
 
   const fetchWatchProviders = (movieId) => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=b32ac76c26554d2985c4740b888a60d7`
-    )
+    fetch(`${BASE_URL}/movie/${movieId}/watch/providers?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
         if (json.results && json.results.US) {
@@ -49,9 +47,7 @@ function MovieSearch({ searchQuery }) {
   };
 
   const fetchCertification = (movieId) => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/release_dates?api_key=b32ac76c26554d2985c4740b888a60d7`
-    )
+    fetch(`${BASE_URL}/movie/${movieId}/release_dates?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
         if (json.results) {
@@ -108,8 +104,12 @@ function MovieSearch({ searchQuery }) {
                         <div>
                           {watchProviders.flatrate.map((provider) => (
                             <img
+                              style={{
+                                width: "45px",
+                                height: "45px",
+                              }}
                               key={provider.provider_id}
-                              src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`}
+                              src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
                               alt={provider.provider_name}
                               title={provider.provider_name}
                             />
