@@ -4,12 +4,14 @@ import MovieSearch from "../components/MovieSearch";
 import { useState } from "react";
 import NowPlaying from "../components/NowPlaying";
 import ShowSearch from "../components/ShowSearch";
-const API_KEY = "b32ac76c26554d2985c4740b888a60d7";
-const BASE_URL = "https://api.themoviedb.org/3";
+import AlbumSearch from "../components/AlbumSearch";
+import ArtistSearch from "../components/ArtistSearch";
 
 export default function Streaming() {
   const [searchMovie, setSearchMovie] = useState("");
   const [searchShow, setSearchShow] = useState("");
+  const [searchAlbum, setSearchAlbum] = useState("");
+  const [searchArtist, setSearchArtist] = useState("");
 
   const handleSearchMovie = (e) => {
     e.preventDefault();
@@ -20,6 +22,17 @@ export default function Streaming() {
     e.preventDefault();
     const show = e.target.elements.q.value;
     setSearchShow(show);
+  };
+  const handleSearchAlbum = (e) => {
+    e.preventDefault();
+    const song = e.target.elements.q.value;
+    setSearchAlbum(song);
+  };
+
+  const handleSearchArtist = (e) => {
+    e.preventDefault();
+    const artist = e.target.elements.q.value;
+    setSearchArtist(artist);
   };
 
   return (
@@ -417,9 +430,7 @@ export default function Streaming() {
       </Collapsible>
       <h2>Movies and Shows</h2>
       <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Search for Movies</button>
-        }
+        trigger={<button className="collapsible-trigger">Movie Search</button>}
       >
         <div className="internet">
           <table>
@@ -431,7 +442,7 @@ export default function Streaming() {
                       <input
                         type="search"
                         name="q"
-                        placeholder="Search for a movie..."
+                        placeholder="Enter movie name..."
                       />
                     </div>
                     <button>
@@ -451,9 +462,7 @@ export default function Streaming() {
         <MovieSearch searchQuery={searchMovie} />
       </Collapsible>
       <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Search for Shows</button>
-        }
+        trigger={<button className="collapsible-trigger">Show Search</button>}
       >
         <div className="internet">
           <table>
@@ -465,7 +474,7 @@ export default function Streaming() {
                       <input
                         type="search"
                         name="q"
-                        placeholder="Search for a show..."
+                        placeholder="Enter show name..."
                       />
                     </div>
                     <button>
@@ -489,6 +498,71 @@ export default function Streaming() {
       >
         <br></br>
         <NowPlaying />
+      </Collapsible>
+      <h2>Music</h2>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Artist Search</button>}
+      >
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form onSubmit={handleSearchArtist}>
+                    <div className="search">
+                      <input
+                        type="search"
+                        name="q"
+                        placeholder="Enter artist name..."
+                      />
+                    </div>
+                    <button>
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ArtistSearch searchQuery={searchArtist} />
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Album Search</button>}
+      >
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form onSubmit={handleSearchAlbum}>
+                    <div className="search">
+                      <input
+                        type="search"
+                        name="q"
+                        placeholder="Enter album name..."
+                      />
+                    </div>
+                    <button>
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <AlbumSearch searchQuery={searchAlbum} />
       </Collapsible>
     </>
   );
