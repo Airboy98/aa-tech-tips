@@ -83,7 +83,10 @@ function MovieSearch({ searchQuery }) {
       {searchResult && (
         <div className="tech">
           <table
-            style={{ border: "none", margin: "0 auto", borderRadius: "100px" }}
+            style={{
+              margin: "0 auto",
+              borderRadius: "100px",
+            }}
           >
             <tbody>
               <tr>
