@@ -84,9 +84,7 @@ function AlbumSearch({ searchQuery }) {
     <div>
       {searchResult && (
         <div className="tech">
-          <table
-            style={{ border: "none", margin: "0 auto", borderRadius: "100px" }}
-          >
+          <table style={{ margin: "0 auto", borderRadius: "100px" }}>
             <tbody>
               <tr>
                 <td style={{ border: "none", width: "375px" }}>
