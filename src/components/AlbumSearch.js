@@ -84,10 +84,12 @@ function AlbumSearch({ searchQuery }) {
     <div>
       {searchResult && (
         <div className="tech">
-          <table style={{ margin: "0 auto", width: "230px" }}>
+          <table
+            style={{ border: "none", margin: "0 auto", borderRadius: "100px" }}
+          >
             <tbody>
               <tr>
-                <td style={{ textAlign: "center" }}>
+                <td style={{ border: "none", width: "375px" }}>
                   <img
                     style={{
                       width: "200px",
@@ -97,6 +99,7 @@ function AlbumSearch({ searchQuery }) {
                     alt={searchResult.name}
                   />
                   <h1>{searchResult.name}</h1>
+                  <hr></hr>
                   <h4>{searchResult.artists[0].name}</h4>
                   <h4>{searchResult.release_date}</h4>
 
