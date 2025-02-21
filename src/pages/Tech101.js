@@ -855,8 +855,10 @@ export default function Tech101() {
             <tr>
               <td>ChatGPT</td>
               <td>
-                1. Tell me about the Gospels of the Bible<br></br>
-                <br></br>2. Shorten that to summarize in 2 sentences
+                <ol>
+                  <li>Tell me about the Gospels of the Bible</li>
+                  <li>Shorten that to summarize in 2 sentences</li>
+                </ol>
               </td>
               <td>
                 <img
