@@ -58,7 +58,7 @@ function ArtistSearch({ searchQuery }) {
 
   const fetchAlbums = (artistId) => {
     axios
-      .get(`${BASE_URL}artists/${artistId}/albums`, {
+      .get(`${BASE_URL}artists/${artistId}/albums?limit=50`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -81,7 +81,7 @@ function ArtistSearch({ searchQuery }) {
 
   const fetchEPs = (artistId) => {
     axios
-      .get(`${BASE_URL}artists/${artistId}/albums`, {
+      .get(`${BASE_URL}artists/${artistId}/albums?limit=50`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
