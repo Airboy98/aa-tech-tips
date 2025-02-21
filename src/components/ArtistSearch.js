@@ -7,6 +7,7 @@ const BASE_URL = "https://api.spotify.com/v1/";
 function ArtistSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
   const [albums, setAlbums] = useState(null);
+  const [EPs, setEPs] = useState(null);
   const [token, setToken] = useState(null);
 
   useEffect(() => {
@@ -42,6 +43,7 @@ function ArtistSearch({ searchQuery }) {
           const artist = res.data.artists.items[0];
           setSearchResult(artist);
           fetchAlbums(artist.id);
+          fetchEPs(artist.id);
         } else {
           setSearchResult(null);
           setAlbums(null);
@@ -77,6 +79,31 @@ function ArtistSearch({ searchQuery }) {
       });
   };
 
+  const fetchEPs = (artistId) => {
+    axios
+      .get(`${BASE_URL}artists/${artistId}/albums`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        if (res.data && res.data.items) {
+          setEPs(
+            // res.data.items.filter((item) => item.album_group == "single")
+            res.data.items.filter(
+              (item) => item.total_tracks >= 3 && item.total_tracks < 8
+            )
+          );
+        } else {
+          setEPs(null);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching artist EPs:", error);
+        setEPs(null);
+      });
+  };
+
   useEffect(() => {
     if (searchQuery && token) {
       searchArtist(searchQuery);
@@ -86,11 +113,11 @@ function ArtistSearch({ searchQuery }) {
   return (
     <div>
       {searchResult && (
-        <div className="tech">
-          <table style={{ margin: "0 auto", borderRadius: "100px" }}>
+        <div className="streaming2">
+          <table>
             <tbody>
               <tr>
-                <td style={{ border: "none", width: "375px" }}>
+                <td>
                   <img
                     style={{
                       width: "200px",
@@ -102,9 +129,9 @@ function ArtistSearch({ searchQuery }) {
                   <h1>{searchResult.name}</h1>
                   <hr></hr>
                   <h4>{searchResult.genres.join(", ")}</h4>
-
+                  <h4>Albums</h4>
                   {albums && (
-                    <ol style={{ listStyleType: "none", padding: 0 }}>
+                    <ul>
                       {albums.map((album) => (
                         <li key={album.id}>
                           <a
@@ -115,10 +142,28 @@ function ArtistSearch({ searchQuery }) {
                             {album.name}
                           </a>
                           <br></br>
-                          {` (${new Date(album.release_date).getFullYear()})`}
+                          {` (${album.release_date.substring(0, 4)})`}
                         </li>
                       ))}
-                    </ol>
+                    </ul>
+                  )}
+                  <h4>EPs</h4>
+                  {EPs && (
+                    <ul>
+                      {EPs.map((EP) => (
+                        <li key={EP.id}>
+                          <a
+                            href={EP.external_urls.spotify}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {EP.name}
+                          </a>
+                          <br></br>
+                          {` (${EP.release_date.substring(0, 4)})`}
+                        </li>
+                      ))}
+                    </ul>
                   )}
                   <h5>
                     Data provided by{" "}

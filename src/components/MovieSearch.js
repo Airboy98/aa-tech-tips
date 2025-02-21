@@ -81,16 +81,11 @@ function MovieSearch({ searchQuery }) {
   return (
     <div>
       {searchResult && (
-        <div className="tech">
-          <table
-            style={{
-              margin: "0 auto",
-              borderRadius: "100px",
-            }}
-          >
+        <div className="streaming2">
+          <table>
             <tbody>
               <tr>
-                <td style={{ border: "none", width: "375px" }}>
+                <td>
                   <img
                     style={{
                       width: "200px",

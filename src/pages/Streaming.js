@@ -47,7 +47,7 @@ export default function Streaming() {
         }
       >
         <h4>Big Media</h4>
-        <div className="streaming">
+        <div className="streaming1">
           <table>
             <tr>
               <td>
@@ -232,7 +232,7 @@ export default function Streaming() {
           </table>
         </div>
         <h4>Alternative Media</h4>
-        <div className="streaming">
+        <div className="streaming1">
           <table>
             <tr>
               <td>

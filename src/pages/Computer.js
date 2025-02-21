@@ -632,15 +632,20 @@ export default function Computer() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Local Backup</button>}
       >
-        <ul>
-          It is highly advised to keep a backup of your files locally.
-          Regardless of the platform, there are 2 main methods of backing up:{" "}
-          <b>full system backups</b> and <b>manual backups</b>. For quick
-          read/write speeds and durability, it is recommended to use an SSD as
-          an external drive but HDDs are the more cost efficient option for mass
-          storage.
-        </ul>
+        <h4>
+          In case of hardware failure, it is highly advised to keep a backup of
+          your files locally.
+        </h4>
         <ul className="tech">
+          <li>
+            <b>
+              Full system backups and manual backups are options for any
+              platform
+            </b>
+            . For quick read/write speeds and durability, it is recommended to
+            use an SSD as an external drive but HDDs are the more cost efficient
+            option for mass storage.
+          </li>
           <li>
             <b>Use a utility program to keep full system backups.</b> macOS has
             a built-in utility called Time Machine that allows you to use an
