@@ -79,14 +79,20 @@ function ShowSearch({ searchQuery }) {
             <tbody>
               <tr>
                 <td>
-                  <img
-                    style={{
-                      width: "200px",
-                      height: "300px",
-                    }}
-                    src={`https://image.tmdb.org/t/p/w500${searchResult.poster_path}`}
-                    alt={searchResult.title}
-                  />
+                  <a
+                    href={`https://www.themoviedb.org/tv/${searchResult.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      style={{
+                        width: "200px",
+                        height: "300px",
+                      }}
+                      src={`https://image.tmdb.org/t/p/w500${searchResult.poster_path}`}
+                      alt={searchResult.title}
+                    />
+                  </a>
                   <h1>{searchResult.name}</h1>
                   <hr></hr>
                   {certification && <h4>Rated {certification}</h4>}
