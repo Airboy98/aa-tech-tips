@@ -88,14 +88,20 @@ function AlbumSearch({ searchQuery }) {
             <tbody>
               <tr>
                 <td>
-                  <img
-                    style={{
-                      width: "200px",
-                      height: "200px",
-                    }}
-                    src={searchResult.images[0].url}
-                    alt={searchResult.name}
-                  />
+                  <a
+                    href={`https://open.spotify.com/album/${searchResult.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      style={{
+                        width: "200px",
+                        height: "200px",
+                      }}
+                      src={searchResult.images[0].url}
+                      alt={searchResult.name}
+                    />
+                  </a>
                   <h1>{searchResult.name}</h1>
                   <hr></hr>
                   <h4>{searchResult.artists[0].name}</h4>

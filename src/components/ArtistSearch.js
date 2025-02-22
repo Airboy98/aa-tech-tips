@@ -91,7 +91,7 @@ function ArtistSearch({ searchQuery }) {
           setEPs(
             // res.data.items.filter((item) => item.album_group == "single")
             res.data.items.filter(
-              (item) => item.total_tracks >= 3 && item.total_tracks < 8
+              (item) => item.total_tracks >= 3 && item.total_tracks <= 6
             )
           );
         } else {
@@ -118,18 +118,24 @@ function ArtistSearch({ searchQuery }) {
             <tbody>
               <tr>
                 <td>
-                  <img
-                    style={{
-                      width: "200px",
-                      height: "200px",
-                    }}
-                    src={searchResult.images[0].url}
-                    alt={searchResult.name}
-                  />
+                  <a
+                    href={`https://open.spotify.com/artist/${searchResult.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      style={{
+                        width: "200px",
+                        height: "200px",
+                      }}
+                      src={searchResult.images[0].url}
+                      alt={searchResult.name}
+                    />
+                  </a>
                   <h1>{searchResult.name}</h1>
                   <hr></hr>
                   <h4>{searchResult.genres.join(", ")}</h4>
-                  <h4>Albums</h4>
+                  <h3>Albums</h3>
                   {albums && (
                     <ul>
                       {albums.map((album) => (
@@ -147,7 +153,7 @@ function ArtistSearch({ searchQuery }) {
                       ))}
                     </ul>
                   )}
-                  <h4>EPs</h4>
+                  <h3>EPs</h3>
                   {EPs && (
                     <ul>
                       {EPs.map((EP) => (
