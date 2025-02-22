@@ -98,7 +98,11 @@ function AlbumSearch({ searchQuery }) {
                         width: "200px",
                         height: "200px",
                       }}
-                      src={searchResult.images[0].url}
+                      src={
+                        searchResult.images.length > 0
+                          ? searchResult.images[0].url
+                          : "noartwork.png"
+                      }
                       alt={searchResult.name}
                     />
                   </a>
