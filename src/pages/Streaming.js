@@ -6,12 +6,14 @@ import NowPlaying from "../components/NowPlaying";
 import ShowSearch from "../components/ShowSearch";
 import AlbumSearch from "../components/AlbumSearch";
 import ArtistSearch from "../components/ArtistSearch";
+import ActorSearch from "../components/ActorSearch";
 
 export default function Streaming() {
   const [searchMovie, setSearchMovie] = useState("");
   const [searchShow, setSearchShow] = useState("");
   const [searchAlbum, setSearchAlbum] = useState("");
   const [searchArtist, setSearchArtist] = useState("");
+  const [searchActor, setSearchActor] = useState("");
 
   const handleSearchMovie = (e) => {
     e.preventDefault();
@@ -33,6 +35,12 @@ export default function Streaming() {
     e.preventDefault();
     const artist = e.target.elements.q.value;
     setSearchArtist(artist);
+  };
+
+  const handleSearchActor = (e) => {
+    e.preventDefault();
+    const actor = e.target.elements.q.value;
+    setSearchActor(actor);
   };
 
   return (
@@ -492,6 +500,38 @@ export default function Streaming() {
           </table>
         </div>
         <ShowSearch searchQuery={searchShow} />
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Actor Search</button>}
+      >
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form onSubmit={handleSearchActor}>
+                    <div className="search">
+                      <input
+                        type="search"
+                        name="q"
+                        placeholder="Enter actor name..."
+                      />
+                    </div>
+                    <button>
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ActorSearch searchQuery={searchActor} />
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Now Playing</button>}
