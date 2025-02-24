@@ -5,24 +5,32 @@ const BASE_URL = "https://api.themoviedb.org/3";
 function ActorSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
   const [movieCredits, setMovieCredits] = useState(null);
+  const [tvCredits, setTvCredits] = useState(null);
 
   const searchActor = (query) => {
     fetch(`${BASE_URL}/search/person?api_key=${API_KEY}&query=${query}`)
       .then((res) => res.json())
       .then((json) => {
         if (json.results && json.results.length > 0) {
-          const actor = json.results[0];
-          setSearchResult(actor);
-          fetchMovieCredits(actor.id);
+          const actorId = json.results[0].id;
+          fetch(`${BASE_URL}/person/${actorId}?api_key=${API_KEY}`)
+            .then((res) => res.json())
+            .then((json) => {
+              setSearchResult(json);
+              fetchMovieCredits(actorId);
+              fetchTvCredits(actorId);
+            });
         } else {
           setSearchResult(null);
           setMovieCredits(null);
+          setTvCredits(null);
         }
       })
       .catch((error) => {
         console.error("Error searching for actor:", error);
         setSearchResult(null);
         setMovieCredits(null);
+        setTvCredits(null);
       });
   };
 
@@ -39,6 +47,22 @@ function ActorSearch({ searchQuery }) {
       .catch((error) => {
         console.error("Error fetching movie credits:", error);
         setMovieCredits(null);
+      });
+  };
+
+  const fetchTvCredits = (actorId) => {
+    fetch(`${BASE_URL}/person/${actorId}/tv_credits?api_key=${API_KEY}`)
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.cast) {
+          setTvCredits(json.cast);
+        } else {
+          setTvCredits(null);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching TV credits:", error);
+        setTvCredits(null);
       });
   };
 
@@ -71,34 +95,78 @@ function ActorSearch({ searchQuery }) {
                     />
                   </a>
                   <h1>{searchResult.name}</h1>
+                  <h4>
+                    {searchResult.birthday
+                      ? Math.floor(
+                          (new Date() - new Date(searchResult.birthday)) /
+                            (1000 * 60 * 60 * 24 * 365.25)
+                        )
+                      : "N/A"}
+                  </h4>
                   <hr></hr>
-                  {/* <h4>Birthday: {searchResult.birthday}</h4>
-                  {console.log(searchResult.biography)} */}
-                  <h4>{movieCredits ? movieCredits.length : 0} credits</h4>
+                  <h4>Movies</h4>
+                  <h4>{movieCredits ? movieCredits.length : 0} Credits</h4>
+
                   {movieCredits && (
                     <div>
-                      {movieCredits.map((credit) => (
-                        <a
-                          key={credit.id}
-                          href={`https://www.themoviedb.org/movie/${credit.id}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <img
-                            style={{
-                              width: "60px",
-                              height: "90px",
-                            }}
-                            src={
-                              credit.poster_path
-                                ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
-                                : "noposter.png"
-                            }
-                            alt={credit.title}
-                            title={credit.title}
-                          />
-                        </a>
-                      ))}
+                      {movieCredits
+                        .sort((a, b) =>
+                          a.release_date < b.release_date ? -1 : 1
+                        )
+                        .map((credit) => (
+                          <a
+                            key={credit.id}
+                            href={`https://www.themoviedb.org/movie/${credit.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              style={{
+                                width: "60px",
+                                height: "90px",
+                              }}
+                              src={
+                                credit.poster_path
+                                  ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
+                                  : "noposter.png"
+                              }
+                              alt={credit.title}
+                              title={credit.title}
+                            />
+                          </a>
+                        ))}
+                    </div>
+                  )}
+                  <h4>Shows</h4>
+                  <h4>{tvCredits ? tvCredits.length : 0} Credits</h4>
+                  {tvCredits && (
+                    <div>
+                      {tvCredits
+                        .sort((a, b) =>
+                          a.first_air_date < b.first_air_date ? -1 : 1
+                        )
+                        .map((credit) => (
+                          <a
+                            key={credit.id}
+                            href={`https://www.themoviedb.org/tv/${credit.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              style={{
+                                width: "60px",
+                                height: "90px",
+                              }}
+                              src={
+                                credit.poster_path
+                                  ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
+                                  : "noposter.png"
+                              }
+                              alt={credit.name}
+                              title={credit.name}
+                            />
+                          </a>
+                        ))}
                     </div>
                   )}
                   <br />
