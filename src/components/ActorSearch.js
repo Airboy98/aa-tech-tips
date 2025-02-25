@@ -85,7 +85,7 @@ function ActorSearch({ searchQuery }) {
             <tbody>
               <tr>
                 <td>
-                  {searchResult ? (
+                  {searchResult != null ? (
                     <>
                       <a
                         href={`https://www.themoviedb.org/person/${searchResult.id}`}
