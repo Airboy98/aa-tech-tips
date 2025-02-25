@@ -21,6 +21,10 @@ function ActorSearch({ searchQuery }) {
               fetchTvCredits(actorId);
             });
         } else {
+          // console.log(
+          //   "No actor found with that name. Maybe you misspelled it?"
+          // );
+
           setSearchResult(null);
           setMovieCredits(null);
           setTvCredits(null);
@@ -74,112 +78,126 @@ function ActorSearch({ searchQuery }) {
 
   return (
     <div>
-      {searchResult && (
+      {console.log(searchResult)}
+      {
         <div className="streaming2">
           <table>
             <tbody>
               <tr>
                 <td>
-                  <a
-                    href={`https://www.themoviedb.org/person/${searchResult.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      style={{
-                        width: "200px",
-                        height: "300px",
-                      }}
-                      src={`https://image.tmdb.org/t/p/w500${searchResult.profile_path}`}
-                      alt={searchResult.name}
-                    />
-                  </a>
-                  <h1>{searchResult.name}</h1>
-                  <h4>
-                    {searchResult.birthday
-                      ? Math.floor(
-                          (new Date() - new Date(searchResult.birthday)) /
-                            (1000 * 60 * 60 * 24 * 365.25)
-                        )
-                      : "N/A"}
-                  </h4>
-                  <hr></hr>
-                  <h4>Movies</h4>
-                  <h4>{movieCredits ? movieCredits.length : 0} Credits</h4>
+                  {searchResult ? (
+                    <>
+                      <a
+                        href={`https://www.themoviedb.org/person/${searchResult.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          style={{
+                            width: "200px",
+                            height: "300px",
+                          }}
+                          src={
+                            searchResult.profile_path
+                              ? `https://image.tmdb.org/t/p/w500${searchResult.profile_path}`
+                              : "nopicture.png"
+                          }
+                          alt={searchResult.name}
+                        />
+                      </a>
+                      <h1>{searchResult.name}</h1>
+                      <h4>
+                        {searchResult.birthday
+                          ? `${Math.floor(
+                              (new Date() - new Date(searchResult.birthday)) /
+                                (1000 * 60 * 60 * 24 * 365.25)
+                            )} years old`
+                          : "N/A"}
+                      </h4>
+                      <hr />
+                      <h4>Movies</h4>
+                      <h4>{movieCredits ? movieCredits.length : 0} Credits</h4>
 
-                  {movieCredits && (
-                    <div>
-                      {movieCredits
-                        .sort((a, b) =>
-                          a.release_date < b.release_date ? -1 : 1
-                        )
-                        .map((credit) => (
-                          <a
-                            key={credit.id}
-                            href={`https://www.themoviedb.org/movie/${credit.id}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <img
-                              style={{
-                                width: "60px",
-                                height: "90px",
-                              }}
-                              src={
-                                credit.poster_path
-                                  ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
-                                  : "noposter.png"
-                              }
-                              alt={credit.title}
-                              title={credit.title}
-                            />
-                          </a>
-                        ))}
-                    </div>
+                      {movieCredits && (
+                        <div>
+                          {movieCredits
+                            .sort((a, b) =>
+                              a.release_date < b.release_date ? -1 : 1
+                            )
+                            .map((credit) => (
+                              <a
+                                key={credit.id}
+                                href={`https://www.themoviedb.org/movie/${credit.id}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <img
+                                  style={{
+                                    width: "60px",
+                                    height: "90px",
+                                  }}
+                                  src={
+                                    credit.poster_path
+                                      ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
+                                      : "noposter.png"
+                                  }
+                                  alt={credit.title}
+                                  title={credit.title}
+                                />
+                              </a>
+                            ))}
+                        </div>
+                      )}
+                      <h4>Shows</h4>
+                      <h4>{tvCredits ? tvCredits.length : 0} Credits</h4>
+                      {tvCredits && (
+                        <div>
+                          {tvCredits
+                            .sort((a, b) =>
+                              a.first_air_date < b.first_air_date ? -1 : 1
+                            )
+                            .map((credit) => (
+                              <a
+                                key={credit.id}
+                                href={`https://www.themoviedb.org/tv/${credit.id}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <img
+                                  style={{
+                                    width: "60px",
+                                    height: "90px",
+                                  }}
+                                  src={
+                                    credit.poster_path
+                                      ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
+                                      : "noposter.png"
+                                  }
+                                  alt={credit.name}
+                                  title={credit.name}
+                                />
+                              </a>
+                            ))}
+                        </div>
+                      )}
+                      <br />
+                      <h5>
+                        Data provided by{" "}
+                        <a
+                          href={`https://www.themoviedb.org/person/${searchResult.id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          TMDB
+                        </a>
+                      </h5>
+                    </>
+                  ) : (
+                    <h3>
+                      No results found. <br></br>
+                      <br></br>Check spelling and try again.
+                    </h3>
                   )}
-                  <h4>Shows</h4>
-                  <h4>{tvCredits ? tvCredits.length : 0} Credits</h4>
-                  {tvCredits && (
-                    <div>
-                      {tvCredits
-                        .sort((a, b) =>
-                          a.first_air_date < b.first_air_date ? -1 : 1
-                        )
-                        .map((credit) => (
-                          <a
-                            key={credit.id}
-                            href={`https://www.themoviedb.org/tv/${credit.id}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <img
-                              style={{
-                                width: "60px",
-                                height: "90px",
-                              }}
-                              src={
-                                credit.poster_path
-                                  ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
-                                  : "noposter.png"
-                              }
-                              alt={credit.name}
-                              title={credit.name}
-                            />
-                          </a>
-                        ))}
-                    </div>
-                  )}
-                  <br />
-                  <h5>
-                    Data provided by{" "}
-                    <a
-                      href={`https://www.themoviedb.org/person/${searchResult.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      TMDB
-                    </a>
-                  </h5>
                 </td>
               </tr>
             </tbody>
@@ -187,7 +205,7 @@ function ActorSearch({ searchQuery }) {
           <br />
           <br />
         </div>
-      )}
+      }
     </div>
   );
 }
