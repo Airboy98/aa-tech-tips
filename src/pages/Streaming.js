@@ -7,6 +7,7 @@ import ShowSearch from "../components/ShowSearch";
 import AlbumSearch from "../components/AlbumSearch";
 import ArtistSearch from "../components/ArtistSearch";
 import ActorSearch from "../components/ActorSearch";
+import Upcoming from "../components/Upcoming";
 
 export default function Streaming() {
   const [searchMovie, setSearchMovie] = useState("");
@@ -538,6 +539,12 @@ export default function Streaming() {
       >
         <br></br>
         <NowPlaying />
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Upcoming</button>}
+      >
+        <br></br>
+        <Upcoming />
       </Collapsible>
       <h2>Music</h2>
       <Collapsible
