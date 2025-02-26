@@ -8,6 +8,7 @@ import AlbumSearch from "../components/AlbumSearch";
 import ArtistSearch from "../components/ArtistSearch";
 import ActorSearch from "../components/ActorSearch";
 import Upcoming from "../components/Upcoming";
+import SongSearch from "../components/SongSearch";
 
 export default function Streaming() {
   const [searchMovie, setSearchMovie] = useState("");
@@ -15,6 +16,7 @@ export default function Streaming() {
   const [searchAlbum, setSearchAlbum] = useState("");
   const [searchArtist, setSearchArtist] = useState("");
   const [searchActor, setSearchActor] = useState("");
+  const [searchSong, setSearchSong] = useState("");
 
   const handleSearchMovie = (e) => {
     e.preventDefault();
@@ -42,6 +44,11 @@ export default function Streaming() {
     e.preventDefault();
     const actor = e.target.elements.q.value;
     setSearchActor(actor);
+  };
+  const handleSearchSong = (e) => {
+    e.preventDefault();
+    const song = e.target.elements.q.value;
+    setSearchSong(song);
   };
 
   return (
@@ -610,6 +617,38 @@ export default function Streaming() {
           </table>
         </div>
         <AlbumSearch searchQuery={searchAlbum} />
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Song Search</button>}
+      >
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form onSubmit={handleSearchSong}>
+                    <div className="search">
+                      <input
+                        type="search"
+                        name="q"
+                        placeholder="Enter song name..."
+                      />
+                    </div>
+                    <button>
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <SongSearch searchQuery={searchSong} />
       </Collapsible>
     </>
   );
