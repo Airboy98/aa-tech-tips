@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
 
-function NowPlaying() {
-  const [nowPlayingList, setNowPlayingList] = useState([]);
+function Upcoming() {
+  const [upcomingList, setUpcomingList] = useState([]);
 
-  const getNowPlaying = () => {
+  const getUpcoming = () => {
     fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?api_key=b32ac76c26554d2985c4740b888a60d7&region=US&with_release_type=2|3"
+      "https://api.themoviedb.org/3/movie/upcoming?api_key=b32ac76c26554d2985c4740b888a60d7&region=US&with_release_type=2|3"
     )
       .then((res) => res.json())
       .then((json) => {
         if (json.results) {
-          setNowPlayingList(json.results);
+          setUpcomingList(json.results);
         } else {
-          setNowPlayingList([]);
+          setUpcomingList([]);
         }
       })
       .catch((error) => {
-        console.error("Error fetching now playing movies:", error);
-        setNowPlayingList([]);
+        console.error("Error fetching upcoming movies:", error);
+        setUpcomingList([]);
       });
   };
 
   useEffect(() => {
-    getNowPlaying();
+    getUpcoming();
   }, []);
 
   return (
     <div>
-      {nowPlayingList.map((movie) => (
+      {upcomingList.map((movie) => (
         <a
           key={movie.id}
           href={`https://www.themoviedb.org/movie/${movie.id}`}
@@ -52,7 +52,7 @@ function NowPlaying() {
       <h5>
         Data provided by{" "}
         <a
-          href="https://www.themoviedb.org/movie/now-playing?language=en-US"
+          href="https://www.themoviedb.org/movie/upcoming?language=en-US"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -63,4 +63,4 @@ function NowPlaying() {
   );
 }
 
-export default NowPlaying;
+export default Upcoming;
