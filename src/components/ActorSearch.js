@@ -105,12 +105,19 @@ function ActorSearch({ searchQuery }) {
                   </a>
                   <h1>{searchResult.name}</h1>
                   <h4>
-                    {searchResult.birthday
+                    {/* {console.log(searchResult)} */}
+                    {searchResult.deathday
+                      ? `${Math.floor(
+                          (new Date(searchResult.deathday) -
+                            new Date(searchResult.birthday)) /
+                            (1000 * 60 * 60 * 24 * 365.25)
+                        )} years old (deceased)`
+                      : searchResult.birthday
                       ? `${Math.floor(
                           (new Date() - new Date(searchResult.birthday)) /
                             (1000 * 60 * 60 * 24 * 365.25)
                         )} years old`
-                      : "N/A"}
+                      : "Age unknown"}
                   </h4>
                   <hr />
                   <h4>Movies</h4>
