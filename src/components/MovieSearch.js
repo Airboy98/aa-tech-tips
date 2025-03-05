@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-const API_KEY = "b32ac76c26554d2985c4740b888a60d7";
-const BASE_URL = "https://api.themoviedb.org/3";
+const API_KEY = process.env.REACT_APP_API_KEY;
+const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
 
 function MovieSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
@@ -85,6 +85,7 @@ function MovieSearch({ searchQuery }) {
           <table>
             <tbody>
               <tr>
+                {/* {console.log(searchResult)} */}
                 <td>
                   <a
                     href={`https://www.themoviedb.org/movie/${searchResult.id}`}
