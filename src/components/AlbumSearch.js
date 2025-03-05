@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const CLIENT_ID = "8c21848c3b8546949fd02cfd34de46cb";
-const CLIENT_SECRET = "90aa752b1f7b459c9a18c30d4cb1d731";
-const BASE_URL = "https://api.spotify.com/v1/";
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
+const BASE_URL = process.env.REACT_APP_BASE_URL_SPOTIFY;
 
 function AlbumSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);

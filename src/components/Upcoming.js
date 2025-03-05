@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+const API_KEY = process.env.REACT_APP_API_KEY;
+const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
 
 function Upcoming() {
   const [upcomingList, setUpcomingList] = useState([]);
 
   const getUpcoming = () => {
     fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?api_key=b32ac76c26554d2985c4740b888a60d7&region=US&with_release_type=2|3"
+      `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&region=US&with_release_type=2|3`
     )
       .then((res) => res.json())
       .then((json) => {
