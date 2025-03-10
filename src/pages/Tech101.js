@@ -806,7 +806,7 @@ export default function Tech101() {
                 </td>
                 <td>
                   <a
-                    href="https://x.ai/"
+                    href="https://grok.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -829,20 +829,25 @@ export default function Tech101() {
             <th>Prompt(s) </th>
             <th>Final Output</th>
             <tr>
-              <td>Copilot</td>
-              <td>Generate a picture of the grand canyon full of plant life</td>
+              <td>ChatGPT</td>
+              <td>
+                <ol>
+                  <li>Tell me about the Gospels of the Bible</li>
+                  <li>Shorten that to summarize in 2 sentences</li>
+                </ol>
+              </td>
               <td>
                 <img
                   src="images/ai/prompt1.png"
                   alt="prompt1"
                   width="150"
-                  height="150"
+                  height="100"
                 />
               </td>
             </tr>
             <tr>
-              <td>ChatGPT</td>
-              <td>Generate an image of a field of puppies</td>
+              <td>Copilot</td>
+              <td>Generate a picture of the grand canyon full of plant life</td>
               <td>
                 <img
                   src="images/ai/prompt2.png"
@@ -853,11 +858,11 @@ export default function Tech101() {
               </td>
             </tr>
             <tr>
-              <td>ChatGPT</td>
+              <td>Gemini</td>
               <td>
                 <ol>
-                  <li>Tell me about the Gospels of the Bible</li>
-                  <li>Shorten that to summarize in 2 sentences</li>
+                  <li>Give me an itinerary on things to do in Rome</li>
+                  <li>Condense that to a single day</li>
                 </ol>
               </td>
               <td>
@@ -866,6 +871,20 @@ export default function Tech101() {
                   alt="prompt3"
                   width="150"
                   height="100"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Grok</td>
+              <td>
+                Summarize the attempted assassination of Donald Trump in Butler
+              </td>
+              <td>
+                <img
+                  src="images/ai/prompt4.png"
+                  alt="prompt4"
+                  width="150"
+                  height="150"
                 />
               </td>
             </tr>
