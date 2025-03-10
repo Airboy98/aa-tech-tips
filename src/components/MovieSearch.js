@@ -6,6 +6,7 @@ function MovieSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
   const [watchProviders, setWatchProviders] = useState(null);
   const [certification, setCertification] = useState(null);
+  const [director, setDirector] = useState(null);
 
   const searchMovie = (query) => {
     fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
@@ -16,10 +17,12 @@ function MovieSearch({ searchQuery }) {
           setSearchResult(movie);
           fetchWatchProviders(movie.id);
           fetchCertification(movie.id);
+          fetchDirector(movie.id);
         } else {
           setSearchResult(null);
           setWatchProviders(null);
           setCertification(null);
+          setDirector(null);
         }
       })
       .catch((error) => {
@@ -27,6 +30,7 @@ function MovieSearch({ searchQuery }) {
         setSearchResult(null);
         setWatchProviders(null);
         setCertification(null);
+        setDirector(null);
       });
   };
 
@@ -72,6 +76,25 @@ function MovieSearch({ searchQuery }) {
       });
   };
 
+  const fetchDirector = (movieId) => {
+    fetch(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`)
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.crew) {
+          const director = json.crew.find(
+            (crewMember) => crewMember.job === "Director"
+          );
+          setDirector(director ? director.name : null);
+        } else {
+          setDirector(null);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching director:", error);
+        setDirector(null);
+      });
+  };
+
   useEffect(() => {
     if (searchQuery) {
       searchMovie(searchQuery);
@@ -85,7 +108,7 @@ function MovieSearch({ searchQuery }) {
           <table>
             <tbody>
               <tr>
-                {/* {console.log(searchResult)} */}
+                {console.log(searchResult)}
                 <td>
                   <a
                     href={`https://www.themoviedb.org/movie/${searchResult.id}`}
@@ -97,12 +120,17 @@ function MovieSearch({ searchQuery }) {
                         width: "200px",
                         height: "300px",
                       }}
-                      src={`https://image.tmdb.org/t/p/w500${searchResult.poster_path}`}
+                      src={
+                        searchResult.poster_path
+                          ? `https://image.tmdb.org/t/p/w500${searchResult.poster_path}`
+                          : "noposter.png"
+                      }
                       alt={searchResult.title}
                     />
                   </a>
                   <h1>{searchResult.title}</h1>
                   <hr></hr>
+                  {director && <h4>Directed by {director}</h4>}
                   {certification && <h4>Rated {certification}</h4>}
                   <h4>{searchResult.release_date}</h4>
 
@@ -124,7 +152,7 @@ function MovieSearch({ searchQuery }) {
                           ))}
                         </div>
                       ) : (
-                        <h5>Streaming Unavailable</h5>
+                        <h4>Streaming Unavailable</h4>
                       )}
                     </div>
                   )}
