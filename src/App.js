@@ -7,6 +7,7 @@ import Smartphone from "./pages/Smartphone";
 import Internet from "./pages/Internet";
 import Streaming from "./pages/Streaming";
 import Wearable from "./pages/Wearable";
+import Gaming from "./pages/Gaming";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Appointment from "./pages/Appointment";
@@ -24,8 +25,9 @@ function App() {
             <Route path="/tech101" element={<Tech101 />} />
             <Route path="/computer" element={<Computer />} />
             <Route path="/television" element={<Television />} />
-            <Route path="/smartphone" element={<Smartphone />} />
+            <Route path="/gaming" element={<Gaming />} />
             <Route path="/internet" element={<Internet />} />
+            <Route path="/smartphone" element={<Smartphone />} />
             <Route path="/streaming" element={<Streaming />} />
             <Route path="/wearable" element={<Wearable />} />
             <Route path="/about" element={<About />} />

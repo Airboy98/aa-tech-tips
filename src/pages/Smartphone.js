@@ -49,6 +49,14 @@ export default function Smartphone() {
                 <td>Multiple phone plans</td>
               </tr>
               <tr>
+                <td>MVNO</td>
+                <td>
+                  Mobile Virtual Network Operator, leases network capacity from
+                  other carriers
+                </td>
+                <td>Alternative carriers</td>
+              </tr>
+              <tr>
                 <td>Network Technology</td>
                 <td>
                   The type of network used, such as 4G LTE or 5G, affecting
@@ -164,6 +172,20 @@ export default function Smartphone() {
                   />
                 </a>
               </td>
+              <td>
+                <a
+                  href="https://www.puretalkusa.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/puretalk.png"
+                    alt="Pure Talk"
+                    width="100"
+                    height="25"
+                  />
+                </a>
+              </td>
             </tr>
             <tr>
               <td>
@@ -182,15 +204,29 @@ export default function Smartphone() {
               </td>
               <td>
                 <a
-                  href="https://www.puretalkusa.com/"
+                  href="https://www.consumercellular.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
-                    src="images/smartphones/puretalk.png"
+                    src="images/smartphones/consumer.png"
                     alt="Pure Talk"
                     width="100"
-                    height="25"
+                    height="40"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.cricketwireless.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/cricket.svg"
+                    alt="Pure Talk"
+                    width="100"
+                    height="50"
                   />
                 </a>
               </td>
@@ -206,7 +242,8 @@ export default function Smartphone() {
           >
             carrier coverage
           </a>{" "}
-          in your area before committing to a plan.
+          in your area before committing to a plan. Alternative carriers also
+          utilize big carrier networks.
         </h5>
       </Collapsible>
       <Collapsible

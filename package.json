@@ -2,6 +2,7 @@
   "name": "it-support",
   "version": "0.1.0",
   "homepage": "https://airboy98.github.io/aa-tech-tips",
+  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^6.4.6",
@@ -9,6 +10,9 @@
     "@testing-library/user-event": "^14.5.2",
     "axios": "^1.7.9",
     "date-fns": "^3.6.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "node-fetch": "^2.7.0",
     "primereact": "^10.8.2",
     "react": "^18.3.1",
     "react-burger-menu": "^3.0.9",

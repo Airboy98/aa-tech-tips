@@ -52,6 +52,9 @@ export default function Navbar() {
               <CustomLink to="/television" onClick={closeMenu}>
                 Television
               </CustomLink>
+              <CustomLink to="/gaming" onClick={closeMenu}>
+                Gaming
+              </CustomLink>
               <CustomLink to="/internet" onClick={closeMenu}>
                 Internet
               </CustomLink>
@@ -77,6 +80,7 @@ export default function Navbar() {
             <CustomLink to="/tech101">Tech 101</CustomLink>
             <CustomLink to="/computer">Computer</CustomLink>
             <CustomLink to="/television">Television</CustomLink>
+            <CustomLink to="/gaming">Gaming</CustomLink>
             <CustomLink to="/internet">Internet</CustomLink>
             <CustomLink to="/smartphone">Smartphone</CustomLink>
             <CustomLink to="/streaming">Streaming</CustomLink>
