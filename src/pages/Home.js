@@ -43,15 +43,18 @@ export default function Home() {
         </h4>
       </Collapsible>
       <div className="links">
-        <CustomLink to="/tech101">
-          <button>Tech 101</button>
-        </CustomLink>
         <div className="button-grid">
+          <CustomLink to="/tech101">
+            <button>Tech 101</button>
+          </CustomLink>
           <CustomLink to="/computer">
             <button>Computer</button>
           </CustomLink>
           <CustomLink to="/television">
             <button>Television</button>
+          </CustomLink>
+          <CustomLink to="/gaming">
+            <button>Gaming</button>
           </CustomLink>
           <CustomLink to="/internet">
             <button>Internet</button>
