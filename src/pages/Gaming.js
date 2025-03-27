@@ -62,15 +62,10 @@ export default function Gaming() {
       >
         <div className="television">
           <table>
-            <thead>
-              <tr>
-                <th>Console</th>
-                <th>Details</th>
-              </tr>
-            </thead>
             <tbody>
               <tr>
                 <td>
+                  <h1>Sony</h1>
                   <a
                     href="https://www.playstation.com/en-us/"
                     target="_blank"
@@ -90,9 +85,7 @@ export default function Gaming() {
                     width="200"
                     height="200"
                   />
-                </td>
-                <td>
-                  <h1>Sony</h1>
+
                   <h4>5th generation PlayStation console</h4>
                   <h4>Released 11.12.2020</h4>
                   <h4>Optional 4K Ultra Blu-ray drive</h4>
@@ -103,6 +96,7 @@ export default function Gaming() {
               </tr>
               <tr>
                 <td>
+                  <h1>Microsoft</h1>
                   <a
                     href="https://www.xbox.com/en-US/"
                     target="_blank"
@@ -122,14 +116,12 @@ export default function Gaming() {
                     width="200"
                     height="200"
                   />
-                </td>
-                <td>
-                  <h1>Microsoft</h1>
+
                   <h4>4th generation Xbox console</h4>
                   <h4>Released 11.10.2020</h4>
                   <h4>4K Ultra Blu-ray drive (XSX only)</h4>
                   <h4>16GB GDDR6 RAM (XSX)</h4>
-                  <h4> 10GB GDDR6 RAM (XSS)</h4>
+                  <h4>10GB GDDR6 RAM (XSS)</h4>
                   <h4>1TB M.2 SSD</h4>
                   <h4>Supports 8K/60 Hz and 4K/120 Hz (XSX)</h4>
                   <h4>Supports 2K/120 Hz (XSS)</h4>
@@ -137,6 +129,7 @@ export default function Gaming() {
               </tr>
               <tr>
                 <td>
+                  <h1>Nintendo</h1>
                   <a
                     href="https://www.nintendo.com/switch/"
                     target="_blank"
@@ -156,9 +149,7 @@ export default function Gaming() {
                     width="200"
                     height="200"
                   />
-                </td>
-                <td>
-                  <h1>Nintendo</h1>
+
                   <h4>9th generation Nintendo console</h4>
                   <h4>Released 03.03.2017</h4>
                   <h4>Proprietary game cartridge slot</h4>
