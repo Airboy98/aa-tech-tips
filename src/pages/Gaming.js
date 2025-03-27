@@ -55,177 +55,134 @@ export default function Gaming() {
       ></Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Upcoming</button>}
-      ></Collapsible>
+      ></Collapsible> */}
       <h2>Hardware</h2>
       <Collapsible
         trigger={<button className="collapsible-trigger">Consoles</button>}
       >
         <div className="television">
           <table>
-            <tr>
-              <td>
-                <a
-                  href="https://www.samsung.com/us/support/contact/?model=N0002200"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+            <thead>
+              <tr>
+                <th>Console</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.playstation.com/en-us/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/consoles/PS5.png"
+                      alt="PS5"
+                      width="200"
+                      height="100"
+                    />
+                  </a>
+                  <br></br>
                   <img
-                    src="images/televisions/samsung.png"
-                    alt="Samsung"
-                    width="100"
-                    height="15"
+                    src="images/consoles/PS5console.jpg"
+                    alt="PS5 console"
+                    width="200"
+                    height="200"
                   />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://www.lg.com/us/support"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                </td>
+                <td>
+                  <h1>Sony</h1>
+                  <h4>5th generation PlayStation console</h4>
+                  <h4>Released 11.12.2020</h4>
+                  <h4>Optional 4K Ultra Blu-ray drive</h4>
+                  <h4>16GB GDDR6 RAM</h4>
+                  <h4>1TB M.2 SSD</h4>
+                  <h4>Supports 8K/60 Hz and 4K/120 Hz</h4>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.xbox.com/en-US/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/consoles/XboxSeries.png"
+                      alt="Xbox Series X | S"
+                      width="200"
+                      height="100"
+                    />
+                  </a>
+                  <br></br>
                   <img
-                    src="images/televisions/LG.png"
-                    alt="LG"
-                    width="100"
-                    height="50"
+                    src="images/consoles/Xboxconsole.jpg"
+                    alt="Xbox Series X | S console"
+                    width="200"
+                    height="200"
                   />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="https://www.sony.com/electronics/support/televisions-projectors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                </td>
+                <td>
+                  <h1>Microsoft</h1>
+                  <h4>4th generation Xbox console</h4>
+                  <h4>Released 11.10.2020</h4>
+                  <h4>4K Ultra Blu-ray drive (XSX only)</h4>
+                  <h4>16GB GDDR6 RAM (XSX)</h4>
+                  <h4> 10GB GDDR6 RAM (XSS)</h4>
+                  <h4>1TB M.2 SSD</h4>
+                  <h4>Supports 8K/60 Hz and 4K/120 Hz (XSX)</h4>
+                  <h4>Supports 2K/120 Hz (XSS)</h4>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.nintendo.com/switch/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/consoles/NintendoSwitch.png"
+                      alt="Nintendo Switch"
+                      width="200"
+                      height="100"
+                    />
+                  </a>
+                  <br></br>
                   <img
-                    src="images/televisions/sony.png"
-                    alt="Sony"
-                    width="100"
-                    height="50"
+                    src="images/consoles/Switchconsole.jpg"
+                    alt="Nintendo Switch console"
+                    width="200"
+                    height="200"
                   />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://www.toshibatv-usa.com/support"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/televisions/toshiba.png"
-                    alt="Toshiba"
-                    width="100"
-                    height="30"
-                  />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="https://www.hisense-usa.com/support"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/televisions/hisense.png"
-                    alt="Hisense"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://support.tcl.com/us"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/televisions/TCL.png"
-                    alt="TCL"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="https://www.sharptvusa.com/support"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/televisions/sharp.png"
-                    alt="Sharp"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://support.vizio.com/s/?language=en_US"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/televisions/vizio.png"
-                    alt="Vizio"
-                    width="100"
-                    height="30"
-                  />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="https://www.usa.philips.com/c-m-so/tv"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/televisions/philips.png"
-                    alt="Philips"
-                    width="100"
-                    height="20"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://onntvsupport.com/roku-tv"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/televisions/onn.png"
-                    alt="Onn."
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-            </tr>
+                </td>
+                <td>
+                  <h1>Nintendo</h1>
+                  <h4>9th generation Nintendo console</h4>
+                  <h4>Released 03.03.2017</h4>
+                  <h4>Proprietary game cartridge slot</h4>
+                  <h4>4GB LPDDR4 RAM</h4>
+                  <h4>32GB eMMC</h4>
+                  <h4>microSD card slot</h4>
+                  <h4>Supports 1080p/60 Hz (docked)</h4>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
-        <h5>
+        {/* <h5>
           NOTE: TV model number/names are usually found on a sticker on the back
           of the TV. Navigate to your brand's website above and input the model
           number/name.
-        </h5>
+        </h5> */}
       </Collapsible>
-      <Collapsible
+      {/* <Collapsible
         trigger={
           <button className="collapsible-trigger">Graphics Cards</button>
         }
-      ></Collapsible>
-      <Collapsible
+      ></Collapsible> */}
+      {/* <Collapsible
         trigger={<button className="collapsible-trigger">VR Headsets</button>}
       ></Collapsible> */}
     </>
