@@ -61,18 +61,22 @@ function GameSearch({ searchQuery }) {
                   <h1>{searchResult.name}</h1>
                   <hr />
 
-                  {searchResult.original_game_rating && (
+                  {searchResult.original_game_rating ? (
                     <h4>
                       Rated{" "}
                       {searchResult.original_game_rating
                         .find((rating) => rating.name.startsWith("ESRB:"))
                         ?.name.replace("ESRB: ", "") || "Not rated"}
                     </h4>
+                  ) : (
+                    <h4>Rating TBD</h4>
                   )}
 
-                  {searchResult.original_release_date && (
-                    <h4>{searchResult.original_release_date}</h4>
-                  )}
+                  <h4>
+                    {searchResult.original_release_date
+                      ? searchResult.original_release_date
+                      : "Coming Soon"}
+                  </h4>
                   {stripHtml(searchResult.deck)}
                   <h5>
                     Data provided by{" "}
