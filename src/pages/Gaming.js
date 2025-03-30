@@ -2,6 +2,8 @@ import Collapsible from "react-collapsible";
 import "./television.css";
 import GameSearch from "../components/GameSearch";
 import { useState, useEffect } from "react";
+import UpcomingGames from "../components/UpcomingGames";
+import NewReleases from "../components/NewReleases";
 
 export default function Gaming() {
   const [searchGame, setSearchGame] = useState("");
@@ -52,10 +54,19 @@ export default function Gaming() {
       </Collapsible>
       {/* <Collapsible
         trigger={<button className="collapsible-trigger">New Releases</button>}
-      ></Collapsible>
+      ></Collapsible> */}
+      <Collapsible
+        trigger={<button className="collapsible-trigger">New Releases</button>}
+      >
+        <br></br>
+        <NewReleases />
+      </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Upcoming</button>}
-      ></Collapsible> */}
+      >
+        <br></br>
+        <UpcomingGames />
+      </Collapsible>
       <h2>Hardware</h2>
       <Collapsible
         trigger={<button className="collapsible-trigger">Consoles</button>}
