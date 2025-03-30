@@ -50,6 +50,16 @@ function NewReleases() {
       ) : (
         <p>No new releases found.</p>
       )}
+      <h5>
+        Data provided by{" "}
+        <a
+          href="https://www.giantbomb.com/new-games/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Giant Bomb
+        </a>
+      </h5>
     </div>
   );
 }
