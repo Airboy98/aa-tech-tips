@@ -122,7 +122,7 @@ export default function Gaming() {
                   </a>
                   <br></br>
                   <img
-                    src="images/consoles/Xboxconsole.jpg"
+                    src="images/consoles/Xboxconsole2.png"
                     alt="Xbox Series X | S console"
                     width="200"
                     height="200"
