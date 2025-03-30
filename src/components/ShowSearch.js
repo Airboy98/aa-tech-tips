@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
 
 function ShowSearch({ searchQuery }) {

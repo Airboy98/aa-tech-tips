@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_SPOTIFY;
+const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET_SPOTIFY;
 const BASE_URL = process.env.REACT_APP_BASE_URL_SPOTIFY;
 
 function AlbumSearch({ searchQuery }) {

@@ -9,8 +9,6 @@ function UpcomingGames() {
       .then((json) => {
         console.log("Upcoming games response:", json);
         if (json.results && json.results.length > 0) {
-          //   const game = json.results[2];
-          //   setUpcomingGames(game);
           setUpcomingGames(json.results);
         } else {
           setUpcomingGames(null);
@@ -40,7 +38,6 @@ function UpcomingGames() {
               style={{
                 width: "186px",
                 height: "105px",
-                // marginTop: "10px",
               }}
               src={game.image?.screen_url}
               alt={game.name}
@@ -50,6 +47,16 @@ function UpcomingGames() {
       ) : (
         <p>No upcoming games found.</p>
       )}
+      <h5>
+        Data provided by{" "}
+        <a
+          href="https://www.giantbomb.com/new-games/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Giant Bomb
+        </a>
+      </h5>
     </div>
   );
 }
