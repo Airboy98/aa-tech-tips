@@ -38,8 +38,8 @@ function UpcomingGames() {
           >
             <img
               style={{
-                width: "200px",
-                height: "125px",
+                width: "186px",
+                height: "105px",
                 // marginTop: "10px",
               }}
               src={game.image?.screen_url}
