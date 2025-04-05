@@ -3,9 +3,9 @@ const fetch = require("node-fetch");
 export default async function handler(req, res) {
   const API_KEY = process.env.REACT_APP_API_KEY_GIANT;
   const BASE_URL = process.env.REACT_APP_BASE_URL_GIANT;
-  const startDate = new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000)
+  const startDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
     .toISOString()
-    .split("T")[0]; // Get date 6 months ago
+    .split("T")[0]; // releases from the last month
   const endDate = new Date().toISOString().split("T")[0]; // Get today's date (e.g., "2025-03-27")
   const url = `${BASE_URL}games/?api_key=${API_KEY}&format=json&filter=original_release_date:${startDate}|${endDate}&sort=popularity:desc&field_list=id,name,image,site_detail_url,original_game_rating,original_release_date,deck&limit=30`;
 
