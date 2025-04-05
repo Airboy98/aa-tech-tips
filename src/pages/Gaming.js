@@ -90,14 +90,14 @@ export default function Gaming() {
                       width="200"
                       height="100"
                     />
+                    <br></br>
+                    <img
+                      src="images/consoles/PS5console.jpg"
+                      alt="PS5 console"
+                      width="200"
+                      height="200"
+                    />
                   </a>
-                  <br></br>
-                  <img
-                    src="images/consoles/PS5console.jpg"
-                    alt="PS5 console"
-                    width="200"
-                    height="200"
-                  />
 
                   <h4>5th generation PlayStation console</h4>
                   <h4>Released 11.12.2020</h4>
@@ -121,14 +121,14 @@ export default function Gaming() {
                       width="200"
                       height="100"
                     />
+                    <br></br>
+                    <img
+                      src="images/consoles/Xboxconsole2.png"
+                      alt="Xbox Series X | S console"
+                      width="200"
+                      height="200"
+                    />
                   </a>
-                  <br></br>
-                  <img
-                    src="images/consoles/Xboxconsole2.png"
-                    alt="Xbox Series X | S console"
-                    width="200"
-                    height="200"
-                  />
 
                   <h4>4th generation Xbox console</h4>
                   <h4>Released 11.10.2020</h4>
@@ -154,22 +154,55 @@ export default function Gaming() {
                       width="200"
                       height="100"
                     />
+                    <br></br>
+                    <img
+                      src="images/consoles/Switchconsole.jpg"
+                      alt="Nintendo Switch console"
+                      width="200"
+                      height="200"
+                    />
                   </a>
-                  <br></br>
-                  <img
-                    src="images/consoles/Switchconsole.jpg"
-                    alt="Nintendo Switch console"
-                    width="200"
-                    height="200"
-                  />
 
-                  <h4>9th generation Nintendo console</h4>
+                  <h4>1st generation Switch console</h4>
                   <h4>Released 03.03.2017</h4>
                   <h4>Proprietary game cartridge slot</h4>
                   <h4>4GB LPDDR4 RAM</h4>
                   <h4>32GB eMMC</h4>
                   <h4>microSD card slot</h4>
                   <h4>Supports 1080p/60 Hz (docked)</h4>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h1>Nintendo</h1>
+                  <a
+                    href="https://www.nintendo.com/us/gaming-systems/switch-2/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/consoles/NintendoSwitch2.png"
+                      alt="Nintendo Switch 2"
+                      width="100"
+                      height="100"
+                    />
+                    <br></br>
+                    <img
+                      src="images/consoles/Switch2console.jpg"
+                      alt="Nintendo Switch 2 console"
+                      width="200"
+                      height="133"
+                    />
+                  </a>
+
+                  <h4>2nd generation Switch console</h4>
+                  <h4>Coming 06.05.2025 starting at $450</h4>
+                  <h4>Switch 1 compatible game cartridge slot</h4>
+                  <h4>12GB LPDDR5X RAM</h4>
+                  <h4>256GB UFS</h4>
+                  <h4>microSD Express card slot</h4>
+                  <h4>Supports 4K/60 Hz and 2K/120 Hz (docked)</h4>
+                  <h4>Supports 1080p/120 Hz (handheld)</h4>
                 </td>
               </tr>
             </tbody>
