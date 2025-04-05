@@ -69,7 +69,9 @@ export default function Gaming() {
       </Collapsible>
       <h2>Hardware</h2>
       <Collapsible
-        trigger={<button className="collapsible-trigger">Consoles</button>}
+        trigger={
+          <button className="collapsible-trigger">Current Consoles</button>
+        }
       >
         <div className="television">
           <table>
@@ -178,6 +180,115 @@ export default function Gaming() {
           of the TV. Navigate to your brand's website above and input the model
           number/name.
         </h5> */}
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Computer vs Console</button>
+        }
+      >
+        <h4>
+          As console generations have progressed, the clear difference between
+          consoles and computers has blurred. Modern day consoles are
+          essentially powerful, custom-built, locked-down computers. Desktop
+          computers are far more upgradable than consoles but come with a higher
+          price tag and a few tradeoffs.
+        </h4>
+        <div className="tech">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Computer</th>
+                <th>Console</th>
+                <th>Explanation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Convenience</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>Consoles are more portable than desktop computers</td>
+              </tr>
+              <tr>
+                <td>Cost</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>Consoles have a lower financial barrier of entry</td>
+              </tr>
+              <tr>
+                <td>Graphics</td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td></td>
+                <td>Desktop graphics cards can be upgraded regularly</td>
+              </tr>
+              <tr>
+                <td>Modularity</td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td></td>
+                <td>All desktop components can be upgraded</td>
+              </tr>
+              <tr>
+                <td>Speed</td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td></td>
+                <td>Desktop processors can be upgraded regularly</td>
+              </tr>
+              <tr>
+                <td>Stability</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>Consoles have dedicated stable operating systems</td>
+              </tr>
+              <tr>
+                <td>Versatility</td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td></td>
+                <td>Desktops can be used for a multitude of purposes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h5>
+          NOTE: Self-built computers vary wildly in price and performance. Use{" "}
+          <a
+            href="https://pcpartpicker.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            pcpartpicker.com
+          </a>{" "}
+          to maximize compatibility and build a computer that fits your needs
+          and budget.
+        </h5>
       </Collapsible>
       {/* <Collapsible
         trigger={
