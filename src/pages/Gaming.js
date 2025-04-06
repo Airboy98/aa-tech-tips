@@ -208,11 +208,10 @@ export default function Gaming() {
             </tbody>
           </table>
         </div>
-        {/* <h5>
-          NOTE: TV model number/names are usually found on a sticker on the back
-          of the TV. Navigate to your brand's website above and input the model
-          number/name.
-        </h5> */}
+        <h5>
+          NOTE: It is quite common for consoles and games to be heavily
+          discounted during Black Friday, Cyber Monday, and other holidays.
+        </h5>
       </Collapsible>
       <Collapsible
         trigger={
@@ -327,8 +326,8 @@ export default function Gaming() {
         trigger={
           <button className="collapsible-trigger">Graphics Cards</button>
         }
-      ></Collapsible> */}
-      {/* <Collapsible
+      ></Collapsible>
+      <Collapsible
         trigger={<button className="collapsible-trigger">VR Headsets</button>}
       ></Collapsible> */}
     </>
