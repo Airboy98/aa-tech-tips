@@ -458,80 +458,6 @@ export default function Internet() {
       <h2>Connections</h2>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Wi-Fi vs Wired</button>
-        }
-      >
-        <h4>
-          With modern devices and a standard ISP package, for most uses, a Wi-Fi
-          connection to your devices is adequate. However, if you want to fully
-          utilize your internet speed, a wired connection to your router with an
-          Ethernet cable is the way to go with the devices that support it.
-        </h4>
-        <div className="tech">
-          <table>
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Wi-Fi</th>
-                <th>Wired</th>
-                <th>Explanation</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Convenience</td>
-                <td>
-                  <span className="material-symbols-outlined">
-                    check_circle
-                  </span>
-                </td>
-                <td></td>
-                <td>Wi-Fi is wireless</td>
-              </tr>
-              <tr>
-                <td>Interference</td>
-                <td></td>
-                <td>
-                  <span className="material-symbols-outlined">
-                    check_circle
-                  </span>
-                </td>
-                <td>Wired doesn't broadcast any RF</td>
-              </tr>
-              <tr>
-                <td>Speed</td>
-                <td></td>
-                <td>
-                  <span className="material-symbols-outlined">
-                    check_circle
-                  </span>
-                </td>
-                <td>Wired has a direct connection to the router</td>
-              </tr>
-              <tr>
-                <td>Stability</td>
-                <td></td>
-                <td>
-                  <span className="material-symbols-outlined">
-                    check_circle
-                  </span>
-                </td>
-                <td>Wired doesn't have fluctuations because of interference</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <h5>
-          NOTE: Devices like desktops and laptops (natively or via an{" "}
-          <a href="https://www.amazon.com/USB-Ethernet-Adapter-Gigabit-Switch/dp/B09GRL3VCN/ref=sr_1_2?sr=8-2">
-            adapter
-          </a>
-          ) support a wired connection with an Ethernet port (see the Common
-          Inputs tip <a href="https://www.aatechtips.com/computer">here</a>).
-        </h5>
-      </Collapsible>
-      <Collapsible
-        trigger={
           <button className="collapsible-trigger">Choosing an ISP</button>
         }
       >
@@ -623,7 +549,183 @@ export default function Internet() {
               </tr>
             </tbody>
           </table>
+          <h5>
+            NOTE: Most ISP packages include a modem/router combo device for free
+            because of the cheap older hardware inside. Use a dedicated router
+            to fully utilize your Wi-Fi speeds and increase coverage.
+          </h5>
         </div>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Extending Wi-Fi Range</button>
+        }
+      >
+        <div className="tech">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Features</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Wi-Fi Extender</td>
+                <td style={{ textAlign: "left" }}>
+                  <ol>
+                    <li>
+                      Picks up your router's signal and re-broadcasts it to
+                      cover dead zones
+                    </li>{" "}
+                    <li>
+                      Ideal placement is halfway between your router and the
+                      weak spot
+                    </li>
+                    <li>
+                      Downsides: broadcasts a separate network and cheaper ones
+                      won't carry the full bandwith
+                    </li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td>Mesh Network</td>
+                <td style={{ textAlign: "left" }}>
+                  <ol>
+                    <li>
+                      Seamlessly broadcasts your router's signal on the same
+                      network
+                    </li>
+                    <li>Utilizes multiple "nodes" placed around your home</li>
+                    <li>Higher starting cost but reliable and user-friendly</li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td>Powerline Adapter</td>
+                <td style={{ textAlign: "left" }}>
+                  <ol>
+                    <li>
+                      Utilizes your home's electrical wiring to connect devices
+                    </li>
+                    <li>
+                      Provides a wired connection with minimal latency and
+                      interference
+                    </li>
+                    <li>Requires a power outlet for each device</li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  5Ghz &<br></br>2.4Ghz<br></br>Bands
+                </td>
+                <td style={{ textAlign: "left" }}>
+                  <ol>
+                    <li>
+                      5Ghz: higher frequency, shorter range, less interference,
+                      faster speeds
+                    </li>
+                    <li>
+                      2.4Ghz: lower frequency, longer range, more interference,
+                      slower speeds
+                    </li>
+                  </ol>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Collapsible>
+      {/* <Collapsible
+        trigger={
+          <button className="collapsible-trigger">
+            Virtual Private Network
+          </button>
+        }
+      >
+        <h4>
+          A virtual private network (VPN) is a secure connection that allows you
+          to access the internet from a private network, such as your home or
+          office. It encrypts your internet traffic and re-routes your IP
+          address, making it more difficult for hackers and other third parties
+          to track your online activities.
+        </h4>
+      </Collapsible> */}
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Wi-Fi vs Wired</button>
+        }
+      >
+        <h4>
+          With modern devices and a standard ISP package, for most uses, a Wi-Fi
+          connection to your devices is adequate. However, if you want to fully
+          utilize your internet speed, a wired connection to your router with an
+          Ethernet cable is the way to go with the devices that support it.
+        </h4>
+        <div className="tech">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Wi-Fi</th>
+                <th>Wired</th>
+                <th>Explanation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Convenience</td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td></td>
+                <td>Wi-Fi is wireless</td>
+              </tr>
+              <tr>
+                <td>Interference</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>Wired doesn't broadcast any RF</td>
+              </tr>
+              <tr>
+                <td>Speed</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>Wired has a direct connection to the router</td>
+              </tr>
+              <tr>
+                <td>Stability</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>Wired doesn't have fluctuations because of interference</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h5>
+          NOTE: Devices like desktops and laptops (natively or via an{" "}
+          <a href="https://www.amazon.com/USB-Ethernet-Adapter-Gigabit-Switch/dp/B09GRL3VCN/ref=sr_1_2?sr=8-2">
+            adapter
+          </a>
+          ) support a wired connection with an Ethernet port (see the Common
+          Inputs tip <a href="https://www.aatechtips.com/computer">here</a>).
+        </h5>
       </Collapsible>
       <h2>IoT (Internet of Things)</h2>
       <Collapsible
