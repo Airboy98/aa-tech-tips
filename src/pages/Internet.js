@@ -638,7 +638,7 @@ export default function Internet() {
           </table>
         </div>
       </Collapsible>
-      {/* <Collapsible
+      <Collapsible
         trigger={
           <button className="collapsible-trigger">
             Virtual Private Network
@@ -652,7 +652,55 @@ export default function Internet() {
           address, making it more difficult for hackers and other third parties
           to track your online activities.
         </h4>
-      </Collapsible> */}
+        <div className="television">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://protonvpn.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/vpns/proton.png"
+                    alt="ProtonVPN"
+                    width="100"
+                    height="25"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://nordvpn.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/vpns/nord.png"
+                    alt="NordVPN"
+                    width="100"
+                    height="25"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.expressvpn.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/vpns/express.png"
+                    alt="ExpressVPN"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </Collapsible>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Wi-Fi vs Wired</button>
