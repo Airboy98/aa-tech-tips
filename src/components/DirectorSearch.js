@@ -5,6 +5,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
 function DirectorSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
   const [movieCredits, setMovieCredits] = useState(null);
+  const [tvCredits, setTvCredits] = useState(null);
 
   const searchDirector = (query) => {
     fetch(`${BASE_URL}/search/person?api_key=${API_KEY}&query=${query}`)
@@ -17,6 +18,7 @@ function DirectorSearch({ searchQuery }) {
             .then((json) => {
               setSearchResult(json);
               fetchMovieCredits(directorId);
+              fetchTvCredits(directorId);
             });
         } else {
           // console.log(
@@ -25,12 +27,14 @@ function DirectorSearch({ searchQuery }) {
 
           setSearchResult(null);
           setMovieCredits(null);
+          setTvCredits(null);
         }
       })
       .catch((error) => {
         console.error("Error searching for director:", error);
         setSearchResult(null);
         setMovieCredits(null);
+        setTvCredits(null);
       });
   };
 
@@ -49,6 +53,22 @@ function DirectorSearch({ searchQuery }) {
       .catch((error) => {
         console.error("Error fetching movie credits:", error);
         setMovieCredits(null);
+      });
+  };
+
+  const fetchTvCredits = (directorId) => {
+    fetch(`${BASE_URL}/person/${directorId}/tv_credits?api_key=${API_KEY}`)
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.crew) {
+          setTvCredits(json.crew.filter((credit) => credit.job === "Director"));
+        } else {
+          setTvCredits(null);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching TV credits:", error);
+        setTvCredits(null);
       });
   };
 
@@ -129,6 +149,38 @@ function DirectorSearch({ searchQuery }) {
                               }
                               alt={credit.title}
                               title={credit.title}
+                            />
+                          </a>
+                        ))}
+                    </div>
+                  )}
+                  <h4>Shows</h4>
+                  <h4>{tvCredits ? tvCredits.length : 0} Credits</h4>
+                  {tvCredits && (
+                    <div>
+                      {tvCredits
+                        .sort((a, b) =>
+                          a.first_air_date < b.first_air_date ? -1 : 1
+                        )
+                        .map((credit) => (
+                          <a
+                            key={credit.id}
+                            href={`https://www.themoviedb.org/tv/${credit.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              style={{
+                                width: "60px",
+                                height: "90px",
+                              }}
+                              src={
+                                credit.poster_path
+                                  ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
+                                  : "noposter.png"
+                              }
+                              alt={credit.name}
+                              title={credit.name}
                             />
                           </a>
                         ))}
