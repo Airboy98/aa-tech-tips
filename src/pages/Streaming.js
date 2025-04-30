@@ -9,6 +9,7 @@ import ArtistSearch from "../components/ArtistSearch";
 import ActorSearch from "../components/ActorSearch";
 import Upcoming from "../components/Upcoming";
 import SongSearch from "../components/SongSearch";
+import DirectorSearch from "../components/DirectorSearch";
 
 export default function Streaming() {
   const [searchMovie, setSearchMovie] = useState("");
@@ -16,6 +17,7 @@ export default function Streaming() {
   const [searchAlbum, setSearchAlbum] = useState("");
   const [searchArtist, setSearchArtist] = useState("");
   const [searchActor, setSearchActor] = useState("");
+  const [searchDirector, setSearchDirector] = useState("");
   const [searchSong, setSearchSong] = useState("");
 
   const handleSearchMovie = (e) => {
@@ -45,6 +47,13 @@ export default function Streaming() {
     const actor = e.target.elements.q.value;
     setSearchActor(actor);
   };
+
+  const handleSearchDirector = (e) => {
+    e.preventDefault();
+    const director = e.target.elements.q.value;
+    setSearchDirector(director);
+  };
+
   const handleSearchSong = (e) => {
     e.preventDefault();
     const song = e.target.elements.q.value;
@@ -514,6 +523,40 @@ export default function Streaming() {
           </table>
         </div>
         <ShowSearch searchQuery={searchShow} />
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Director Search</button>
+        }
+      >
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form onSubmit={handleSearchDirector}>
+                    <div className="search">
+                      <input
+                        type="search"
+                        name="q"
+                        placeholder="Enter director name..."
+                      />
+                    </div>
+                    <button>
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <DirectorSearch searchQuery={searchDirector} />
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Actor Search</button>}
