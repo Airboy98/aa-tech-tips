@@ -310,7 +310,7 @@ export default function Gaming() {
           </table>
         </div>
         <h5>
-          NOTE: Self-built computers vary wildly in price and performance. Use{" "}
+          NOTE: Custom-built computers vary wildly in price and performance. Use{" "}
           <a
             href="https://pcpartpicker.com/"
             target="_blank"
@@ -322,12 +322,65 @@ export default function Gaming() {
           and budget.
         </h5>
       </Collapsible>
-      {/* <Collapsible
+      <Collapsible
         trigger={
           <button className="collapsible-trigger">Graphics Cards</button>
         }
-      ></Collapsible>
-      <Collapsible
+      >
+        <h3>NVIDIA Cards</h3>
+        <h4>GeForce RTX 50 Series</h4>
+        <div className="television">
+          <table>
+            <tr>
+              <td>
+                <a
+                  href="https://protonvpn.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/vpns/proton.png"
+                    alt="ProtonVPN"
+                    width="100"
+                    height="25"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://nordvpn.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/vpns/nord.png"
+                    alt="NordVPN"
+                    width="100"
+                    height="25"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.expressvpn.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/vpns/express.png"
+                    alt="ExpressVPN"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h4>GeForce RTX 40 Series</h4>
+        <h3>AMD Cards</h3>
+      </Collapsible>
+      {/* <Collapsible
         trigger={<button className="collapsible-trigger">VR Headsets</button>}
       ></Collapsible> */}
     </>
