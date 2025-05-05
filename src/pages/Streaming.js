@@ -723,7 +723,7 @@ export default function Streaming() {
                       <input
                         type="search"
                         name="q"
-                        placeholder="Enter artist name..."
+                        placeholder="Enter podcast name..."
                       />
                     </div>
                     <button>
