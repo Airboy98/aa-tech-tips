@@ -7,6 +7,7 @@ function MovieSearch({ searchQuery }) {
   const [watchProviders, setWatchProviders] = useState(null);
   const [certification, setCertification] = useState(null);
   const [director, setDirector] = useState(null);
+  const [runtime, setRuntime] = useState(null);
 
   const searchMovie = (query) => {
     fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
@@ -18,11 +19,13 @@ function MovieSearch({ searchQuery }) {
           fetchWatchProviders(movie.id);
           fetchCertification(movie.id);
           fetchDirector(movie.id);
+          fetchRuntime(movie.id);
         } else {
           setSearchResult(null);
           setWatchProviders(null);
           setCertification(null);
           setDirector(null);
+          setRuntime(null);
         }
       })
       .catch((error) => {
@@ -31,6 +34,7 @@ function MovieSearch({ searchQuery }) {
         setWatchProviders(null);
         setCertification(null);
         setDirector(null);
+        setRuntime(null);
       });
   };
 
@@ -95,6 +99,22 @@ function MovieSearch({ searchQuery }) {
       });
   };
 
+  const fetchRuntime = (movieId) => {
+    fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`)
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.runtime) {
+          setRuntime(json.runtime);
+        } else {
+          setRuntime(null);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching runtime:", error);
+        setRuntime(null);
+      });
+  };
+
   useEffect(() => {
     if (searchQuery) {
       searchMovie(searchQuery);
@@ -108,7 +128,6 @@ function MovieSearch({ searchQuery }) {
           <table>
             <tbody>
               <tr>
-                {console.log(searchResult)}
                 <td>
                   <a
                     href={`https://www.themoviedb.org/movie/${searchResult.id}`}
@@ -132,6 +151,12 @@ function MovieSearch({ searchQuery }) {
                   <hr></hr>
                   {director && <h4>Directed by {director}</h4>}
                   {certification && <h4>Rated {certification}</h4>}
+                  {runtime && (
+                    <h4>
+                      {runtime >= 60 ? `${Math.floor(runtime / 60)}h ` : ""}
+                      {runtime % 60}m
+                    </h4>
+                  )}
                   <h4>{searchResult.release_date}</h4>
 
                   {watchProviders && (
