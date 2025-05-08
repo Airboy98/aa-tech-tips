@@ -6,6 +6,7 @@ function ShowSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
   const [watchProviders, setWatchProviders] = useState(null);
   const [certification, setCertification] = useState(null);
+  const [numSeasons, setNumSeasons] = useState(null);
 
   const searchShow = (query) => {
     fetch(`${BASE_URL}/search/tv?api_key=${API_KEY}&query=${query}`)
@@ -16,10 +17,12 @@ function ShowSearch({ searchQuery }) {
           setSearchResult(show);
           fetchWatchProviders(show.id);
           fetchCertification(show.id);
+          fetchNumSeasons(show.id);
         } else {
           setSearchResult(null);
           setWatchProviders(null);
           setCertification(null);
+          setNumSeasons(null);
         }
       })
       .catch((error) => {
@@ -27,6 +30,7 @@ function ShowSearch({ searchQuery }) {
         setSearchResult(null);
         setWatchProviders(null);
         setCertification(null);
+        setNumSeasons(null);
       });
   };
 
@@ -65,6 +69,18 @@ function ShowSearch({ searchQuery }) {
       });
   };
 
+  const fetchNumSeasons = (showId) => {
+    fetch(`${BASE_URL}/tv/${showId}?api_key=${API_KEY}`)
+      .then((res) => res.json())
+      .then((json) => {
+        setNumSeasons(json.number_of_seasons);
+      })
+      .catch((error) => {
+        console.error("Error fetching number of seasons:", error);
+        setNumSeasons(null);
+      });
+  };
+
   useEffect(() => {
     if (searchQuery) {
       searchShow(searchQuery);
@@ -97,7 +113,7 @@ function ShowSearch({ searchQuery }) {
                   <hr></hr>
                   {certification && <h4>Rated {certification}</h4>}
                   {console.log(searchResult)}
-
+                  <h4>{numSeasons} Seasons</h4>
                   <h4>{searchResult.first_air_date}</h4>
 
                   {watchProviders && (
