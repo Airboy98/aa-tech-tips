@@ -43,7 +43,9 @@ function ActorSearch({ searchQuery }) {
       .then((res) => res.json())
       .then((json) => {
         if (json.cast) {
-          setMovieCredits(json.cast);
+          setMovieCredits(
+            json.cast.filter((credit) => credit.release_date !== "")
+          );
         } else {
           setMovieCredits(null);
         }
@@ -59,7 +61,9 @@ function ActorSearch({ searchQuery }) {
       .then((res) => res.json())
       .then((json) => {
         if (json.cast) {
-          setTvCredits(json.cast);
+          setTvCredits(
+            json.cast.filter((credit) => credit.release_date !== "")
+          );
         } else {
           setTvCredits(null);
         }
@@ -78,7 +82,7 @@ function ActorSearch({ searchQuery }) {
 
   return (
     <div>
-      {/* {console.log(searchResult)} */}
+      {console.log(searchResult)}
       {searchResult && (
         <div className="streaming2">
           <table>
@@ -146,7 +150,11 @@ function ActorSearch({ searchQuery }) {
                                   : "noposter.png"
                               }
                               alt={credit.title}
-                              title={credit.title}
+                              title={`${
+                                credit.title
+                              } (${credit.release_date.slice(0, 4)}) - ${
+                                credit.overview
+                              }`}
                             />
                           </a>
                         ))}

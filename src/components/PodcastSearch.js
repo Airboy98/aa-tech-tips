@@ -1,3 +1,4 @@
+/*************  ✨ Windsurf Command 🌟  *************/
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_SPOTIFY;
@@ -38,6 +39,7 @@ function PodcastSearch({ searchQuery }) {
         },
       })
       .then((res) => {
+        console.log(res.data);
         if (res.data.shows && res.data.shows.items.length > 0) {
           const podcast = res.data.shows.items[0];
           setSearchResult(podcast);
@@ -56,12 +58,13 @@ function PodcastSearch({ searchQuery }) {
 
   const fetchEpisodes = (podcastId) => {
     axios
-      .get(`${BASE_URL}shows/${podcastId}/episodes?limit=10`, {
+      .get(`${BASE_URL}shows/${podcastId}/episodes?limit=10&market=US`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
+        console.log(res.data);
         if (res.data && res.data.items) {
           setEpisodes(res.data.items);
         } else {
@@ -115,28 +118,38 @@ function PodcastSearch({ searchQuery }) {
                     })()}
                   </h4>
                   <h3>Latest Episodes</h3>
-                  {episodes && (
+                  {episodes &&
+                  Array.isArray(episodes) &&
+                  episodes.length > 0 ? (
                     <ul>
-                      {episodes.map((episode) => (
-                        <li key={episode.id}>
-                          <a
-                            href={episode.external_urls.spotify}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {episode.name}
-                          </a>
-                          <br></br>(
-                          {new Intl.DateTimeFormat("en-US", {
-                            month: "long",
-                            day: "numeric",
-                            year: "numeric",
-                          }).format(new Date(episode.release_date))}
-                          )
-                        </li>
-                      ))}
+                      {episodes
+                        .filter(
+                          (ep) =>
+                            ep && ep.external_urls && ep.external_urls.spotify
+                        )
+                        .map((episode) => (
+                          <li key={episode.id}>
+                            <a
+                              href={episode.external_urls.spotify}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {episode.name}
+                            </a>
+                            <br />(
+                            {new Intl.DateTimeFormat("en-US", {
+                              month: "long",
+                              day: "numeric",
+                              year: "numeric",
+                            }).format(new Date(episode.release_date))}
+                            )
+                          </li>
+                        ))}
                     </ul>
+                  ) : (
+                    <p>No episodes available.</p>
                   )}
+
                   <h5>
                     Data provided by{" "}
                     <a
@@ -160,3 +173,5 @@ function PodcastSearch({ searchQuery }) {
 }
 
 export default PodcastSearch;
+
+/*******  77a80c83-f3ec-42dd-97b8-1cc20ddc0366  *******/
