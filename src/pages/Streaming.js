@@ -463,6 +463,36 @@ export default function Streaming() {
                   </a>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://onntvsupport.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/televisions/onn.png"
+                      alt="Apple TV"
+                      width="100"
+                      height="50"
+                    />
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://tivoidp.tivo.com/tivoCommunitySupport/s/stream4k?language=en_US"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/devices/tivo.png"
+                      alt="Apple TV"
+                      width="100"
+                      height="40"
+                    />
+                  </a>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
