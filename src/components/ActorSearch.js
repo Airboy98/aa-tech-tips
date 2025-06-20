@@ -56,14 +56,23 @@ function ActorSearch({ searchQuery }) {
       });
   };
 
+  /*************  ✨ Windsurf Command 🌟  *************/
   const fetchTvCredits = (actorId) => {
     fetch(`${BASE_URL}/person/${actorId}/tv_credits?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
+        console.log("tv credits:", json);
         if (json.cast) {
-          setTvCredits(
-            json.cast.filter((credit) => credit.release_date !== "")
-          );
+          const uniqueShows = json.cast.reduce((acc, credit) => {
+            if (
+              credit.first_air_date !== "" &&
+              !acc.some((show) => show.id === credit.id)
+            ) {
+              acc.push(credit);
+            }
+            return acc;
+          }, []);
+          setTvCredits(uniqueShows);
         } else {
           setTvCredits(null);
         }
@@ -73,6 +82,7 @@ function ActorSearch({ searchQuery }) {
         setTvCredits(null);
       });
   };
+  /*******  d35d4d22-8ec0-4490-8524-7adf2ff0ed0a  *******/
 
   useEffect(() => {
     if (searchQuery) {
@@ -150,7 +160,7 @@ function ActorSearch({ searchQuery }) {
                                   : "noposter.png"
                               }
                               alt={credit.title}
-                              title={`${
+                              title={`${credit.character} - ${
                                 credit.title
                               } (${credit.release_date.slice(0, 4)}) - ${
                                 credit.overview
@@ -186,7 +196,11 @@ function ActorSearch({ searchQuery }) {
                                   : "noposter.png"
                               }
                               alt={credit.name}
-                              title={credit.name}
+                              title={`${credit.character} - ${
+                                credit.name
+                              } (${credit.first_air_date.slice(0, 4)}) - ${
+                                credit.overview
+                              }`}
                             />
                           </a>
                         ))}
