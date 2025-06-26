@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
-
 function MovieSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
   const [watchProviders, setWatchProviders] = useState(null);
+  const [rentProviders, setRentProviders] = useState(null);
+  const [purchaseProviders, setPurchaseProviders] = useState(null);
   const [certification, setCertification] = useState(null);
   const [director, setDirector] = useState(null);
   const [runtime, setRuntime] = useState(null);
+  const [showWatchProviders, setShowWatchProviders] = useState(false);
+  const [showRentProviders, setShowRentProviders] = useState(false);
+  const [showPurchaseProviders, setShowPurchaseProviders] = useState(false);
 
   const searchMovie = (query) => {
     fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
@@ -17,12 +21,16 @@ function MovieSearch({ searchQuery }) {
           const movie = json.results[0];
           setSearchResult(movie);
           fetchWatchProviders(movie.id);
+          fetchRentProviders(movie.id);
+          fetchPurchaseProviders(movie.id);
           fetchCertification(movie.id);
           fetchDirector(movie.id);
           fetchRuntime(movie.id);
         } else {
           setSearchResult(null);
           setWatchProviders(null);
+          setRentProviders(null);
+          setPurchaseProviders(null);
           setCertification(null);
           setDirector(null);
           setRuntime(null);
@@ -32,6 +40,8 @@ function MovieSearch({ searchQuery }) {
         console.error("Error searching for movie:", error);
         setSearchResult(null);
         setWatchProviders(null);
+        setRentProviders(null);
+        setPurchaseProviders(null);
         setCertification(null);
         setDirector(null);
         setRuntime(null);
@@ -45,14 +55,47 @@ function MovieSearch({ searchQuery }) {
         if (json.results && json.results.US) {
           setWatchProviders(json.results.US);
         } else {
-          setWatchProviders(null);
+          setWatchProviders({ flatrate: [] });
         }
       })
       .catch((error) => {
         console.error("Error fetching watch providers:", error);
-        setWatchProviders(null);
+        setWatchProviders({ flatrate: [] });
       });
   };
+
+  const fetchRentProviders = (movieId) => {
+    fetch(`${BASE_URL}/movie/${movieId}/watch/providers?api_key=${API_KEY}`)
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.results && json.results.US) {
+          const usProviders = json.results.US;
+          setRentProviders(usProviders.rent || []);
+        } else {
+          setRentProviders([]);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching rent providers:", error);
+        setRentProviders([]);
+      });
+  };
+
+  const fetchPurchaseProviders = (movieId) =>
+    fetch(`${BASE_URL}/movie/${movieId}/watch/providers?api_key=${API_KEY}`)
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.results && json.results.US) {
+          const usProviders = json.results.US;
+          setPurchaseProviders(usProviders.buy || []);
+        } else {
+          setPurchaseProviders([]);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching purchase providers:", error);
+        setPurchaseProviders([]);
+      });
 
   const fetchCertification = (movieId) => {
     fetch(`${BASE_URL}/movie/${movieId}/release_dates?api_key=${API_KEY}`)
@@ -158,10 +201,26 @@ function MovieSearch({ searchQuery }) {
                     </h4>
                   )}
                   <h4>{searchResult.release_date}</h4>
-
-                  {watchProviders && (
+                  <h4>
+                    {searchResult.vote_average
+                      ? `User Score: ${searchResult.vote_average.toFixed(1)}/10`
+                      : "No Rating Available"}
+                  </h4>
+                  <button
+                    style={{
+                      backgroundColor: "white",
+                      color: "black",
+                      borderRadius: "10px",
+                    }}
+                    onClick={() => setShowWatchProviders(!showWatchProviders)}
+                  >
+                    Show Streaming Options
+                  </button>
+                  {showWatchProviders && watchProviders && (
                     <div>
-                      {watchProviders && watchProviders.flatrate ? (
+                      <br />
+                      {watchProviders.flatrate &&
+                      watchProviders.flatrate.length > 0 ? (
                         <div>
                           {watchProviders.flatrate.map((provider) => (
                             <img
@@ -177,11 +236,81 @@ function MovieSearch({ searchQuery }) {
                           ))}
                         </div>
                       ) : (
-                        <h4>Streaming Unavailable</h4>
+                        <h4>Unavailable to Stream</h4>
+                      )}
+                    </div>
+                  )}
+
+                  <br />
+                  <button
+                    style={{
+                      backgroundColor: "white",
+                      color: "black",
+                      borderRadius: "10px",
+                    }}
+                    onClick={() => setShowRentProviders(!showRentProviders)}
+                  >
+                    Show Rent Options
+                  </button>
+
+                  {showRentProviders && rentProviders && (
+                    <div>
+                      <br />
+                      {rentProviders.length > 0 ? (
+                        rentProviders.map((provider) => (
+                          <img
+                            style={{
+                              width: "45px",
+                              height: "45px",
+                            }}
+                            key={provider.provider_id}
+                            src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                            alt={provider.provider_name}
+                            title={provider.provider_name}
+                          />
+                        ))
+                      ) : (
+                        <h4>Unavailable to Rent</h4>
                       )}
                     </div>
                   )}
                   <br />
+                  <button
+                    style={{
+                      backgroundColor: "white",
+                      color: "black",
+                      borderRadius: "10px",
+                    }}
+                    onClick={() =>
+                      setShowPurchaseProviders(!showPurchaseProviders)
+                    }
+                  >
+                    Show Purchase Options
+                  </button>
+                  {showPurchaseProviders && purchaseProviders && (
+                    <div>
+                      <br />
+                      {purchaseProviders.length > 0 ? (
+                        purchaseProviders.map((provider) => (
+                          <img
+                            style={{
+                              width: "45px",
+                              height: "45px",
+                            }}
+                            key={provider.provider_id}
+                            src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                            alt={provider.provider_name}
+                            title={provider.provider_name}
+                          />
+                        ))
+                      ) : (
+                        <h4>Unavailable to Purchase</h4>
+                      )}
+                    </div>
+                  )}
+                  <br />
+                  <br />
+                  <hr></hr>
                   {searchResult.overview}
                   <h5>
                     Data provided by{" "}
