@@ -208,9 +208,12 @@ function MovieSearch({ searchQuery }) {
                   </h4>
                   <button
                     style={{
-                      backgroundColor: "white",
+                      backgroundColor: "#ddd",
                       color: "black",
-                      borderRadius: "10px",
+                      borderRadius: "20px",
+                      fontSize: "16px",
+                      padding: "5px 10px",
+                      fontWeight: "bold",
                     }}
                     onClick={() => setShowWatchProviders(!showWatchProviders)}
                   >
@@ -244,9 +247,12 @@ function MovieSearch({ searchQuery }) {
                   <br />
                   <button
                     style={{
-                      backgroundColor: "white",
+                      backgroundColor: "#ddd",
                       color: "black",
-                      borderRadius: "10px",
+                      borderRadius: "20px",
+                      fontSize: "16px",
+                      padding: "5px 10px",
+                      fontWeight: "bold",
                     }}
                     onClick={() => setShowRentProviders(!showRentProviders)}
                   >
@@ -277,9 +283,12 @@ function MovieSearch({ searchQuery }) {
                   <br />
                   <button
                     style={{
-                      backgroundColor: "white",
+                      backgroundColor: "#ddd",
                       color: "black",
-                      borderRadius: "10px",
+                      borderRadius: "20px",
+                      fontSize: "16px",
+                      padding: "5px 10px",
+                      fontWeight: "bold",
                     }}
                     onClick={() =>
                       setShowPurchaseProviders(!showPurchaseProviders)
