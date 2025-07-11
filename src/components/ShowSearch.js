@@ -41,12 +41,12 @@ function ShowSearch({ searchQuery }) {
         if (json.results && json.results.US) {
           setWatchProviders(json.results.US);
         } else {
-          setWatchProviders(null);
+          setWatchProviders({ flatrate: [] });
         }
       })
       .catch((error) => {
         console.error("Error fetching watch providers:", error);
-        setWatchProviders(null);
+        setWatchProviders({ flatrate: [] });
       });
   };
 
@@ -105,7 +105,11 @@ function ShowSearch({ searchQuery }) {
                         width: "200px",
                         height: "300px",
                       }}
-                      src={`https://image.tmdb.org/t/p/w500${searchResult.poster_path}`}
+                      src={
+                        searchResult.poster_path
+                          ? `https://image.tmdb.org/t/p/w500${searchResult.poster_path}`
+                          : "noposter.png"
+                      }
                       alt={searchResult.title}
                     />
                   </a>
@@ -113,31 +117,33 @@ function ShowSearch({ searchQuery }) {
                   <hr></hr>
                   {certification && <h4>Rated {certification}</h4>}
                   {console.log(searchResult)}
-                  <h4>{numSeasons} Seasons</h4>
+                  <h4>
+                    {numSeasons === 1
+                      ? `${numSeasons} Season`
+                      : `${numSeasons} Seasons`}
+                  </h4>
                   <h4>{searchResult.first_air_date}</h4>
 
-                  {watchProviders && (
-                    <div>
-                      {watchProviders && watchProviders.flatrate ? (
-                        <div>
-                          {watchProviders.flatrate.map((provider) => (
-                            <img
-                              style={{
-                                width: "45px",
-                                height: "45px",
-                              }}
-                              key={provider.provider_id}
-                              src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
-                              alt={provider.provider_name}
-                              title={provider.provider_name}
-                            />
-                          ))}
-                        </div>
-                      ) : (
-                        <h5>Streaming Unavailable</h5>
-                      )}
-                    </div>
-                  )}
+                  <div>
+                    {watchProviders && watchProviders.flatrate.length > 0 ? (
+                      <div>
+                        {watchProviders.flatrate.map((provider) => (
+                          <img
+                            style={{
+                              width: "45px",
+                              height: "45px",
+                            }}
+                            key={provider.provider_id}
+                            src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                            alt={provider.provider_name}
+                            title={provider.provider_name}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <h4>Unavailable to Stream</h4>
+                    )}
+                  </div>
                   <br />
                   {searchResult.overview}
                   <h5>
