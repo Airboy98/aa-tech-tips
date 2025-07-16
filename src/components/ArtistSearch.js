@@ -106,7 +106,7 @@ function ArtistSearch({ searchQuery }) {
           setEPs(
             // res.data.items.filter((item) => item.album_group == "single")
             res.data.items.filter(
-              (item) => item.album_type == "single" && item.total_tracks >= 3
+              (item) => item.album_group == "single" && item.total_tracks >= 3
             )
           );
         } else {
@@ -131,7 +131,9 @@ function ArtistSearch({ searchQuery }) {
         if (res.data && res.data.items) {
           setSingles(
             // res.data.items.filter((item) => item.album_group == "single")
-            res.data.items.filter((item) => item.total_tracks < 3)
+            res.data.items.filter(
+              (item) => item.album_group == "single" && item.total_tracks < 3
+            )
           );
         } else {
           setSingles(null);
