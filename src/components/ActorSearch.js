@@ -82,7 +82,6 @@ function ActorSearch({ searchQuery }) {
         setTvCredits(null);
       });
   };
-  /*******  d35d4d22-8ec0-4490-8524-7adf2ff0ed0a  *******/
 
   useEffect(() => {
     if (searchQuery) {
@@ -92,7 +91,7 @@ function ActorSearch({ searchQuery }) {
 
   return (
     <div>
-      {console.log(searchResult)}
+      {/* {console.log(searchResult)} */}
       {searchResult && (
         <div className="streaming2">
           <table>
