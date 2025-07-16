@@ -125,8 +125,9 @@ function ShowSearch({ searchQuery }) {
                   <h4>{searchResult.first_air_date}</h4>
 
                   <div>
-                    {watchProviders && watchProviders.flatrate.length > 0 ? (
+                    {watchProviders?.flatrate?.length > 0 ? (
                       <div>
+                        {/* {console.log(searchResult)} */}
                         {watchProviders.flatrate.map((provider) => (
                           <img
                             style={{
