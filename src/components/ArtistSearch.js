@@ -81,7 +81,7 @@ function ArtistSearch({ searchQuery }) {
         if (res.data && res.data.items) {
           setAlbums(
             // res.data.items
-            res.data.items.filter((item) => item.album_type == "album")
+            res.data.items.filter((item) => item.album_group == "album")
           );
         } else {
           setAlbums(null);
