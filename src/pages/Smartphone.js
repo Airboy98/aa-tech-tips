@@ -210,7 +210,7 @@ export default function Smartphone() {
                 >
                   <img
                     src="images/smartphones/consumer.png"
-                    alt="Pure Talk"
+                    alt="Consumer Cellular"
                     width="100"
                     height="40"
                   />
@@ -224,7 +224,51 @@ export default function Smartphone() {
                 >
                   <img
                     src="images/smartphones/cricket.svg"
-                    alt="Pure Talk"
+                    alt="Cricket Wireless"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://patriotmobile.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/patriot.png"
+                    alt="Patriot Mobile"
+                    width="70"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.straighttalk.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/straight.png"
+                    alt="Straight Talk"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.usmobile.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/usmobile.png"
+                    alt="US Mobile"
                     width="100"
                     height="50"
                   />
