@@ -19,7 +19,7 @@ export default function Appointment() {
       <Collapsible
         trigger={<button className="collapsible-trigger">In-Person</button>}
       >
-        <h3>$75/hr (cash or check)</h3>
+        <h3>$50/hr (cash or check)</h3>
         <h4>
           For the most extensive IT assistance, I can assist via an in-person IT
           appointment and come over to a local DFW address of your choosing to
@@ -46,7 +46,7 @@ export default function Appointment() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Remote</button>}
       >
-        <h3>$50/hr (Zelle or Apple Pay)</h3>
+        <h3>$25/hr (Zelle or Apple Pay)</h3>
         <h4>
           For more limited assistance, I can assist remotely via Zoom (refer to
           Tech 101 for instructions) to help with basic IT issues such as:
