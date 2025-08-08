@@ -249,6 +249,31 @@ export default function Tech101() {
           </ul>
         </div>
       </Collapsible>
+      {/* <Collapsible
+        trigger={
+          <button className="collapsible-trigger">
+            Anatomy of a Scam Email
+          </button>
+        }
+      >
+        <h4>
+          Most scam emails are flagged as spam or junk mail. However, a few make
+          it through your email filter and look authentic. Here are some obvious
+          signs to look out for.
+        </h4>
+      </Collapsible> */}
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Anatomy of Scam Text</button>
+        }
+      >
+        <h4>
+          Frequency of scam texts, also known as smishing attempts, is on the
+          rise. There are several clues to look out for to determine if a text
+          is authentic or not.
+        </h4>
+        <img src="images/tech101/scam-text.png" alt="Amazon" />
+      </Collapsible>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Browsing the Web</button>
@@ -870,7 +895,7 @@ export default function Tech101() {
                   src="images/ai/prompt3.png"
                   alt="prompt3"
                   width="150"
-                  height="100"
+                  height="120"
                 />
               </td>
             </tr>
