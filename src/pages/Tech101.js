@@ -273,6 +273,10 @@ export default function Tech101() {
           is authentic or not.
         </h4>
         <img src="images/tech101/scam-text.png" alt="Amazon" />
+        <h5>
+          NOTE: When you receive a scam text, DO NOT respond and DO NOT click
+          any links. When in doubt, manually type in the website in a browser.
+        </h5>
       </Collapsible>
       <Collapsible
         trigger={
