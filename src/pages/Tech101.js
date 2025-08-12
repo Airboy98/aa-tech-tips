@@ -257,9 +257,9 @@ export default function Tech101() {
         }
       >
         <h4>
-          Most scam emails are flagged as spam or junk mail. However, a few make
-          it through your email filter and look authentic. Here are some obvious
-          signs to look out for.
+          Most scam emails are flagged as spam or junk mail. However, a few may
+          make it through your email's spam filter and look authentic. Here are
+          some obvious signs to look out for.
         </h4>
         <img
           src="images/tech101/scam-email.png"
@@ -268,8 +268,9 @@ export default function Tech101() {
           width="350"
         />
         <h5>
-          NOTE: When you receive a scam email, DO NOT click any links or
-          buttons. When in doubt, manually type in the website in a browser.
+          NOTE: When you receive a scam email, DO NOT click any links or buttons
+          (known as phishing attempts). When in doubt, manually type in the
+          website in a browser.
         </h5>
       </Collapsible>
       <Collapsible
