@@ -249,7 +249,7 @@ export default function Tech101() {
           </ul>
         </div>
       </Collapsible>
-      {/* <Collapsible
+      <Collapsible
         trigger={
           <button className="collapsible-trigger">
             Anatomy of a Scam Email
@@ -261,7 +261,17 @@ export default function Tech101() {
           it through your email filter and look authentic. Here are some obvious
           signs to look out for.
         </h4>
-      </Collapsible> */}
+        <img
+          src="images/tech101/scam-email.png"
+          alt="Scam Email"
+          height="500"
+          width="350"
+        />
+        <h5>
+          NOTE: When you receive a scam email, DO NOT click any links or
+          buttons. When in doubt, manually type in the website in a browser.
+        </h5>
+      </Collapsible>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Anatomy of Scam Text</button>
@@ -272,7 +282,7 @@ export default function Tech101() {
           rise. There are several clues to look out for to determine if a text
           is authentic or not.
         </h4>
-        <img src="images/tech101/scam-text.png" alt="Amazon" />
+        <img src="images/tech101/scam-text.png" alt="Scam Text" />
         <h5>
           NOTE: When you receive a scam text, DO NOT respond and DO NOT click
           any links. When in doubt, manually type in the website in a browser.
