@@ -322,7 +322,7 @@ export default function Gaming() {
           and budget.
         </h5>
       </Collapsible>
-      <Collapsible
+      {/* <Collapsible
         trigger={
           <button className="collapsible-trigger">Graphics Cards</button>
         }
@@ -379,7 +379,7 @@ export default function Gaming() {
         </div>
         <h4>GeForce RTX 40 Series</h4>
         <h3>AMD Cards</h3>
-      </Collapsible>
+      </Collapsible> */}
       {/* <Collapsible
         trigger={<button className="collapsible-trigger">VR Headsets</button>}
       ></Collapsible> */}
