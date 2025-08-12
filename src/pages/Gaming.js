@@ -140,7 +140,7 @@ export default function Gaming() {
                   <h4>Supports 2K/120 Hz (XSS)</h4>
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td>
                   <h1>Nintendo</h1>
                   <a
@@ -171,7 +171,7 @@ export default function Gaming() {
                   <h4>microSD card slot</h4>
                   <h4>Supports 1080p/60 Hz (docked)</h4>
                 </td>
-              </tr>
+              </tr> */}
               <tr>
                 <td>
                   <h1>Nintendo</h1>
@@ -196,7 +196,7 @@ export default function Gaming() {
                   </a>
 
                   <h4>2nd generation Switch console</h4>
-                  <h4>Coming 06.05.2025 starting at $450</h4>
+                  <h4>Released 06.05.2025</h4>
                   <h4>Switch 1 compatible game cartridge slot</h4>
                   <h4>12GB LPDDR5X RAM</h4>
                   <h4>256GB UFS</h4>
