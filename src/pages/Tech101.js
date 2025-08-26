@@ -275,7 +275,9 @@ export default function Tech101() {
       </Collapsible>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Anatomy of Scam Text</button>
+          <button className="collapsible-trigger">
+            Anatomy of a Scam Text
+          </button>
         }
       >
         <h4>
