@@ -17,6 +17,7 @@ function GameSearch({ searchQuery }) {
       .then((res) => res.json())
       .then((json) => {
         if (json.results && json.results.length > 0) {
+          // console.log(json.results);
           const game = json.results[0];
           setSearchResult(game);
         } else {
