@@ -724,7 +724,7 @@ export default function Tech101() {
                   A complex program using an LLM to generate human-like
                   responses, code, pictures, etc.
                 </td>
-                <td>ChatGPT, Gemini, Copilot</td>
+                <td>ChatGPT, Gemini, Grok</td>
               </tr>
               <tr>
                 <td>AR (Augmented Reality)</td>
@@ -769,6 +769,14 @@ export default function Tech101() {
                   learn and refine accuracy
                 </td>
                 <td>Facial recognition</td>
+              </tr>
+              <tr>
+                <td>OCR (Optical Character Recognition)</td>
+                <td>
+                  A technology that converts scanned or printed text into
+                  machine-readable data
+                </td>
+                <td>Google Lens</td>
               </tr>
               <tr>
                 <td>VR (Virtual Reality)</td>
