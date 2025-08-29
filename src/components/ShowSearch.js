@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "primereact/card";
+import { Dropdown } from "primereact/dropdown";
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
 
@@ -11,6 +12,8 @@ function ShowSearch({ searchQuery }) {
   const [episodeNames, setEpisodeNames] = useState(null);
   const [episodeStills, setEpisodeStills] = useState(null);
   const [showSeasons, setShowSeasons] = useState(false);
+  const [selectedSeason, setSelectedSeason] = useState(null);
+  const [episodeOverviews, setEpisodeOverviews] = useState(null);
 
   const searchShow = (query) => {
     fetch(`${BASE_URL}/search/tv?api_key=${API_KEY}&query=${query}`)
@@ -90,8 +93,8 @@ function ShowSearch({ searchQuery }) {
       });
   };
 
-  const fetchEpisodeDetails = (showId) => {
-    fetch(`${BASE_URL}/tv/${showId}/season/1?api_key=${API_KEY}`)
+  const fetchEpisodeDetails = (showId, seasonNumber) => {
+    fetch(`${BASE_URL}/tv/${showId}/season/${seasonNumber}?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
         const episodeNames = json.episodes
@@ -100,15 +103,25 @@ function ShowSearch({ searchQuery }) {
         const episodeStills = json.episodes
           ? json.episodes.map((episode) => episode.still_path)
           : [];
+        const episodeOverviews = json.episodes
+          ? json.episodes.map((episode) => episode.overview)
+          : [];
         setEpisodeNames(episodeNames);
         setEpisodeStills(episodeStills);
+        setEpisodeOverviews(episodeOverviews);
       })
       .catch((error) => {
         console.error("Error fetching episode names:", error);
         setEpisodeNames(null);
         setEpisodeStills(null);
+        setEpisodeOverviews(null);
       });
   };
+
+  const seasonOptions = Array.from({ length: numSeasons }, (_, i) => ({
+    label: `Season ${i + 1}`,
+    value: i + 1,
+  }));
 
   useEffect(() => {
     if (searchQuery) {
@@ -147,19 +160,25 @@ function ShowSearch({ searchQuery }) {
                   {certification && <h4>Rated {certification}</h4>}
                   {numSeasons === 1 ? "1 Season" : `${numSeasons} Seasons`}
                   <br></br>
-                  <button
-                    style={{
-                      backgroundColor: "#ddd",
-                      color: "black",
-                      borderRadius: "20px",
-                      fontSize: "16px",
-                      padding: "5px 10px",
-                      fontWeight: "bold",
-                    }}
-                    onClick={() => setShowSeasons(!showSeasons)}
-                  >
-                    Season 1
-                  </button>
+                  <div style={{ margin: "10px 0" }}>
+                    <Dropdown
+                      value={selectedSeason}
+                      options={seasonOptions}
+                      onChange={(e) => {
+                        setSelectedSeason(e.value);
+                        if (e.value) {
+                          fetchEpisodeDetails(searchResult.id, e.value);
+                          setShowSeasons(true);
+                        } else {
+                          setShowSeasons(false);
+                        }
+                      }}
+                      placeholder="Select a season"
+                      style={{ minWidth: "200px", margin: "10px 0" }}
+                      showClear
+                    />
+                  </div>
+
                   {showSeasons && (
                     <div
                       className="episode-cards"
@@ -172,27 +191,50 @@ function ShowSearch({ searchQuery }) {
                       {episodeNames?.map((name, index) => (
                         <Card
                           key={index}
-                          title={
-                            <span style={{ fontSize: "10px" }}>
-                              <b>{index + 1}</b> - {name}
-                            </span>
+                          footer={
+                            <div>
+                              <span style={{ fontSize: "10px" }}>
+                                <b>{index + 1}</b> <br /> {name}
+                              </span>
+                              {/* <div className="episode-overview">
+                                {episodeOverviews?.[index] ||
+                                  "No description available."}
+                              </div> */}
+                            </div>
                           }
                           header={
-                            <img
-                              src={`https://image.tmdb.org/t/p/w500${episodeStills[index]}`}
-                              alt={name}
-                              style={{
-                                width: "100%",
-                                height: "80px",
-                                objectFit: "cover",
-                              }}
-                            />
+                            episodeStills?.[index] ? (
+                              <img
+                                src={`https://image.tmdb.org/t/p/w500${episodeStills[index]}`}
+                                alt={name}
+                                style={{
+                                  width: "100%",
+                                  height: "80px",
+                                  objectFit: "cover",
+                                }}
+                              />
+                            ) : (
+                              <div
+                                style={{
+                                  width: "100%",
+                                  height: "80px",
+                                  background: "#eee",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  color: "#666",
+                                }}
+                              >
+                                No Image
+                              </div>
+                            )
                           }
                           style={{ marginBottom: "10px" }}
                         />
                       ))}
                     </div>
                   )}
+
                   <h4>{searchResult.first_air_date}</h4>
 
                   <div>

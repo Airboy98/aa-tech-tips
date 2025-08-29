@@ -116,3 +116,88 @@ h5 {
   padding: 0px 20px 0px 20px;
   /* text-align: left; */
 }
+
+/* === PrimeReact Card Overrides for Episodes === */
+
+/* Card container */
+.p-card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Hover effect */
+.p-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Episode still (image inside card) */
+.p-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+/* Hover zoom on episode still */
+.p-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Title text */
+.p-card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 6px 8px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Card content (we'll keep it minimal) */
+.p-card-content {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Episode footer overlay */
+.p-card-footer {
+  background: rgba(41, 41, 41, 0.7);
+  padding: 6px 8px;
+  font-size: 0.85rem;
+  border-radius: 20px;
+  color: #f0f0f0;
+  text-align: center;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Episode cards grid */
+.episode-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.episode-overview {
+  font-size: 0.8rem;
+  color: #ddd;
+  padding: 8px;
+  text-align: center;
+}
