@@ -318,7 +318,6 @@ function MovieSearch({ searchQuery }) {
                     </div>
                   )}
                   <br />
-                  <br />
                   <hr></hr>
                   {searchResult.overview}
                   <h5>
