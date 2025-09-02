@@ -14,6 +14,7 @@ function ShowSearch({ searchQuery }) {
   const [showSeasons, setShowSeasons] = useState(false);
   const [selectedSeason, setSelectedSeason] = useState(null);
   const [episodeOverviews, setEpisodeOverviews] = useState(null);
+  const [flippedCards, setFlippedCards] = useState({});
 
   const searchShow = (query) => {
     fetch(`${BASE_URL}/search/tv?api_key=${API_KEY}&query=${query}`)
@@ -123,6 +124,13 @@ function ShowSearch({ searchQuery }) {
     value: i + 1,
   }));
 
+  const toggleFlip = (index) => {
+    setFlippedCards((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   useEffect(() => {
     if (searchQuery) {
       searchShow(searchQuery);
@@ -180,57 +188,39 @@ function ShowSearch({ searchQuery }) {
                   </div>
 
                   {showSeasons && (
-                    <div
-                      className="episode-cards"
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(3, 1fr)",
-                        gap: "5px",
-                      }}
-                    >
+                    <div className="episode-cards">
                       {episodeNames?.map((name, index) => (
-                        <Card
+                        <div
                           key={index}
-                          footer={
-                            <div>
-                              <span style={{ fontSize: "10px" }}>
-                                <b>{index + 1}</b> <br /> {name}
-                              </span>
-                              {/* <div className="episode-overview">
-                                {episodeOverviews?.[index] ||
-                                  "No description available."}
-                              </div> */}
-                            </div>
-                          }
-                          header={
-                            episodeStills?.[index] ? (
-                              <img
-                                src={`https://image.tmdb.org/t/p/w500${episodeStills[index]}`}
-                                alt={name}
-                                style={{
-                                  width: "100%",
-                                  height: "80px",
-                                  objectFit: "cover",
-                                }}
-                              />
-                            ) : (
-                              <div
-                                style={{
-                                  width: "100%",
-                                  height: "80px",
-                                  background: "#eee",
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  color: "#666",
-                                }}
-                              >
-                                No Image
+                          className={`flip-card ${
+                            flippedCards[index] ? "flipped" : ""
+                          }`}
+                          onClick={() => toggleFlip(index)}
+                        >
+                          <div className="flip-card-inner">
+                            {/* Front */}
+                            <div className="flip-card-front">
+                              {episodeStills?.[index] ? (
+                                <img
+                                  src={`https://image.tmdb.org/t/p/w500${episodeStills[index]}`}
+                                  alt={name}
+                                />
+                              ) : (
+                                <div className="no-image">No Image</div>
+                              )}
+                              <div className="episode-title">
+                                {index + 1}
+                                <br></br> {name}
                               </div>
-                            )
-                          }
-                          style={{ marginBottom: "10px" }}
-                        />
+                            </div>
+
+                            {/* Back */}
+                            <div className="flip-card-back">
+                              {episodeOverviews?.[index] ||
+                                "No description available."}
+                            </div>
+                          </div>
+                        </div>
                       ))}
                     </div>
                   )}
@@ -258,6 +248,7 @@ function ShowSearch({ searchQuery }) {
                     )}
                   </div>
                   <br />
+                  <hr></hr>
                   {searchResult.overview}
                   <h5>
                     Data provided by{" "}

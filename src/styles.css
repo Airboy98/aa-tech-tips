@@ -117,87 +117,83 @@ h5 {
   /* text-align: left; */
 }
 
-/* === PrimeReact Card Overrides for Episodes === */
-
-/* Card container */
-.p-card {
-  background: #1e1e1e;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Hover effect */
-.p-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-}
-
-/* Episode still (image inside card) */
-.p-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.2s ease;
-}
-
-/* Hover zoom on episode still */
-.p-card:hover img {
-  transform: scale(1.05);
-}
-
-/* Title text */
-.p-card-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #ffffff;
-  padding: 6px 8px;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Card content (we'll keep it minimal) */
-.p-card-content {
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Episode footer overlay */
-.p-card-footer {
-  background: rgba(41, 41, 41, 0.7);
-  padding: 6px 8px;
-  font-size: 0.85rem;
-  border-radius: 20px;
-  color: #f0f0f0;
-  text-align: center;
-  /* white-space: nowrap; */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 /* Episode cards grid */
 .episode-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
 }
 
-.episode-overview {
-  font-size: 0.8rem;
-  color: #ddd;
-  padding: 8px;
+/* Flip Card Container */
+.flip-card {
+  background: transparent;
+  width: 120px;
+  height: 250px;
+  perspective: 1000px; /* enables 3D flip */
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Front */
+.flip-card-front {
+  background: #575656;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.episode-title {
+  height: 30%; /* fill remaining height */
+  font-size: 0.75rem;
+  /* font-weight: bold; */
   text-align: center;
+  display: flex;
+  align-items: center; /* vertically center text */
+  justify-content: center; /* horizontally center text */
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Back */
+.flip-card-back {
+  background: #222;
+  color: #fff;
+  transform: rotateY(180deg);
+  padding: 10px;
+  font-size: 0.75rem;
+  text-align: left;
+  overflow-y: auto;
 }
