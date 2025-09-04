@@ -22,11 +22,21 @@ function ShowSearch({ searchQuery }) {
       .then((json) => {
         if (json.results && json.results.length > 0) {
           const show = json.results[0];
+
           setSearchResult(show);
+          setWatchProviders(null);
+          setCertification(null);
+          setNumSeasons(null);
+          setEpisodeNames(null);
+          setEpisodeStills(null);
+          setEpisodeOverviews(null);
+          setFlippedCards({});
+          setSelectedSeason(null);
+          setShowSeasons(false);
+
           fetchWatchProviders(show.id);
           fetchCertification(show.id);
           fetchNumSeasons(show.id);
-          fetchEpisodeDetails(show.id);
         } else {
           setSearchResult(null);
           setWatchProviders(null);
@@ -34,6 +44,10 @@ function ShowSearch({ searchQuery }) {
           setNumSeasons(null);
           setEpisodeNames(null);
           setEpisodeStills(null);
+          setEpisodeOverviews(null);
+          setFlippedCards({});
+          setSelectedSeason(null);
+          setShowSeasons(false);
         }
       })
       .catch((error) => {
@@ -179,6 +193,9 @@ function ShowSearch({ searchQuery }) {
                           setShowSeasons(true);
                         } else {
                           setShowSeasons(false);
+                          setEpisodeNames(null);
+                          setEpisodeStills(null);
+                          setEpisodeOverviews(null);
                         }
                       }}
                       placeholder="Select a season"
