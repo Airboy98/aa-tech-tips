@@ -15,6 +15,7 @@ function ShowSearch({ searchQuery }) {
   const [selectedSeason, setSelectedSeason] = useState(null);
   const [episodeOverviews, setEpisodeOverviews] = useState(null);
   const [flippedCards, setFlippedCards] = useState({});
+  const [seasonInfo, setSeasonInfo] = useState(null);
 
   const searchShow = (query) => {
     fetch(`${BASE_URL}/search/tv?api_key=${API_KEY}&query=${query}`)
@@ -33,6 +34,7 @@ function ShowSearch({ searchQuery }) {
           setFlippedCards({});
           setSelectedSeason(null);
           setShowSeasons(false);
+          setSeasonInfo(null);
 
           fetchWatchProviders(show.id);
           fetchCertification(show.id);
@@ -112,24 +114,22 @@ function ShowSearch({ searchQuery }) {
     fetch(`${BASE_URL}/tv/${showId}/season/${seasonNumber}?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        const episodeNames = json.episodes
-          ? json.episodes.map((episode) => episode.name)
-          : [];
-        const episodeStills = json.episodes
-          ? json.episodes.map((episode) => episode.still_path)
-          : [];
-        const episodeOverviews = json.episodes
-          ? json.episodes.map((episode) => episode.overview)
-          : [];
-        setEpisodeNames(episodeNames);
-        setEpisodeStills(episodeStills);
-        setEpisodeOverviews(episodeOverviews);
+        const episodes = json.episodes || [];
+        setEpisodeNames(episodes.map((ep) => ep.name));
+        setEpisodeStills(episodes.map((ep) => ep.still_path));
+        setEpisodeOverviews(episodes.map((ep) => ep.overview));
+        setFlippedCards({});
+
+        setSeasonInfo({
+          air_date: json.air_date,
+        });
       })
       .catch((error) => {
         console.error("Error fetching episode names:", error);
         setEpisodeNames(null);
         setEpisodeStills(null);
         setEpisodeOverviews(null);
+        setSeasonInfo(null);
       });
   };
 
@@ -179,7 +179,11 @@ function ShowSearch({ searchQuery }) {
                   </a>
                   <h1>{searchResult.name}</h1>
                   <hr></hr>
-                  {certification && <h4>Rated {certification}</h4>}
+                  {certification ? (
+                    <h4>Rated {certification}</h4>
+                  ) : (
+                    <h4>Unrated</h4>
+                  )}
                   {numSeasons === 1 ? "1 Season" : `${numSeasons} Seasons`}
                   <br></br>
                   <div style={{ margin: "10px 0" }}>
@@ -196,6 +200,7 @@ function ShowSearch({ searchQuery }) {
                           setEpisodeNames(null);
                           setEpisodeStills(null);
                           setEpisodeOverviews(null);
+                          setSeasonInfo(null);
                         }
                       }}
                       placeholder="Select a season"
@@ -203,7 +208,15 @@ function ShowSearch({ searchQuery }) {
                       showClear
                     />
                   </div>
-
+                  {seasonInfo && (
+                    <div className="season-info">
+                      {seasonInfo.air_date ? (
+                        <h4>{seasonInfo.air_date}</h4>
+                      ) : (
+                        <h4>Release date TBA</h4>
+                      )}
+                    </div>
+                  )}
                   {showSeasons && (
                     <div className="episode-cards">
                       {episodeNames?.map((name, index) => (
@@ -241,9 +254,7 @@ function ShowSearch({ searchQuery }) {
                       ))}
                     </div>
                   )}
-
-                  <h4>{searchResult.first_air_date}</h4>
-
+                  <br />
                   <div>
                     {watchProviders?.flatrate?.length > 0 ? (
                       <div>
