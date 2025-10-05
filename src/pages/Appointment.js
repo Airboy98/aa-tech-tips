@@ -17,6 +17,31 @@ export default function Appointment() {
       </div>
       <h2>Details</h2>
       <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Basic Consultation</button>
+        }
+      >
+        <h3>Free!</h3>
+        <h4>
+          To find out how I can assist further, send an email to{" "}
+          <a href="mailto:appointment@aatechtips.com">
+            appointment@aatechtips.com
+          </a>{" "}
+          for a free email consultation to gather information about your IT
+          issues and determine the next best course of action:
+        </h4>
+        <ul>
+          <li>
+            Generic IT questions such as purchasing a new device, updating, etc.
+          </li>
+          <li>Information about your hardware/software</li>
+          <li>
+            Clarifying if an in-person or remote appointment is suitable for
+            your situation
+          </li>
+        </ul>
+      </Collapsible>
+      <Collapsible
         trigger={<button className="collapsible-trigger">In-Person</button>}
       >
         <h3>$50/hr (cash or check)</h3>
@@ -30,6 +55,7 @@ export default function Appointment() {
             Comprehensive IT Lessons (ex: learn how to use a smartphone, tablet,
             macOS, etc.)
           </li>
+          <li>Specific program training (ex: MS Office products)</li>
           <li>
             Data Backup (external SSD not provided, refer to Tech 101 for
             retailers)
