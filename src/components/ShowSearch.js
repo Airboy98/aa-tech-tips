@@ -16,6 +16,7 @@ function ShowSearch({ searchQuery }) {
   const [episodeOverviews, setEpisodeOverviews] = useState(null);
   const [flippedCards, setFlippedCards] = useState({});
   const [seasonInfo, setSeasonInfo] = useState(null);
+  const [creators, setCreators] = useState(null);
 
   const searchShow = (query) => {
     fetch(`${BASE_URL}/search/tv?api_key=${API_KEY}&query=${query}`)
@@ -103,10 +104,12 @@ function ShowSearch({ searchQuery }) {
       .then((res) => res.json())
       .then((json) => {
         setNumSeasons(json.number_of_seasons);
+        setCreators(json.created_by || []);
       })
       .catch((error) => {
         console.error("Error fetching number of seasons:", error);
         setNumSeasons(null);
+        setCreators(null);
       });
   };
 
@@ -179,6 +182,15 @@ function ShowSearch({ searchQuery }) {
                   </a>
                   <h1>{searchResult.name}</h1>
                   <hr></hr>
+                  {creators && creators.length > 0 && (
+                    <div className="creators">
+                      <h4>
+                        Created by{" "}
+                        {creators.map((creator) => creator.name).join(", ")}
+                      </h4>
+                    </div>
+                  )}
+
                   {certification ? (
                     <h4>Rated {certification}</h4>
                   ) : (
