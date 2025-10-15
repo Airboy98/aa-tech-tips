@@ -303,6 +303,36 @@ export default function Streaming() {
               <tr>
                 <td>
                   <a
+                    href="https://gominno.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/streaming/minno.png"
+                      alt="Minno"
+                      width="100"
+                      height="30"
+                    />
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://bravebooks.us/pages/brave-plus"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/streaming/brave+.png"
+                      alt="Brave+"
+                      width="100"
+                      height="50"
+                    />
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
                     href="https://www.yippee.tv/"
                     target="_blank"
                     rel="noopener noreferrer"
