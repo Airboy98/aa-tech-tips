@@ -61,7 +61,7 @@ export default function About() {
 
       <br></br>
       <footer>
-        Developed and Designed by Aaron Turner
+        Developed and Designed by Aaron T.
         <br></br>
         AA Tech Tips Est. 2024
         <br></br>
