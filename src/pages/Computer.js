@@ -223,6 +223,86 @@ export default function Computer() {
         </ol>
       </Collapsible>
       <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Common File Systems</button>
+        }
+      >
+        <h4>
+          Modern operating systems use specific file systems for OS installation
+          (see green checks below) but also support reading/writing data on
+          external drives using various file systems.
+        </h4>
+        <div className="tech">
+          <table>
+            <th>File System</th>
+            <th>Windows</th>
+            <th>macOS</th>
+            <th>Linux</th>
+            <tr>
+              <td>FAT32</td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+            </tr>
+            <tr>
+              <td>exFAT</td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+            </tr>
+            <tr>
+              <td>NTFS</td>
+              <td style={{ color: "green" }}>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+              <td />
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+            </tr>
+            <tr>
+              <td>HFS+</td>
+              <td />
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+              <td>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+            </tr>
+            <tr>
+              <td>APFS</td>
+              <td />
+              <td style={{ color: "green" }}>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+              <td />
+            </tr>
+            <tr>
+              <td>ext4</td>
+              <td></td>
+              <td />
+              <td style={{ color: "green" }}>
+                <span className="material-symbols-outlined">check_circle</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h5>NOTE: FAT32 has a maximum file size limit of 4GB.</h5>
+      </Collapsible>
+      <Collapsible
         trigger={<button className="collapsible-trigger">Photo Sharing</button>}
       >
         <ol>
