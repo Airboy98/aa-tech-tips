@@ -46,13 +46,14 @@ export default function About() {
           Bible-believing Christian and the Lord has gifted me with a passion
           for assisting and teaching others about technology. I graduated with a
           BS in Computer Science from Texas Tech in 2019 and worked as IT
-          support on-campus for dorm hall students for 4 years. I have had 2
+          support on-campus for dorm hall students for 4 years. I have had 3
           technical consulting jobs with numerous projects ranging from software
-          development, data manipulation and migration to the cloud, and system
-          administrator experience. I wanted to use this skillset to create and
-          maintain this website to help out those who are less technologically
-          inclined as well as provide some useful information for more technical
-          users with bleeding edge technologies like cloud and AI.
+          development, SQL database management, cloud engineering, cybersecurity
+          and system administrator experience. I wanted to use this skillset to
+          create and maintain this website to help out those who are less
+          technologically inclined as well as provide some useful information
+          for more technical users with bleeding edge technologies like cloud
+          and AI.
         </p>
         <a href="/sonic/" target="_blank" rel="noopener noreferrer">
           <img src="images/selfie.png" height="220" width="200" />
