@@ -117,6 +117,14 @@ h5 {
   /* text-align: left; */
 }
 
+.subtitle {
+  display: block;
+  font-style: italic;
+  font-size: 0.5em;
+  font-weight: 400;
+  color: #d0d0d0; /* lighter tone than main heading */
+}
+
 /* Episode cards grid */
 .episode-cards {
   display: grid;
