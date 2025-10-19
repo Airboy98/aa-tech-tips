@@ -118,7 +118,12 @@ export default function Appointment() {
         </ul>
       </Collapsible>
       <h2>Booking</h2>
-      <Calendly />
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Schedule</button>}
+      >
+        <Calendly />
+      </Collapsible>
+
       <h5>
         Send any appointment inquiries to{" "}
         <a href="mailto:appointment@aatechtips.com">
