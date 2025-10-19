@@ -697,11 +697,10 @@ export default function Computer() {
             <b>Windows Explorer</b>
           </li>
           <li>Find the drive in the side panel on the left and select it</li>
-          <li>Click the Format option and specify a format type</li>
           <li>
-            NTFS (Windows), APFS (macOS), FAT32(4GB file size limit)/exFAT
-            (cross platform)
+            Click the <b>Format</b> option and specify a file system type
           </li>
+          <li>See above tech tip Common File Systems for more details</li>
         </ol>
         <h5>
           NOTE: Use caution when formatting as ALL drive contents will be

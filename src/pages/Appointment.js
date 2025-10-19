@@ -44,38 +44,68 @@ export default function Appointment() {
       <Collapsible
         trigger={<button className="collapsible-trigger">In-Person</button>}
       >
-        <h3>$50/hr (cash or check)</h3>
+        <h1>
+          Instructional Package
+          <span class="subtitle">
+            <u>Learn while resolving</u> your tech issues step-by-step
+          </span>
+          <span class="subtitle">Zelle, Apple Pay, Cash or Check</span>
+          <span class="subtitle">$100/hr</span>
+        </h1>
         <h4>
-          For the most extensive IT assistance, I can assist via an in-person IT
-          appointment and come over to a local DFW address of your choosing to
-          help with various IT issues such as:
+          For the most comprehensive IT assistance, I offer one-on-one sessions
+          with clear, step-by-step instructions to help with...
         </h4>
         <ul>
           <li>
-            Comprehensive IT Lessons (ex: learn how to use a smartphone, tablet,
+            Informational IT Lessons (ex: learn how to use a smartphone, tablet,
             macOS, etc.)
           </li>
           <li>Specific program training (ex: MS Office products)</li>
           <li>
-            Data Backup (external SSD not provided, refer to Tech 101 for
-            retailers)
+            Data Backup/Transfer (external SSD not provided, refer to Tech 101
+            for retailers)
           </li>
-          <li>Data Transfer</li>
           <li>
             New Device Setup (smartphone, TV, printer, home network, etc.)
           </li>
           <li>Program/App Installation or Removal</li>
           <li>Malware/Virus Removal</li>
-          <li>Any other tech related issues</li>
+          <li>Other tech teaching topics</li>
+        </ul>
+        <h1>
+          Direct Package
+          <span class="subtitle">
+            Fast, no-fuss IT support — <u>I handle it for you</u>
+          </span>
+          <span class="subtitle">Zelle, Apple Pay, Cash or Check</span>
+          <span class="subtitle">$75/hr</span>
+        </h1>
+        <h4>
+          For the quickest resolution, I can directly address your IT issues
+          with minimal interaction to help with...
+        </h4>
+        <ul>
+          <li>Device Setup (smartphone, TV, printer, home network, etc.)</li>
+          <li>Malware/Virus Removal</li>
+          <li>Account Setup (email inbox, Microsoft 365, etc.)</li>
+          <li>Other tech troubleshooting</li>
         </ul>
       </Collapsible>
       <Collapsible
-        trigger={<button className="collapsible-trigger">Remote</button>}
+        trigger={<button className="collapsible-trigger">Virtual</button>}
       >
-        <h3>$25/hr (Zelle or Apple Pay)</h3>
+        <h1>
+          Virtual Package
+          <span class="subtitle">
+            Convenient remote help from <u>anywhere</u>
+          </span>
+          <span class="subtitle">Zelle or Apple Pay</span>
+          <span class="subtitle">$50/hr</span>
+        </h1>
         <h4>
-          For more limited assistance, I can assist remotely via Zoom (refer to
-          Tech 101 for instructions) to help with basic IT issues such as:
+          For remote assistance, I can connect with you via Zoom (see Tech 101
+          for instructions) to help with...
         </h4>
         <ul>
           <li>
@@ -84,7 +114,6 @@ export default function Appointment() {
           </li>
           <li>Data Transfer (flash/thumb drive required)</li>
           <li>Program/App Installation or Removal</li>
-          <li>Malware/Virus Removal</li>
           <li>Any tech related questions</li>
         </ul>
       </Collapsible>
