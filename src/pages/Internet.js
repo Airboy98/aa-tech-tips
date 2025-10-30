@@ -16,9 +16,9 @@ export default function Internet() {
         <div className="tech">
           <table>
             <tr>
-              <th>Browser Name</th>
+              <th>Browser</th>
               <th>Icon</th>
-              <th>Platform</th>
+              <th>OS</th>
               <th>Updated?</th>
             </tr>
             <tr>
@@ -61,6 +61,7 @@ export default function Internet() {
                   height="20"
                   width="20"
                 ></img>{" "}
+                <img src="images/logos/linux.png" height="20" width="20"></img>{" "}
                 <img src="images/logos/chrome.png" height="20" width="20"></img>
               </td>
               <td>
@@ -91,6 +92,7 @@ export default function Internet() {
                   height="20"
                   width="20"
                 ></img>{" "}
+                <img src="images/logos/linux.png" height="20" width="20"></img>{" "}
                 <img src="images/logos/chrome.png" height="20" width="20"></img>
                 *
               </td>
@@ -117,7 +119,8 @@ export default function Internet() {
                   src="images/logos/windows.png"
                   height="20"
                   width="20"
-                ></img>
+                ></img>{" "}
+                <img src="images/logos/linux.png" height="20" width="20"></img>
               </td>
               <td>
                 <span className="material-symbols-outlined">check_circle</span>
@@ -143,6 +146,7 @@ export default function Internet() {
                   height="20"
                   width="20"
                 ></img>{" "}
+                <img src="images/logos/linux.png" height="20" width="20"></img>{" "}
                 <img src="images/logos/chrome.png" height="20" width="20"></img>
                 *
               </td>
@@ -174,6 +178,7 @@ export default function Internet() {
                   height="20"
                   width="20"
                 ></img>{" "}
+                <img src="images/logos/linux.png" height="20" width="20"></img>{" "}
                 <img src="images/logos/chrome.png" height="20" width="20"></img>
                 *
               </td>
@@ -201,6 +206,7 @@ export default function Internet() {
                   height="20"
                   width="20"
                 ></img>{" "}
+                <img src="images/logos/linux.png" height="20" width="20"></img>{" "}
                 <img src="images/logos/chrome.png" height="20" width="20"></img>
                 *
               </td>
@@ -493,10 +499,7 @@ export default function Internet() {
               </tr>
               <tr>
                 <td>Connection Type</td>
-                <td>
-                  The cable wired to your home to provide internet, fiber being
-                  the optimal choice
-                </td>
+                <td>The cable wired to your home to provide internet</td>
                 <td>Fiber optic, copper</td>
               </tr>
               <tr>
@@ -514,6 +517,30 @@ export default function Internet() {
                   milliseconds (ms)
                 </td>
                 <td>Clarity in video calls</td>
+              </tr>
+              <tr>
+                <td>DSL Internet</td>
+                <td>
+                  A connection using telephone lines to provide internet with a
+                  max speed of 100Mbps
+                </td>
+                <td>Optimal for common internet use</td>
+              </tr>
+              <tr>
+                <td>Fiber Internet</td>
+                <td>
+                  A connection using fiber optic cables to provide speeds of
+                  1Gbps+
+                </td>
+                <td>Ideal for large data transfers and streaming</td>
+              </tr>
+              <tr>
+                <td>Dial-Up Internet</td>
+                <td>
+                  A connection using telephone lines to provide internet with a
+                  max speed of 56kbps
+                </td>
+                <td>Adequate only for text-based websites</td>
               </tr>
             </tbody>
           </table>
