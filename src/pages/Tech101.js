@@ -1182,6 +1182,172 @@ export default function Tech101() {
           </table>
         </div>
       </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Linux</button>}
+      >
+        <h4>
+          Linux is an alternative free operating system to Windows and macOS. It
+          is light-weight, open-source, highly customizable and comes in various
+          flavors known as distributions (aka distros) suited for different
+          needs.
+        </h4>
+        <div className="tech">
+          <table>
+            <thead>
+              <tr>
+                <th>Distro</th>
+                <th>Ideal for</th>
+                <th>Ease of Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.linuxmint.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Linux Mint
+                  </a>
+                </td>
+                <td>Windows users</td>
+                <td>Beginner</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://lubuntu.me/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Lubuntu
+                  </a>
+                </td>
+                <td>Lightweight</td>
+                <td>Beginner</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.raspberrypi.org/downloads/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Raspberry Pi OS
+                  </a>
+                </td>
+                <td>Raspberry Pi projects</td>
+                <td>Beginner</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.ubuntu.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Ubuntu
+                  </a>
+                </td>
+                <td>Mac users</td>
+                <td>Beginner</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.opensuse.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    openSUSE
+                  </a>
+                </td>
+                <td>System administration</td>
+                <td>Intermediate</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://getfedora.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Fedora
+                  </a>
+                </td>
+                <td>Developers</td>
+                <td>Intermediate</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.centos.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    CentOS
+                  </a>
+                </td>
+                <td>Enterprise</td>
+                <td>Intermediate</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.debian.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Debian
+                  </a>
+                </td>
+                <td>Stable servers</td>
+                <td>Intermediate</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://pop-os.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Pop!_OS
+                  </a>
+                </td>
+                <td>Developers / gamers</td>
+                <td>Intermediate</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://archlinux.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Arch Linux
+                  </a>
+                </td>
+                <td>Enthusiasts</td>
+                <td>Expert</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.kali.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Kali Linux
+                  </a>
+                </td>
+                <td>Cybersecurity</td>
+                <td>Expert</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Collapsible>
     </>
   );
 }
