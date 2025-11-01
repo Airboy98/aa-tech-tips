@@ -35,7 +35,11 @@ export default function Computer() {
         <ol>
           <li>
             Click{" "}
-            <a href="https://www.malwarebytes.com/mwb-download/thankyou">
+            <a
+              href="https://www.malwarebytes.com/mwb-download/thankyou"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               here
             </a>{" "}
             to download Malwarebytes (automatically detects Windows or Mac)
