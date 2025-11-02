@@ -79,6 +79,36 @@ app.get("/api/giantbomb-newreleases", async (req, res) => {
   }
 });
 
+app.get("/api/genius", async (req, res) => {
+  const { q } = req.query;
+  const CLIENT_TOKEN = process.env.REACT_APP_CLIENT_TOKEN_GENIUS;
+  const BASE_URL = process.env.REACT_APP_BASE_URL_GENIUS;
+
+  if (!q) {
+    return res.status(400).json({ error: "Missing search query" });
+  }
+
+  const url = `${BASE_URL}search?q=${encodeURIComponent(q)}`;
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${CLIENT_TOKEN}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Genius API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    res.status(200).json(data);
+  } catch (error) {
+    console.error("Error fetching Genius API:", error);
+    res.status(500).json({ error: "Failed to fetch Genius data" });
+  }
+});
+
 app.listen(3001, () => {
   console.log("Local server running on http://localhost:3001");
 });
