@@ -11,6 +11,7 @@ import Upcoming from "../components/Upcoming";
 import SongSearch from "../components/SongSearch";
 import DirectorSearch from "../components/DirectorSearch";
 import PodcastSearch from "../components/PodcastSearch";
+import LyricSearch from "../components/LyricSearch";
 
 export default function Streaming() {
   const [searchMovie, setSearchMovie] = useState("");
@@ -21,6 +22,7 @@ export default function Streaming() {
   const [searchDirector, setSearchDirector] = useState("");
   const [searchSong, setSearchSong] = useState("");
   const [searchPodcast, setSearchPodcast] = useState("");
+  const [searchLyric, setSearchLyric] = useState("");
 
   const handleSearchMovie = (e) => {
     e.preventDefault();
@@ -60,6 +62,12 @@ export default function Streaming() {
     e.preventDefault();
     const song = e.target.elements.q.value;
     setSearchSong(song);
+  };
+
+  const handleSearchLyric = (e) => {
+    e.preventDefault();
+    const lyrics = e.target.elements.q.value;
+    setSearchLyric(lyrics);
   };
 
   const handleSearchPodcast = (e) => {
@@ -766,6 +774,38 @@ export default function Streaming() {
           </table>
         </div>
         <SongSearch searchQuery={searchSong} />
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Lyric Search</button>}
+      >
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form onSubmit={handleSearchLyric}>
+                    <div className="search">
+                      <input
+                        type="search"
+                        name="q"
+                        placeholder="Enter some lyrics..."
+                      />
+                    </div>
+                    <button>
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <LyricSearch searchQuery={searchLyric} />
       </Collapsible>
       <h2>Podcasts</h2>
       <Collapsible
