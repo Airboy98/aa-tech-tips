@@ -1,3 +1,5 @@
+import cheerio from "cheerio";
+
 export default async function handler(req, res) {
   const { q } = req.query;
   const BASE_URL = process.env.REACT_APP_BASE_URL_GENIUS;
@@ -8,6 +10,7 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Step 1: Search Genius for the song
     const response = await fetch(
       `${BASE_URL}search?q=${encodeURIComponent(q)}`,
       {
@@ -21,10 +24,14 @@ export default async function handler(req, res) {
       throw new Error(`Genius API error: ${response.status}`);
     }
 
-    const data = await response.json();
-    res.status(200).json(data);
+    // Step 4: Respond with song data + lyrics
+    res.status(200).json({
+      song: songTitle,
+      artist,
+      lyrics: lyrics.trim() || "Lyrics not found.",
+    });
   } catch (error) {
-    console.error("Error fetching Genius API:", error);
-    res.status(500).json({ error: "Failed to fetch Genius data" });
+    console.error("Error fetching Genius lyrics:", error);
+    res.status(500).json({ error: "Failed to fetch Genius lyrics" });
   }
 }
