@@ -10,8 +10,14 @@ function LyricSearch({ searchQuery }) {
     axios
       .get(`/api/genius?q=${query}`)
       .then((res) => {
-        if (res.data.response && res.data.response.hits.length > 0) {
-          const songs = res.data.response.hits.map((hit) => hit.result);
+        // Handle both response formats:
+        const songs =
+          res.data.songs ||
+          (res.data.response?.hits
+            ? res.data.response.hits.map((hit) => hit.result)
+            : []);
+
+        if (songs.length > 0) {
           setSearchResult(songs);
         } else {
           setSearchResult(null);
