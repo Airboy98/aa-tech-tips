@@ -77,7 +77,7 @@ function LyricSearch({ searchQuery }) {
             <tbody>
               <tr>
                 <td>
-                  <h1>Songs</h1>
+                  <h1>Lyrics found in...</h1>
                   <hr />
                   {searchResult.map((song) => (
                     <div key={song.id} style={{ marginBottom: "1.5rem" }}>
@@ -100,7 +100,7 @@ function LyricSearch({ searchQuery }) {
                         )}
                       </h4>
 
-                      <button
+                      {/* <button
                         onClick={() => handleShowLyrics(song)}
                         disabled={loadingId === song.id}
                         style={{
@@ -117,7 +117,7 @@ function LyricSearch({ searchQuery }) {
                           : loadingId === song.id
                           ? "Loading..."
                           : "Show Lyrics"}
-                      </button>
+                      </button> */}
 
                       {lyricsMap[song.id] && (
                         <blockquote
