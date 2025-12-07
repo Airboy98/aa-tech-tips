@@ -45,7 +45,7 @@ export default function Tech101() {
                 <td>
                   Google's proprietary operating system for phones and tablets
                 </td>
-                <td>Android 14</td>
+                <td>Android 16</td>
               </tr>
               <tr>
                 <td>App</td>
@@ -56,20 +56,23 @@ export default function Tech101() {
               </tr>
               <tr>
                 <td>Cloud</td>
-                <td>
-                  Umbrella term for referring to storing data on remote servers
-                </td>
+                <td>Remote internet-connected computers in data warehouses</td>
                 <td>iCloud, OneDrive, Google Drive</td>
               </tr>
               <tr>
                 <td>iOS</td>
                 <td>Apple's proprietary operating system on iPhones</td>
-                <td>iOS 16, iOS 17</td>
+                <td>iOS 26</td>
+              </tr>
+              <tr>
+                <td>ipadOS</td>
+                <td>Apple's proprietary operating system on iPads</td>
+                <td>ipadOS 26</td>
               </tr>
               <tr>
                 <td>macOS</td>
                 <td>Apple's proprietary operating system on Macs</td>
-                <td>macOS 14 Sonoma</td>
+                <td>macOS 26 Tahoe</td>
               </tr>
               <tr>
                 <td>Streaming</td>
@@ -84,7 +87,7 @@ export default function Tech101() {
                 <td>
                   A modern day internet connected cellphone that uses apps
                 </td>
-                <td>iPhone 15, Galaxy S24</td>
+                <td>iPhone 17, Galaxy S25</td>
               </tr>
               <tr>
                 <td>Tablet</td>
@@ -94,7 +97,7 @@ export default function Tech101() {
               <tr>
                 <td>watchOS</td>
                 <td>Apple's proprietary operating system on Apple Watches</td>
-                <td>watchOS 9, watchOS 10</td>
+                <td>watchOS 26</td>
               </tr>
               <tr>
                 <td>Wearable</td>
@@ -393,6 +396,68 @@ export default function Tech101() {
             </li>
           </ul>
         </div>
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Email</button>}
+      >
+        <h4>
+          Some email addresses can be tricky to integrate into Outlook or on a
+          phone or tablet but your email can always be accessed through the
+          dedicated email service's website. Below are links to login to the
+          most common email services to view your email in a web browser.
+        </h4>
+        <ul>
+          <li>
+            <a
+              href="https://login.aol.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AOL
+            </a>{" "}
+            (@aol.com)
+          </li>
+          <li>
+            <a
+              href="https://accounts.google.com/v3/signin/identifier?emr=1&ltmpl=default&nojavascript=1&rm=false&service=mail&ss=1&flowName=WebLiteSignIn&flowEntry=ServiceLogin&ifkv=ARESoU2o_M4tPDsvfmKoIA4Fx5Q7UhiZ-BJ_wsF0z9HUzx16d6L0RU9WpzXOjeggfec0xz4Ay6hzvw&dsh=S824919858%3A1762883661818387"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Gmail
+            </a>{" "}
+            (@gmail.com)
+          </li>
+          <li>
+            <a
+              href="https://login.yahoo.com/?src=ym&pspid=159600001&activity=mail-direct&lang=en-US&intl=us&done=https%3A%2F%2Fmail.yahoo.com%2Fd"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Yahoo
+            </a>{" "}
+            (@yahoo.com, @att.net, @sbcglobal.net, @bellsouth.net)
+          </li>
+          <li>
+            <a
+              href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=service%3A%3Aaccount.microsoft.com%3A%3AMBI_SSL+openid+profile+offline_access&response_type=code&client_id=81feaced-5ddd-41e7-8bef-3e20a2689bb7&redirect_uri=https%3A%2F%2Faccount.microsoft.com%2Fauth%2Fcomplete-sign-in-oauth&client-request-id=0386b2d4-ecb7-4f29-bfb9-d9dab1f6f538&x-client-SKU=MSAL.Desktop&x-client-Ver=4.66.1.0&x-client-OS=Windows+Server+2019+Datacenter&prompt=login&client_info=1&state=H4sIAAAAAAAEAAXBOZaCMAAA0LtMS8ELS8DCApBFQIOyhLGTfYBAZI-nn_9__OqTJBFzX78A6inPNWWsOlPLx-zwMGbqZHgupB31is5ipyNZtmOrNfCxrDhoQM9D57H_Xea0Ndj-vT5zf9J7-yVlqZm1aAjGmiPQvLCgyCjBOXFVRWz2JYqA0BHrMY5DLHnrILiRRB7-yMxsShZKIw2l6DOWNRSxxrPydtd6eaHfyLkrQopXYOSyeDAiiNWAghJTV6dsTXMnFMVZ1qjEKJRfdaXazkinzd5GnzyR3NByvaG0ON4z4Cuj6eYMbf16BYO4jpP9CFTsbIWtZqJHLNxNuhW2XDJIR9diCPVvcsW2uSgoPPV0em99LAMOgXnPkJ1wjt4qCkF7zoX1-fzzD3RQHWpaAQAA&msaoauth2=true&instance_aware=true&lc=1033"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Microsoft
+            </a>{" "}
+            (@outlook.com, @live.com, @msn.com, @hotmail.com)
+          </li>
+          <li>
+            <a
+              href="https://webmail.spectrum.net/mail/auth"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Spectrum
+            </a>{" "}
+            (@roadrunner.com, @rr.com, @twc.com, @brighthouse.com, @charter.net)
+          </li>
+        </ul>
       </Collapsible>
       <h2>Intermediate</h2>
       <Collapsible
