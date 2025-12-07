@@ -164,14 +164,25 @@ function ArtistSearch({ searchQuery }) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img
-                      style={{
-                        width: "200px",
-                        height: "200px",
-                      }}
-                      src={searchResult.images[0].url}
-                      alt={searchResult.name}
-                    />
+                    {searchResult.images.length > 0 ? (
+                      <img
+                        style={{
+                          width: "200px",
+                          height: "200px",
+                        }}
+                        src={searchResult.images[0].url}
+                        alt={searchResult.name}
+                      />
+                    ) : (
+                      <img
+                        style={{
+                          width: "200px",
+                          height: "200px",
+                        }}
+                        src="nopicture.png"
+                        alt="No Artist Image"
+                      />
+                    )}
                   </a>
                   <h1>{searchResult.name}</h1>
                   <hr></hr>
