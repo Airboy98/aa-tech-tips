@@ -9,7 +9,11 @@ export default async function handler(req, res) {
   }`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "aa-tech-tips/1.0",
+      },
+    });
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
