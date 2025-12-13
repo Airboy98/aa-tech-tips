@@ -9,7 +9,11 @@ export default async function handler(req, res) {
   }&resources=game&field_list=id,name,image,site_detail_url,original_game_rating,original_release_date,deck`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "aa-tech-tips/1.0",
+      },
+    });
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {

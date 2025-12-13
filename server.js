@@ -18,7 +18,11 @@ app.get("/api/giantbomb", async (req, res) => {
   }&resources=game&field_list=id,name,image,site_detail_url,original_game_rating,original_release_date,deck`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "aa-tech-tips/1.0",
+      },
+    });
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
@@ -36,7 +40,11 @@ app.get("/api/giantbomb-game", async (req, res) => {
   }`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "aa-tech-tips/1.0",
+      },
+    });
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
@@ -50,10 +58,14 @@ app.get("/api/giantbomb-upcoming", async (req, res) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL_GIANT;
   const currentDate = new Date().toISOString().split("T")[0]; // Get today's date (e.g., "2025-03-27")
   const futureDate = "2100-12-31"; // Far future date to capture all upcoming releases
-  const url = `${BASE_URL}games/?api_key=${API_KEY}&format=json&filter=original_release_date:${currentDate}|${futureDate}&sort=popularity:desc&field_list=id,name,image,site_detail_url,original_game_rating,original_release_date,deck&limit=30`;
+  const url = `${BASE_URL}releases/?api_key=${API_KEY}&format=json&filter=original_release_date:${currentDate}|${futureDate}&sort=original_release_date:asc&field_list=id,name,image,site_detail_url,original_game_rating,original_release_date,deck&limit=30`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "aa-tech-tips/1.0",
+      },
+    });
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
@@ -69,10 +81,14 @@ app.get("/api/giantbomb-newreleases", async (req, res) => {
     .toISOString()
     .split("T")[0]; // releases from the last month
   const endDate = new Date().toISOString().split("T")[0]; // Get today's date (e.g., "2025-03-27")
-  const url = `${BASE_URL}games/?api_key=${API_KEY}&format=json&filter=original_release_date:${startDate}|${endDate}&sort=popularity:desc&field_list=id,name,image,site_detail_url,original_game_rating,original_release_date,deck&limit=30`;
+  const url = `${BASE_URL}releases/?api_key=${API_KEY}&format=json&filter=original_release_date:${startDate}|${endDate}&sort=original_release_date:desc&field_list=id,name,image,site_detail_url,original_game_rating,original_release_date,deck&limit=30`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "aa-tech-tips/1.0",
+      },
+    });
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
