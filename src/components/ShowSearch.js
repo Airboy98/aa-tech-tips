@@ -289,7 +289,7 @@ function ShowSearch({ searchQuery }) {
                   </div>
                   <br />
                   <hr></hr>
-                  {searchResult.overview}
+                  <p>{searchResult.overview}</p>
                   <h5>
                     Data provided by{" "}
                     <a

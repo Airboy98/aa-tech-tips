@@ -4,7 +4,7 @@ function UpcomingGames() {
   const [upcomingGames, setUpcomingGames] = useState(null);
 
   const fetchUpcomingGames = () => {
-    fetch("/api/giantbomb-upcoming")
+    fetch("/api/igdb-upcoming")
       .then((res) => res.json())
       .then((json) => {
         console.log("Upcoming games response:", json);
@@ -30,16 +30,16 @@ function UpcomingGames() {
         upcomingGames.map((game) => (
           <a
             key={game.id}
-            href={game.site_detail_url}
+            href={game.url}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
               style={{
-                width: "186px",
-                height: "105px",
+                width: "125px",
+                height: "200px",
               }}
-              src={game.image?.screen_url}
+              src={game.cover?.url ? game.cover?.url : "noposter.png"}
               alt={game.name}
             />
           </a>
@@ -50,11 +50,11 @@ function UpcomingGames() {
       <h5>
         Data provided by{" "}
         <a
-          href="https://www.giantbomb.com/new-games/"
+          href="https://www.igdb.com/games/coming_soon"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Giant Bomb
+          IGDB
         </a>
       </h5>
     </div>

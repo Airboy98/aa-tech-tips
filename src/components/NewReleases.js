@@ -4,7 +4,7 @@ function NewReleases() {
   const [newReleases, setNewReleases] = useState(null);
 
   const fetchNewReleases = () => {
-    fetch("/api/giantbomb-newreleases")
+    fetch("/api/igdb-newreleases")
       .then((res) => res.json())
       .then((json) => {
         console.log("New releases response:", json);
@@ -32,17 +32,17 @@ function NewReleases() {
         newReleases.map((game) => (
           <a
             key={game.id}
-            href={game.site_detail_url}
+            href={game.url}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
               style={{
-                width: "186px",
-                height: "105px",
+                width: "125px",
+                height: "200px",
                 // marginTop: "10px",
               }}
-              src={game.image?.screen_url}
+              src={game.cover?.url ? game.cover?.url : "noposter.png"}
               alt={game.name}
             />
           </a>
@@ -53,11 +53,11 @@ function NewReleases() {
       <h5>
         Data provided by{" "}
         <a
-          href="https://www.giantbomb.com/new-games/"
+          href="https://www.igdb.com/games/recently_released"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Giant Bomb
+          IGDB
         </a>
       </h5>
     </div>

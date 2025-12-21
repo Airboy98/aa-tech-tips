@@ -2,32 +2,40 @@ import React, { useEffect, useState } from "react";
 
 function GameSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
-  const [platforms, setPlatforms] = useState(null);
-  const [developers, setDevelopers] = useState(null);
-  const [publishers, setPublishers] = useState(null);
 
-  const stripHtml = (html) => {
-    const div = document.createElement("div");
-    div.innerHTML = html;
-    return div.textContent || div.innerText || "";
+  const formatDate = (unix) => {
+    if (!unix) return "Coming Soon";
+    return new Date(unix * 1000).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
   };
 
   const searchGame = (query) => {
-    fetch(`/api/giantbomb${query ? `?query=${encodeURIComponent(query)}` : ""}`)
+    fetch(`/api/igdb-search?query=${encodeURIComponent(query)}`)
       .then((res) => res.json())
       .then((json) => {
         if (json.results && json.results.length > 0) {
-          // console.log(json.results);
-          const game = json.results[0];
-          setSearchResult(game);
+          setSearchResult(json.results[0]);
         } else {
           setSearchResult(null);
         }
       })
       .catch((error) => {
-        console.error("Error searching for game:", error);
+        console.error("Error searching IGDB:", error);
         setSearchResult(null);
       });
+  };
+
+  const getDevelopers = (game) => {
+    if (!game.involved_companies) return "Unknown Developer";
+
+    const devs = game.involved_companies
+      .filter((c) => c.developer && c.company?.name)
+      .map((c) => c.company.name);
+
+    return devs.length ? devs.join(", ") : "Unknown Developer";
   };
 
   useEffect(() => {
@@ -45,48 +53,56 @@ function GameSearch({ searchQuery }) {
               <tr>
                 <td>
                   <a
-                    href={`${searchResult.site_detail_url}`}
+                    href={searchResult.url}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img
-                      style={{
-                        width: "200px",
-                        height: "300px",
-                      }}
-                      src={`${searchResult.image.super_url}`}
-                      alt={searchResult.name}
-                    />
+                    {searchResult.cover ? (
+                      <img
+                        style={{ width: "200px", height: "300px" }}
+                        src={searchResult.cover.url}
+                        alt={searchResult.name}
+                      />
+                    ) : (
+                      <div
+                        style={{
+                          width: "200px",
+                          height: "300px",
+                          background: "#333",
+                          color: "#fff",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        No Image
+                      </div>
+                    )}
                   </a>
 
                   <h1>{searchResult.name}</h1>
                   <hr />
 
-                  {searchResult.original_game_rating ? (
-                    <h4>
-                      Rated{" "}
-                      {searchResult.original_game_rating
-                        .find((rating) => rating.name.startsWith("ESRB:"))
-                        ?.name.replace("ESRB: ", "") || "Not rated"}
-                    </h4>
-                  ) : (
-                    <h4>Rating TBD</h4>
-                  )}
+                  <h4>Developed by {getDevelopers(searchResult)}</h4>
+
+                  <h4>{formatDate(searchResult.first_release_date)}</h4>
 
                   <h4>
-                    {searchResult.original_release_date
-                      ? searchResult.original_release_date
-                      : "Coming Soon"}
+                    {searchResult.rating
+                      ? `Rating: ${searchResult.rating.toFixed(1)} / 100`
+                      : "Rating TBD"}
                   </h4>
-                  {stripHtml(searchResult.deck)}
+                  <hr></hr>
+                  {searchResult.summary && <p>{searchResult.summary}</p>}
+
                   <h5>
                     Data provided by{" "}
                     <a
-                      href={`${searchResult.site_detail_url}`}
+                      href="https://www.igdb.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Giant Bomb
+                      IGDB
                     </a>
                   </h5>
                 </td>
