@@ -59,7 +59,7 @@ function GameSearch({ searchQuery }) {
                   >
                     {searchResult.cover ? (
                       <img
-                        style={{ width: "200px", height: "300px" }}
+                        style={{ width: "200px", objectFit: "cover" }}
                         src={searchResult.cover.url}
                         alt={searchResult.name}
                       />
