@@ -8,7 +8,9 @@ function MovieSearch({ searchQuery }) {
   const [purchaseProviders, setPurchaseProviders] = useState(null);
   const [certification, setCertification] = useState(null);
   const [director, setDirector] = useState(null);
+  const [actors, setActors] = useState(null);
   const [runtime, setRuntime] = useState(null);
+  const [showActors, setShowActors] = useState(false);
   const [showWatchProviders, setShowWatchProviders] = useState(false);
   const [showRentProviders, setShowRentProviders] = useState(false);
   const [showPurchaseProviders, setShowPurchaseProviders] = useState(false);
@@ -25,6 +27,7 @@ function MovieSearch({ searchQuery }) {
           fetchPurchaseProviders(movie.id);
           fetchCertification(movie.id);
           fetchDirector(movie.id);
+          fetchActors(movie.id);
           fetchRuntime(movie.id);
         } else {
           setSearchResult(null);
@@ -33,6 +36,7 @@ function MovieSearch({ searchQuery }) {
           setPurchaseProviders(null);
           setCertification(null);
           setDirector(null);
+          setActors(null);
           setRuntime(null);
         }
       })
@@ -44,6 +48,7 @@ function MovieSearch({ searchQuery }) {
         setPurchaseProviders(null);
         setCertification(null);
         setDirector(null);
+        setActors(null);
         setRuntime(null);
       });
   };
@@ -142,6 +147,37 @@ function MovieSearch({ searchQuery }) {
       });
   };
 
+  const fetchActors = (movieId) => {
+    fetch(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`)
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.cast) {
+          const topActors = json.cast
+            .sort((a, b) => a.order - b.order)
+            .slice(0, 6)
+            .map((actor) => (
+              <img
+                style={{
+                  width: "100px",
+                  height: "150px",
+                }}
+                key={actor.id}
+                src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                alt={actor.name}
+                title={actor.name}
+              />
+            ));
+          setActors(topActors);
+        } else {
+          setActors(null);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching actors:", error);
+        setActors(null);
+      });
+  };
+
   const fetchRuntime = (movieId) => {
     fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`)
       .then((res) => res.json())
@@ -193,6 +229,25 @@ function MovieSearch({ searchQuery }) {
                   <h1>{searchResult.title}</h1>
                   <hr></hr>
                   {director && <h4>Directed by {director}</h4>}
+                  <button
+                    style={{
+                      backgroundColor: "#ddd",
+                      color: "black",
+                      borderRadius: "20px",
+                      fontSize: "16px",
+                      padding: "5px 10px",
+                      fontWeight: "bold",
+                    }}
+                    onClick={() => setShowActors(!showActors)}
+                  >
+                    Top Actors
+                  </button>
+                  {showActors && actors && (
+                    <div>
+                      <br />
+                      {actors}
+                    </div>
+                  )}
                   {certification && <h4>Rated {certification}</h4>}
                   {runtime && (
                     <h4>
@@ -217,7 +272,7 @@ function MovieSearch({ searchQuery }) {
                     }}
                     onClick={() => setShowWatchProviders(!showWatchProviders)}
                   >
-                    Show Streaming Options
+                    Streaming
                   </button>
                   {showWatchProviders && watchProviders && (
                     <div>
@@ -256,7 +311,7 @@ function MovieSearch({ searchQuery }) {
                     }}
                     onClick={() => setShowRentProviders(!showRentProviders)}
                   >
-                    Show Rent Options
+                    Renting
                   </button>
 
                   {showRentProviders && rentProviders && (
@@ -294,7 +349,7 @@ function MovieSearch({ searchQuery }) {
                       setShowPurchaseProviders(!showPurchaseProviders)
                     }
                   >
-                    Show Purchase Options
+                    Purchase
                   </button>
                   {showPurchaseProviders && purchaseProviders && (
                     <div>
