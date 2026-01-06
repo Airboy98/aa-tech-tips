@@ -31,7 +31,7 @@ const normalizeCovers = (games) =>
     cover: g.cover
       ? {
           ...g.cover,
-          url: `https:${g.cover.url.replace("t_thumb", "t_cover_big")}`,
+          url: `https:${g.cover.url.replace("t_thumb", "t_720p")}`,
         }
       : null,
   }));
@@ -42,11 +42,11 @@ app.get("/api/igdb-upcoming", async (req, res) => {
   const future = 2147483647;
 
   const body = `
-    fields name, cover.url, first_release_date, summary, rating, url;
-    where first_release_date >= ${now} & first_release_date < ${future};
-    sort first_release_date asc;
-    limit 30;
-  `;
+  fields name, cover.url, first_release_date, summary, hypes, url;
+  where first_release_date >= ${now} & first_release_date < ${future} & hypes > 50;
+  sort first_release_date asc;
+  limit 30;
+`;
 
   try {
     const data = await igdbFetch(body);
@@ -60,11 +60,11 @@ app.get("/api/igdb-upcoming", async (req, res) => {
 // NEW RELEASES
 app.get("/api/igdb-newreleases", async (req, res) => {
   const now = Math.floor(Date.now() / 1000);
-  const recent = now - 30 * 24 * 60 * 60; // 30 days ago
+  const recent = now - 90 * 24 * 60 * 60; // 90 days ago
 
   const body = `
     fields name, cover.url, first_release_date, summary, rating, url;
-    where first_release_date >= ${recent} & first_release_date <= ${now};
+    where first_release_date >= ${recent} & first_release_date <= ${now} & rating > 50;
     sort first_release_date desc;
     limit 30;
   `;

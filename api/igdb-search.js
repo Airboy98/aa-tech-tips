@@ -40,7 +40,7 @@ export default async function handler(req, res) {
       cover: game.cover
         ? {
             ...game.cover,
-            url: `https:${game.cover.url.replace(/t_[^/]+/, "t_cover_big")}`,
+            url: `https:${game.cover.url.replace(/t_[^/]+/, "t_720p")}`,
           }
         : null,
     }));
