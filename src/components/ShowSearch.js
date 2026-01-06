@@ -17,6 +17,9 @@ function ShowSearch({ searchQuery }) {
   const [flippedCards, setFlippedCards] = useState({});
   const [seasonInfo, setSeasonInfo] = useState(null);
   const [creators, setCreators] = useState(null);
+  const [actors, setActors] = useState([]);
+  const [showActors, setShowActors] = useState(false);
+  const [flippedActorCards, setFlippedActorCards] = useState({});
 
   const searchShow = (query) => {
     fetch(`${BASE_URL}/search/tv?api_key=${API_KEY}&query=${query}`)
@@ -36,10 +39,14 @@ function ShowSearch({ searchQuery }) {
           setSelectedSeason(null);
           setShowSeasons(false);
           setSeasonInfo(null);
+          setActors([]);
+          setShowActors(false);
+          setFlippedActorCards({});
 
           fetchWatchProviders(show.id);
           fetchCertification(show.id);
           fetchNumSeasons(show.id);
+          fetchActors(show.id);
         } else {
           setSearchResult(null);
           setWatchProviders(null);
@@ -51,6 +58,9 @@ function ShowSearch({ searchQuery }) {
           setFlippedCards({});
           setSelectedSeason(null);
           setShowSeasons(false);
+          setActors([]);
+          setShowActors(false);
+          setFlippedActorCards({});
         }
       })
       .catch((error) => {
@@ -61,6 +71,9 @@ function ShowSearch({ searchQuery }) {
         setNumSeasons(null);
         setEpisodeNames(null);
         setEpisodeStills(null);
+        setActors([]);
+        setShowActors(false);
+        setFlippedActorCards({});
       });
   };
 
@@ -113,6 +126,63 @@ function ShowSearch({ searchQuery }) {
       });
   };
 
+  const fetchActors = async (showId) => {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/tv/${showId}/credits?api_key=${API_KEY}`
+      );
+      const json = await res.json();
+
+      if (json.cast) {
+        const topActors = json.cast.slice(0, 6);
+
+        // Fetch detailed info for each actor
+        const actorsWithDetails = await Promise.all(
+          topActors.map(async (actor) => {
+            try {
+              const detailRes = await fetch(
+                `${BASE_URL}/person/${actor.id}?api_key=${API_KEY}`
+              );
+              const detailJson = await detailRes.json();
+
+              const creditsRes = await fetch(
+                `${BASE_URL}/person/${actor.id}/combined_credits?api_key=${API_KEY}`
+              );
+              const creditsJson = await creditsRes.json();
+
+              // Get top 3 known for (TV shows and movies)
+              const knownFor =
+                creditsJson.cast
+                  ?.sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
+                  .slice(0, 4)
+                  .map((m) => m.title || m.name)
+                  .filter(Boolean) || [];
+
+              return {
+                ...actor,
+                birthday: detailJson.birthday,
+                knownFor: knownFor,
+              };
+            } catch (error) {
+              console.error(
+                `Error fetching details for actor ${actor.id}:`,
+                error
+              );
+              return { ...actor, birthday: null, knownFor: [] };
+            }
+          })
+        );
+
+        setActors(actorsWithDetails);
+      } else {
+        setActors([]);
+      }
+    } catch (error) {
+      console.error("Error fetching actors:", error);
+      setActors([]);
+    }
+  };
+
   const fetchEpisodeDetails = (showId, seasonNumber) => {
     fetch(`${BASE_URL}/tv/${showId}/season/${seasonNumber}?api_key=${API_KEY}`)
       .then((res) => res.json())
@@ -146,6 +216,28 @@ function ShowSearch({ searchQuery }) {
       ...prev,
       [index]: !prev[index],
     }));
+  };
+
+  const toggleActorFlip = (index) => {
+    setFlippedActorCards((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
+  const calculateAge = (birthday) => {
+    if (!birthday) return null;
+    const birthDate = new Date(birthday);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
   };
 
   useEffect(() => {
@@ -188,6 +280,89 @@ function ShowSearch({ searchQuery }) {
                         Created by{" "}
                         {creators.map((creator) => creator.name).join(", ")}
                       </h4>
+                    </div>
+                  )}
+
+                  <button
+                    style={{
+                      backgroundColor: "#ddd",
+                      color: "black",
+                      borderRadius: "20px",
+                      fontSize: "16px",
+                      padding: "5px 10px",
+                      fontWeight: "bold",
+                      // marginBottom: "10px",
+                    }}
+                    onClick={() => setShowActors(!showActors)}
+                  >
+                    Top Actors
+                  </button>
+
+                  {showActors && actors.length > 0 && (
+                    <div className="episode-cards">
+                      {actors.map((actor, index) => (
+                        <div
+                          key={actor.id}
+                          className={`flip-card ${
+                            flippedActorCards[index] ? "flipped" : ""
+                          }`}
+                          onClick={() => toggleActorFlip(index)}
+                        >
+                          <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                              {actor.profile_path ? (
+                                <img
+                                  src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                                  alt={actor.name}
+                                />
+                              ) : (
+                                <div className="no-image">
+                                  No Profile Picture
+                                </div>
+                              )}
+                              <div className="episode-title">
+                                {actor.name}
+                                <br />
+                                as
+                                <br />
+                                {actor.character}
+                              </div>
+                            </div>
+                            <div className="flip-card-back">
+                              <div style={{ padding: "0px", fontSize: "14px" }}>
+                                <strong>Age:</strong>{" "}
+                                {actor.birthday
+                                  ? calculateAge(actor.birthday)
+                                  : "unknown"}
+                                <br />
+                                <br />
+                                {actor.knownFor &&
+                                  actor.knownFor.length > 0 && (
+                                    <>
+                                      <strong>Known for:</strong>
+
+                                      <ul
+                                        style={{
+                                          textAlign: "left",
+                                          paddingLeft: "0px",
+                                          margin: "0px 0",
+                                        }}
+                                      >
+                                        {actor.knownFor.map((title, i) => (
+                                          <li key={i}>{title}</li>
+                                        ))}
+                                      </ul>
+                                    </>
+                                  )}
+                                {!actor.birthday &&
+                                  actor.knownFor.length === 0 && (
+                                    <p>No additional info available</p>
+                                  )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   )}
 
