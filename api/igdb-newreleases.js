@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
   const body = `
     fields name, cover.url, first_release_date, summary, rating, url;
-    where first_release_date >= ${recent} & first_release_date <= ${now};
+    where first_release_date >= ${recent} & first_release_date <= ${now} & rating > 50;
     sort first_release_date desc;
     limit 30;
   `;

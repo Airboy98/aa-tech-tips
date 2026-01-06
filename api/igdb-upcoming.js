@@ -6,11 +6,11 @@ export default async function handler(req, res) {
   const future = 2147483647;
 
   const body = `
-    fields name, cover.url, first_release_date, summary, rating, url;
-    where first_release_date >= ${now} & first_release_date < ${future};
-    sort first_release_date asc;
-    limit 30;
-  `;
+  fields name, cover.url, first_release_date, summary, hypes, url;
+  where first_release_date >= ${now} & first_release_date < ${future} & hypes > 50;
+  sort first_release_date asc;
+  limit 30;
+`;
 
   try {
     const response = await fetch("https://api.igdb.com/v4/games", {
