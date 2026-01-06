@@ -8,12 +8,13 @@ function MovieSearch({ searchQuery }) {
   const [purchaseProviders, setPurchaseProviders] = useState(null);
   const [certification, setCertification] = useState(null);
   const [director, setDirector] = useState(null);
-  const [actors, setActors] = useState(null);
+  const [actors, setActors] = useState([]);
   const [runtime, setRuntime] = useState(null);
   const [showActors, setShowActors] = useState(false);
   const [showWatchProviders, setShowWatchProviders] = useState(false);
   const [showRentProviders, setShowRentProviders] = useState(false);
   const [showPurchaseProviders, setShowPurchaseProviders] = useState(false);
+  const [flippedCards, setFlippedCards] = useState({});
 
   const searchMovie = (query) => {
     fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
@@ -29,6 +30,7 @@ function MovieSearch({ searchQuery }) {
           fetchDirector(movie.id);
           fetchActors(movie.id);
           fetchRuntime(movie.id);
+          setFlippedCards({});
         } else {
           setSearchResult(null);
           setWatchProviders(null);
@@ -38,6 +40,7 @@ function MovieSearch({ searchQuery }) {
           setDirector(null);
           setActors(null);
           setRuntime(null);
+          setFlippedCards({});
         }
       })
       .catch((error) => {
@@ -50,6 +53,7 @@ function MovieSearch({ searchQuery }) {
         setDirector(null);
         setActors(null);
         setRuntime(null);
+        setFlippedCards({});
       });
   };
 
@@ -147,35 +151,63 @@ function MovieSearch({ searchQuery }) {
       });
   };
 
-  const fetchActors = (movieId) => {
-    fetch(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`)
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.cast) {
-          const topActors = json.cast
-            .sort((a, b) => a.order - b.order)
-            .slice(0, 6)
-            .map((actor) => (
-              <img
-                style={{
-                  width: "100px",
-                  height: "150px",
-                }}
-                key={actor.id}
-                src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-                alt={actor.name}
-                title={actor.name}
-              />
-            ));
-          setActors(topActors);
-        } else {
-          setActors(null);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching actors:", error);
-        setActors(null);
-      });
+  const fetchActors = async (movieId) => {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
+      );
+      const json = await res.json();
+
+      if (json.cast) {
+        const topActors = json.cast
+          .sort((a, b) => a.order - b.order)
+          .slice(0, 6);
+
+        // Fetch detailed info for each actor
+        const actorsWithDetails = await Promise.all(
+          topActors.map(async (actor) => {
+            try {
+              const detailRes = await fetch(
+                `${BASE_URL}/person/${actor.id}?api_key=${API_KEY}`
+              );
+              const detailJson = await detailRes.json();
+
+              const creditsRes = await fetch(
+                `${BASE_URL}/person/${actor.id}/movie_credits?api_key=${API_KEY}`
+              );
+              const creditsJson = await creditsRes.json();
+
+              // Get top 3 known for movies (by popularity/vote_count)
+              const knownFor =
+                creditsJson.cast
+                  ?.sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
+                  .slice(0, 4)
+                  .map((m) => m.title)
+                  .filter(Boolean) || [];
+
+              return {
+                ...actor,
+                birthday: detailJson.birthday,
+                knownFor: knownFor,
+              };
+            } catch (error) {
+              console.error(
+                `Error fetching details for actor ${actor.id}:`,
+                error
+              );
+              return { ...actor, birthday: null, knownFor: [] };
+            }
+          })
+        );
+
+        setActors(actorsWithDetails);
+      } else {
+        setActors([]);
+      }
+    } catch (error) {
+      console.error("Error fetching actors:", error);
+      setActors([]);
+    }
   };
 
   const fetchRuntime = (movieId) => {
@@ -192,6 +224,28 @@ function MovieSearch({ searchQuery }) {
         console.error("Error fetching runtime:", error);
         setRuntime(null);
       });
+  };
+
+  const calculateAge = (birthday) => {
+    if (!birthday) return null;
+    const birthDate = new Date(birthday);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  };
+
+  const toggleFlip = (index) => {
+    setFlippedCards((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
   };
 
   useEffect(() => {
@@ -242,12 +296,74 @@ function MovieSearch({ searchQuery }) {
                   >
                     Top Actors
                   </button>
-                  {showActors && actors && (
-                    <div>
-                      <br />
-                      {actors}
+                  {showActors && actors.length > 0 && (
+                    <div className="episode-cards">
+                      {actors.map((actor, index) => (
+                        <div
+                          key={actor.id}
+                          className={`flip-card ${
+                            flippedCards[index] ? "flipped" : ""
+                          }`}
+                          onClick={() => toggleFlip(index)}
+                        >
+                          <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                              {actor.profile_path ? (
+                                <img
+                                  src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                                  alt={actor.name}
+                                />
+                              ) : (
+                                <div className="no-image">
+                                  No Profile Picture
+                                </div>
+                              )}
+                              <div className="episode-title">
+                                {actor.name}
+                                <br />
+                                as
+                                <br />
+                                {actor.character}
+                              </div>
+                            </div>
+                            <div className="flip-card-back">
+                              <div style={{ padding: "0px", fontSize: "14px" }}>
+                                <strong>Age:</strong>{" "}
+                                {actor.birthday
+                                  ? calculateAge(actor.birthday)
+                                  : "unknown"}
+                                <br />
+                                <br />
+                                {actor.knownFor &&
+                                  actor.knownFor.length > 0 && (
+                                    <>
+                                      <strong>Known for:</strong>
+
+                                      <ul
+                                        style={{
+                                          textAlign: "left",
+                                          paddingLeft: "0px",
+                                          margin: "0px 0",
+                                        }}
+                                      >
+                                        {actor.knownFor.map((movie, i) => (
+                                          <li key={i}>{movie}</li>
+                                        ))}
+                                      </ul>
+                                    </>
+                                  )}
+                                {!actor.birthday &&
+                                  actor.knownFor.length === 0 && (
+                                    <p>No additional info available</p>
+                                  )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   )}
+
                   {certification && <h4>Rated {certification}</h4>}
                   {runtime && (
                     <h4>
