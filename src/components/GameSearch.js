@@ -38,6 +38,11 @@ function GameSearch({ searchQuery }) {
     return devs.length ? devs.join(", ") : "Unknown Developer";
   };
 
+  const getPlatforms = (game) => {
+    if (!game.platforms || game.platforms.length === 0) return "TBA";
+    return game.platforms.map((p) => p.name).join(", ");
+  };
+
   useEffect(() => {
     if (searchQuery) {
       searchGame(searchQuery);
@@ -92,6 +97,9 @@ function GameSearch({ searchQuery }) {
                       ? `Rating: ${searchResult.rating.toFixed(1)} / 100`
                       : "Rating TBD"}
                   </h4>
+
+                  <h4>{getPlatforms(searchResult)}</h4>
+
                   <hr></hr>
                   {searchResult.summary && <p>{searchResult.summary}</p>}
 
