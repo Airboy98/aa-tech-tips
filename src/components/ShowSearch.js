@@ -161,6 +161,7 @@ function ShowSearch({ searchQuery }) {
               return {
                 ...actor,
                 birthday: detailJson.birthday,
+                deathday: detailJson.deathday,
                 knownFor: knownFor,
               };
             } catch (error) {
@@ -223,21 +224,6 @@ function ShowSearch({ searchQuery }) {
       ...prev,
       [index]: !prev[index],
     }));
-  };
-
-  const calculateAge = (birthday) => {
-    if (!birthday) return null;
-    const birthDate = new Date(birthday);
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (
-      monthDiff < 0 ||
-      (monthDiff === 0 && today.getDate() < birthDate.getDate())
-    ) {
-      age--;
-    }
-    return age;
   };
 
   useEffect(() => {
@@ -330,10 +316,19 @@ function ShowSearch({ searchQuery }) {
                             </div>
                             <div className="flip-card-back">
                               <div style={{ padding: "0px", fontSize: "14px" }}>
-                                <strong>Age:</strong>{" "}
-                                {actor.birthday
-                                  ? calculateAge(actor.birthday)
-                                  : "unknown"}
+                                <strong>Age: </strong>
+                                {actor.deathday
+                                  ? `${Math.floor(
+                                      (new Date(actor.deathday) -
+                                        new Date(actor.birthday)) /
+                                        (1000 * 60 * 60 * 24 * 365.25)
+                                    )} (d)`
+                                  : actor.birthday
+                                  ? `${Math.floor(
+                                      (new Date() - new Date(actor.birthday)) /
+                                        (1000 * 60 * 60 * 24 * 365.25)
+                                    )}`
+                                  : "Age unknown"}
                                 <br />
                                 <br />
                                 {actor.knownFor &&
