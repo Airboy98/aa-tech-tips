@@ -188,6 +188,7 @@ function MovieSearch({ searchQuery }) {
               return {
                 ...actor,
                 birthday: detailJson.birthday,
+                deathday: detailJson.deathday,
                 knownFor: knownFor,
               };
             } catch (error) {
@@ -224,21 +225,6 @@ function MovieSearch({ searchQuery }) {
         console.error("Error fetching runtime:", error);
         setRuntime(null);
       });
-  };
-
-  const calculateAge = (birthday) => {
-    if (!birthday) return null;
-    const birthDate = new Date(birthday);
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (
-      monthDiff < 0 ||
-      (monthDiff === 0 && today.getDate() < birthDate.getDate())
-    ) {
-      age--;
-    }
-    return age;
   };
 
   const toggleFlip = (index) => {
@@ -328,17 +314,25 @@ function MovieSearch({ searchQuery }) {
                             </div>
                             <div className="flip-card-back">
                               <div style={{ padding: "0px", fontSize: "14px" }}>
-                                <strong>Age:</strong>{" "}
-                                {actor.birthday
-                                  ? calculateAge(actor.birthday)
-                                  : "unknown"}
+                                <strong>Age: </strong>
+                                {actor.deathday
+                                  ? `${Math.floor(
+                                      (new Date(actor.deathday) -
+                                        new Date(actor.birthday)) /
+                                        (1000 * 60 * 60 * 24 * 365.25)
+                                    )} (d)`
+                                  : actor.birthday
+                                  ? `${Math.floor(
+                                      (new Date() - new Date(actor.birthday)) /
+                                        (1000 * 60 * 60 * 24 * 365.25)
+                                    )}`
+                                  : "Age unknown"}
                                 <br />
                                 <br />
                                 {actor.knownFor &&
                                   actor.knownFor.length > 0 && (
                                     <>
                                       <strong>Known for:</strong>
-
                                       <ul
                                         style={{
                                           textAlign: "left",
@@ -346,15 +340,11 @@ function MovieSearch({ searchQuery }) {
                                           margin: "0px 0",
                                         }}
                                       >
-                                        {actor.knownFor.map((movie, i) => (
-                                          <li key={i}>{movie}</li>
+                                        {actor.knownFor.map((title, i) => (
+                                          <li key={i}>{title}</li>
                                         ))}
                                       </ul>
                                     </>
-                                  )}
-                                {!actor.birthday &&
-                                  actor.knownFor.length === 0 && (
-                                    <p>No additional info available</p>
                                   )}
                               </div>
                             </div>
