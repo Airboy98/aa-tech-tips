@@ -13,6 +13,7 @@ function ShowSearch({ searchQuery }) {
   const [episodeStills, setEpisodeStills] = useState(null);
   const [showSeasons, setShowSeasons] = useState(false);
   const [selectedSeason, setSelectedSeason] = useState(null);
+  const [episodeRatings, setEpisodeRatings] = useState(null);
   const [episodeOverviews, setEpisodeOverviews] = useState(null);
   const [flippedCards, setFlippedCards] = useState({});
   const [seasonInfo, setSeasonInfo] = useState(null);
@@ -192,6 +193,7 @@ function ShowSearch({ searchQuery }) {
         setEpisodeNames(episodes.map((ep) => ep.name));
         setEpisodeStills(episodes.map((ep) => ep.still_path));
         setEpisodeOverviews(episodes.map((ep) => ep.overview));
+        setEpisodeRatings(episodes.map((ep) => ep.vote_average));
         setFlippedCards({});
 
         setSeasonInfo({
@@ -203,6 +205,7 @@ function ShowSearch({ searchQuery }) {
         setEpisodeNames(null);
         setEpisodeStills(null);
         setEpisodeOverviews(null);
+        setEpisodeRatings(null);
         setSeasonInfo(null);
       });
   };
@@ -328,7 +331,7 @@ function ShowSearch({ searchQuery }) {
                                       (new Date() - new Date(actor.birthday)) /
                                         (1000 * 60 * 60 * 24 * 365.25)
                                     )}`
-                                  : "Age unknown"}
+                                  : "unknown"}
                                 <br />
                                 <br />
                                 {actor.knownFor &&
@@ -366,6 +369,11 @@ function ShowSearch({ searchQuery }) {
                   ) : (
                     <h4>Unrated</h4>
                   )}
+                  <h4>
+                    {searchResult.vote_average
+                      ? `⭐ ${searchResult.vote_average.toFixed(1)} / 10 ⭐`
+                      : "No Rating Available"}
+                  </h4>
                   {numSeasons === 1 ? "1 Season" : `${numSeasons} Seasons`}
                   <br></br>
                   <div style={{ margin: "10px 0" }}>
@@ -428,6 +436,26 @@ function ShowSearch({ searchQuery }) {
 
                             {/* Back */}
                             <div className="flip-card-back">
+                              {episodeRatings?.[index] === 0 ? (
+                                <div
+                                  style={{
+                                    fontWeight: "bold",
+                                    marginBottom: "8px",
+                                  }}
+                                ></div>
+                              ) : (
+                                <div
+                                  style={{
+                                    fontWeight: "bold",
+                                    marginBottom: "8px",
+                                  }}
+                                >
+                                  ⭐{" "}
+                                  {` ${episodeRatings?.[index]?.toFixed(
+                                    1
+                                  )} / 10 ⭐` || ""}
+                                </div>
+                              )}
                               {episodeOverviews?.[index] ||
                                 "No description available."}
                             </div>
@@ -437,26 +465,24 @@ function ShowSearch({ searchQuery }) {
                     </div>
                   )}
                   <br />
-                  <div>
-                    {watchProviders?.flatrate?.length > 0 ? (
-                      <div>
-                        {watchProviders.flatrate.map((provider) => (
-                          <img
-                            style={{
-                              width: "45px",
-                              height: "45px",
-                            }}
-                            key={provider.provider_id}
-                            src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
-                            alt={provider.provider_name}
-                            title={provider.provider_name}
-                          />
-                        ))}
-                      </div>
-                    ) : (
-                      <h4>Unavailable to Stream</h4>
-                    )}
-                  </div>
+                  {watchProviders?.flatrate?.length > 0 ? (
+                    <div>
+                      {watchProviders.flatrate.map((provider) => (
+                        <img
+                          style={{
+                            width: "45px",
+                            height: "45px",
+                          }}
+                          key={provider.provider_id}
+                          src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                          alt={provider.provider_name}
+                          title={provider.provider_name}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <h4>Unavailable to Stream</h4>
+                  )}
                   <br />
                   <hr></hr>
                   <p>{searchResult.overview}</p>
