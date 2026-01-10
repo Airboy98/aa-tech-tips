@@ -326,7 +326,7 @@ function MovieSearch({ searchQuery }) {
                                       (new Date() - new Date(actor.birthday)) /
                                         (1000 * 60 * 60 * 24 * 365.25)
                                     )}`
-                                  : "Age unknown"}
+                                  : "unknown"}
                                 <br />
                                 <br />
                                 {actor.knownFor &&
@@ -364,7 +364,7 @@ function MovieSearch({ searchQuery }) {
                   <h4>{searchResult.release_date}</h4>
                   <h4>
                     {searchResult.vote_average
-                      ? `User Score: ${searchResult.vote_average.toFixed(1)}/10`
+                      ? `⭐ ${searchResult.vote_average.toFixed(1)} / 10 ⭐`
                       : "No Rating Available"}
                   </h4>
                   <button
