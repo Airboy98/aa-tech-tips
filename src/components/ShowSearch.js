@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "primereact/card";
 import { Dropdown } from "primereact/dropdown";
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
@@ -100,7 +99,7 @@ function ShowSearch({ searchQuery }) {
       .then((json) => {
         if (json.results) {
           const usRating = json.results.find(
-            (rating) => rating.iso_3166_1 === "US"
+            (rating) => rating.iso_3166_1 === "US",
           );
           setCertification(usRating ? usRating.rating : null);
         } else {
@@ -130,7 +129,7 @@ function ShowSearch({ searchQuery }) {
   const fetchActors = async (showId) => {
     try {
       const res = await fetch(
-        `${BASE_URL}/tv/${showId}/credits?api_key=${API_KEY}`
+        `${BASE_URL}/tv/${showId}/credits?api_key=${API_KEY}`,
       );
       const json = await res.json();
 
@@ -142,12 +141,12 @@ function ShowSearch({ searchQuery }) {
           topActors.map(async (actor) => {
             try {
               const detailRes = await fetch(
-                `${BASE_URL}/person/${actor.id}?api_key=${API_KEY}`
+                `${BASE_URL}/person/${actor.id}?api_key=${API_KEY}`,
               );
               const detailJson = await detailRes.json();
 
               const creditsRes = await fetch(
-                `${BASE_URL}/person/${actor.id}/combined_credits?api_key=${API_KEY}`
+                `${BASE_URL}/person/${actor.id}/combined_credits?api_key=${API_KEY}`,
               );
               const creditsJson = await creditsRes.json();
 
@@ -168,11 +167,11 @@ function ShowSearch({ searchQuery }) {
             } catch (error) {
               console.error(
                 `Error fetching details for actor ${actor.id}:`,
-                error
+                error,
               );
               return { ...actor, birthday: null, knownFor: [] };
             }
-          })
+          }),
         );
 
         setActors(actorsWithDetails);
@@ -324,14 +323,15 @@ function ShowSearch({ searchQuery }) {
                                   ? `${Math.floor(
                                       (new Date(actor.deathday) -
                                         new Date(actor.birthday)) /
-                                        (1000 * 60 * 60 * 24 * 365.25)
+                                        (1000 * 60 * 60 * 24 * 365.25),
                                     )} (d)`
                                   : actor.birthday
-                                  ? `${Math.floor(
-                                      (new Date() - new Date(actor.birthday)) /
-                                        (1000 * 60 * 60 * 24 * 365.25)
-                                    )}`
-                                  : "unknown"}
+                                    ? `${Math.floor(
+                                        (new Date() -
+                                          new Date(actor.birthday)) /
+                                          (1000 * 60 * 60 * 24 * 365.25),
+                                      )}`
+                                    : "unknown"}
                                 <br />
                                 <br />
                                 {actor.knownFor &&
@@ -452,7 +452,7 @@ function ShowSearch({ searchQuery }) {
                                 >
                                   ⭐{" "}
                                   {` ${episodeRatings?.[index]?.toFixed(
-                                    1
+                                    1,
                                   )} / 10 ⭐` || ""}
                                 </div>
                               )}
