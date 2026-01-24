@@ -78,7 +78,27 @@ app.get("/api/igdb-newreleases", async (req, res) => {
   }
 });
 
-// SEARCH
+// SEARCH GAMES
+app.get("/api/igdb-search", async (req, res) => {
+  const { query } = req.query;
+  if (!query) return res.json({ results: [] });
+
+  const body = `
+    search "${query}";
+    fields name, cover.url, first_release_date, summary, rating, url, platforms.name, involved_companies.company.name, involved_companies.developer;
+    limit 10;
+  `;
+
+  try {
+    const data = await igdbFetch(body);
+    res.json({ results: normalizeCovers(data) });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "IGDB search failed" });
+  }
+});
+
+// SEARCH DIRECTORS
 app.get("/api/igdb-search", async (req, res) => {
   const { query } = req.query;
   if (!query) return res.json({ results: [] });
