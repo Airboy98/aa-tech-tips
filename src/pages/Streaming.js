@@ -81,7 +81,7 @@ export default function Streaming() {
       <div className="section-header">
         <h1>Streaming</h1>
       </div>
-      <h2>Software</h2>
+      <h2>Apps</h2>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Video Streaming</button>
@@ -161,8 +161,8 @@ export default function Streaming() {
                     <img
                       src="images/streaming/hbo.png"
                       alt="HBO Max"
-                      width="100"
-                      height="35"
+                      width="70"
+                      height="50"
                     />
                   </a>
                 </td>
@@ -451,7 +451,7 @@ export default function Streaming() {
                       src="images/streaming/spotify.png"
                       alt="Spotify"
                       width="100"
-                      height="50"
+                      height="33"
                     />
                   </a>
                 </td>
@@ -462,7 +462,7 @@ export default function Streaming() {
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="images/streaming/apple-music.png"
+                      src="images/streaming/apple-music.svg"
                       alt="Apple Music"
                       width="100"
                       height="50"
@@ -473,29 +473,29 @@ export default function Streaming() {
               <tr>
                 <td>
                   <a
-                    href="https://www.amazon.com/music-unlimited/"
+                    href="https://music.amazon.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="images/streaming/amazon-music-unlimited.png"
+                      src="images/streaming/amazon-music.png"
                       alt="Amazon Music Unlimited"
-                      width="100"
+                      width="80"
                       height="50"
                     />
                   </a>
                 </td>
                 <td>
                   <a
-                    href="https://www.google.com/play/music/"
+                    href="https://www.pandora.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="images/streaming/google-play-music.png"
-                      alt="Google Play Music"
+                      src="images/streaming/pandora.png"
+                      alt="Pandora"
                       width="100"
-                      height="50"
+                      height="25"
                     />
                   </a>
                 </td>
@@ -517,15 +517,15 @@ export default function Streaming() {
                 </td>
                 <td>
                   <a
-                    href="https://www.deezer.com/"
+                    href="https://music.youtube.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="images/streaming/deezer.png"
+                      src="images/streaming/youtube-music.png"
                       alt="Deezer"
                       width="100"
-                      height="50"
+                      height="33"
                     />
                   </a>
                 </td>
