@@ -84,7 +84,7 @@ export default function Streaming() {
       <h2>Software</h2>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Streaming Services</button>
+          <button className="collapsible-trigger">Video Streaming</button>
         }
       >
         <h4>Big Media</h4>
@@ -422,6 +422,108 @@ export default function Streaming() {
                     <img
                       src="images/streaming/brighteon.svg"
                       alt="Brighteon"
+                      width="100"
+                      height="50"
+                    />
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Music Streaming</button>
+        }
+      >
+        <div className="streaming1">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.spotify.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/streaming/spotify.png"
+                      alt="Spotify"
+                      width="100"
+                      height="50"
+                    />
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://music.apple.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/streaming/apple-music.png"
+                      alt="Apple Music"
+                      width="100"
+                      height="50"
+                    />
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.amazon.com/music-unlimited/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/streaming/amazon-music-unlimited.png"
+                      alt="Amazon Music Unlimited"
+                      width="100"
+                      height="50"
+                    />
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://www.google.com/play/music/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/streaming/google-play-music.png"
+                      alt="Google Play Music"
+                      width="100"
+                      height="50"
+                    />
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://tidal.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/streaming/tidal.png"
+                      alt="Tidal"
+                      width="100"
+                      height="50"
+                    />
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://www.deezer.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="images/streaming/deezer.png"
+                      alt="Deezer"
                       width="100"
                       height="50"
                     />
