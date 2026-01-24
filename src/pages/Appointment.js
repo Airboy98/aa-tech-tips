@@ -63,8 +63,8 @@ export default function Appointment() {
           </li>
           <li>Specific program training (ex: MS Office products)</li>
           <li>
-            Data Backup/Transfer (external SSD not provided, refer to Tech 101
-            for retailers)
+            Data Backup/Transfer (external drive not provided, refer to{" "}
+            <a href="https://aatechtips.com/tech101">Tech 101</a> for retailers)
           </li>
           <li>
             New Device Setup (smartphone, TV, printer, home network, etc.)
