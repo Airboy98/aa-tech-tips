@@ -20,7 +20,7 @@ function PodcastSearch({ searchQuery }) {
             Authorization: `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`,
             "Content-Type": "application/x-www-form-urlencoded",
           },
-        }
+        },
       )
       .then((res) => {
         setToken(res.data.access_token);
@@ -108,15 +108,7 @@ function PodcastSearch({ searchQuery }) {
                   <h1>{searchResult.name}</h1>
                   <h4>{searchResult.total_episodes} Episodes</h4>
                   <hr></hr>
-                  <h4>
-                    {(() => {
-                      const sentences =
-                        searchResult.description.split(/(?<=[.!?])\s/);
-                      return sentences.length > 2
-                        ? sentences.slice(0, 2).join(" ")
-                        : searchResult.description;
-                    })()}
-                  </h4>
+
                   <h3>Latest Episodes</h3>
                   {episodes &&
                   Array.isArray(episodes) &&
@@ -125,7 +117,7 @@ function PodcastSearch({ searchQuery }) {
                       {episodes
                         .filter(
                           (ep) =>
-                            ep && ep.external_urls && ep.external_urls.spotify
+                            ep && ep.external_urls && ep.external_urls.spotify,
                         )
                         .map((episode) => (
                           <li key={episode.id}>
@@ -149,7 +141,16 @@ function PodcastSearch({ searchQuery }) {
                   ) : (
                     <p>No episodes available.</p>
                   )}
-
+                  <hr></hr>
+                  <p>
+                    {(() => {
+                      const sentences =
+                        searchResult.description.split(/(?<=[.!?])\s/);
+                      return sentences.length > 2
+                        ? sentences.slice(0, 2).join(" ")
+                        : searchResult.description;
+                    })()}
+                  </p>
                   <h5>
                     Data provided by{" "}
                     <a
@@ -173,5 +174,3 @@ function PodcastSearch({ searchQuery }) {
 }
 
 export default PodcastSearch;
-
-/*******  77a80c83-f3ec-42dd-97b8-1cc20ddc0366  *******/

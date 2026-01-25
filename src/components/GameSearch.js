@@ -94,7 +94,7 @@ function GameSearch({ searchQuery }) {
 
                   <h4>
                     {searchResult.rating
-                      ? `Rating: ${searchResult.rating.toFixed(1)} / 100`
+                      ? `⭐ ${searchResult.rating.toFixed(1)} / 100 ⭐`
                       : "Rating TBD"}
                   </h4>
 

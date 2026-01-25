@@ -131,7 +131,7 @@ app.get("/api/genius", async (req, res) => {
       `${BASE_URL}search?q=${encodeURIComponent(q)}`,
       {
         headers: { Authorization: `Bearer ${CLIENT_TOKEN}` },
-      }
+      },
     );
     const data = await response.json();
     res.json(data);
@@ -162,5 +162,5 @@ app.get("/api/lyrics", async (req, res) => {
 });
 
 app.listen(3001, () =>
-  console.log("Local IGDB server running on http://localhost:3001")
+  console.log("Local server running on http://localhost:3001"),
 );
