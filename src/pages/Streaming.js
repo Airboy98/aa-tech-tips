@@ -12,6 +12,7 @@ import SongSearch from "../components/SongSearch";
 import DirectorSearch from "../components/DirectorSearch";
 import PodcastSearch from "../components/PodcastSearch";
 import LyricSearch from "../components/LyricSearch";
+import AudiobookSearch from "../components/AudiobookSearch";
 
 export default function Streaming() {
   const [searchMovie, setSearchMovie] = useState("");
@@ -23,6 +24,7 @@ export default function Streaming() {
   const [searchSong, setSearchSong] = useState("");
   const [searchPodcast, setSearchPodcast] = useState("");
   const [searchLyric, setSearchLyric] = useState("");
+  const [searchAudiobook, setSearchAudiobook] = useState("");
 
   const handleSearchMovie = (e) => {
     e.preventDefault();
@@ -74,6 +76,12 @@ export default function Streaming() {
     e.preventDefault();
     const podcast = e.target.elements.q.value;
     setSearchPodcast(podcast);
+  };
+
+  const handleSearchAudiobook = (e) => {
+    e.preventDefault();
+    const audiobook = e.target.elements.q.value;
+    setSearchAudiobook(audiobook);
   };
 
   return (
@@ -908,6 +916,41 @@ export default function Streaming() {
           </table>
         </div>
         <LyricSearch searchQuery={searchLyric} />
+      </Collapsible>
+      <h2>Books</h2>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Audiobook Search</button>
+        }
+      >
+        <div className="internet">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <form onSubmit={handleSearchAudiobook}>
+                    <div className="search">
+                      <input
+                        type="search"
+                        name="q"
+                        placeholder="Enter audiobook name..."
+                      />
+                    </div>
+                    <button>
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "24px", color: "white" }}
+                      >
+                        search
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <AudiobookSearch searchQuery={searchAudiobook} />
       </Collapsible>
       <h2>Podcasts</h2>
       <Collapsible
