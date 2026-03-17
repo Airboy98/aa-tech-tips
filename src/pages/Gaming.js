@@ -60,7 +60,7 @@ export default function Gaming() {
         </div>
         <GameSearch searchQuery={searchGame} />
       </Collapsible>
-      {/* <Collapsible
+      <Collapsible
         trigger={
           <button className="collapsible-trigger">Developer Search</button>
         }
@@ -93,7 +93,7 @@ export default function Gaming() {
           </table>
         </div>
         <DeveloperSearch searchQuery={searchDeveloper} />
-      </Collapsible> */}
+      </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">New Releases</button>}
       >
