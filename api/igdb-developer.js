@@ -8,34 +8,40 @@ export default async function handler(req, res) {
   }
 
   const body = `
-    search "${query}";
     fields
       name,
       logo.url,
       description,
-      developed.count,
-      published.count,
-      rating,
-      rating_count,
-      headquarters.address,
-      headquarters.city,
-      headquarters.country,
-      headquarters.lat,
-      headquarters.lng,
-      parent.company.name,
-      website.url,
-      aliases,
-      alternative_names,
-      changed_company.name,
-      changed_company.date,
-      changed_company.category;
+      start_date,
+      country,
+      websites.url,
+      websites.category,
+      developed.name,
+      developed.cover.url,
+      developed.first_release_date,
+      developed.url,
+      published.name,
+      published.first_release_date,
+      published.url;
+    where name ~ *"${query}"*;
     limit 10;
   `;
 
   try {
     const data = await igdbFetch("https://api.igdb.com/v4/companies", body);
 
-    const normalized = data.map((company) => ({
+    const q = query.toLowerCase();
+    const sorted = [...data].sort((a, b) => {
+      const aName = a.name.toLowerCase();
+      const bName = b.name.toLowerCase();
+      if (aName === q && bName !== q) return -1;
+      if (bName === q && aName !== q) return 1;
+      if (aName.startsWith(q) && !bName.startsWith(q)) return -1;
+      if (bName.startsWith(q) && !aName.startsWith(q)) return 1;
+      return aName.length - bName.length;
+    });
+
+    const normalized = sorted.map((company) => ({
       ...company,
       logo: company.logo
         ? {
