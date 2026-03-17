@@ -485,19 +485,27 @@ export default function Computer() {
         </div>
         <ul className="tech">
           <li>
-            <b>Print with a cable.</b> Depending on your computer's OS, plugging
+            <b>Print with a cable:</b> Depending on your computer's OS, plugging
             in a printer with a USB Type-B cable (see below Common Inputs tip)
             to your computer may be enough to use your printer. Otherwise,
             you'll have to download drivers using the above links for your
             printer's brand.
           </li>
           <li>
-            <b>Print wirelessly!</b> This setup is a little more involved and
-            drivers and printer utilities have to be installed based on your
-            specific printer model. Use the above links to navigate to your
-            printer brand's website to download them. You may have to connect
-            your printer to your home network by navigating the printer's
-            interface as well.
+            <b>Print wirelessly:</b> This setup is a little more involved and
+            varies greatly based on the printer brand and model. Drivers and
+            printer utilities have to be installed based on your specific model.
+            Use the above links to navigate to your printer brand's website to
+            download them. You may have to connect your printer to your home
+            network by navigating the printer's interface as well and manually
+            typing in your Wi-Fi password.
+          </li>
+          <li>
+            <b>Wi-Fi Direct:</b> If the printer has Wi-Fi Direct capability, you
+            can connect your computer or phone directly to the printer as if
+            connecting to a Wi-Fi network. Once Wi-Fi Direct is enabled, look
+            for the name of your printer in the list of available networks and
+            connect to it. Then proceed to print as usual.
           </li>
         </ul>
         <h5>
