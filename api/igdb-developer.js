@@ -1,7 +1,7 @@
+import { igdbFetch } from "./_igdbFetch.js";
+
 export default async function handler(req, res) {
   const { query } = req.query;
-  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_IGDB;
-  const ACCESS_TOKEN = process.env.REACT_APP_CLIENT_TOKEN_IGDB;
 
   if (!query) {
     return res.status(400).json({ error: "Missing search query" });
@@ -33,17 +33,7 @@ export default async function handler(req, res) {
   `;
 
   try {
-    const response = await fetch("https://api.igdb.com/v4/companies", {
-      method: "POST",
-      headers: {
-        "Client-ID": CLIENT_ID,
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-        "Content-Type": "text/plain",
-      },
-      body,
-    });
-
-    const data = await response.json();
+    const data = await igdbFetch("https://api.igdb.com/v4/companies", body);
 
     const normalized = data.map((company) => ({
       ...company,
