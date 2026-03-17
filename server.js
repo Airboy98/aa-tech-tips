@@ -158,18 +158,41 @@ app.get("/api/igdb-developer", async (req, res) => {
   if (!query) return res.json({ results: [] });
 
   const body = `
-  search "${query}";
-  fields name, logo.url, description, start_date, websites.*;
-  where name ~ *"${query}"*;
-  limit 10;
-`;
+    fields
+      name,
+      logo.url,
+      description,
+      start_date,
+      country,
+      websites.url,
+      websites.category,
+      developed.name,
+      developed.cover.url,
+      developed.first_release_date,
+      developed.url,
+      published.name,
+      published.first_release_date,
+      published.url;
+    where name ~ *"${query}"*;
+    limit 10;
+  `;
 
   try {
     const data = await igdbFetch(IGDB_COMPANIES_URL, body);
-    res.json({ results: normalizeLogos(data) });
+    const q = query.toLowerCase();
+    const sorted = [...data].sort((a, b) => {
+      const aName = a.name.toLowerCase();
+      const bName = b.name.toLowerCase();
+      if (aName === q && bName !== q) return -1;
+      if (bName === q && aName !== q) return 1;
+      if (aName.startsWith(q) && !bName.startsWith(q)) return -1;
+      if (bName.startsWith(q) && !aName.startsWith(q)) return 1;
+      return aName.length - bName.length;
+    });
+    res.json({ results: normalizeLogos(sorted) });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "IGDB search failed" });
+    res.status(500).json({ error: "IGDB developer search failed" });
   }
 });
 
