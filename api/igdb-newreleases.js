@@ -1,9 +1,8 @@
-export default async function handler(req, res) {
-  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_IGDB;
-  const ACCESS_TOKEN = process.env.REACT_APP_CLIENT_TOKEN_IGDB;
+import { igdbFetch } from "./_igdbFetch.js";
 
-  const recent = Math.floor((Date.now() - 90 * 24 * 60 * 60 * 1000) / 1000); // 90 days ago in Unix timestamp
-  const now = Math.floor(Date.now() / 1000); // Current time in Unix timestamp
+export default async function handler(req, res) {
+  const recent = Math.floor((Date.now() - 90 * 24 * 60 * 60 * 1000) / 1000);
+  const now = Math.floor(Date.now() / 1000);
 
   const body = `
     fields name, cover.url, first_release_date, summary, rating, url;
@@ -13,17 +12,7 @@ export default async function handler(req, res) {
   `;
 
   try {
-    const response = await fetch("https://api.igdb.com/v4/games", {
-      method: "POST",
-      headers: {
-        "Client-ID": CLIENT_ID,
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-        "Content-Type": "text/plain",
-      },
-      body: body,
-    });
-
-    const data = await response.json();
+    const data = await igdbFetch("https://api.igdb.com/v4/games", body);
 
     const normalized = data.map((g) => ({
       ...g,

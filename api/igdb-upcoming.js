@@ -1,7 +1,6 @@
-export default async function handler(req, res) {
-  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_IGDB;
-  const ACCESS_TOKEN = process.env.REACT_APP_CLIENT_TOKEN_IGDB;
+import { igdbFetch } from "./_igdbFetch.js";
 
+export default async function handler(req, res) {
   const now = Math.floor(Date.now() / 1000);
   const future = 2147483647;
 
@@ -13,17 +12,7 @@ export default async function handler(req, res) {
 `;
 
   try {
-    const response = await fetch("https://api.igdb.com/v4/games", {
-      method: "POST",
-      headers: {
-        "Client-ID": CLIENT_ID,
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-        "Content-Type": "text/plain",
-      },
-      body,
-    });
-
-    const data = await response.json();
+    const data = await igdbFetch("https://api.igdb.com/v4/games", body);
 
     const normalized = data.map((g) => ({
       ...g,
