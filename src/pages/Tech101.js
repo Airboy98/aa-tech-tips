@@ -122,8 +122,9 @@ export default function Tech101() {
         }
       >
         <h4>
-          It can feel overwhelming when you need to purchase a new computer or
-          replacement TV. Keep in mind these tips during the buying process.
+          With the amount of options these days, it can be overwhelming when you
+          need to purchase a new computer or replacement TV. Keep in mind these
+          tips during the buying process.
         </h4>
         <div className="television">
           <table>
@@ -293,6 +294,42 @@ export default function Tech101() {
           NOTE: When you receive a scam text, DO NOT respond and DO NOT click
           any links. When in doubt, manually type in the website in a browser.
         </h5>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Remove Personal Data</button>
+        }
+      >
+        <h4>
+          DeleteMe is a subscription service that scours the web to find and
+          remove your compromised personal data.
+        </h4>
+        <div className="tech">
+          <ul>
+            <li>
+              <b>Removal Procedure:</b> Hundreds of data broker sites (like
+              Whitepages, Spokeo, and Radaris) are scanned and opt-out requests
+              are submitted on your behalf. Unlike some fully automated
+              competitors, DeleteMe uses human "privacy experts" to handle more
+              difficult removals.
+            </li>
+            <li>
+              <b>Continuous Monitoring:</b> Data brokers often "re-list"
+              information after it is deleted. DeleteMe performs new scans every
+              three months to ensure your data stays off the web.
+            </li>
+            <li>
+              <b>Detailed Privacy Reports:</b> Within seven days of joining,
+              you'll receive a detailed report showing exactly where your info
+              was found and the status of its removal.
+            </li>
+            <li>
+              <b>Pricing:</b> DeleteMe offers a variety of pricing packages for
+              1 and 2 year plans for 1, 2 or a family of 4, starting at
+              $129/year.
+            </li>
+          </ul>
+        </div>
       </Collapsible>
       <Collapsible
         trigger={
@@ -766,6 +803,90 @@ export default function Tech101() {
               frame!
             </li>
           </ul>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Tracking Devices</button>
+        }
+      >
+        <h4>
+          Airtags and Tile trackers are small devices that can be attached to
+          your items or pets to track their location using a smart phone.
+        </h4>
+        <div className="tech">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Airtag</th>
+                <th>Tile</th>
+                <th>Explanation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Compatibility</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>Tile trackers are compatible with both iOS and Android</td>
+              </tr>
+              <tr>
+                <td>Form Factor</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>
+                  Tile trackers come in various sizes for keys and wallets
+                </td>
+              </tr>
+              <tr>
+                <td>History</td>
+                <td></td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td>
+                  Tile trackers have 30 day location history w/ optional
+                  subscription
+                </td>
+              </tr>
+              <tr>
+                <td>Network</td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td></td>
+                <td>
+                  Airtags use the extensive Find My network using any iPhone
+                </td>
+              </tr>
+
+              <tr>
+                <td>Precision</td>
+                <td>
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </td>
+                <td></td>
+                <td>
+                  Airtags use precise UWB technology instead of solely Bluetooth
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </Collapsible>
       <h2>Advanced</h2>
