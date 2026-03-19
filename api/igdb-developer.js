@@ -20,9 +20,14 @@ export default async function handler(req, res) {
       developed.cover.url,
       developed.first_release_date,
       developed.url,
+      developed.rating,
+      developed.summary,
       published.name,
+      published.cover.url,
       published.first_release_date,
-      published.url;
+      published.url,
+      published.rating,
+      published.summary;
     where name ~ *"${query}"*;
     limit 10;
   `;
@@ -41,17 +46,35 @@ export default async function handler(req, res) {
       return aName.length - bName.length;
     });
 
-    const normalized = sorted.map((company) => ({
+    const company = sorted[0];
+
+    const gameIds = [
+      ...(company.developed || []),
+      ...(company.published || []),
+    ].map((g) => g.id).filter(Boolean);
+
+    let gameDetailsMap = {};
+    if (gameIds.length > 0) {
+      const gameDetails = await igdbFetch(
+        "https://api.igdb.com/v4/games",
+        `fields summary, rating; where id = (${gameIds.join(",")}); limit 500;`
+      );
+      gameDetails.forEach((g) => { gameDetailsMap[g.id] = g; });
+    }
+
+    const enrichGames = (games) =>
+      (games || []).map((g) => ({ ...g, ...gameDetailsMap[g.id] }));
+
+    const normalized = {
       ...company,
       logo: company.logo
-        ? {
-            ...company.logo,
-            url: `https:${company.logo.url.replace(/t_[^/]+/, "t_720p")}`,
-          }
+        ? { ...company.logo, url: `https:${company.logo.url.replace(/t_[^/]+/, "t_720p")}` }
         : null,
-    }));
+      developed: enrichGames(company.developed),
+      published: enrichGames(company.published),
+    };
 
-    res.status(200).json({ results: normalized });
+    res.status(200).json({ results: [normalized] });
   } catch (error) {
     console.error("Error searching IGDB:", error);
     res.status(500).json({ error: "Failed to search companies" });

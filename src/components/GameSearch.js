@@ -28,6 +28,23 @@ function GameSearch({ searchQuery }) {
       });
   };
 
+  const platformLocalImages = {
+    "PC (Microsoft Windows)": "images/logos/windows.png",
+    "Mac": "images/logos/apple.png",
+    "iOS": "images/logos/apple.png",
+    "Linux": "images/logos/linux.png",
+    "Nintendo 3DS": "images/consoles/3ds.png",
+    "New Nintendo 3DS": "images/consoles/3ds.png",
+    "Game Boy Advance": "images/consoles/gba.png",
+  };
+
+  const getPlatformIcon = (p) => {
+    if (platformLocalImages[p.name]) return platformLocalImages[p.name];
+    if (p.platform_logo?.url)
+      return `https:${p.platform_logo.url.replace(/t_[^/]+/, "t_logo_med")}`;
+    return null;
+  };
+
   const getDevelopers = (game) => {
     if (!game.involved_companies) return "Unknown Developer";
 
@@ -36,11 +53,6 @@ function GameSearch({ searchQuery }) {
       .map((c) => c.company.name);
 
     return devs.length ? devs.join(", ") : "Unknown Developer";
-  };
-
-  const getPlatforms = (game) => {
-    if (!game.platforms || game.platforms.length === 0) return "TBA";
-    return game.platforms.map((p) => p.name).join(", ");
   };
 
   useEffect(() => {
@@ -98,7 +110,46 @@ function GameSearch({ searchQuery }) {
                       : "Rating TBD"}
                   </h4>
 
-                  <h4>{getPlatforms(searchResult)}</h4>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      alignItems: "center",
+                      gap: "8px",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {searchResult.platforms &&
+                    searchResult.platforms.length > 0 ? (
+                      searchResult.platforms.map((p, i) => {
+                        const icon = getPlatformIcon(p);
+                        return icon ? (
+                          <div
+                            key={p.id ?? i}
+                            title={p.name}
+                            style={{
+                              width: "45px",
+                              height: "45px",
+                              backgroundColor: "#fff",
+                              borderRadius: "8px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              padding: "4px",
+                            }}
+                          >
+                            <img
+                              src={icon}
+                              alt={p.name}
+                              style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                            />
+                          </div>
+                        ) : null;
+                      })
+                    ) : (
+                      <h4>TBA</h4>
+                    )}
+                  </div>
 
                   <hr></hr>
                   {searchResult.summary && <p>{searchResult.summary}</p>}

@@ -79,17 +79,6 @@ const normalizeCovers = (games) =>
       : null,
   }));
 
-const normalizeLogos = (companies) =>
-  companies.map((c) => ({
-    ...c,
-    logo: c.logo
-      ? {
-          ...c.logo,
-          url: `https:${c.logo.url.replace("t_thumb", "t_720p")}`,
-        }
-      : null,
-  }));
-
 // UPCOMING GAMES
 app.get("/api/igdb-upcoming", async (req, res) => {
   const now = Math.floor(Date.now() / 1000);
@@ -139,7 +128,7 @@ app.get("/api/igdb-search", async (req, res) => {
 
   const body = `
     search "${query}";
-    fields name, cover.url, first_release_date, summary, rating, url, platforms.name, involved_companies.company.name, involved_companies.developer;
+    fields name, cover.url, first_release_date, summary, rating, url, platforms.name, platforms.platform_logo.url, involved_companies.company.name, involved_companies.developer;
     limit 10;
   `;
 
@@ -189,7 +178,35 @@ app.get("/api/igdb-developer", async (req, res) => {
       if (bName.startsWith(q) && !aName.startsWith(q)) return 1;
       return aName.length - bName.length;
     });
-    res.json({ results: normalizeLogos(sorted) });
+
+    const company = sorted[0];
+    const gameIds = [
+      ...(company.developed || []),
+      ...(company.published || []),
+    ].map((g) => g.id).filter(Boolean);
+
+    let gameDetailsMap = {};
+    if (gameIds.length > 0) {
+      const gameDetails = await igdbFetch(
+        IGDB_GAMES_URL,
+        `fields summary, rating; where id = (${gameIds.join(",")}); limit 500;`
+      );
+      gameDetails.forEach((g) => { gameDetailsMap[g.id] = g; });
+    }
+
+    const enrichGames = (games) =>
+      (games || []).map((g) => ({ ...g, ...gameDetailsMap[g.id] }));
+
+    const normalized = {
+      ...company,
+      logo: company.logo
+        ? { ...company.logo, url: `https:${company.logo.url.replace("t_thumb", "t_720p")}` }
+        : null,
+      developed: enrichGames(company.developed),
+      published: enrichGames(company.published),
+    };
+
+    res.json({ results: [normalized] });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "IGDB developer search failed" });

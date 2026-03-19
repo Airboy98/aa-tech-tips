@@ -17,6 +17,7 @@ export default async function handler(req, res) {
       rating,
       url,
       platforms.name,
+      platforms.platform_logo.url,
       involved_companies.company.name,
       involved_companies.developer;
     limit 10;
