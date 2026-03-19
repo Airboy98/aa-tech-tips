@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 function DeveloperSearch({ searchQuery }) {
   const [searchResult, setSearchResult] = useState(null);
+  const [hoveredGame, setHoveredGame] = useState(null);
+  const [cardSide, setCardSide] = useState("right");
 
   const formatDate = (unix) => {
     if (!unix) return "Unknown";
@@ -55,6 +57,7 @@ function DeveloperSearch({ searchQuery }) {
   const sortedGames = [...games].sort(
     (a, b) => a.first_release_date - b.first_release_date,
   );
+  console.log("First game sample:", sortedGames[0]);
 
   return (
     <div>
@@ -85,34 +88,140 @@ function DeveloperSearch({ searchQuery }) {
                   <h4>{sortedGames.length} Credits</h4>
 
                   {sortedGames.length > 0 && (
-                    <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "6px",
+                        justifyContent: "center",
+                      }}
+                    >
                       {sortedGames.map((game, i) =>
                         game.cover?.url ? (
-                          <a
+                          <div
                             key={game.id ?? i}
-                            href={game.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            style={{
+                              position: "relative",
+                              display: "inline-block",
+                              cursor: "pointer",
+                            }}
+                            onMouseEnter={(e) => {
+                              const rect =
+                                e.currentTarget.getBoundingClientRect();
+                              setCardSide(
+                                rect.right + 176 > window.innerWidth
+                                  ? "left"
+                                  : "right",
+                              );
+                              setHoveredGame(game.id ?? i);
+                            }}
+                            onMouseLeave={() => setHoveredGame(null)}
+                            onTouchStart={(e) => {
+                              e.preventDefault();
+                              const touch = e.touches[0];
+                              setCardSide(
+                                touch.clientX > window.innerWidth / 2
+                                  ? "left"
+                                  : "right",
+                              );
+                              setHoveredGame(
+                                hoveredGame === (game.id ?? i)
+                                  ? null
+                                  : (game.id ?? i),
+                              );
+                            }}
                           >
                             <img
-                              style={{ width: "60px", height: "90px" }}
+                              style={{
+                                width: "60px",
+                                height: "90px",
+                                objectFit: "cover",
+                                borderRadius: "4px",
+                                display: "block",
+                                transition:
+                                  "transform 0.2s ease, box-shadow 0.2s ease",
+                                transform:
+                                  hoveredGame === (game.id ?? i)
+                                    ? "scale(1.15)"
+                                    : "scale(1)",
+                                boxShadow:
+                                  hoveredGame === (game.id ?? i)
+                                    ? "0 8px 20px rgba(0,0,0,0.5)"
+                                    : "none",
+                              }}
                               src={`https:${game.cover.url.replace(/t_[^/]+/, "t_cover_big")}`}
                               alt={game.name}
-                              title={game.name}
                             />
-                          </a>
-                        ) : (
-                          <a
-                            key={game.id ?? i}
-                            href={game.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title={game.name}
-                            style={{ marginRight: "8px", fontSize: "12px" }}
-                          >
-                            {game.name}
-                          </a>
-                        ),
+                            {hoveredGame === (game.id ?? i) && (
+                              <div
+                                style={{
+                                  position: "absolute",
+                                  top: 0,
+                                  ...(cardSide === "right"
+                                    ? { left: "calc(100% + 8px)" }
+                                    : { right: "calc(100% + 8px)" }),
+                                  backgroundColor: "#0f3455",
+                                  border: "1px solid #3c709f",
+                                  borderRadius: "8px",
+                                  padding: "10px",
+                                  width: "160px",
+                                  zIndex: 10,
+                                  animation: "fadeIn 0.15s ease",
+                                }}
+                              >
+                                <p
+                                  style={{
+                                    margin: "0 0 4px",
+                                    fontWeight: "bold",
+                                    fontSize: "12px",
+                                    color: "#fff",
+                                  }}
+                                >
+                                  {game.name}
+                                </p>
+                                {game.first_release_date && (
+                                  <p
+                                    style={{
+                                      margin: "0 0 4px",
+                                      fontSize: "11px",
+                                      color: "#aac4e0",
+                                    }}
+                                  >
+                                    {new Date(
+                                      game.first_release_date * 1000,
+                                    ).getFullYear()}
+                                  </p>
+                                )}
+                                {game.rating && (
+                                  <p
+                                    style={{
+                                      margin: "0 0 4px",
+                                      fontSize: "11px",
+                                      color: "#aac4e0",
+                                    }}
+                                  >
+                                    ⭐ {game.rating.toFixed(1)} / 100 ⭐
+                                  </p>
+                                )}
+                                {game.summary && (
+                                  <p
+                                    style={{
+                                      margin: "0",
+                                      fontSize: "10px",
+                                      color: "#aac4e0",
+                                      display: "-webkit-box",
+                                      WebkitLineClamp: 6,
+                                      WebkitBoxOrient: "vertical",
+                                      overflow: "hidden",
+                                    }}
+                                  >
+                                    {game.summary}
+                                  </p>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        ) : null,
                       )}
                     </div>
                   )}
