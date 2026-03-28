@@ -1,4 +1,3 @@
-/*************  ✨ Windsurf Command 🌟  *************/
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_SPOTIFY;
@@ -39,7 +38,6 @@ function PodcastSearch({ searchQuery }) {
         },
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data.shows && res.data.shows.items.length > 0) {
           const podcast = res.data.shows.items[0];
           setSearchResult(podcast);
@@ -64,7 +62,6 @@ function PodcastSearch({ searchQuery }) {
         },
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data && res.data.items) {
           setEpisodes(res.data.items);
         } else {
@@ -101,7 +98,7 @@ function PodcastSearch({ searchQuery }) {
                         width: "200px",
                         height: "200px",
                       }}
-                      src={searchResult.images[0].url}
+                      src={searchResult.images?.[0]?.url ?? "noposter.png"}
                       alt={searchResult.name}
                     />
                   </a>
