@@ -149,6 +149,7 @@ app.get("/api/igdb-developer", async (req, res) => {
   const body = `
     fields
       name,
+      slug,
       logo.url,
       description,
       start_date,
