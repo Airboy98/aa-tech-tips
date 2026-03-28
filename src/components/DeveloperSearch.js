@@ -80,11 +80,21 @@ function DeveloperSearch({ searchQuery }) {
               <tr>
                 <td>
                   {searchResult?.logo?.url ? (
-                    <img
-                      style={{ width: "200px", objectFit: "contain" }}
-                      src={searchResult.logo.url}
-                      alt={searchResult.name}
-                    />
+                    officialUrl ? (
+                      <a href={officialUrl} target="_blank" rel="noopener noreferrer">
+                        <img
+                          style={{ width: "200px", objectFit: "contain" }}
+                          src={searchResult.logo.url}
+                          alt={searchResult.name}
+                        />
+                      </a>
+                    ) : (
+                      <img
+                        style={{ width: "200px", objectFit: "contain" }}
+                        src={searchResult.logo.url}
+                        alt={searchResult.name}
+                      />
+                    )
                   ) : null}
 
                   <h1>{searchResult.name}</h1>
@@ -166,7 +176,7 @@ function DeveloperSearch({ searchQuery }) {
                   <h5>
                     Data provided by{" "}
                     <a
-                      href={officialUrl ?? "https://www.igdb.com"}
+                      href={searchResult.slug ? `https://www.igdb.com/companies/${searchResult.slug}` : "https://www.igdb.com"}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

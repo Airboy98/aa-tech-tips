@@ -10,6 +10,7 @@ export default async function handler(req, res) {
   const body = `
     fields
       name,
+      slug,
       logo.url,
       description,
       start_date,
