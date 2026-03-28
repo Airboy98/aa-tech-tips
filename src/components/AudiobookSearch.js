@@ -42,8 +42,7 @@ function AudiobookSearch({ searchQuery }) {
           const audiobook = res.data.audiobooks.items[0];
           setSearchResult(audiobook);
           fetchAudiobookDetails(audiobook.id);
-          // console.log("Audiobook found:", audiobook);
-        } else {
+          } else {
           setSearchResult(null);
           setAudiobookDetails(null);
         }
@@ -64,7 +63,6 @@ function AudiobookSearch({ searchQuery }) {
       })
       .then((res) => {
         setAudiobookDetails(res.data);
-        // console.log("Audiobook details:", res.data);
       })
       .catch((error) => {
         console.error("Error fetching audiobook details:", error);
@@ -121,15 +119,6 @@ function AudiobookSearch({ searchQuery }) {
 
     // Take first 3 sentences, or up to 250 characters
     let summary = sentences.slice(0, 3).join(" ");
-
-    // if (summary.length > 250) {
-    //   summary = cleanText.substring(0, 250);
-    //   // Cut at last complete word
-    //   const lastSpace = summary.lastIndexOf(" ");
-    //   if (lastSpace > 0) {
-    //     summary = summary.substring(0, lastSpace) + "...";
-    //   }
-    // }
 
     return summary.trim();
   };
@@ -195,11 +184,9 @@ function AudiobookSearch({ searchQuery }) {
                       )}
                     </h4>
                   )}
-                  <h4>
-                    {audiobookDetails?.chapters?.items?.[0]?.release_date && (
-                      <h4>{audiobookDetails.chapters.items[0].release_date}</h4>
-                    )}
-                  </h4>
+                  {audiobookDetails?.chapters?.items?.[0]?.release_date && (
+                    <h4>{audiobookDetails.chapters.items[0].release_date}</h4>
+                  )}
                   <hr></hr>
                   {searchResult.description && (
                     <p>{getSummary(searchResult.description)}</p>

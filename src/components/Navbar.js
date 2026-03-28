@@ -9,9 +9,9 @@ export default function Navbar() {
   useEffect(() => {
     const handleResize = () => {
       // Adjust the value as needed to determine when to show the button
-      setshowBurger(window.innerWidth < 940);
-      if (window.innerWidth >= 940) {
-        setIsOpen(false); // Close the menu if the window width is greater than or equal to 940
+      setshowBurger(window.innerWidth < 1010);
+      if (window.innerWidth >= 1010) {
+        setIsOpen(false); // Close the menu if the window width is greater than or equal to 1010
       }
     };
 

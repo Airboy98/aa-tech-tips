@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
 
@@ -7,75 +7,19 @@ function DirectorSearch({ searchQuery }) {
   const [movieCredits, setMovieCredits] = useState(null);
   const [tvCredits, setTvCredits] = useState(null);
   const [hoveredCredit, setHoveredCredit] = useState(null);
-  const [cardSide, setCardSide] = useState("right");
+  const [tappedCredit, setTappedCredit] = useState(null);
+  const [selectedCredit, setSelectedCredit] = useState(null);
+  const isTouching = useRef(false);
 
-  const handleMouseEnter = (e, id) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setCardSide(rect.right + 176 > window.innerWidth ? "left" : "right");
-    setHoveredCredit(id);
-  };
-
-  const handleTouchStart = (e, id) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    setCardSide(touch.clientX > window.innerWidth / 2 ? "left" : "right");
-    setHoveredCredit(hoveredCredit === id ? null : id);
-  };
-
-  const InfoCard = ({ title, year, rating, overview }) => (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        ...(cardSide === "right"
-          ? { left: "calc(100% + 8px)" }
-          : { right: "calc(100% + 8px)" }),
-        backgroundColor: "#0f3455",
-        border: "1px solid #3c709f",
-        borderRadius: "8px",
-        padding: "10px",
-        width: "160px",
-        zIndex: 10,
-        animation: "fadeIn 0.15s ease",
-      }}
-    >
-      <p
-        style={{
-          margin: "0 0 4px",
-          fontWeight: "bold",
-          fontSize: "12px",
-          color: "#fff",
-        }}
-      >
-        {title}
-      </p>
-      {year && (
-        <p style={{ margin: "0 0 4px", fontSize: "11px", color: "#aac4e0" }}>
-          {year}
-        </p>
-      )}
-      {rating > 0 && (
-        <p style={{ margin: "0 0 4px", fontSize: "11px", color: "#aac4e0" }}>
-          ⭐ {(rating * 10).toFixed(1)} / 100 ⭐
-        </p>
-      )}
-      {overview && (
-        <p
-          style={{
-            margin: "0",
-            fontSize: "10px",
-            color: "#aac4e0",
-            display: "-webkit-box",
-            WebkitLineClamp: 6,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
-          }}
-        >
-          {overview}
-        </p>
-      )}
-    </div>
-  );
+  useEffect(() => {
+    const lock = selectedCredit ? "hidden" : "";
+    document.documentElement.style.overflow = lock;
+    document.body.style.overflow = lock;
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    };
+  }, [selectedCredit]);
 
   const searchDirector = (query) => {
     fetch(`${BASE_URL}/search/person?api_key=${API_KEY}&query=${query}`)
@@ -91,10 +35,6 @@ function DirectorSearch({ searchQuery }) {
               fetchTvCredits(directorId);
             });
         } else {
-          // console.log(
-          //   "No director found with that name. Maybe you misspelled it?"
-          // );
-
           setSearchResult(null);
           setMovieCredits(null);
           setTvCredits(null);
@@ -148,9 +88,36 @@ function DirectorSearch({ searchQuery }) {
     }
   }, [searchQuery]);
 
+  const handleCreditClick = (id, credit, type) => {
+    if (isTouching.current) {
+      isTouching.current = false;
+      if (tappedCredit === id) {
+        setTappedCredit(null);
+        setSelectedCredit({ credit, type });
+      } else {
+        setTappedCredit(id);
+      }
+    } else {
+      setSelectedCredit({ credit, type });
+    }
+  };
+
+  const posterStyle = (id) => ({
+    width: "60px",
+    height: "90px",
+    objectFit: "cover",
+    borderRadius: "4px",
+    display: "block",
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+    transform: hoveredCredit === id || tappedCredit === id ? "scale(1.15)" : "scale(1)",
+    boxShadow:
+      hoveredCredit === id || tappedCredit === id
+        ? "0 0 0 2px #3c709f, 0 8px 20px rgba(0,0,0,0.5)"
+        : "none",
+  });
+
   return (
     <div>
-      {/* {console.log(searchResult)} */}
       {searchResult && (
         <div className="streaming2">
           <table>
@@ -163,10 +130,7 @@ function DirectorSearch({ searchQuery }) {
                     rel="noopener noreferrer"
                   >
                     <img
-                      style={{
-                        width: "200px",
-                        height: "300px",
-                      }}
+                      style={{ width: "200px", height: "300px" }}
                       src={
                         searchResult.profile_path
                           ? `https://image.tmdb.org/t/p/w500${searchResult.profile_path}`
@@ -177,7 +141,6 @@ function DirectorSearch({ searchQuery }) {
                   </a>
                   <h1>{searchResult.name}</h1>
                   <h4>
-                    {/* {console.log(searchResult)} */}
                     {searchResult.deathday
                       ? `${Math.floor(
                           (new Date(searchResult.deathday) -
@@ -207,63 +170,37 @@ function DirectorSearch({ searchQuery }) {
                         .sort((a, b) =>
                           a.release_date < b.release_date ? -1 : 1,
                         )
-                        .map((credit) => (
-                          <div
-                            key={credit.id}
-                            style={{
-                              position: "relative",
-                              display: "inline-block",
-                              cursor: "pointer",
-                            }}
-                            onMouseEnter={(e) =>
-                              handleMouseEnter(e, `m-${credit.id}`)
-                            }
-                            onMouseLeave={() => setHoveredCredit(null)}
-                            onTouchStart={(e) =>
-                              handleTouchStart(e, `m-${credit.id}`)
-                            }
-                          >
-                            <img
+                        .map((credit) => {
+                          const id = `m-${credit.id}`;
+                          return (
+                            <div
+                              key={credit.id}
                               style={{
-                                width: "60px",
-                                height: "90px",
-                                objectFit: "cover",
-                                borderRadius: "4px",
-                                display: "block",
-                                transition:
-                                  "transform 0.2s ease, box-shadow 0.2s ease",
-                                transform:
-                                  hoveredCredit === `m-${credit.id}`
-                                    ? "scale(1.15)"
-                                    : "scale(1)",
-                                boxShadow:
-                                  hoveredCredit === `m-${credit.id}`
-                                    ? "0 8px 20px rgba(0,0,0,0.5)"
-                                    : "none",
+                                position: "relative",
+                                display: "inline-block",
+                                cursor: "pointer",
                               }}
-                              src={
-                                credit.poster_path
-                                  ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
-                                  : "noposter.png"
+                              onMouseEnter={() => setHoveredCredit(id)}
+                              onMouseLeave={() => setHoveredCredit(null)}
+                              onTouchStart={() => {
+                                isTouching.current = true;
+                              }}
+                              onClick={() =>
+                                handleCreditClick(id, credit, "movie")
                               }
-                              alt={credit.title}
-                            />
-                            {hoveredCredit === `m-${credit.id}` && (
-                              <InfoCard
-                                title={credit.title}
-                                year={
-                                  credit.release_date
-                                    ? new Date(
-                                        credit.release_date,
-                                      ).getFullYear()
-                                    : null
+                            >
+                              <img
+                                style={posterStyle(id)}
+                                src={
+                                  credit.poster_path
+                                    ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
+                                    : "noposter.png"
                                 }
-                                rating={credit.vote_average}
-                                overview={credit.overview}
+                                alt={credit.title}
                               />
-                            )}
-                          </div>
-                        ))}
+                            </div>
+                          );
+                        })}
                     </div>
                   )}
                   <h4>Shows</h4>
@@ -281,63 +218,37 @@ function DirectorSearch({ searchQuery }) {
                         .sort((a, b) =>
                           a.first_air_date < b.first_air_date ? -1 : 1,
                         )
-                        .map((credit) => (
-                          <div
-                            key={credit.id}
-                            style={{
-                              position: "relative",
-                              display: "inline-block",
-                              cursor: "pointer",
-                            }}
-                            onMouseEnter={(e) =>
-                              handleMouseEnter(e, `tv-${credit.id}`)
-                            }
-                            onMouseLeave={() => setHoveredCredit(null)}
-                            onTouchStart={(e) =>
-                              handleTouchStart(e, `tv-${credit.id}`)
-                            }
-                          >
-                            <img
+                        .map((credit) => {
+                          const id = `tv-${credit.id}`;
+                          return (
+                            <div
+                              key={credit.id}
                               style={{
-                                width: "60px",
-                                height: "90px",
-                                objectFit: "cover",
-                                borderRadius: "4px",
-                                display: "block",
-                                transition:
-                                  "transform 0.2s ease, box-shadow 0.2s ease",
-                                transform:
-                                  hoveredCredit === `tv-${credit.id}`
-                                    ? "scale(1.15)"
-                                    : "scale(1)",
-                                boxShadow:
-                                  hoveredCredit === `tv-${credit.id}`
-                                    ? "0 8px 20px rgba(0,0,0,0.5)"
-                                    : "none",
+                                position: "relative",
+                                display: "inline-block",
+                                cursor: "pointer",
                               }}
-                              src={
-                                credit.poster_path
-                                  ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
-                                  : "noposter.png"
+                              onMouseEnter={() => setHoveredCredit(id)}
+                              onMouseLeave={() => setHoveredCredit(null)}
+                              onTouchStart={() => {
+                                isTouching.current = true;
+                              }}
+                              onClick={() =>
+                                handleCreditClick(id, credit, "tv")
                               }
-                              alt={credit.name}
-                            />
-                            {hoveredCredit === `tv-${credit.id}` && (
-                              <InfoCard
-                                title={credit.name}
-                                year={
-                                  credit.first_air_date
-                                    ? new Date(
-                                        credit.first_air_date,
-                                      ).getFullYear()
-                                    : null
+                            >
+                              <img
+                                style={posterStyle(id)}
+                                src={
+                                  credit.poster_path
+                                    ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
+                                    : "noposter.png"
                                 }
-                                rating={credit.vote_average}
-                                overview={credit.overview}
+                                alt={credit.name}
                               />
-                            )}
-                          </div>
-                        ))}
+                            </div>
+                          );
+                        })}
                     </div>
                   )}
                   <br />
@@ -351,18 +262,150 @@ function DirectorSearch({ searchQuery }) {
                       TMDB
                     </a>
                   </h5>
-                  {/* ) // : ( //{" "}
-                  <h3>
-                    // No results found. <br></br>
-                    // <br></br>Check spelling and try again. //{" "}
-                  </h3>
-                  // ) } */}
                 </td>
               </tr>
             </tbody>
           </table>
           <br />
           <br />
+        </div>
+      )}
+      {selectedCredit && (
+        <div
+          onClick={() => setSelectedCredit(null)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(0,0,0,0.6)",
+            zIndex: 99,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              backgroundColor: "#0f3455",
+              border: "1px solid #3c709f",
+              borderRadius: "12px",
+              width: "280px",
+              maxHeight: "85vh",
+              display: "flex",
+              flexDirection: "column",
+              zIndex: 100,
+              boxShadow: "0 24px 64px rgba(0,0,0,0.75)",
+              animation: "fadeIn 0.15s ease",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                padding: "10px 10px 0",
+                flexShrink: 0,
+              }}
+            >
+              <button
+                onClick={() => setSelectedCredit(null)}
+                style={{
+                  background: "#1a4a72",
+                  border: "1px solid #3c709f",
+                  borderRadius: "50%",
+                  color: "#fff",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  width: "36px",
+                  height: "36px",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  lineHeight: 1,
+                }}
+                aria-label="Close"
+              >
+                ✕
+              </button>
+            </div>
+            <div
+              style={{
+                overflowY: "auto",
+                padding: "10px 20px 20px",
+                textAlign: "center",
+              }}
+            >
+              <img
+                src={
+                  selectedCredit.credit.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${selectedCredit.credit.poster_path}`
+                    : "noposter.png"
+                }
+                alt={
+                  selectedCredit.type === "movie"
+                    ? selectedCredit.credit.title
+                    : selectedCredit.credit.name
+                }
+                style={{
+                  width: "180px",
+                  height: "240px",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                  display: "block",
+                  margin: "0 auto 14px",
+                }}
+              />
+              <p
+                style={{
+                  margin: "0 0 6px",
+                  fontWeight: "bold",
+                  fontSize: "15px",
+                  color: "#fff",
+                }}
+              >
+                {selectedCredit.type === "movie"
+                  ? selectedCredit.credit.title
+                  : selectedCredit.credit.name}
+              </p>
+              {(selectedCredit.type === "movie"
+                ? selectedCredit.credit.release_date
+                : selectedCredit.credit.first_air_date) && (
+                <p
+                  style={{ margin: "0 0 4px", fontSize: "13px", color: "#aac4e0" }}
+                >
+                  {new Date(
+                    selectedCredit.type === "movie"
+                      ? selectedCredit.credit.release_date
+                      : selectedCredit.credit.first_air_date,
+                  ).getFullYear()}
+                </p>
+              )}
+              {selectedCredit.credit.vote_average > 0 && (
+                <p
+                  style={{
+                    margin: "0 0 10px",
+                    fontSize: "13px",
+                    color: "#aac4e0",
+                  }}
+                >
+                  ⭐ {(selectedCredit.credit.vote_average * 10).toFixed(1)} / 100 ⭐
+                </p>
+              )}
+              {selectedCredit.credit.overview && (
+                <p
+                  style={{
+                    margin: "0",
+                    fontSize: "12px",
+                    color: "#aac4e0",
+                    textAlign: "left",
+                    lineHeight: "1.5",
+                  }}
+                >
+                  {selectedCredit.credit.overview}
+                </p>
+              )}
+            </div>
+          </div>
         </div>
       )}
     </div>
