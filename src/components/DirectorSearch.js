@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
 
@@ -109,7 +109,8 @@ function DirectorSearch({ searchQuery }) {
     borderRadius: "4px",
     display: "block",
     transition: "transform 0.2s ease, box-shadow 0.2s ease",
-    transform: hoveredCredit === id || tappedCredit === id ? "scale(1.15)" : "scale(1)",
+    transform:
+      hoveredCredit === id || tappedCredit === id ? "scale(1.5)" : "scale(1)",
     boxShadow:
       hoveredCredit === id || tappedCredit === id
         ? "0 0 0 2px #3c709f, 0 8px 20px rgba(0,0,0,0.5)"
@@ -179,6 +180,10 @@ function DirectorSearch({ searchQuery }) {
                                 position: "relative",
                                 display: "inline-block",
                                 cursor: "pointer",
+                                zIndex:
+                                  hoveredCredit === id || tappedCredit === id
+                                    ? 1
+                                    : 0,
                               }}
                               onMouseEnter={() => setHoveredCredit(id)}
                               onMouseLeave={() => setHoveredCredit(null)}
@@ -227,6 +232,10 @@ function DirectorSearch({ searchQuery }) {
                                 position: "relative",
                                 display: "inline-block",
                                 cursor: "pointer",
+                                zIndex:
+                                  hoveredCredit === id || tappedCredit === id
+                                    ? 1
+                                    : 0,
                               }}
                               onMouseEnter={() => setHoveredCredit(id)}
                               onMouseLeave={() => setHoveredCredit(null)}
@@ -371,7 +380,11 @@ function DirectorSearch({ searchQuery }) {
                 ? selectedCredit.credit.release_date
                 : selectedCredit.credit.first_air_date) && (
                 <p
-                  style={{ margin: "0 0 4px", fontSize: "13px", color: "#aac4e0" }}
+                  style={{
+                    margin: "0 0 4px",
+                    fontSize: "13px",
+                    color: "#aac4e0",
+                  }}
                 >
                   {new Date(
                     selectedCredit.type === "movie"
@@ -388,7 +401,8 @@ function DirectorSearch({ searchQuery }) {
                     color: "#aac4e0",
                   }}
                 >
-                  ⭐ {(selectedCredit.credit.vote_average * 10).toFixed(1)} / 100 ⭐
+                  ⭐ {(selectedCredit.credit.vote_average * 10).toFixed(1)} /
+                  100 ⭐
                 </p>
               )}
               {selectedCredit.credit.overview && (

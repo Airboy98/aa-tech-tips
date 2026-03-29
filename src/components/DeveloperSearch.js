@@ -81,7 +81,11 @@ function DeveloperSearch({ searchQuery }) {
                 <td>
                   {searchResult?.logo?.url ? (
                     officialUrl ? (
-                      <a href={officialUrl} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={officialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <img
                           style={{ width: "200px", objectFit: "contain" }}
                           src={searchResult.logo.url}
@@ -126,10 +130,17 @@ function DeveloperSearch({ searchQuery }) {
                               position: "relative",
                               display: "inline-block",
                               cursor: "pointer",
+                              zIndex:
+                                hoveredGame === (game.id ?? i) ||
+                                tappedGame === (game.id ?? i)
+                                  ? 1
+                                  : 0,
                             }}
                             onMouseEnter={() => setHoveredGame(game.id ?? i)}
                             onMouseLeave={() => setHoveredGame(null)}
-                            onTouchStart={() => { isTouching.current = true; }}
+                            onTouchStart={() => {
+                              isTouching.current = true;
+                            }}
                             onClick={() => {
                               const id = game.id ?? i;
                               if (isTouching.current) {
@@ -155,11 +166,13 @@ function DeveloperSearch({ searchQuery }) {
                                 transition:
                                   "transform 0.2s ease, box-shadow 0.2s ease",
                                 transform:
-                                  hoveredGame === (game.id ?? i) || tappedGame === (game.id ?? i)
-                                    ? "scale(1.15)"
+                                  hoveredGame === (game.id ?? i) ||
+                                  tappedGame === (game.id ?? i)
+                                    ? "scale(1.5)"
                                     : "scale(1)",
                                 boxShadow:
-                                  hoveredGame === (game.id ?? i) || tappedGame === (game.id ?? i)
+                                  hoveredGame === (game.id ?? i) ||
+                                  tappedGame === (game.id ?? i)
                                     ? "0 0 0 2px #3c709f, 0 8px 20px rgba(0,0,0,0.5)"
                                     : "none",
                               }}
@@ -176,7 +189,11 @@ function DeveloperSearch({ searchQuery }) {
                   <h5>
                     Data provided by{" "}
                     <a
-                      href={searchResult.slug ? `https://www.igdb.com/companies/${searchResult.slug}` : "https://www.igdb.com"}
+                      href={
+                        searchResult.slug
+                          ? `https://www.igdb.com/companies/${searchResult.slug}`
+                          : "https://www.igdb.com"
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -249,52 +266,72 @@ function DeveloperSearch({ searchQuery }) {
                 ✕
               </button>
             </div>
-            <div style={{ overflowY: "auto", padding: "10px 20px 20px", textAlign: "center" }}>
-            <img
-              src={`https:${selectedGame.cover.url.replace(/t_[^/]+/, "t_cover_big")}`}
-              alt={selectedGame.name}
+            <div
               style={{
-                width: "180px",
-                height: "240px",
-                objectFit: "cover",
-                borderRadius: "8px",
-                display: "block",
-                margin: "0 auto 14px",
-              }}
-            />
-            <p
-              style={{
-                margin: "0 0 6px",
-                fontWeight: "bold",
-                fontSize: "15px",
-                color: "#fff",
+                overflowY: "auto",
+                padding: "10px 20px 20px",
+                textAlign: "center",
               }}
             >
-              {selectedGame.name}
-            </p>
-            {selectedGame.first_release_date && (
-              <p style={{ margin: "0 0 4px", fontSize: "13px", color: "#aac4e0" }}>
-                {new Date(selectedGame.first_release_date * 1000).getFullYear()}
-              </p>
-            )}
-            {selectedGame.rating && (
-              <p style={{ margin: "0 0 10px", fontSize: "13px", color: "#aac4e0" }}>
-                ⭐ {selectedGame.rating.toFixed(1)} / 100 ⭐
-              </p>
-            )}
-            {selectedGame.summary && (
+              <img
+                src={`https:${selectedGame.cover.url.replace(/t_[^/]+/, "t_cover_big")}`}
+                alt={selectedGame.name}
+                style={{
+                  width: "180px",
+                  height: "240px",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                  display: "block",
+                  margin: "0 auto 14px",
+                }}
+              />
               <p
                 style={{
-                  margin: "0",
-                  fontSize: "12px",
-                  color: "#aac4e0",
-                  textAlign: "left",
-                  lineHeight: "1.5",
+                  margin: "0 0 6px",
+                  fontWeight: "bold",
+                  fontSize: "15px",
+                  color: "#fff",
                 }}
               >
-                {selectedGame.summary}
+                {selectedGame.name}
               </p>
-            )}
+              {selectedGame.first_release_date && (
+                <p
+                  style={{
+                    margin: "0 0 4px",
+                    fontSize: "13px",
+                    color: "#aac4e0",
+                  }}
+                >
+                  {new Date(
+                    selectedGame.first_release_date * 1000,
+                  ).getFullYear()}
+                </p>
+              )}
+              {selectedGame.rating && (
+                <p
+                  style={{
+                    margin: "0 0 10px",
+                    fontSize: "13px",
+                    color: "#aac4e0",
+                  }}
+                >
+                  ⭐ {selectedGame.rating.toFixed(1)} / 100 ⭐
+                </p>
+              )}
+              {selectedGame.summary && (
+                <p
+                  style={{
+                    margin: "0",
+                    fontSize: "12px",
+                    color: "#aac4e0",
+                    textAlign: "left",
+                    lineHeight: "1.5",
+                  }}
+                >
+                  {selectedGame.summary}
+                </p>
+              )}
             </div>
           </div>
         </div>
