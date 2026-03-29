@@ -307,6 +307,12 @@ export default function Tech101() {
         <div className="tech">
           <ul>
             <li>
+              <b>What Gets Removed:</b> Personal information that data brokers
+              collect and sell, including your full name, home address, phone
+              number, email address, age, relatives, photos, and social media
+              profiles.
+            </li>
+            <li>
               <b>Removal Procedure:</b> Hundreds of data broker sites (like
               Whitepages, Spokeo, and Radaris) are scanned and opt-out requests
               are submitted on your behalf. Unlike some fully automated
@@ -329,6 +335,28 @@ export default function Tech101() {
               $129/year.
             </li>
           </ul>
+
+          <a
+            href="https://www.de33watrk.com/M1MJJW/KMKS9/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-block",
+              marginTop: "0px",
+              marginBottom: "16px",
+              padding: "12px 14px",
+              backgroundColor: "#0f3455",
+              color: "#fff",
+              fontWeight: "bold",
+              fontSize: "16px",
+              borderRadius: "8px",
+              textDecoration: "none",
+              border: "2px solid #3c709f",
+              letterSpacing: "0.5px",
+            }}
+          >
+            Join DeleteMe Now
+          </a>
         </div>
       </Collapsible>
       <Collapsible
