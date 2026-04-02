@@ -7,6 +7,7 @@ function NowPlaying() {
   const [hoveredMovie, setHoveredMovie] = useState(null);
   const [tappedMovie, setTappedMovie] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [certifications, setCertifications] = useState({});
   const isTouching = useRef(false);
 
   const getNowPlaying = () => {
@@ -15,11 +16,22 @@ function NowPlaying() {
     )
       .then((res) => res.json())
       .then((json) => {
-        if (json.results) {
-          setNowPlayingList(json.results);
-        } else {
-          setNowPlayingList([]);
-        }
+        const movies = json.results || [];
+        setNowPlayingList(movies);
+        Promise.all(
+          movies.map((movie) =>
+            fetch(`${BASE_URL}/movie/${movie.id}/release_dates?api_key=${API_KEY}`)
+              .then((r) => r.json())
+              .then((data) => {
+                const usRelease = data.results?.find((r) => r.iso_3166_1 === "US");
+                const cert = usRelease?.release_dates?.find((d) => d.certification)?.certification;
+                return [movie.id, cert || null];
+              })
+              .catch(() => [movie.id, null])
+          )
+        ).then((entries) => {
+          setCertifications(Object.fromEntries(entries));
+        });
       })
       .catch((error) => {
         console.error("Error fetching now playing movies:", error);
@@ -40,6 +52,8 @@ function NowPlaying() {
       document.body.style.overflow = "";
     };
   }, [selectedMovie]);
+
+
 
   const formatDate = (dateStr) => {
     if (!dateStr) return "Unknown";
@@ -221,6 +235,11 @@ function NowPlaying() {
               {selectedMovie.release_date && (
                 <p style={{ margin: "0 0 4px", fontSize: "13px", color: "#aac4e0" }}>
                   {formatDate(selectedMovie.release_date)}
+                </p>
+              )}
+              {certifications[selectedMovie.id] && (
+                <p style={{ margin: "0 0 4px", fontSize: "13px", color: "#aac4e0" }}>
+                  Rated {certifications[selectedMovie.id]}
                 </p>
               )}
               {selectedMovie.vote_average > 0 && (
