@@ -7,6 +7,7 @@ function Upcoming() {
   const [hoveredMovie, setHoveredMovie] = useState(null);
   const [tappedMovie, setTappedMovie] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [certifications, setCertifications] = useState({});
   const isTouching = useRef(false);
 
   const getUpcoming = () => {
@@ -15,11 +16,22 @@ function Upcoming() {
     )
       .then((res) => res.json())
       .then((json) => {
-        if (json.results) {
-          setUpcomingList(json.results);
-        } else {
-          setUpcomingList([]);
-        }
+        const movies = json.results || [];
+        setUpcomingList(movies);
+        Promise.all(
+          movies.map((movie) =>
+            fetch(`${BASE_URL}/movie/${movie.id}/release_dates?api_key=${API_KEY}`)
+              .then((r) => r.json())
+              .then((data) => {
+                const usRelease = data.results?.find((r) => r.iso_3166_1 === "US");
+                const cert = usRelease?.release_dates?.find((d) => d.certification)?.certification;
+                return [movie.id, cert || null];
+              })
+              .catch(() => [movie.id, null])
+          )
+        ).then((entries) => {
+          setCertifications(Object.fromEntries(entries));
+        });
       })
       .catch((error) => {
         console.error("Error fetching upcoming movies:", error);
@@ -40,6 +52,8 @@ function Upcoming() {
       document.body.style.overflow = "";
     };
   }, [selectedMovie]);
+
+
 
   const formatDate = (dateStr) => {
     if (!dateStr) return "Unknown";
@@ -221,6 +235,11 @@ function Upcoming() {
               {selectedMovie.release_date && (
                 <p style={{ margin: "0 0 4px", fontSize: "13px", color: "#aac4e0" }}>
                   {formatDate(selectedMovie.release_date)}
+                </p>
+              )}
+              {certifications[selectedMovie.id] && (
+                <p style={{ margin: "0 0 4px", fontSize: "13px", color: "#aac4e0" }}>
+                  Rated {certifications[selectedMovie.id]}
                 </p>
               )}
               {selectedMovie.vote_average > 0 && (
