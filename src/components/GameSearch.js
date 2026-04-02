@@ -30,11 +30,22 @@ function GameSearch({ searchQuery }) {
 
   const platformLocalImages = {
     "PC (Microsoft Windows)": "images/logos/windows.png",
-    "Mac": "images/logos/apple.png",
-    "iOS": "images/logos/apple.png",
-    "Linux": "images/logos/linux.png",
+    Mac: "images/logos/apple.png",
+    iOS: "images/consoles/ios.png",
+    Android: "images/consoles/android.png",
+    Linux: "images/logos/linux.png",
+    "PlayStation 3": "images/consoles/PS3-square.png",
+    "PlayStation 4": "images/consoles/PS4-square.png",
+    "PlayStation 5": "images/consoles/PS5-square.png",
+    "PlayStation Vita": "images/consoles/psvita.jpg",
+    "Xbox One": "images/consoles/XboxOne.png",
+    "Xbox Series X|S": "images/consoles/XboxSeries.png",
+    "Wii U": "images/consoles/wiiu.png",
+    "Nintendo Switch": "images/consoles/NintendoSwitch-square.jpg",
+    "Nintendo Switch 2": "images/consoles/NintendoSwitch2.png",
     "Nintendo 3DS": "images/consoles/3ds.png",
     "New Nintendo 3DS": "images/consoles/3ds.png",
+    "Game Boy": "images/consoles/gameboy.jpg",
     "Game Boy Advance": "images/consoles/gba.png",
   };
 
@@ -141,7 +152,11 @@ function GameSearch({ searchQuery }) {
                             <img
                               src={icon}
                               alt={p.name}
-                              style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "contain",
+                              }}
                             />
                           </div>
                         ) : null;
