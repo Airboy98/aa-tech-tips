@@ -10,6 +10,8 @@ function DirectorSearch({ searchQuery }) {
   const [tappedCredit, setTappedCredit] = useState(null);
   const [selectedCredit, setSelectedCredit] = useState(null);
   const isTouching = useRef(false);
+  const swipeTouchStartX = useRef(null);
+  const swipeTouchStartY = useRef(null);
 
   useEffect(() => {
     const lock = selectedCredit ? "hidden" : "";
@@ -88,17 +90,37 @@ function DirectorSearch({ searchQuery }) {
     }
   }, [searchQuery]);
 
-  const handleCreditClick = (id, credit, type) => {
+  const handleCreditClick = (id, credit, type, index) => {
     if (isTouching.current) {
       isTouching.current = false;
       if (tappedCredit === id) {
         setTappedCredit(null);
-        setSelectedCredit({ credit, type });
+        setSelectedCredit({ credit, type, index });
       } else {
         setTappedCredit(id);
       }
     } else {
-      setSelectedCredit({ credit, type });
+      setSelectedCredit({ credit, type, index });
+    }
+  };
+
+  const navigateCredit = (dir) => {
+    if (!selectedCredit) return;
+    const list =
+      selectedCredit.type === "movie" ? sortedMovieCredits : sortedTvCredits;
+    const newIndex = selectedCredit.index + dir;
+    if (newIndex < 0 || newIndex >= list.length) return;
+    setSelectedCredit({ credit: list[newIndex], type: selectedCredit.type, index: newIndex });
+  };
+
+  const handleOverlaySwipe = (e) => {
+    if (swipeTouchStartX.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - swipeTouchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - swipeTouchStartY.current;
+    swipeTouchStartX.current = null;
+    swipeTouchStartY.current = null;
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+      navigateCredit(deltaX < 0 ? 1 : -1);
     }
   };
 
@@ -116,6 +138,17 @@ function DirectorSearch({ searchQuery }) {
         ? "0 0 0 2px #3c709f, 0 8px 20px rgba(0,0,0,0.5)"
         : "none",
   });
+
+  const sortedMovieCredits = movieCredits
+    ? [...movieCredits].sort((a, b) =>
+        a.release_date < b.release_date ? -1 : 1,
+      )
+    : [];
+  const sortedTvCredits = tvCredits
+    ? [...tvCredits].sort((a, b) =>
+        a.first_air_date < b.first_air_date ? -1 : 1,
+      )
+    : [];
 
   return (
     <div>
@@ -167,11 +200,7 @@ function DirectorSearch({ searchQuery }) {
                         justifyContent: "center",
                       }}
                     >
-                      {movieCredits
-                        .sort((a, b) =>
-                          a.release_date < b.release_date ? -1 : 1,
-                        )
-                        .map((credit) => {
+                      {sortedMovieCredits.map((credit, index) => {
                           const id = `m-${credit.id}`;
                           return (
                             <div
@@ -191,7 +220,7 @@ function DirectorSearch({ searchQuery }) {
                                 isTouching.current = true;
                               }}
                               onClick={() =>
-                                handleCreditClick(id, credit, "movie")
+                                handleCreditClick(id, credit, "movie", index)
                               }
                             >
                               <img
@@ -219,11 +248,7 @@ function DirectorSearch({ searchQuery }) {
                         justifyContent: "center",
                       }}
                     >
-                      {tvCredits
-                        .sort((a, b) =>
-                          a.first_air_date < b.first_air_date ? -1 : 1,
-                        )
-                        .map((credit) => {
+                      {sortedTvCredits.map((credit, index) => {
                           const id = `tv-${credit.id}`;
                           return (
                             <div
@@ -243,7 +268,7 @@ function DirectorSearch({ searchQuery }) {
                                 isTouching.current = true;
                               }}
                               onClick={() =>
-                                handleCreditClick(id, credit, "tv")
+                                handleCreditClick(id, credit, "tv", index)
                               }
                             >
                               <img
@@ -294,6 +319,11 @@ function DirectorSearch({ searchQuery }) {
         >
           <div
             onClick={(e) => e.stopPropagation()}
+            onTouchStart={(e) => {
+              swipeTouchStartX.current = e.touches[0].clientX;
+              swipeTouchStartY.current = e.touches[0].clientY;
+            }}
+            onTouchEnd={handleOverlaySwipe}
             style={{
               backgroundColor: "#0f3455",
               border: "1px solid #3c709f",
@@ -419,6 +449,67 @@ function DirectorSearch({ searchQuery }) {
                 </p>
               )}
             </div>
+            {(() => {
+              const creditList =
+                selectedCredit.type === "movie"
+                  ? sortedMovieCredits
+                  : sortedTvCredits;
+              const navBtnStyle = (disabled) => ({
+                background: disabled ? "#0f3455" : "#1a4a72",
+                border: "1px solid #3c709f",
+                borderRadius: "50%",
+                color: disabled ? "#3c709f" : "#fff",
+                fontSize: "22px",
+                lineHeight: 1,
+                width: "36px",
+                height: "36px",
+                cursor: disabled ? "default" : "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                opacity: disabled ? 0.3 : 1,
+                flexShrink: 0,
+              });
+              return (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: "10px 16px 14px",
+                    flexShrink: 0,
+                  }}
+                >
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigateCredit(-1);
+                    }}
+                    disabled={selectedCredit.index === 0}
+                    style={navBtnStyle(selectedCredit.index === 0)}
+                    aria-label="Previous"
+                  >
+                    ‹
+                  </button>
+                  <span style={{ fontSize: "12px", color: "#aac4e0" }}>
+                    {selectedCredit.index + 1} / {creditList.length}
+                  </span>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigateCredit(1);
+                    }}
+                    disabled={selectedCredit.index === creditList.length - 1}
+                    style={navBtnStyle(
+                      selectedCredit.index === creditList.length - 1,
+                    )}
+                    aria-label="Next"
+                  >
+                    ›
+                  </button>
+                </div>
+              );
+            })()}
           </div>
         </div>
       )}
