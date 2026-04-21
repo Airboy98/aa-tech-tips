@@ -1,0 +1,90 @@
+.tech-advice-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.tech-advice-form label {
+  width: 100%;
+  font-weight: bold;
+  text-align: left;
+}
+
+.tech-advice-form input,
+.tech-advice-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 8px;
+  border: 2px solid #7e9ebc;
+  background-color: #0f3455;
+  color: white;
+  resize: vertical;
+}
+
+.tech-advice-form input::placeholder,
+.tech-advice-form textarea::placeholder {
+  color: #aac4df;
+}
+
+.tech-advice-form input:focus,
+.tech-advice-form textarea:focus {
+  outline: none;
+  border-color: white;
+}
+
+.ta-submit {
+  margin-top: 10px;
+  padding: 14px 36px;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  border-radius: 50px;
+  background-color: #1aac83;
+  color: white;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.ta-submit:hover:not(:disabled) {
+  background-color: #158a69;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ta-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ta-error {
+  color: #e7195a;
+  font-weight: bold;
+  margin: 0;
+}
+
+.ta-secure {
+  font-size: 13px;
+  color: #aac4df;
+  margin: 4px 0 0 0;
+}
+
+.tech-advice-intro {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.tech-advice-result {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.tech-advice-result p {
+  padding: 0;
+}

@@ -11,6 +11,7 @@ import Gaming from "./pages/Gaming";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Appointment from "./pages/Appointment";
+import TechAdvice from "./pages/TechAdvice";
 import Baby from "./pages/baby";
 // import Sonic from "/Sonic";
 
@@ -33,6 +34,7 @@ function App() {
             <Route path="/wearable" element={<Wearable />} />
             <Route path="/about" element={<About />} />
             <Route path="/appointment" element={<Appointment />} />
+            <Route path="/tech-advice" element={<TechAdvice />} />
             <Route path="/baby" element={<Baby />} />
             {/* <Route path="/sonic" element={<Sonic />} /> */}
           </Routes>

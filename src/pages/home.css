@@ -49,3 +49,11 @@
 .links li {
   list-style: none;
 }
+
+.ta-home-btn {
+  background-color: #1aac83 !important;
+}
+
+.ta-home-btn:hover {
+  background-color: #158a69 !important;
+}

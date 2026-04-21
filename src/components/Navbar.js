@@ -67,6 +67,9 @@ export default function Navbar() {
               <CustomLink to="/wearable" onClick={closeMenu}>
                 Wearable
               </CustomLink>
+              <CustomLink to="/tech-advice" onClick={closeMenu}>
+                Tech Advice
+              </CustomLink>
               <CustomLink to="/appointment" onClick={closeMenu}>
                 Appointment
               </CustomLink>
@@ -85,6 +88,7 @@ export default function Navbar() {
             <CustomLink to="/smartphone">Smartphone</CustomLink>
             <CustomLink to="/streaming">Streaming</CustomLink>
             <CustomLink to="/wearable">Wearable</CustomLink>
+            <CustomLink to="/tech-advice">Tech Advice</CustomLink>
             <CustomLink to="/appointment">Appointment</CustomLink>
             <CustomLink to="/about">About</CustomLink>
           </ol>

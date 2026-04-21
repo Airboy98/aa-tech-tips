@@ -69,6 +69,9 @@ export default function Home() {
             <button>Wearable</button>
           </CustomLink>
         </div>
+        <CustomLink to="/tech-advice">
+          <button className="ta-home-btn">Ask a Tech Question — $5</button>
+        </CustomLink>
         <CustomLink to="/appointment">
           <button>Appointment</button>
         </CustomLink>
