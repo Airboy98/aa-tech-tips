@@ -355,7 +355,7 @@ export default function Tech101() {
               letterSpacing: "0.5px",
             }}
           >
-            Join DeleteMe Now
+            Join DeleteMe Now!
           </a>
         </div>
       </Collapsible>
