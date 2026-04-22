@@ -331,8 +331,7 @@ export default function Tech101() {
             </li>
             <li>
               <b>Pricing:</b> DeleteMe offers a variety of pricing packages for
-              1 and 2 year plans for 1, 2 or a family of 4, starting at
-              $129/year.
+              1 and 2 year plans for 1, 2 or 4 people, starting at $129/year.
             </li>
           </ul>
 
