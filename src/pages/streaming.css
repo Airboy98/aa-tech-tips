@@ -53,3 +53,82 @@
   background-color: #19578d;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.game-search-dropdown {
+  width: 0;
+  min-width: 100%;
+  box-sizing: border-box;
+  background-color: #333333;
+  border-radius: 20px;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 360px;
+  margin-top: 6px;
+  scrollbar-width: thin;
+  /* scrollbar-color: #555 transparent; */
+}
+
+.game-search-dropdown::-webkit-scrollbar {
+  width: 4px;
+}
+
+.game-search-dropdown::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 2px;
+}
+
+.game-search-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-top: 1px solid #444;
+  transition: background-color 0.15s;
+}
+
+.game-search-dropdown-item:first-child {
+  border-top: none;
+}
+
+.game-search-dropdown-item:hover {
+  background-color: #444;
+}
+
+.game-search-dropdown-item img {
+  width: 40px;
+  height: 53px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.game-search-no-cover {
+  width: 40px;
+  height: 53px;
+  background: #555;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.game-search-dropdown-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.game-search-dropdown-name {
+  color: white;
+  font-size: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.game-search-dropdown-year {
+  color: #aaa;
+  font-size: 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}

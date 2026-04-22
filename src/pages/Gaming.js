@@ -7,14 +7,7 @@ import NewReleases from "../components/NewReleases";
 import DeveloperSearch from "../components/DeveloperSearch";
 
 export default function Gaming() {
-  const [searchGame, setSearchGame] = useState("");
   const [searchDeveloper, setSearchDeveloper] = useState("");
-
-  const handleSearchGame = (e) => {
-    e.preventDefault();
-    const game = e.target.elements.q.value;
-    setSearchGame(game);
-  };
 
   const handleSearchDeveloper = (e) => {
     e.preventDefault();
@@ -31,34 +24,7 @@ export default function Gaming() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Game Search</button>}
       >
-        <div className="internet">
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <form onSubmit={handleSearchGame}>
-                    <div className="search">
-                      <input
-                        type="search"
-                        name="q"
-                        placeholder="Enter game name..."
-                      />
-                    </div>
-                    <button>
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: "24px", color: "white" }}
-                      >
-                        search
-                      </span>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <GameSearch searchQuery={searchGame} />
+        <GameSearch />
       </Collapsible>
       <Collapsible
         trigger={
