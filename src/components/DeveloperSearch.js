@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 
-function DeveloperSearch({ searchQuery }) {
+function DeveloperSearch() {
+  const [query, setQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [searchResult, setSearchResult] = useState(null);
   const [hoveredGame, setHoveredGame] = useState(null);
   const [tappedGame, setTappedGame] = useState(null);
   const [selectedGame, setSelectedGame] = useState(null);
   const isTouching = useRef(false);
+  const wrapperRef = useRef(null);
 
   const formatDate = (unix) => {
     if (!unix) return "Unknown";
@@ -18,13 +22,42 @@ function DeveloperSearch({ searchQuery }) {
 
   const getOfficialWebsite = (websites) => {
     if (!websites || websites.length === 0) return null;
-    // category 1 = official site
     const official = websites.find((w) => w.category === 1);
     return official ? official.url : websites[0].url;
   };
 
-  const searchDeveloper = (query) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!query.trim()) return;
     fetch(`/api/igdb-developer?query=${encodeURIComponent(query)}`)
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.results && json.results.length > 0) {
+          if (json.results.length === 1) {
+            fetchDeveloperById(json.results[0].id);
+            setSearchResults([]);
+            setShowDropdown(false);
+          } else {
+            setSearchResults(json.results);
+            setSearchResult(null);
+            setShowDropdown(true);
+          }
+        } else {
+          setSearchResults([]);
+          setSearchResult(null);
+          setShowDropdown(false);
+        }
+      })
+      .catch((err) => {
+        console.error("Error searching IGDB:", err);
+        setSearchResults([]);
+        setSearchResult(null);
+        setShowDropdown(false);
+      });
+  };
+
+  const fetchDeveloperById = (id) => {
+    fetch(`/api/igdb-developer?id=${id}`)
       .then((res) => res.json())
       .then((json) => {
         if (json.results && json.results.length > 0) {
@@ -33,17 +66,27 @@ function DeveloperSearch({ searchQuery }) {
           setSearchResult(null);
         }
       })
-      .catch((error) => {
-        console.error("Error searching IGDB:", error);
+      .catch((err) => {
+        console.error("Error fetching developer:", err);
         setSearchResult(null);
       });
   };
 
+  const handleSelect = (company) => {
+    fetchDeveloperById(company.id);
+    setShowDropdown(false);
+    setSearchResults([]);
+  };
+
   useEffect(() => {
-    if (searchQuery) {
-      searchDeveloper(searchQuery);
-    }
-  }, [searchQuery]);
+    const onClickOutside = (e) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
 
   useEffect(() => {
     const lock = selectedGame ? "hidden" : "";
@@ -69,10 +112,65 @@ function DeveloperSearch({ searchQuery }) {
   const sortedGames = [...games].sort(
     (a, b) => a.first_release_date - b.first_release_date,
   );
-  console.log("First game sample:", sortedGames[0]);
 
   return (
-    <div>
+    <div ref={wrapperRef}>
+      <div className="internet" style={{ textAlign: "center" }}>
+        <table style={{ textAlign: "left" }}>
+          <tbody>
+            <tr>
+              <td>
+                <form onSubmit={handleSubmit}>
+                  <div className="search">
+                    <input
+                      type="search"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Enter developer name..."
+                    />
+                  </div>
+                  <button type="submit">
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: "24px", color: "white" }}
+                    >
+                      search
+                    </span>
+                  </button>
+                </form>
+
+                {showDropdown && (
+                  <div className="game-search-dropdown">
+                    {searchResults.map((company, i) => (
+                      <div
+                        key={company.id ?? i}
+                        className="game-search-dropdown-item"
+                        onClick={() => handleSelect(company)}
+                      >
+                        {company.logo ? (
+                          <img
+                            src={company.logo.url}
+                            alt={company.name}
+                            style={{ background: "#fff", borderRadius: "4px" }}
+                          />
+                        ) : (
+                          <div className="game-search-no-cover" />
+                        )}
+                        <div className="game-search-dropdown-info">
+                          <span className="game-search-dropdown-name">
+                            {company.name}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       {searchResult && (
         <div className="streaming2">
           <table>

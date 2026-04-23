@@ -1,20 +1,11 @@
 import Collapsible from "react-collapsible";
 import "./television.css";
 import GameSearch from "../components/GameSearch";
-import { useState } from "react";
 import UpcomingGames from "../components/UpcomingGames";
 import NewReleases from "../components/NewReleases";
 import DeveloperSearch from "../components/DeveloperSearch";
 
 export default function Gaming() {
-  const [searchDeveloper, setSearchDeveloper] = useState("");
-
-  const handleSearchDeveloper = (e) => {
-    e.preventDefault();
-    const developer = e.target.elements.q.value;
-    setSearchDeveloper(developer);
-  };
-
   return (
     <>
       <div className="section-header">
@@ -31,34 +22,7 @@ export default function Gaming() {
           <button className="collapsible-trigger">Developer Search</button>
         }
       >
-        <div className="internet">
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <form onSubmit={handleSearchDeveloper}>
-                    <div className="search">
-                      <input
-                        type="search"
-                        name="q"
-                        placeholder="Enter developer name..."
-                      />
-                    </div>
-                    <button>
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: "24px", color: "white" }}
-                      >
-                        search
-                      </span>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <DeveloperSearch searchQuery={searchDeveloper} />
+        <DeveloperSearch />
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">New Releases</button>}
