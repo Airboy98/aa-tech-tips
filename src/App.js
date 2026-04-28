@@ -12,6 +12,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Appointment from "./pages/Appointment";
 import Baby from "./pages/baby";
+import TechByte from "./pages/TechByte";
+import TechByteSuccess from "./pages/TechByteSuccess";
 // import Sonic from "/Sonic";
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/appointment" element={<Appointment />} />
             <Route path="/baby" element={<Baby />} />
+            <Route path="/tech-byte" element={<TechByte />} />
+            <Route path="/tech-byte/success" element={<TechByteSuccess />} />
             {/* <Route path="/sonic" element={<Sonic />} /> */}
           </Routes>
         </BrowserRouter>

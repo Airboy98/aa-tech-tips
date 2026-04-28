@@ -9,9 +9,9 @@ export default function Navbar() {
   useEffect(() => {
     const handleResize = () => {
       // Adjust the value as needed to determine when to show the button
-      setshowBurger(window.innerWidth < 1010);
-      if (window.innerWidth >= 1010) {
-        setIsOpen(false); // Close the menu if the window width is greater than or equal to 1010
+      setshowBurger(window.innerWidth < 1100);
+      if (window.innerWidth >= 1100) {
+        setIsOpen(false); // Close the menu if the window width is greater than or equal to 1100
       }
     };
 
@@ -33,7 +33,7 @@ export default function Navbar() {
     <header>
       <nav className="nav">
         <Link to="/" className="site-title" onClick={closeMenu}>
-          <img src="site-logo.png" alt="" height="50" width="50" />
+          <img src="/site-logo.png" alt="" height="50" width="50" />
         </Link>
         {showBurger && (
           <label className="hamburger-menu">
@@ -43,6 +43,9 @@ export default function Navbar() {
         {showBurger ? (
           <div className={`sidebar ${isOpen ? "open" : ""}`}>
             <ul>
+              <CustomLink to="/tech-byte" onClick={closeMenu}>
+                Tech Byte
+              </CustomLink>
               <CustomLink to="/tech101" onClick={closeMenu}>
                 Tech 101
               </CustomLink>
@@ -70,6 +73,7 @@ export default function Navbar() {
               <CustomLink to="/appointment" onClick={closeMenu}>
                 Appointment
               </CustomLink>
+
               <CustomLink to="/about" onClick={closeMenu}>
                 About
               </CustomLink>
@@ -77,6 +81,7 @@ export default function Navbar() {
           </div>
         ) : (
           <ol>
+            <CustomLink to="/tech-byte">Tech Byte</CustomLink>{" "}
             <CustomLink to="/tech101">Tech 101</CustomLink>
             <CustomLink to="/computer">Computer</CustomLink>
             <CustomLink to="/television">Television</CustomLink>

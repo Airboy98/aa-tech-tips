@@ -2,6 +2,8 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const cheerio = require("cheerio");
+const Stripe = require("stripe");
+const Anthropic = require("@anthropic-ai/sdk");
 require("dotenv").config();
 
 const app = express();
@@ -170,21 +172,26 @@ app.get("/api/igdb-developer", async (req, res) => {
 
     try {
       const data = await igdbFetch(IGDB_COMPANIES_URL, body);
-      if (!data || data.length === 0) return res.status(404).json({ error: "Company not found" });
+      if (!data || data.length === 0)
+        return res.status(404).json({ error: "Company not found" });
 
       const company = data[0];
       const gameIds = [
         ...(company.developed || []),
         ...(company.published || []),
-      ].map((g) => g.id).filter(Boolean);
+      ]
+        .map((g) => g.id)
+        .filter(Boolean);
 
       let gameDetailsMap = {};
       if (gameIds.length > 0) {
         const gameDetails = await igdbFetch(
           IGDB_GAMES_URL,
-          `fields summary, rating; where id = (${gameIds.join(",")}); limit 500;`
+          `fields summary, rating; where id = (${gameIds.join(",")}); limit 500;`,
         );
-        gameDetails.forEach((g) => { gameDetailsMap[g.id] = g; });
+        gameDetails.forEach((g) => {
+          gameDetailsMap[g.id] = g;
+        });
       }
 
       const enrichGames = (games) =>
@@ -193,7 +200,10 @@ app.get("/api/igdb-developer", async (req, res) => {
       const normalized = {
         ...company,
         logo: company.logo
-          ? { ...company.logo, url: `https:${company.logo.url.replace("t_thumb", "t_720p")}` }
+          ? {
+              ...company.logo,
+              url: `https:${company.logo.url.replace("t_thumb", "t_720p")}`,
+            }
           : null,
         developed: enrichGames(company.developed),
         published: enrichGames(company.published),
@@ -232,7 +242,10 @@ app.get("/api/igdb-developer", async (req, res) => {
       name: c.name,
       slug: c.slug,
       logo: c.logo
-        ? { ...c.logo, url: `https:${c.logo.url.replace("t_thumb", "t_logo_med")}` }
+        ? {
+            ...c.logo,
+            url: `https:${c.logo.url.replace("t_thumb", "t_logo_med")}`,
+          }
         : null,
     }));
 
@@ -283,6 +296,73 @@ app.get("/api/lyrics", async (req, res) => {
     res.json({ lyrics: lyrics || "Lyrics not found." });
   } catch {
     res.status(500).json({ error: "Failed to fetch lyrics" });
+  }
+});
+
+// TECH BYTE — create Payment Intent
+app.post("/api/create-payment-intent", async (req, res) => {
+  const { question, model } = req.body;
+  if (!question || question.trim().length < 100) {
+    return res.status(400).json({ error: "Question too short" });
+  }
+
+  const allowedModels = {
+    "claude-sonnet-4-6": { amount: 300, label: "Claude Sonnet 4.6" },
+    "claude-opus-4-7": { amount: 500, label: "Claude Opus 4.7" },
+  };
+  const tier = allowedModels[model] || allowedModels["claude-sonnet-4-6"];
+
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  const q = question.trim();
+
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: tier.amount,
+      currency: "usd",
+      metadata: {
+        model: model || "claude-sonnet-4-6",
+        question_1: q.substring(0, 500),
+        question_2: q.substring(500, 1000),
+      },
+    });
+    res.json({ clientSecret: paymentIntent.client_secret, paymentIntentId: paymentIntent.id });
+  } catch (err) {
+    console.error("Stripe error:", err);
+    res.status(500).json({ error: "Failed to create payment intent" });
+  }
+});
+
+// TECH BYTE — verify payment and return Claude answer
+app.get("/api/tech-byte-answer", async (req, res) => {
+  const { payment_intent_id } = req.query;
+  if (!payment_intent_id) return res.status(400).json({ error: "Missing payment_intent_id" });
+
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+  try {
+    const paymentIntent = await stripe.paymentIntents.retrieve(payment_intent_id);
+    if (paymentIntent.status !== "succeeded") {
+      return res.status(402).json({ error: "Payment not completed" });
+    }
+
+    const question =
+      (paymentIntent.metadata.question_1 || "") + (paymentIntent.metadata.question_2 || "");
+    const model = paymentIntent.metadata.model || "claude-sonnet-4-6";
+
+    const message = await anthropic.messages.create({
+      model,
+      max_tokens: 2048,
+      system:
+        "You are a thorough and knowledgeable tech expert. A user has paid for a premium, detailed answer to their tech question. Provide a comprehensive, well-structured, and accurate response. Use headings, bullet points, or numbered steps where it improves clarity. Cover root causes, step-by-step solutions, and any relevant tips or caveats. Be thorough but clear. Do not ask follow-up questions or invite the user to ask more — end with your complete answer only.",
+      messages: [{ role: "user", content: question }],
+    });
+
+    const answer = message.content[0].text;
+    res.json({ question, answer });
+  } catch (err) {
+    console.error("Tech Byte error:", err);
+    res.status(500).json({ error: "Failed to generate answer" });
   }
 });
 

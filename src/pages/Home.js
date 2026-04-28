@@ -40,10 +40,17 @@ export default function Home() {
           navigate the site with the links in the top right corner (or{" "}
           <img src="images/hamburger.png" height="20" width="20" /> menu on
           smartphones).
+          <br></br>
+          <br></br>Tap Tech Byte below to ask ANY tech question and get a
+          comprehensive AI powered answer.
         </h4>
       </Collapsible>
+
       <div className="links">
         <div className="button-grid">
+          <CustomLink to="/tech-byte">
+            <button>Tech Byte</button>
+          </CustomLink>
           <CustomLink to="/tech101">
             <button>Tech 101</button>
           </CustomLink>
@@ -68,10 +75,11 @@ export default function Home() {
           <CustomLink to="/wearable">
             <button>Wearable</button>
           </CustomLink>
+          <CustomLink to="/appointment">
+            <button>Appointment</button>
+          </CustomLink>
         </div>
-        <CustomLink to="/appointment">
-          <button>Appointment</button>
-        </CustomLink>
+
         <CustomLink to="/about">
           <button>About</button>
         </CustomLink>
