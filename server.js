@@ -7,7 +7,7 @@ const Anthropic = require("@anthropic-ai/sdk");
 require("dotenv").config();
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: "5mb" }));
 
 const IGDB_GAMES_URL = "https://api.igdb.com/v4/games";
 const IGDB_COMPANIES_URL = "https://api.igdb.com/v4/companies";
@@ -333,8 +333,8 @@ app.post("/api/create-payment-intent", async (req, res) => {
 });
 
 // TECH BYTE — verify payment and return Claude answer
-app.get("/api/tech-byte-answer", async (req, res) => {
-  const { payment_intent_id } = req.query;
+app.post("/api/tech-byte-answer", async (req, res) => {
+  const { payment_intent_id, image_base64, image_media_type } = req.body;
   if (!payment_intent_id) return res.status(400).json({ error: "Missing payment_intent_id" });
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -350,12 +350,23 @@ app.get("/api/tech-byte-answer", async (req, res) => {
       (paymentIntent.metadata.question_1 || "") + (paymentIntent.metadata.question_2 || "");
     const model = paymentIntent.metadata.model || "claude-sonnet-4-6";
 
+    const userContent =
+      image_base64 && image_media_type
+        ? [
+            {
+              type: "image",
+              source: { type: "base64", media_type: image_media_type, data: image_base64 },
+            },
+            { type: "text", text: question },
+          ]
+        : question;
+
     const message = await anthropic.messages.create({
       model,
       max_tokens: 2048,
       system:
         "You are a thorough and knowledgeable tech expert. A user has paid for a premium, detailed answer to their tech question. Provide a comprehensive, well-structured, and accurate response. Use headings, bullet points, or numbered steps where it improves clarity. Cover root causes, step-by-step solutions, and any relevant tips or caveats. Be thorough but clear. Do not ask follow-up questions or invite the user to ask more — end with your complete answer only.",
-      messages: [{ role: "user", content: question }],
+      messages: [{ role: "user", content: userContent }],
     });
 
     const answer = message.content[0].text;

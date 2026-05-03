@@ -19,15 +19,14 @@ const TIERS = [
     model: "claude-sonnet-4-6",
     label: "Sonnet 4.6",
     price: "$3",
-    description:
-      "This model excels at being fast, accurate, and thorough — great for most tech questions.",
+    description: "This model excels at being fast, accurate, and thorough.",
   },
   {
     model: "claude-opus-4-7",
     label: "Opus 4.7",
     price: "$5",
     description:
-      "This is Anthropic's most powerful model — best for complex, multi-part questions.",
+      "This is Anthropic's most powerful model. Supplement your question with a picture for the best results.",
   },
 ];
 
@@ -183,6 +182,41 @@ function TechByteForm({ model, price, description }) {
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [imageBase64, setImageBase64] = useState(null);
+  const [imageMediaType, setImageMediaType] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imageError, setImageError] = useState(null);
+
+  const isOpus = model === "claude-opus-4-7";
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      setImageError("Only image files are supported.");
+      return;
+    }
+    if (file.size > 3 * 1024 * 1024) {
+      setImageError("Image must be under 3MB.");
+      return;
+    }
+    setImageError(null);
+    setImagePreview(URL.createObjectURL(file));
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result.split(",")[1];
+      setImageBase64(base64);
+      setImageMediaType(file.type);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemoveImage = () => {
+    setImageBase64(null);
+    setImageMediaType(null);
+    setImagePreview(null);
+    setImageError(null);
+  };
 
   const charCount = question.length;
   const isReady = charCount >= MIN_CHARS && charCount <= MAX_CHARS;
@@ -219,9 +253,16 @@ function TechByteForm({ model, price, description }) {
   const handlePaymentSuccess = async (intentId) => {
     setStep("loading");
     try {
-      const res = await fetch(
-        `/api/tech-byte-answer?payment_intent_id=${intentId}`,
-      );
+      const body = { payment_intent_id: intentId };
+      if (imageBase64) {
+        body.image_base64 = imageBase64;
+        body.image_media_type = imageMediaType;
+      }
+      const res = await fetch("/api/tech-byte-answer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
       const data = await res.json();
       if (data.answer) {
         setAnswer(data.answer);
@@ -249,6 +290,10 @@ function TechByteForm({ model, price, description }) {
     setPaymentIntentId("");
     setAnswer("");
     setError(null);
+    setImageBase64(null);
+    setImageMediaType(null);
+    setImagePreview(null);
+    setImageError(null);
   };
 
   if (step === "loading") {
@@ -412,7 +457,11 @@ function TechByteForm({ model, price, description }) {
                 if (e.target.value.length <= MAX_CHARS)
                   setQuestion(e.target.value);
               }}
-              placeholder="Example: I have a 2015 MacBook Pro running the latest compatible macOS. My Wi-Fi keeps disconnecting intermittently. My router is an Asus AX6000. I've rebooted both devices. My phone stays connected fine. What could be causing this and how do I fix it?"
+              placeholder={
+                isOpus
+                  ? "Example: I have a 2019 iMac running macOS Ventura. My external 4K monitor has horizontal colored lines in the middle of the screen as seen in the photo attached. The monitor is an LG 27UK850. I've tried a different Thunderbolt cable. What's causing this and how do I fix it?"
+                  : "Example: I have a 2015 MacBook Pro running the latest compatible macOS. My Wi-Fi keeps disconnecting intermittently. My router is an Asus AX6000. I've rebooted both devices. My phone stays connected fine. What could be causing this and how do I fix it?"
+              }
               rows={10}
               style={{
                 width: "100%",
@@ -454,6 +503,78 @@ function TechByteForm({ model, price, description }) {
                 </span>
               )}
             </div>
+            {isOpus && (
+              <div style={{ marginBottom: "16px" }}>
+                {imagePreview ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                    }}
+                  >
+                    <img
+                      src={imagePreview}
+                      alt="Attached"
+                      style={{
+                        width: "64px",
+                        height: "64px",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                        border: "1px solid #3c709f",
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={handleRemoveImage}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        color: "#e07070",
+                        fontSize: "13px",
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Remove image
+                    </button>
+                  </div>
+                ) : (
+                  <label style={{ display: "inline-block", cursor: "pointer" }}>
+                    <span
+                      style={{
+                        display: "inline-block",
+                        padding: "8px 16px",
+                        background: "#0f1e2e",
+                        border: "1px solid #3c709f",
+                        borderRadius: "8px",
+                        color: "#aac4e0",
+                        fontSize: "13px",
+                      }}
+                    >
+                      + Attach an image (optional)
+                    </span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      style={{ display: "none" }}
+                    />
+                  </label>
+                )}
+                {imageError && (
+                  <p
+                    style={{
+                      color: "#e07070",
+                      fontSize: "12px",
+                      margin: "6px 0 0",
+                    }}
+                  >
+                    {imageError}
+                  </p>
+                )}
+              </div>
+            )}
             <button
               type="submit"
               disabled={!isReady || loading}
@@ -553,7 +674,7 @@ function TechByteForm({ model, price, description }) {
             style={{
               background: "none",
               border: "none",
-              color: "#6a8faf",
+              color: "#ffffff",
               fontSize: "13px",
               cursor: "pointer",
               marginTop: "12px",

@@ -158,6 +158,16 @@ export default function Computer() {
               <td>cmd+p</td>
             </tr>
             <tr>
+              <td>Rename file</td>
+              <td>F2</td>
+              <td>Enter</td>
+            </tr>
+            <tr>
+              <td>Reload page</td>
+              <td>F5</td>
+              <td>cmd+r</td>
+            </tr>
+            <tr>
               <td>Reset GPU</td>
               <td>win+ctrl+shift+b</td>
               <td>N/A</td>
