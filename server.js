@@ -319,6 +319,7 @@ app.post("/api/create-payment-intent", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: tier.amount,
       currency: "usd",
+      automatic_payment_methods: { enabled: true },
       metadata: {
         model: model || "claude-sonnet-4-6",
         question_1: q.substring(0, 500),
