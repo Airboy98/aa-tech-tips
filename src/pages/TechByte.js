@@ -138,7 +138,7 @@ function CheckoutForm({ price, onSuccess }) {
         borderRadius: 0,
       }}
     >
-      <PaymentElement />
+      <PaymentElement options={{ wallets: { applePay: "auto", googlePay: "auto" } }} />
       <button
         type="submit"
         disabled={!stripe || loading}
@@ -469,7 +469,7 @@ function TechByteForm({ model, price, description }) {
                 border: "1px solid #3c709f",
                 borderRadius: "10px",
                 color: "#fff",
-                fontSize: "14px",
+                fontSize: "16px",
                 lineHeight: "1.6",
                 padding: "12px",
                 resize: "vertical",
