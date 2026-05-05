@@ -308,7 +308,7 @@ app.post("/api/create-payment-intent", async (req, res) => {
 
   const allowedModels = {
     "claude-sonnet-4-6": { amount: 300, label: "Claude Sonnet 4.6" },
-    "claude-opus-4-7": { amount: 500, label: "Claude Opus 4.7" },
+    "claude-opus-4-7": { amount: 50, label: "Claude Opus 4.7" },
   };
   const tier = allowedModels[model] || allowedModels["claude-sonnet-4-6"];
 
@@ -325,7 +325,10 @@ app.post("/api/create-payment-intent", async (req, res) => {
         question_2: q.substring(500, 1000),
       },
     });
-    res.json({ clientSecret: paymentIntent.client_secret, paymentIntentId: paymentIntent.id });
+    res.json({
+      clientSecret: paymentIntent.client_secret,
+      paymentIntentId: paymentIntent.id,
+    });
   } catch (err) {
     console.error("Stripe error:", err);
     res.status(500).json({ error: "Failed to create payment intent" });
@@ -335,19 +338,22 @@ app.post("/api/create-payment-intent", async (req, res) => {
 // TECH BYTE — verify payment and return Claude answer
 app.post("/api/tech-byte-answer", async (req, res) => {
   const { payment_intent_id, image_base64, image_media_type } = req.body;
-  if (!payment_intent_id) return res.status(400).json({ error: "Missing payment_intent_id" });
+  if (!payment_intent_id)
+    return res.status(400).json({ error: "Missing payment_intent_id" });
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
   try {
-    const paymentIntent = await stripe.paymentIntents.retrieve(payment_intent_id);
+    const paymentIntent =
+      await stripe.paymentIntents.retrieve(payment_intent_id);
     if (paymentIntent.status !== "succeeded") {
       return res.status(402).json({ error: "Payment not completed" });
     }
 
     const question =
-      (paymentIntent.metadata.question_1 || "") + (paymentIntent.metadata.question_2 || "");
+      (paymentIntent.metadata.question_1 || "") +
+      (paymentIntent.metadata.question_2 || "");
     const model = paymentIntent.metadata.model || "claude-sonnet-4-6";
 
     const userContent =
@@ -355,7 +361,11 @@ app.post("/api/tech-byte-answer", async (req, res) => {
         ? [
             {
               type: "image",
-              source: { type: "base64", media_type: image_media_type, data: image_base64 },
+              source: {
+                type: "base64",
+                media_type: image_media_type,
+                data: image_base64,
+              },
             },
             { type: "text", text: question },
           ]
