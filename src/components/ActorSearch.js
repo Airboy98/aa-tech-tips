@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
 
-function ActorSearch({ searchQuery }) {
+function ActorSearch() {
+  const [query, setQuery] = useState("");
+  const [dropdownResults, setDropdownResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [searchResult, setSearchResult] = useState(null);
   const [movieCredits, setMovieCredits] = useState(null);
   const [tvCredits, setTvCredits] = useState(null);
@@ -10,6 +14,7 @@ function ActorSearch({ searchQuery }) {
   const [tappedCredit, setTappedCredit] = useState(null);
   const [selectedCredit, setSelectedCredit] = useState(null);
   const isTouching = useRef(false);
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
     const lock = selectedCredit ? "hidden" : "";
@@ -21,81 +26,86 @@ function ActorSearch({ searchQuery }) {
     };
   }, [selectedCredit]);
 
-  const searchActor = (query) => {
-    fetch(`${BASE_URL}/search/person?api_key=${API_KEY}&query=${query}`)
+  useEffect(() => {
+    const onClickOutside = (e) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
+  const loadActorById = (id) => {
+    fetch(`${BASE_URL}/person/${id}?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.results && json.results.length > 0) {
-          const actorId = json.results[0].id;
-          fetch(`${BASE_URL}/person/${actorId}?api_key=${API_KEY}`)
-            .then((res) => res.json())
-            .then((json) => {
-              setSearchResult(json);
-              fetchMovieCredits(actorId);
-              fetchTvCredits(actorId);
-            });
-        } else {
+        setSearchResult(json);
+        fetchMovieCredits(id);
+        fetchTvCredits(id);
+      })
+      .catch(() => setSearchResult(null));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!query.trim()) return;
+    fetch(`${BASE_URL}/search/person?api_key=${API_KEY}&query=${encodeURIComponent(query)}`)
+      .then((res) => res.json())
+      .then((json) => {
+        const results = json.results || [];
+        if (results.length === 0) {
+          setDropdownResults([]);
+          setShowDropdown(false);
           setSearchResult(null);
           setMovieCredits(null);
           setTvCredits(null);
+        } else if (results.length === 1) {
+          setDropdownResults([]);
+          setShowDropdown(false);
+          loadActorById(results[0].id);
+        } else {
+          setDropdownResults(results.slice(0, 10));
+          setShowDropdown(true);
+          setSearchResult(null);
         }
       })
-      .catch((error) => {
-        console.error("Error searching for actor:", error);
+      .catch(() => {
         setSearchResult(null);
-        setMovieCredits(null);
-        setTvCredits(null);
+        setShowDropdown(false);
       });
+  };
+
+  const handleSelect = (person) => {
+    setShowDropdown(false);
+    setDropdownResults([]);
+    loadActorById(person.id);
   };
 
   const fetchMovieCredits = (actorId) => {
     fetch(`${BASE_URL}/person/${actorId}/movie_credits?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.cast) {
-          setMovieCredits(
-            json.cast.filter((credit) => credit.release_date !== ""),
-          );
-        } else {
-          setMovieCredits(null);
-        }
+        setMovieCredits(json.cast ? json.cast.filter((c) => c.release_date !== "") : null);
       })
-      .catch((error) => {
-        console.error("Error fetching movie credits:", error);
-        setMovieCredits(null);
-      });
+      .catch(() => setMovieCredits(null));
   };
 
   const fetchTvCredits = (actorId) => {
     fetch(`${BASE_URL}/person/${actorId}/tv_credits?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.cast) {
-          const uniqueShows = json.cast.reduce((acc, credit) => {
-            if (
-              credit.first_air_date !== "" &&
-              !acc.some((show) => show.id === credit.id)
-            ) {
-              acc.push(credit);
-            }
-            return acc;
-          }, []);
-          setTvCredits(uniqueShows);
-        } else {
-          setTvCredits(null);
-        }
+        if (!json.cast) return setTvCredits(null);
+        const uniqueShows = json.cast.reduce((acc, credit) => {
+          if (credit.first_air_date !== "" && !acc.some((s) => s.id === credit.id)) {
+            acc.push(credit);
+          }
+          return acc;
+        }, []);
+        setTvCredits(uniqueShows);
       })
-      .catch((error) => {
-        console.error("Error fetching TV credits:", error);
-        setTvCredits(null);
-      });
+      .catch(() => setTvCredits(null));
   };
-
-  useEffect(() => {
-    if (searchQuery) {
-      searchActor(searchQuery);
-    }
-  }, [searchQuery]);
 
   const handleCreditClick = (id, credit, type) => {
     if (isTouching.current) {
@@ -118,98 +128,102 @@ function ActorSearch({ searchQuery }) {
     borderRadius: "4px",
     display: "block",
     transition: "transform 0.2s ease, box-shadow 0.2s ease",
-    transform:
-      hoveredCredit === id || tappedCredit === id ? "scale(1.5)" : "scale(1)",
-    boxShadow:
-      hoveredCredit === id || tappedCredit === id
-        ? "0 0 0 2px #3c709f, 0 8px 20px rgba(0,0,0,0.5)"
-        : "none",
+    transform: hoveredCredit === id || tappedCredit === id ? "scale(1.5)" : "scale(1)",
+    boxShadow: hoveredCredit === id || tappedCredit === id
+      ? "0 0 0 2px #3c709f, 0 8px 20px rgba(0,0,0,0.5)"
+      : "none",
   });
 
   return (
-    <div>
+    <div ref={wrapperRef}>
+      <div className="internet" style={{ textAlign: "center" }}>
+        <table style={{ textAlign: "left" }}>
+          <tbody>
+            <tr>
+              <td>
+                <form onSubmit={handleSubmit}>
+                  <div className="search">
+                    <input
+                      type="search"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Enter actor name..."
+                    />
+                  </div>
+                  <button type="submit">
+                    <span className="material-symbols-outlined" style={{ fontSize: "24px", color: "white" }}>
+                      search
+                    </span>
+                  </button>
+                </form>
+
+                {showDropdown && (
+                  <div className="search-dropdown">
+                    {dropdownResults.map((person) => (
+                      <div
+                        key={person.id}
+                        className="search-dropdown-item"
+                        onClick={() => handleSelect(person)}
+                      >
+                        <img
+                          src={person.profile_path ? `https://image.tmdb.org/t/p/w92${person.profile_path}` : "nopicture.png"}
+                          alt={person.name}
+                        />
+                        <div className="search-dropdown-info">
+                          <span className="search-dropdown-name">{person.name}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       {searchResult && (
         <div className="streaming2">
           <table>
             <tbody>
               <tr>
                 <td>
-                  <a
-                    href={`https://www.themoviedb.org/person/${searchResult.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={`https://www.themoviedb.org/person/${searchResult.id}`} target="_blank" rel="noopener noreferrer">
                     <img
                       style={{ width: "200px", height: "300px" }}
-                      src={
-                        searchResult.profile_path
-                          ? `https://image.tmdb.org/t/p/w500${searchResult.profile_path}`
-                          : "nopicture.png"
-                      }
+                      src={searchResult.profile_path ? `https://image.tmdb.org/t/p/w500${searchResult.profile_path}` : "nopicture.png"}
                       alt={searchResult.name}
                     />
                   </a>
                   <h1>{searchResult.name}</h1>
                   <h4>
                     {searchResult.deathday
-                      ? `${Math.floor(
-                          (new Date(searchResult.deathday) -
-                            new Date(searchResult.birthday)) /
-                            (1000 * 60 * 60 * 24 * 365.25),
-                        )} years old (deceased)`
+                      ? `${Math.floor((new Date(searchResult.deathday) - new Date(searchResult.birthday)) / (1000 * 60 * 60 * 24 * 365.25))} years old (deceased)`
                       : searchResult.birthday
-                        ? `${Math.floor(
-                            (new Date() - new Date(searchResult.birthday)) /
-                              (1000 * 60 * 60 * 24 * 365.25),
-                          )} years old`
-                        : "Age unknown"}
+                      ? `${Math.floor((new Date() - new Date(searchResult.birthday)) / (1000 * 60 * 60 * 24 * 365.25))} years old`
+                      : "Age unknown"}
                   </h4>
                   <hr />
                   <h4>Movies</h4>
                   <h4>{movieCredits ? movieCredits.length : 0} Credits</h4>
                   {movieCredits && (
-                    <div
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: "6px",
-                        justifyContent: "center",
-                      }}
-                    >
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }}>
                       {movieCredits
-                        .sort((a, b) =>
-                          a.release_date < b.release_date ? -1 : 1,
-                        )
+                        .sort((a, b) => (a.release_date < b.release_date ? -1 : 1))
                         .map((credit) => {
                           const id = `m-${credit.id}`;
                           return (
                             <div
                               key={credit.id}
-                              style={{
-                                position: "relative",
-                                display: "inline-block",
-                                cursor: "pointer",
-                                zIndex:
-                                  hoveredCredit === id || tappedCredit === id
-                                    ? 1
-                                    : 0,
-                              }}
+                              style={{ position: "relative", display: "inline-block", cursor: "pointer", zIndex: hoveredCredit === id || tappedCredit === id ? 1 : 0 }}
                               onMouseEnter={() => setHoveredCredit(id)}
                               onMouseLeave={() => setHoveredCredit(null)}
-                              onTouchStart={() => {
-                                isTouching.current = true;
-                              }}
-                              onClick={() =>
-                                handleCreditClick(id, credit, "movie")
-                              }
+                              onTouchStart={() => { isTouching.current = true; }}
+                              onClick={() => handleCreditClick(id, credit, "movie")}
                             >
                               <img
                                 style={posterStyle(id)}
-                                src={
-                                  credit.poster_path
-                                    ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
-                                    : "noposter.png"
-                                }
+                                src={credit.poster_path ? `https://image.tmdb.org/t/p/w500${credit.poster_path}` : "noposter.png"}
                                 alt={credit.title}
                               />
                             </div>
@@ -220,48 +234,23 @@ function ActorSearch({ searchQuery }) {
                   <h4>Shows</h4>
                   <h4>{tvCredits ? tvCredits.length : 0} Credits</h4>
                   {tvCredits && (
-                    <div
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: "6px",
-                        justifyContent: "center",
-                      }}
-                    >
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }}>
                       {tvCredits
-                        .sort((a, b) =>
-                          a.first_air_date < b.first_air_date ? -1 : 1,
-                        )
+                        .sort((a, b) => (a.first_air_date < b.first_air_date ? -1 : 1))
                         .map((credit) => {
                           const id = `tv-${credit.id}`;
                           return (
                             <div
                               key={credit.id}
-                              style={{
-                                position: "relative",
-                                display: "inline-block",
-                                cursor: "pointer",
-                                zIndex:
-                                  hoveredCredit === id || tappedCredit === id
-                                    ? 1
-                                    : 0,
-                              }}
+                              style={{ position: "relative", display: "inline-block", cursor: "pointer", zIndex: hoveredCredit === id || tappedCredit === id ? 1 : 0 }}
                               onMouseEnter={() => setHoveredCredit(id)}
                               onMouseLeave={() => setHoveredCredit(null)}
-                              onTouchStart={() => {
-                                isTouching.current = true;
-                              }}
-                              onClick={() =>
-                                handleCreditClick(id, credit, "tv")
-                              }
+                              onTouchStart={() => { isTouching.current = true; }}
+                              onClick={() => handleCreditClick(id, credit, "tv")}
                             >
                               <img
                                 style={posterStyle(id)}
-                                src={
-                                  credit.poster_path
-                                    ? `https://image.tmdb.org/t/p/w500${credit.poster_path}`
-                                    : "noposter.png"
-                                }
+                                src={credit.poster_path ? `https://image.tmdb.org/t/p/w500${credit.poster_path}` : "noposter.png"}
                                 alt={credit.name}
                               />
                             </div>
@@ -272,11 +261,7 @@ function ActorSearch({ searchQuery }) {
                   <br />
                   <h5>
                     Data provided by{" "}
-                    <a
-                      href={`https://www.themoviedb.org/person/${searchResult.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={`https://www.themoviedb.org/person/${searchResult.id}`} target="_blank" rel="noopener noreferrer">
                       TMDB
                     </a>
                   </h5>
@@ -284,158 +269,54 @@ function ActorSearch({ searchQuery }) {
               </tr>
             </tbody>
           </table>
-          <br />
-          <br />
+          <br /><br />
         </div>
       )}
+
       {selectedCredit && (
         <div
           onClick={() => setSelectedCredit(null)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "rgba(0,0,0,0.6)",
-            zIndex: 99,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          style={{ position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.6)", zIndex: 99, display: "flex", alignItems: "center", justifyContent: "center" }}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            style={{
-              backgroundColor: "#0f3455",
-              border: "1px solid #3c709f",
-              borderRadius: "12px",
-              width: "280px",
-              maxHeight: "85vh",
-              display: "flex",
-              flexDirection: "column",
-              zIndex: 100,
-              boxShadow: "0 24px 64px rgba(0,0,0,0.75)",
-              animation: "fadeIn 0.15s ease",
-            }}
+            style={{ backgroundColor: "#0f3455", border: "1px solid #3c709f", borderRadius: "12px", width: "280px", maxHeight: "85vh", display: "flex", flexDirection: "column", zIndex: 100, boxShadow: "0 24px 64px rgba(0,0,0,0.75)", animation: "fadeIn 0.15s ease" }}
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                padding: "10px 10px 0",
-                flexShrink: 0,
-              }}
-            >
+            <div style={{ display: "flex", justifyContent: "flex-end", padding: "10px 10px 0", flexShrink: 0 }}>
               <button
                 onClick={() => setSelectedCredit(null)}
-                style={{
-                  background: "#1a4a72",
-                  border: "1px solid #3c709f",
-                  borderRadius: "50%",
-                  color: "#fff",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  width: "36px",
-                  height: "36px",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  lineHeight: 1,
-                }}
+                style={{ background: "#1a4a72", border: "1px solid #3c709f", borderRadius: "50%", color: "#fff", fontSize: "20px", fontWeight: "bold", width: "36px", height: "36px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1 }}
                 aria-label="Close"
               >
                 ✕
               </button>
             </div>
-            <div
-              style={{
-                overflowY: "auto",
-                padding: "10px 20px 20px",
-                textAlign: "center",
-              }}
-            >
+            <div style={{ overflowY: "auto", padding: "10px 20px 20px", textAlign: "center" }}>
               <img
-                src={
-                  selectedCredit.credit.poster_path
-                    ? `https://image.tmdb.org/t/p/w500${selectedCredit.credit.poster_path}`
-                    : "noposter.png"
-                }
-                alt={
-                  selectedCredit.type === "movie"
-                    ? selectedCredit.credit.title
-                    : selectedCredit.credit.name
-                }
-                style={{
-                  width: "180px",
-                  height: "240px",
-                  objectFit: "cover",
-                  borderRadius: "8px",
-                  display: "block",
-                  margin: "0 auto 14px",
-                }}
+                src={selectedCredit.credit.poster_path ? `https://image.tmdb.org/t/p/w500${selectedCredit.credit.poster_path}` : "noposter.png"}
+                alt={selectedCredit.type === "movie" ? selectedCredit.credit.title : selectedCredit.credit.name}
+                style={{ width: "180px", height: "240px", objectFit: "cover", borderRadius: "8px", display: "block", margin: "0 auto 14px" }}
               />
-              <p
-                style={{
-                  margin: "0 0 6px",
-                  fontWeight: "bold",
-                  fontSize: "15px",
-                  color: "#fff",
-                }}
-              >
-                {selectedCredit.type === "movie"
-                  ? selectedCredit.credit.title
-                  : selectedCredit.credit.name}
+              <p style={{ margin: "0 0 6px", fontWeight: "bold", fontSize: "15px", color: "#fff" }}>
+                {selectedCredit.type === "movie" ? selectedCredit.credit.title : selectedCredit.credit.name}
               </p>
               {selectedCredit.credit.character && (
-                <p
-                  style={{
-                    margin: "0 0 4px",
-                    fontSize: "13px",
-                    color: "#7db3d8",
-                    fontStyle: "italic",
-                  }}
-                >
+                <p style={{ margin: "0 0 4px", fontSize: "13px", color: "#7db3d8", fontStyle: "italic" }}>
                   as {selectedCredit.credit.character}
                 </p>
               )}
-              {(selectedCredit.type === "movie"
-                ? selectedCredit.credit.release_date
-                : selectedCredit.credit.first_air_date) && (
-                <p
-                  style={{
-                    margin: "0 0 4px",
-                    fontSize: "13px",
-                    color: "#aac4e0",
-                  }}
-                >
-                  {new Date(
-                    selectedCredit.type === "movie"
-                      ? selectedCredit.credit.release_date
-                      : selectedCredit.credit.first_air_date,
-                  ).getFullYear()}
+              {(selectedCredit.type === "movie" ? selectedCredit.credit.release_date : selectedCredit.credit.first_air_date) && (
+                <p style={{ margin: "0 0 4px", fontSize: "13px", color: "#aac4e0" }}>
+                  {new Date(selectedCredit.type === "movie" ? selectedCredit.credit.release_date : selectedCredit.credit.first_air_date).getFullYear()}
                 </p>
               )}
               {selectedCredit.credit.vote_average > 0 && (
-                <p
-                  style={{
-                    margin: "0 0 10px",
-                    fontSize: "13px",
-                    color: "#aac4e0",
-                  }}
-                >
-                  ⭐ {(selectedCredit.credit.vote_average * 10).toFixed(1)} /
-                  100 ⭐
+                <p style={{ margin: "0 0 10px", fontSize: "13px", color: "#aac4e0" }}>
+                  ⭐ {(selectedCredit.credit.vote_average * 10).toFixed(1)} / 100 ⭐
                 </p>
               )}
               {selectedCredit.credit.overview && (
-                <p
-                  style={{
-                    margin: "0",
-                    fontSize: "12px",
-                    color: "#aac4e0",
-                    textAlign: "left",
-                    lineHeight: "1.5",
-                  }}
-                >
+                <p style={{ margin: "0", fontSize: "12px", color: "#aac4e0", textAlign: "left", lineHeight: "1.5" }}>
                   {selectedCredit.credit.overview}
                 </p>
               )}

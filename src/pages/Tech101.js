@@ -75,6 +75,14 @@ export default function Tech101() {
                 <td>macOS 26 Tahoe</td>
               </tr>
               <tr>
+                <td>Passkey</td>
+                <td>
+                  An alternative to a password that uses biometric
+                  authentication
+                </td>
+                <td>Google Passkey</td>
+              </tr>
+              <tr>
                 <td>Streaming</td>
                 <td>
                   Watching on a platform (either paid or free) to view videos on

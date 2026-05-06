@@ -54,7 +54,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.game-search-dropdown {
+.search-dropdown {
   width: 0;
   min-width: 100%;
   box-sizing: border-box;
@@ -68,16 +68,16 @@
   /* scrollbar-color: #555 transparent; */
 }
 
-.game-search-dropdown::-webkit-scrollbar {
+.search-dropdown::-webkit-scrollbar {
   width: 4px;
 }
 
-.game-search-dropdown::-webkit-scrollbar-thumb {
+.search-dropdown::-webkit-scrollbar-thumb {
   background: #555;
   border-radius: 2px;
 }
 
-.game-search-dropdown-item {
+.search-dropdown-item {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -87,15 +87,15 @@
   transition: background-color 0.15s;
 }
 
-.game-search-dropdown-item:first-child {
+.search-dropdown-item:first-child {
   border-top: none;
 }
 
-.game-search-dropdown-item:hover {
+.search-dropdown-item:hover {
   background-color: #444;
 }
 
-.game-search-dropdown-item img {
+.search-dropdown-item img {
   width: 40px;
   height: 53px;
   object-fit: cover;
@@ -103,7 +103,7 @@
   flex-shrink: 0;
 }
 
-.game-search-no-cover {
+.search-no-cover {
   width: 40px;
   height: 53px;
   background: #555;
@@ -111,7 +111,7 @@
   flex-shrink: 0;
 }
 
-.game-search-dropdown-info {
+.search-dropdown-info {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -119,14 +119,14 @@
   min-width: 0;
 }
 
-.game-search-dropdown-name {
+.search-dropdown-name {
   color: white;
   font-size: 14px;
   flex: 1;
   min-width: 0;
 }
 
-.game-search-dropdown-year {
+.search-dropdown-year {
   color: #aaa;
   font-size: 12px;
   flex-shrink: 0;

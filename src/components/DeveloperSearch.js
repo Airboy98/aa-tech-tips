@@ -140,11 +140,11 @@ function DeveloperSearch() {
                 </form>
 
                 {showDropdown && (
-                  <div className="game-search-dropdown">
+                  <div className="search-dropdown">
                     {searchResults.map((company, i) => (
                       <div
                         key={company.id ?? i}
-                        className="game-search-dropdown-item"
+                        className="search-dropdown-item"
                         onClick={() => handleSelect(company)}
                       >
                         {company.logo ? (
@@ -154,10 +154,10 @@ function DeveloperSearch() {
                             style={{ background: "#fff", borderRadius: "4px" }}
                           />
                         ) : (
-                          <div className="game-search-no-cover" />
+                          <div className="search-no-cover" />
                         )}
-                        <div className="game-search-dropdown-info">
-                          <span className="game-search-dropdown-name">
+                        <div className="search-dropdown-info">
+                          <span className="search-dropdown-name">
                             {company.name}
                           </span>
                         </div>

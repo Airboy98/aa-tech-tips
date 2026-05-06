@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_SPOTIFY;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET_SPOTIFY;
 const BASE_URL = process.env.REACT_APP_BASE_URL_SPOTIFY;
 
-function AudiobookSearch({ searchQuery }) {
+function AudiobookSearch() {
+  const [query, setQuery] = useState("");
+  const [dropdownResults, setDropdownResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [searchResult, setSearchResult] = useState(null);
   const [audiobookDetails, setAudiobookDetails] = useState(null);
   const [token, setToken] = useState(null);
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
     axios
@@ -19,185 +24,182 @@ function AudiobookSearch({ searchQuery }) {
             Authorization: `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`,
             "Content-Type": "application/x-www-form-urlencoded",
           },
-        },
+        }
       )
-      .then((res) => {
-        setToken(res.data.access_token);
-      })
-      .catch((error) => {
-        console.error("Error getting token:", error);
-        setToken(null);
-      });
+      .then((res) => setToken(res.data.access_token))
+      .catch(() => setToken(null));
   }, []);
 
-  const searchAudiobook = (query) => {
+  useEffect(() => {
+    const onClickOutside = (e) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!query.trim() || !token) return;
     axios
-      .get(`${BASE_URL}search?q=${query}&type=audiobook`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      .get(`${BASE_URL}search?q=${encodeURIComponent(query)}&type=audiobook&limit=10`, {
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        if (res.data.audiobooks && res.data.audiobooks.items.length > 0) {
-          const audiobook = res.data.audiobooks.items[0];
-          setSearchResult(audiobook);
-          fetchAudiobookDetails(audiobook.id);
-          } else {
+        const items = res.data.audiobooks?.items || [];
+        if (items.length === 0) {
+          setDropdownResults([]);
+          setShowDropdown(false);
           setSearchResult(null);
           setAudiobookDetails(null);
+        } else if (items.length === 1) {
+          setDropdownResults([]);
+          setShowDropdown(false);
+          loadAudiobook(items[0]);
+        } else {
+          setDropdownResults(items);
+          setShowDropdown(true);
+          setSearchResult(null);
         }
       })
-      .catch((error) => {
-        console.error("Error searching for audiobook:", error);
+      .catch(() => {
         setSearchResult(null);
-        setAudiobookDetails(null);
+        setShowDropdown(false);
       });
   };
 
-  const fetchAudiobookDetails = (audiobookId) => {
+  const handleSelect = (audiobook) => {
+    setShowDropdown(false);
+    setDropdownResults([]);
+    loadAudiobook(audiobook);
+  };
+
+  const loadAudiobook = (audiobook) => {
+    setSearchResult(audiobook);
     axios
-      .get(`${BASE_URL}audiobooks/${audiobookId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      .get(`${BASE_URL}audiobooks/${audiobook.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => {
-        setAudiobookDetails(res.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching audiobook details:", error);
-        setAudiobookDetails(null);
-      });
+      .then((res) => setAudiobookDetails(res.data))
+      .catch(() => setAudiobookDetails(null));
   };
 
   const formatDuration = (ms) => {
     const totalSeconds = Math.floor(ms / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
-
-    if (hours > 0) {
-      return `${hours}h ${minutes}m`;
-    }
-    return `${minutes}m`;
+    return hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
   };
 
   const getSummary = (description) => {
     if (!description) return "";
-
-    // Try splitting by actual newlines first
     let cleanText = description;
-
-    // Check if description starts with Author/Narrator info
-    if (
-      description.includes("Author(s):") ||
-      description.includes("Narrator(s):")
-    ) {
-      // Find where the actual description starts (after the narrator line)
-      const lines = description.split(/\n+/); // Split by one or more newlines
-
-      // Find the index where the actual description starts (first non-Author/Narrator line)
+    if (description.includes("Author(s):") || description.includes("Narrator(s):")) {
+      const lines = description.split(/\n+/);
       let descStartIndex = 0;
       for (let i = 0; i < lines.length; i++) {
-        if (
-          !lines[i].startsWith("Author(s):") &&
-          !lines[i].startsWith("Narrator(s):") &&
-          lines[i].trim().length > 0
-        ) {
+        if (!lines[i].startsWith("Author(s):") && !lines[i].startsWith("Narrator(s):") && lines[i].trim().length > 0) {
           descStartIndex = i;
           break;
         }
       }
-
       cleanText = lines.slice(descStartIndex).join(" ");
     }
-
-    // Remove HTML tags if any
     cleanText = cleanText.replace(/<[^>]*>/g, "");
-
-    // Split by sentences (. ! ?)
     const sentences = cleanText.split(/(?<=[.!?])\s+/);
-
-    // Take first 3 sentences, or up to 250 characters
-    let summary = sentences.slice(0, 3).join(" ");
-
-    return summary.trim();
+    return sentences.slice(0, 3).join(" ").trim();
   };
 
-  useEffect(() => {
-    if (searchQuery && token) {
-      searchAudiobook(searchQuery);
-    }
-  }, [searchQuery, token]);
-
   return (
-    <div>
+    <div ref={wrapperRef}>
+      <div className="internet" style={{ textAlign: "center" }}>
+        <table style={{ textAlign: "left" }}>
+          <tbody>
+            <tr>
+              <td>
+                <form onSubmit={handleSubmit}>
+                  <div className="search">
+                    <input
+                      type="search"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Enter audiobook name..."
+                    />
+                  </div>
+                  <button type="submit">
+                    <span className="material-symbols-outlined" style={{ fontSize: "24px", color: "white" }}>
+                      search
+                    </span>
+                  </button>
+                </form>
+
+                {showDropdown && (
+                  <div className="search-dropdown">
+                    {dropdownResults.map((audiobook) => (
+                      <div
+                        key={audiobook.id}
+                        className="search-dropdown-item"
+                        onClick={() => handleSelect(audiobook)}
+                      >
+                        <img
+                          src={audiobook.images?.length > 0 ? audiobook.images[audiobook.images.length - 1].url : "noposter.png"}
+                          alt={audiobook.name}
+                        />
+                        <div className="search-dropdown-info">
+                          <span className="search-dropdown-name">{audiobook.name}</span>
+                          {audiobook.authors?.length > 0 && (
+                            <span className="search-dropdown-year">{audiobook.authors.map((a) => a.name).join(", ")}</span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       {searchResult && (
         <div className="streaming2">
           <table>
             <tbody>
               <tr>
                 <td>
-                  <a
-                    href={`${searchResult.external_urls?.spotify}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={searchResult.external_urls?.spotify} target="_blank" rel="noopener noreferrer">
                     <img
-                      style={{
-                        width: "200px",
-                        height: "200px",
-                      }}
-                      src={
-                        searchResult.images && searchResult.images.length > 0
-                          ? searchResult.images[0].url
-                          : "noposter.png"
-                      }
+                      style={{ width: "200px", height: "200px" }}
+                      src={searchResult.images?.length > 0 ? searchResult.images[0].url : "noposter.png"}
                       alt={searchResult.name}
                     />
                   </a>
                   <h1>{searchResult.name}</h1>
-                  <hr></hr>
-
-                  <h4>
-                    By{" "}
-                    {searchResult.authors?.map((a) => a.name).join(", ") ||
-                      "Unknown Author"}
-                  </h4>
-                  {searchResult.narrators &&
-                    searchResult.narrators.length > 0 && (
-                      <h4>
-                        Narrated by{" "}
-                        {searchResult.narrators.map((n) => n.name).join(", ")}
-                      </h4>
-                    )}
+                  <hr />
+                  <h4>By {searchResult.authors?.map((a) => a.name).join(", ") || "Unknown Author"}</h4>
+                  {searchResult.narrators?.length > 0 && (
+                    <h4>Narrated by {searchResult.narrators.map((n) => n.name).join(", ")}</h4>
+                  )}
                   {audiobookDetails?.total_chapters && (
                     <h4>{audiobookDetails.total_chapters} Chapters</h4>
                   )}
                   {audiobookDetails?.chapters?.items && (
                     <h4>
                       {formatDuration(
-                        audiobookDetails.chapters.items.reduce(
-                          (total, chapter) =>
-                            total + (chapter.duration_ms || 0),
-                          0,
-                        ),
+                        audiobookDetails.chapters.items.reduce((total, chapter) => total + (chapter.duration_ms || 0), 0)
                       )}
                     </h4>
                   )}
                   {audiobookDetails?.chapters?.items?.[0]?.release_date && (
                     <h4>{audiobookDetails.chapters.items[0].release_date}</h4>
                   )}
-                  <hr></hr>
-                  {searchResult.description && (
-                    <p>{getSummary(searchResult.description)}</p>
-                  )}
+                  <hr />
+                  {searchResult.description && <p>{getSummary(searchResult.description)}</p>}
                   <h5>
                     Data provided by{" "}
-                    <a
-                      href={searchResult.external_urls?.spotify}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={searchResult.external_urls?.spotify} target="_blank" rel="noopener noreferrer">
                       Spotify
                     </a>
                   </h5>

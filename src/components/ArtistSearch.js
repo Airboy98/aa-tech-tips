@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_SPOTIFY;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET_SPOTIFY;
 const BASE_URL = process.env.REACT_APP_BASE_URL_SPOTIFY;
 
-function ArtistSearch({ searchQuery }) {
+function ArtistSearch() {
+  const [query, setQuery] = useState("");
+  const [dropdownResults, setDropdownResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [searchResult, setSearchResult] = useState(null);
   const [albums, setAlbums] = useState(null);
   const [EPs, setEPs] = useState(null);
@@ -13,6 +17,7 @@ function ArtistSearch({ searchQuery }) {
   const [showAlbums, setShowAlbums] = useState(false);
   const [showEPs, setShowEPs] = useState(false);
   const [showSingles, setShowSingles] = useState(false);
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
     axios
@@ -26,133 +31,152 @@ function ArtistSearch({ searchQuery }) {
           },
         }
       )
-      .then((res) => {
-        setToken(res.data.access_token);
-      })
-      .catch((error) => {
-        console.error("Error getting token:", error);
-        setToken(null);
-      });
+      .then((res) => setToken(res.data.access_token))
+      .catch(() => setToken(null));
   }, []);
 
-  const searchArtist = (query) => {
+  useEffect(() => {
+    const onClickOutside = (e) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!query.trim() || !token) return;
     axios
-      .get(`${BASE_URL}search?q=${query}&type=artist`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      .get(`${BASE_URL}search?q=${encodeURIComponent(query)}&type=artist&limit=10`, {
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        // console.log(
-        //   "Artist search response:",
-        //   JSON.stringify(res.data, null, 2)
-        // );
-        if (res.data.artists && res.data.artists.items.length > 0) {
-          const artist = res.data.artists.items[0];
-          setSearchResult(artist);
-          fetchAlbums(artist.id);
-          fetchEPs(artist.id);
-          fetchSingles(artist.id);
-        } else {
+        const items = res.data.artists?.items || [];
+        if (items.length === 0) {
+          setDropdownResults([]);
+          setShowDropdown(false);
           setSearchResult(null);
           setAlbums(null);
           setEPs(null);
           setSingles(null);
+        } else if (items.length === 1) {
+          setDropdownResults([]);
+          setShowDropdown(false);
+          loadArtist(items[0]);
+        } else {
+          setDropdownResults(items);
+          setShowDropdown(true);
+          setSearchResult(null);
         }
       })
-      .catch((error) => {
-        console.error("Error searching for artist:", error);
+      .catch(() => {
         setSearchResult(null);
-        setAlbums(null);
-        setEPs(null);
-        setSingles(null);
+        setShowDropdown(false);
       });
+  };
+
+  const handleSelect = (artist) => {
+    setShowDropdown(false);
+    setDropdownResults([]);
+    loadArtist(artist);
+  };
+
+  const loadArtist = (artist) => {
+    setSearchResult(artist);
+    setShowAlbums(false);
+    setShowEPs(false);
+    setShowSingles(false);
+    fetchAlbums(artist.id);
+    fetchEPs(artist.id);
+    fetchSingles(artist.id);
   };
 
   const fetchAlbums = (artistId) => {
     axios
       .get(`${BASE_URL}artists/${artistId}/albums?limit=50`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        // console.log("Albums response:", JSON.stringify(res.data, null, 2));
-        if (res.data && res.data.items) {
-          setAlbums(
-            // res.data.items
-            res.data.items.filter((item) => item.album_group === "album")
-          );
-        } else {
-          setAlbums(null);
-        }
+        setAlbums(res.data?.items ? res.data.items.filter((item) => item.album_group === "album") : null);
       })
-      .catch((error) => {
-        console.error("Error fetching artist albums:", error);
-        setAlbums(null);
-      });
+      .catch(() => setAlbums(null));
   };
 
   const fetchEPs = (artistId) => {
     axios
       .get(`${BASE_URL}artists/${artistId}/albums?limit=50`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        // console.log("EPs response:", JSON.stringify(res.data, null, 2));
-        if (res.data && res.data.items) {
-          setEPs(
-            // res.data.items.filter((item) => item.album_group == "single")
-            res.data.items.filter(
-              (item) => item.album_group === "single" && item.total_tracks >= 3
-            )
-          );
-        } else {
-          setEPs(null);
-        }
+        setEPs(res.data?.items ? res.data.items.filter((item) => item.album_group === "single" && item.total_tracks >= 3) : null);
       })
-      .catch((error) => {
-        console.error("Error fetching artist EPs:", error);
-        setEPs(null);
-      });
+      .catch(() => setEPs(null));
   };
 
   const fetchSingles = (artistId) => {
     axios
       .get(`${BASE_URL}artists/${artistId}/albums?limit=50`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        // console.log("Singles response:", JSON.stringify(res.data, null, 2));
-        if (res.data && res.data.items) {
-          setSingles(
-            // res.data.items.filter((item) => item.album_group == "single")
-            res.data.items.filter(
-              (item) => item.album_group === "single" && item.total_tracks < 3
-            )
-          );
-        } else {
-          setSingles(null);
-        }
+        setSingles(res.data?.items ? res.data.items.filter((item) => item.album_group === "single" && item.total_tracks < 3) : null);
       })
-      .catch((error) => {
-        console.error("Error fetching artist singles:", error);
-        setSingles(null);
-      });
+      .catch(() => setSingles(null));
   };
 
-  useEffect(() => {
-    if (searchQuery && token) {
-      searchArtist(searchQuery);
-    }
-  }, [searchQuery, token]);
-
   return (
-    <div>
+    <div ref={wrapperRef}>
+      <div className="internet" style={{ textAlign: "center" }}>
+        <table style={{ textAlign: "left" }}>
+          <tbody>
+            <tr>
+              <td>
+                <form onSubmit={handleSubmit}>
+                  <div className="search">
+                    <input
+                      type="search"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Enter artist name..."
+                    />
+                  </div>
+                  <button type="submit">
+                    <span className="material-symbols-outlined" style={{ fontSize: "24px", color: "white" }}>
+                      search
+                    </span>
+                  </button>
+                </form>
+
+                {showDropdown && (
+                  <div className="search-dropdown">
+                    {dropdownResults.map((artist) => (
+                      <div
+                        key={artist.id}
+                        className="search-dropdown-item"
+                        onClick={() => handleSelect(artist)}
+                      >
+                        <img
+                          src={artist.images?.length > 0 ? artist.images[artist.images.length - 1].url : "nopicture.png"}
+                          alt={artist.name}
+                        />
+                        <div className="search-dropdown-info">
+                          <span className="search-dropdown-name">{artist.name}</span>
+                          {artist.genres?.length > 0 && (
+                            <span className="search-dropdown-year">{artist.genres[0]}</span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       {searchResult && (
         <div className="streaming2">
           <table>
@@ -164,38 +188,17 @@ function ArtistSearch({ searchQuery }) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {searchResult.images.length > 0 ? (
-                      <img
-                        style={{
-                          width: "200px",
-                          height: "200px",
-                        }}
-                        src={searchResult.images[0].url}
-                        alt={searchResult.name}
-                      />
-                    ) : (
-                      <img
-                        style={{
-                          width: "200px",
-                          height: "200px",
-                        }}
-                        src="nopicture.png"
-                        alt="No Artist Image"
-                      />
-                    )}
+                    <img
+                      style={{ width: "200px", height: "200px" }}
+                      src={searchResult.images?.length > 0 ? searchResult.images[0].url : "nopicture.png"}
+                      alt={searchResult.name}
+                    />
                   </a>
                   <h1>{searchResult.name}</h1>
-                  <hr></hr>
+                  <hr />
                   <h4>{searchResult.genres.join(", ")}</h4>
                   <button
-                    style={{
-                      backgroundColor: "#ddd",
-                      color: "black",
-                      borderRadius: "20px",
-                      fontSize: "16px",
-                      padding: "5px 10px",
-                      fontWeight: "bold",
-                    }}
+                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
                     onClick={() => setShowAlbums(!showAlbums)}
                   >
                     {albums && albums.length > 0 ? "Albums" : "No Albums"}
@@ -205,29 +208,16 @@ function ArtistSearch({ searchQuery }) {
                     <ul style={{ display: "block" }}>
                       {albums.map((album) => (
                         <li key={album.id}>
-                          <a
-                            href={album.external_urls.spotify}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
+                          <a href={album.external_urls.spotify} target="_blank" rel="noopener noreferrer">
                             {album.name}
                           </a>
-                          <br></br>({album.release_date.substring(0, 4)})
+                          <br />({album.release_date.substring(0, 4)})
                         </li>
                       ))}
                     </ul>
                   )}
-
-                  {/* <br /> */}
                   <button
-                    style={{
-                      backgroundColor: "#ddd",
-                      color: "black",
-                      borderRadius: "20px",
-                      fontSize: "16px",
-                      padding: "5px 10px",
-                      fontWeight: "bold",
-                    }}
+                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
                     onClick={() => setShowEPs(!showEPs)}
                   >
                     {EPs && EPs.length > 0 ? "EPs" : "No EPs"}
@@ -237,27 +227,16 @@ function ArtistSearch({ searchQuery }) {
                     <ul style={{ display: "block" }}>
                       {EPs.map((EP) => (
                         <li key={EP.id}>
-                          <a
-                            href={EP.external_urls.spotify}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
+                          <a href={EP.external_urls.spotify} target="_blank" rel="noopener noreferrer">
                             {EP.name}
                           </a>
-                          <br></br>({EP.release_date.substring(0, 4)})
+                          <br />({EP.release_date.substring(0, 4)})
                         </li>
                       ))}
                     </ul>
                   )}
                   <button
-                    style={{
-                      backgroundColor: "#ddd",
-                      color: "black",
-                      borderRadius: "20px",
-                      fontSize: "16px",
-                      padding: "5px 10px",
-                      fontWeight: "bold",
-                    }}
+                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
                     onClick={() => setShowSingles(!showSingles)}
                   >
                     {singles && singles.length > 0 ? "Singles" : "No Singles"}
@@ -267,27 +246,18 @@ function ArtistSearch({ searchQuery }) {
                     <ul style={{ display: "block" }}>
                       {singles.map((single) => (
                         <li key={single.id}>
-                          <a
-                            href={single.external_urls.spotify}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
+                          <a href={single.external_urls.spotify} target="_blank" rel="noopener noreferrer">
                             {single.name}
                           </a>
-                          <br></br>
+                          <br />
                           {` (${single.release_date.substring(0, 4)})`}
                         </li>
                       ))}
                     </ul>
                   )}
-
                   <h5>
                     Data provided by{" "}
-                    <a
-                      href={`https://open.spotify.com/artist/${searchResult.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={`https://open.spotify.com/artist/${searchResult.id}`} target="_blank" rel="noopener noreferrer">
                       Spotify
                     </a>
                   </h5>

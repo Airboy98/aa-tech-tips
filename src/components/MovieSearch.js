@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
-function MovieSearch({ searchQuery }) {
+
+function MovieSearch() {
+  const [query, setQuery] = useState("");
+  const [dropdownResults, setDropdownResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [searchResult, setSearchResult] = useState(null);
   const [watchProviders, setWatchProviders] = useState(null);
   const [rentProviders, setRentProviders] = useState(null);
@@ -15,198 +20,151 @@ function MovieSearch({ searchQuery }) {
   const [showRentProviders, setShowRentProviders] = useState(false);
   const [showPurchaseProviders, setShowPurchaseProviders] = useState(false);
   const [flippedCards, setFlippedCards] = useState({});
+  const wrapperRef = useRef(null);
 
-  const searchMovie = (query) => {
-    fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
+  const clearDetails = () => {
+    setSearchResult(null);
+    setWatchProviders(null);
+    setRentProviders(null);
+    setPurchaseProviders(null);
+    setCertification(null);
+    setDirector(null);
+    setActors([]);
+    setRuntime(null);
+    setFlippedCards({});
+    setShowActors(false);
+    setShowWatchProviders(false);
+    setShowRentProviders(false);
+    setShowPurchaseProviders(false);
+  };
+
+  const loadMovieById = (movie) => {
+    setSearchResult(movie);
+    setFlippedCards({});
+    setShowActors(false);
+    setShowWatchProviders(false);
+    setShowRentProviders(false);
+    setShowPurchaseProviders(false);
+    fetchWatchProviders(movie.id);
+    fetchRentProviders(movie.id);
+    fetchPurchaseProviders(movie.id);
+    fetchCertification(movie.id);
+    fetchDirector(movie.id);
+    fetchActors(movie.id);
+    fetchRuntime(movie.id);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!query.trim()) return;
+    fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.results && json.results.length > 0) {
-          const movie = json.results[0];
-          setSearchResult(movie);
-          fetchWatchProviders(movie.id);
-          fetchRentProviders(movie.id);
-          fetchPurchaseProviders(movie.id);
-          fetchCertification(movie.id);
-          fetchDirector(movie.id);
-          fetchActors(movie.id);
-          fetchRuntime(movie.id);
-          setFlippedCards({});
+        const results = json.results || [];
+        if (results.length === 0) {
+          setDropdownResults([]);
+          setShowDropdown(false);
+          clearDetails();
+        } else if (results.length === 1) {
+          setDropdownResults([]);
+          setShowDropdown(false);
+          loadMovieById(results[0]);
         } else {
+          setDropdownResults(results.slice(0, 10));
+          setShowDropdown(true);
           setSearchResult(null);
-          setWatchProviders(null);
-          setRentProviders(null);
-          setPurchaseProviders(null);
-          setCertification(null);
-          setDirector(null);
-          setActors(null);
-          setRuntime(null);
-          setFlippedCards({});
         }
       })
-      .catch((error) => {
-        console.error("Error searching for movie:", error);
-        setSearchResult(null);
-        setWatchProviders(null);
-        setRentProviders(null);
-        setPurchaseProviders(null);
-        setCertification(null);
-        setDirector(null);
-        setActors(null);
-        setRuntime(null);
-        setFlippedCards({});
+      .catch((err) => {
+        console.error("Error searching for movie:", err);
+        clearDetails();
+        setShowDropdown(false);
       });
+  };
+
+  const handleSelect = (movie) => {
+    setShowDropdown(false);
+    setDropdownResults([]);
+    loadMovieById(movie);
   };
 
   const fetchWatchProviders = (movieId) => {
     fetch(`${BASE_URL}/movie/${movieId}/watch/providers?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.results && json.results.US) {
-          setWatchProviders(json.results.US);
-        } else {
-          setWatchProviders({ flatrate: [] });
-        }
+        setWatchProviders(json.results?.US ?? { flatrate: [] });
       })
-      .catch((error) => {
-        console.error("Error fetching watch providers:", error);
-        setWatchProviders({ flatrate: [] });
-      });
+      .catch(() => setWatchProviders({ flatrate: [] }));
   };
 
   const fetchRentProviders = (movieId) => {
     fetch(`${BASE_URL}/movie/${movieId}/watch/providers?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.results && json.results.US) {
-          const usProviders = json.results.US;
-          setRentProviders(usProviders.rent || []);
-        } else {
-          setRentProviders([]);
-        }
+        setRentProviders(json.results?.US?.rent ?? []);
       })
-      .catch((error) => {
-        console.error("Error fetching rent providers:", error);
-        setRentProviders([]);
-      });
+      .catch(() => setRentProviders([]));
   };
 
-  const fetchPurchaseProviders = (movieId) =>
+  const fetchPurchaseProviders = (movieId) => {
     fetch(`${BASE_URL}/movie/${movieId}/watch/providers?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.results && json.results.US) {
-          const usProviders = json.results.US;
-          setPurchaseProviders(usProviders.buy || []);
-        } else {
-          setPurchaseProviders([]);
-        }
+        setPurchaseProviders(json.results?.US?.buy ?? []);
       })
-      .catch((error) => {
-        console.error("Error fetching purchase providers:", error);
-        setPurchaseProviders([]);
-      });
+      .catch(() => setPurchaseProviders([]));
+  };
 
   const fetchCertification = (movieId) => {
     fetch(`${BASE_URL}/movie/${movieId}/release_dates?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.results) {
-          const usCert = json.results.find(
-            (entry) => entry.iso_3166_1 === "US"
-          );
-          if (usCert && usCert.release_dates) {
-            const cert = usCert.release_dates.find(
-              (date) => date.certification
-            );
-            setCertification(cert ? cert.certification : null);
-          } else {
-            setCertification(null);
-          }
-        } else {
-          setCertification(null);
-        }
+        const usCert = json.results?.find((e) => e.iso_3166_1 === "US");
+        const cert = usCert?.release_dates?.find((d) => d.certification);
+        setCertification(cert ? cert.certification : null);
       })
-      .catch((error) => {
-        console.error("Error fetching certification:", error);
-        setCertification(null);
-      });
+      .catch(() => setCertification(null));
   };
 
   const fetchDirector = (movieId) => {
     fetch(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.crew) {
-          const director = json.crew.find(
-            (crewMember) => crewMember.job === "Director"
-          );
-          setDirector(director ? director.name : null);
-        } else {
-          setDirector(null);
-        }
+        const dir = json.crew?.find((c) => c.job === "Director");
+        setDirector(dir ? dir.name : null);
       })
-      .catch((error) => {
-        console.error("Error fetching director:", error);
-        setDirector(null);
-      });
+      .catch(() => setDirector(null));
   };
 
   const fetchActors = async (movieId) => {
     try {
-      const res = await fetch(
-        `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
-      );
+      const res = await fetch(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`);
       const json = await res.json();
-
-      if (json.cast) {
-        const topActors = json.cast
-          .sort((a, b) => a.order - b.order)
-          .slice(0, 6);
-
-        // Fetch detailed info for each actor
-        const actorsWithDetails = await Promise.all(
-          topActors.map(async (actor) => {
-            try {
-              const detailRes = await fetch(
-                `${BASE_URL}/person/${actor.id}?api_key=${API_KEY}`
-              );
-              const detailJson = await detailRes.json();
-
-              const creditsRes = await fetch(
-                `${BASE_URL}/person/${actor.id}/movie_credits?api_key=${API_KEY}`
-              );
-              const creditsJson = await creditsRes.json();
-
-              // Get top 3 known for movies (by popularity/vote_count)
-              const knownFor =
-                creditsJson.cast
-                  ?.sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
-                  .slice(0, 4)
-                  .map((m) => m.title)
-                  .filter(Boolean) || [];
-
-              return {
-                ...actor,
-                birthday: detailJson.birthday,
-                deathday: detailJson.deathday,
-                knownFor: knownFor,
-              };
-            } catch (error) {
-              console.error(
-                `Error fetching details for actor ${actor.id}:`,
-                error
-              );
-              return { ...actor, birthday: null, knownFor: [] };
-            }
-          })
-        );
-
-        setActors(actorsWithDetails);
-      } else {
-        setActors([]);
-      }
-    } catch (error) {
-      console.error("Error fetching actors:", error);
+      if (!json.cast) return setActors([]);
+      const topActors = json.cast.sort((a, b) => a.order - b.order).slice(0, 6);
+      const actorsWithDetails = await Promise.all(
+        topActors.map(async (actor) => {
+          try {
+            const [detailRes, creditsRes] = await Promise.all([
+              fetch(`${BASE_URL}/person/${actor.id}?api_key=${API_KEY}`),
+              fetch(`${BASE_URL}/person/${actor.id}/movie_credits?api_key=${API_KEY}`),
+            ]);
+            const detailJson = await detailRes.json();
+            const creditsJson = await creditsRes.json();
+            const knownFor =
+              creditsJson.cast
+                ?.sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
+                .slice(0, 4)
+                .map((m) => m.title)
+                .filter(Boolean) ?? [];
+            return { ...actor, birthday: detailJson.birthday, deathday: detailJson.deathday, knownFor };
+          } catch {
+            return { ...actor, birthday: null, knownFor: [] };
+          }
+        })
+      );
+      setActors(actorsWithDetails);
+    } catch {
       setActors([]);
     }
   };
@@ -214,34 +172,84 @@ function MovieSearch({ searchQuery }) {
   const fetchRuntime = (movieId) => {
     fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`)
       .then((res) => res.json())
-      .then((json) => {
-        if (json.runtime) {
-          setRuntime(json.runtime);
-        } else {
-          setRuntime(null);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching runtime:", error);
-        setRuntime(null);
-      });
+      .then((json) => setRuntime(json.runtime ?? null))
+      .catch(() => setRuntime(null));
   };
 
   const toggleFlip = (index) => {
-    setFlippedCards((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
+    setFlippedCards((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
   useEffect(() => {
-    if (searchQuery) {
-      searchMovie(searchQuery);
-    }
-  }, [searchQuery]);
+    const onClickOutside = (e) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
 
   return (
-    <div>
+    <div ref={wrapperRef}>
+      <div className="internet" style={{ textAlign: "center" }}>
+        <table style={{ textAlign: "left" }}>
+          <tbody>
+            <tr>
+              <td>
+                <form onSubmit={handleSubmit}>
+                  <div className="search">
+                    <input
+                      type="search"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Enter movie name..."
+                    />
+                  </div>
+                  <button type="submit">
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: "24px", color: "white" }}
+                    >
+                      search
+                    </span>
+                  </button>
+                </form>
+
+                {showDropdown && (
+                  <div className="search-dropdown">
+                    {dropdownResults.map((movie) => (
+                      <div
+                        key={movie.id}
+                        className="search-dropdown-item"
+                        onClick={() => handleSelect(movie)}
+                      >
+                        {movie.poster_path ? (
+                          <img
+                            src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
+                            alt={movie.title}
+                          />
+                        ) : (
+                          <div className="search-no-cover" />
+                        )}
+                        <div className="search-dropdown-info">
+                          <span className="search-dropdown-name">{movie.title}</span>
+                          {movie.release_date && (
+                            <span className="search-dropdown-year">
+                              {movie.release_date.slice(0, 4)}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       {searchResult && (
         <div className="streaming2">
           <table>
@@ -254,10 +262,7 @@ function MovieSearch({ searchQuery }) {
                     rel="noopener noreferrer"
                   >
                     <img
-                      style={{
-                        width: "200px",
-                        height: "300px",
-                      }}
+                      style={{ width: "200px", height: "300px" }}
                       src={
                         searchResult.poster_path
                           ? `https://image.tmdb.org/t/p/w500${searchResult.poster_path}`
@@ -267,7 +272,7 @@ function MovieSearch({ searchQuery }) {
                     />
                   </a>
                   <h1>{searchResult.title}</h1>
-                  <hr></hr>
+                  <hr />
                   {director && <h4>Directed by {director}</h4>}
                   <button
                     style={{
@@ -287,9 +292,7 @@ function MovieSearch({ searchQuery }) {
                       {actors.map((actor, index) => (
                         <div
                           key={actor.id}
-                          className={`flip-card ${
-                            flippedCards[index] ? "flipped" : ""
-                          }`}
+                          className={`flip-card ${flippedCards[index] ? "flipped" : ""}`}
                           onClick={() => toggleFlip(index)}
                         >
                           <div className="flip-card-inner">
@@ -300,15 +303,11 @@ function MovieSearch({ searchQuery }) {
                                   alt={actor.name}
                                 />
                               ) : (
-                                <div className="no-image">
-                                  No Profile Picture
-                                </div>
+                                <div className="no-image">No Profile Picture</div>
                               )}
                               <div className="episode-title">
                                 {actor.name}
-                                <br />
-                                as
-                                <br />
+                                <br />as<br />
                                 {actor.character}
                               </div>
                             </div>
@@ -316,36 +315,21 @@ function MovieSearch({ searchQuery }) {
                               <div style={{ padding: "0px", fontSize: "14px" }}>
                                 <strong>Age: </strong>
                                 {actor.deathday
-                                  ? `${Math.floor(
-                                      (new Date(actor.deathday) -
-                                        new Date(actor.birthday)) /
-                                        (1000 * 60 * 60 * 24 * 365.25)
-                                    )} (d)`
+                                  ? `${Math.floor((new Date(actor.deathday) - new Date(actor.birthday)) / (1000 * 60 * 60 * 24 * 365.25))} (d)`
                                   : actor.birthday
-                                  ? `${Math.floor(
-                                      (new Date() - new Date(actor.birthday)) /
-                                        (1000 * 60 * 60 * 24 * 365.25)
-                                    )}`
+                                  ? `${Math.floor((new Date() - new Date(actor.birthday)) / (1000 * 60 * 60 * 24 * 365.25))}`
                                   : "unknown"}
-                                <br />
-                                <br />
-                                {actor.knownFor &&
-                                  actor.knownFor.length > 0 && (
-                                    <>
-                                      <strong>Known for:</strong>
-                                      <ul
-                                        style={{
-                                          textAlign: "left",
-                                          paddingLeft: "0px",
-                                          margin: "0px 0",
-                                        }}
-                                      >
-                                        {actor.knownFor.map((title, i) => (
-                                          <li key={i}>{title}</li>
-                                        ))}
-                                      </ul>
-                                    </>
-                                  )}
+                                <br /><br />
+                                {actor.knownFor?.length > 0 && (
+                                  <>
+                                    <strong>Known for:</strong>
+                                    <ul style={{ textAlign: "left", paddingLeft: "0px", margin: "0px 0" }}>
+                                      {actor.knownFor.map((title, i) => (
+                                        <li key={i}>{title}</li>
+                                      ))}
+                                    </ul>
+                                  </>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -353,7 +337,6 @@ function MovieSearch({ searchQuery }) {
                       ))}
                     </div>
                   )}
-
                   {certification && <h4>Rated {certification}</h4>}
                   {runtime && (
                     <h4>
@@ -368,14 +351,7 @@ function MovieSearch({ searchQuery }) {
                       : "No Rating Available"}
                   </h4>
                   <button
-                    style={{
-                      backgroundColor: "#ddd",
-                      color: "black",
-                      borderRadius: "20px",
-                      fontSize: "16px",
-                      padding: "5px 10px",
-                      fontWeight: "bold",
-                    }}
+                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
                     onClick={() => setShowWatchProviders(!showWatchProviders)}
                   >
                     Streaming
@@ -383,19 +359,15 @@ function MovieSearch({ searchQuery }) {
                   {showWatchProviders && watchProviders && (
                     <div>
                       <br />
-                      {watchProviders.flatrate &&
-                      watchProviders.flatrate.length > 0 ? (
+                      {watchProviders.flatrate?.length > 0 ? (
                         <div>
-                          {watchProviders.flatrate.map((provider) => (
+                          {watchProviders.flatrate.map((p) => (
                             <img
-                              style={{
-                                width: "45px",
-                                height: "45px",
-                              }}
-                              key={provider.provider_id}
-                              src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
-                              alt={provider.provider_name}
-                              title={provider.provider_name}
+                              key={p.provider_id}
+                              style={{ width: "45px", height: "45px" }}
+                              src={`https://image.tmdb.org/t/p/w500${p.logo_path}`}
+                              alt={p.provider_name}
+                              title={p.provider_name}
                             />
                           ))}
                         </div>
@@ -404,36 +376,24 @@ function MovieSearch({ searchQuery }) {
                       )}
                     </div>
                   )}
-
                   <br />
                   <button
-                    style={{
-                      backgroundColor: "#ddd",
-                      color: "black",
-                      borderRadius: "20px",
-                      fontSize: "16px",
-                      padding: "5px 10px",
-                      fontWeight: "bold",
-                    }}
+                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
                     onClick={() => setShowRentProviders(!showRentProviders)}
                   >
                     Renting
                   </button>
-
                   {showRentProviders && rentProviders && (
                     <div>
                       <br />
                       {rentProviders.length > 0 ? (
-                        rentProviders.map((provider) => (
+                        rentProviders.map((p) => (
                           <img
-                            style={{
-                              width: "45px",
-                              height: "45px",
-                            }}
-                            key={provider.provider_id}
-                            src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
-                            alt={provider.provider_name}
-                            title={provider.provider_name}
+                            key={p.provider_id}
+                            style={{ width: "45px", height: "45px" }}
+                            src={`https://image.tmdb.org/t/p/w500${p.logo_path}`}
+                            alt={p.provider_name}
+                            title={p.provider_name}
                           />
                         ))
                       ) : (
@@ -443,17 +403,8 @@ function MovieSearch({ searchQuery }) {
                   )}
                   <br />
                   <button
-                    style={{
-                      backgroundColor: "#ddd",
-                      color: "black",
-                      borderRadius: "20px",
-                      fontSize: "16px",
-                      padding: "5px 10px",
-                      fontWeight: "bold",
-                    }}
-                    onClick={() =>
-                      setShowPurchaseProviders(!showPurchaseProviders)
-                    }
+                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
+                    onClick={() => setShowPurchaseProviders(!showPurchaseProviders)}
                   >
                     Purchase
                   </button>
@@ -461,16 +412,13 @@ function MovieSearch({ searchQuery }) {
                     <div>
                       <br />
                       {purchaseProviders.length > 0 ? (
-                        purchaseProviders.map((provider) => (
+                        purchaseProviders.map((p) => (
                           <img
-                            style={{
-                              width: "45px",
-                              height: "45px",
-                            }}
-                            key={provider.provider_id}
-                            src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
-                            alt={provider.provider_name}
-                            title={provider.provider_name}
+                            key={p.provider_id}
+                            style={{ width: "45px", height: "45px" }}
+                            src={`https://image.tmdb.org/t/p/w500${p.logo_path}`}
+                            alt={p.provider_name}
+                            title={p.provider_name}
                           />
                         ))
                       ) : (
@@ -479,7 +427,7 @@ function MovieSearch({ searchQuery }) {
                     </div>
                   )}
                   <br />
-                  <hr></hr>
+                  <hr />
                   <p>{searchResult.overview}</p>
                   <h5>
                     Data provided by{" "}
@@ -495,8 +443,7 @@ function MovieSearch({ searchQuery }) {
               </tr>
             </tbody>
           </table>
-          <br />
-          <br />
+          <br /><br />
         </div>
       )}
     </div>

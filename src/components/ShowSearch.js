@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
+
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
 
-function ShowSearch({ searchQuery }) {
+function ShowSearch() {
+  const [query, setQuery] = useState("");
+  const [dropdownResults, setDropdownResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [searchResult, setSearchResult] = useState(null);
   const [watchProviders, setWatchProviders] = useState(null);
   const [certification, setCertification] = useState(null);
@@ -20,96 +24,99 @@ function ShowSearch({ searchQuery }) {
   const [actors, setActors] = useState([]);
   const [showActors, setShowActors] = useState(false);
   const [flippedActorCards, setFlippedActorCards] = useState({});
+  const wrapperRef = useRef(null);
 
-  const searchShow = (query) => {
-    fetch(`${BASE_URL}/search/tv?api_key=${API_KEY}&query=${query}`)
+  const clearDetails = () => {
+    setSearchResult(null);
+    setWatchProviders(null);
+    setCertification(null);
+    setNumSeasons(null);
+    setEpisodeNames(null);
+    setEpisodeStills(null);
+    setEpisodeOverviews(null);
+    setEpisodeRatings(null);
+    setFlippedCards({});
+    setSelectedSeason(null);
+    setShowSeasons(false);
+    setSeasonInfo(null);
+    setCreators(null);
+    setActors([]);
+    setShowActors(false);
+    setFlippedActorCards({});
+  };
+
+  const loadShowById = (show) => {
+    setSearchResult(show);
+    setWatchProviders(null);
+    setCertification(null);
+    setNumSeasons(null);
+    setEpisodeNames(null);
+    setEpisodeStills(null);
+    setEpisodeOverviews(null);
+    setFlippedCards({});
+    setSelectedSeason(null);
+    setShowSeasons(false);
+    setSeasonInfo(null);
+    setActors([]);
+    setShowActors(false);
+    setFlippedActorCards({});
+    fetchWatchProviders(show.id);
+    fetchCertification(show.id);
+    fetchNumSeasons(show.id);
+    fetchActors(show.id);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!query.trim()) return;
+    fetch(`${BASE_URL}/search/tv?api_key=${API_KEY}&query=${encodeURIComponent(query)}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.results && json.results.length > 0) {
-          const show = json.results[0];
-
-          setSearchResult(show);
-          setWatchProviders(null);
-          setCertification(null);
-          setNumSeasons(null);
-          setEpisodeNames(null);
-          setEpisodeStills(null);
-          setEpisodeOverviews(null);
-          setFlippedCards({});
-          setSelectedSeason(null);
-          setShowSeasons(false);
-          setSeasonInfo(null);
-          setActors([]);
-          setShowActors(false);
-          setFlippedActorCards({});
-
-          fetchWatchProviders(show.id);
-          fetchCertification(show.id);
-          fetchNumSeasons(show.id);
-          fetchActors(show.id);
+        const results = json.results || [];
+        if (results.length === 0) {
+          setDropdownResults([]);
+          setShowDropdown(false);
+          clearDetails();
+        } else if (results.length === 1) {
+          setDropdownResults([]);
+          setShowDropdown(false);
+          loadShowById(results[0]);
         } else {
+          setDropdownResults(results.slice(0, 10));
+          setShowDropdown(true);
           setSearchResult(null);
-          setWatchProviders(null);
-          setCertification(null);
-          setNumSeasons(null);
-          setEpisodeNames(null);
-          setEpisodeStills(null);
-          setEpisodeOverviews(null);
-          setFlippedCards({});
-          setSelectedSeason(null);
-          setShowSeasons(false);
-          setActors([]);
-          setShowActors(false);
-          setFlippedActorCards({});
         }
       })
-      .catch((error) => {
-        console.error("Error searching for show:", error);
-        setSearchResult(null);
-        setWatchProviders(null);
-        setCertification(null);
-        setNumSeasons(null);
-        setEpisodeNames(null);
-        setEpisodeStills(null);
-        setActors([]);
-        setShowActors(false);
-        setFlippedActorCards({});
+      .catch((err) => {
+        console.error("Error searching for show:", err);
+        clearDetails();
+        setShowDropdown(false);
       });
+  };
+
+  const handleSelect = (show) => {
+    setShowDropdown(false);
+    setDropdownResults([]);
+    loadShowById(show);
   };
 
   const fetchWatchProviders = (showId) => {
     fetch(`${BASE_URL}/tv/${showId}/watch/providers?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.results && json.results.US) {
-          setWatchProviders(json.results.US);
-        } else {
-          setWatchProviders({ flatrate: [] });
-        }
+        setWatchProviders(json.results?.US ?? { flatrate: [] });
       })
-      .catch((error) => {
-        console.error("Error fetching watch providers:", error);
-        setWatchProviders({ flatrate: [] });
-      });
+      .catch(() => setWatchProviders({ flatrate: [] }));
   };
 
   const fetchCertification = (showId) => {
     fetch(`${BASE_URL}/tv/${showId}/content_ratings?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.results) {
-          const usRating = json.results.find(
-            (rating) => rating.iso_3166_1 === "US",
-          );
-          setCertification(usRating ? usRating.rating : null);
-        } else {
-          setCertification(null);
-        }
+        const usRating = json.results?.find((r) => r.iso_3166_1 === "US");
+        setCertification(usRating ? usRating.rating : null);
       })
-      .catch((error) => {
-        console.error("Error fetching certification:", error);
-        setCertification(null);
-      });
+      .catch(() => setCertification(null));
   };
 
   const fetchNumSeasons = (showId) => {
@@ -119,8 +126,7 @@ function ShowSearch({ searchQuery }) {
         setNumSeasons(json.number_of_seasons);
         setCreators(json.created_by || []);
       })
-      .catch((error) => {
-        console.error("Error fetching number of seasons:", error);
+      .catch(() => {
         setNumSeasons(null);
         setCreators(null);
       });
@@ -128,58 +134,33 @@ function ShowSearch({ searchQuery }) {
 
   const fetchActors = async (showId) => {
     try {
-      const res = await fetch(
-        `${BASE_URL}/tv/${showId}/credits?api_key=${API_KEY}`,
-      );
+      const res = await fetch(`${BASE_URL}/tv/${showId}/credits?api_key=${API_KEY}`);
       const json = await res.json();
-
-      if (json.cast) {
-        const topActors = json.cast.slice(0, 6);
-
-        // Fetch detailed info for each actor
-        const actorsWithDetails = await Promise.all(
-          topActors.map(async (actor) => {
-            try {
-              const detailRes = await fetch(
-                `${BASE_URL}/person/${actor.id}?api_key=${API_KEY}`,
-              );
-              const detailJson = await detailRes.json();
-
-              const creditsRes = await fetch(
-                `${BASE_URL}/person/${actor.id}/combined_credits?api_key=${API_KEY}`,
-              );
-              const creditsJson = await creditsRes.json();
-
-              // Get top 3 known for (TV shows and movies)
-              const knownFor =
-                creditsJson.cast
-                  ?.sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
-                  .slice(0, 4)
-                  .map((m) => m.title || m.name)
-                  .filter(Boolean) || [];
-
-              return {
-                ...actor,
-                birthday: detailJson.birthday,
-                deathday: detailJson.deathday,
-                knownFor: knownFor,
-              };
-            } catch (error) {
-              console.error(
-                `Error fetching details for actor ${actor.id}:`,
-                error,
-              );
-              return { ...actor, birthday: null, knownFor: [] };
-            }
-          }),
-        );
-
-        setActors(actorsWithDetails);
-      } else {
-        setActors([]);
-      }
-    } catch (error) {
-      console.error("Error fetching actors:", error);
+      if (!json.cast) return setActors([]);
+      const topActors = json.cast.slice(0, 6);
+      const actorsWithDetails = await Promise.all(
+        topActors.map(async (actor) => {
+          try {
+            const [detailRes, creditsRes] = await Promise.all([
+              fetch(`${BASE_URL}/person/${actor.id}?api_key=${API_KEY}`),
+              fetch(`${BASE_URL}/person/${actor.id}/combined_credits?api_key=${API_KEY}`),
+            ]);
+            const detailJson = await detailRes.json();
+            const creditsJson = await creditsRes.json();
+            const knownFor =
+              creditsJson.cast
+                ?.sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
+                .slice(0, 4)
+                .map((m) => m.title || m.name)
+                .filter(Boolean) ?? [];
+            return { ...actor, birthday: detailJson.birthday, deathday: detailJson.deathday, knownFor };
+          } catch {
+            return { ...actor, birthday: null, knownFor: [] };
+          }
+        })
+      );
+      setActors(actorsWithDetails);
+    } catch {
       setActors([]);
     }
   };
@@ -194,13 +175,9 @@ function ShowSearch({ searchQuery }) {
         setEpisodeOverviews(episodes.map((ep) => ep.overview));
         setEpisodeRatings(episodes.map((ep) => ep.vote_average));
         setFlippedCards({});
-
-        setSeasonInfo({
-          air_date: json.air_date,
-        });
+        setSeasonInfo({ air_date: json.air_date });
       })
-      .catch((error) => {
-        console.error("Error fetching episode names:", error);
+      .catch(() => {
         setEpisodeNames(null);
         setEpisodeStills(null);
         setEpisodeOverviews(null);
@@ -214,28 +191,79 @@ function ShowSearch({ searchQuery }) {
     value: i + 1,
   }));
 
-  const toggleFlip = (index) => {
-    setFlippedCards((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
-  };
-
-  const toggleActorFlip = (index) => {
-    setFlippedActorCards((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
-  };
+  const toggleFlip = (index) => setFlippedCards((prev) => ({ ...prev, [index]: !prev[index] }));
+  const toggleActorFlip = (index) => setFlippedActorCards((prev) => ({ ...prev, [index]: !prev[index] }));
 
   useEffect(() => {
-    if (searchQuery) {
-      searchShow(searchQuery);
-    }
-  }, [searchQuery]);
+    const onClickOutside = (e) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
 
   return (
-    <div>
+    <div ref={wrapperRef}>
+      <div className="internet" style={{ textAlign: "center" }}>
+        <table style={{ textAlign: "left" }}>
+          <tbody>
+            <tr>
+              <td>
+                <form onSubmit={handleSubmit}>
+                  <div className="search">
+                    <input
+                      type="search"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Enter show name..."
+                    />
+                  </div>
+                  <button type="submit">
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: "24px", color: "white" }}
+                    >
+                      search
+                    </span>
+                  </button>
+                </form>
+
+                {showDropdown && (
+                  <div className="search-dropdown">
+                    {dropdownResults.map((show) => (
+                      <div
+                        key={show.id}
+                        className="search-dropdown-item"
+                        onClick={() => handleSelect(show)}
+                      >
+                        {show.poster_path ? (
+                          <img
+                            src={`https://image.tmdb.org/t/p/w92${show.poster_path}`}
+                            alt={show.name}
+                          />
+                        ) : (
+                          <div className="search-no-cover" />
+                        )}
+                        <div className="search-dropdown-info">
+                          <span className="search-dropdown-name">{show.name}</span>
+                          {show.first_air_date && (
+                            <span className="search-dropdown-year">
+                              {show.first_air_date.slice(0, 4)}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       {searchResult && (
         <div className="streaming2">
           <table>
@@ -248,52 +276,34 @@ function ShowSearch({ searchQuery }) {
                     rel="noopener noreferrer"
                   >
                     <img
-                      style={{
-                        width: "200px",
-                        height: "300px",
-                      }}
+                      style={{ width: "200px", height: "300px" }}
                       src={
                         searchResult.poster_path
                           ? `https://image.tmdb.org/t/p/w500${searchResult.poster_path}`
                           : "noposter.png"
                       }
-                      alt={searchResult.title}
+                      alt={searchResult.name}
                     />
                   </a>
                   <h1>{searchResult.name}</h1>
-                  <hr></hr>
+                  <hr />
                   {creators && creators.length > 0 && (
                     <div className="creators">
-                      <h4>
-                        Created by{" "}
-                        {creators.map((creator) => creator.name).join(", ")}
-                      </h4>
+                      <h4>Created by {creators.map((c) => c.name).join(", ")}</h4>
                     </div>
                   )}
-
                   <button
-                    style={{
-                      backgroundColor: "#ddd",
-                      color: "black",
-                      borderRadius: "20px",
-                      fontSize: "16px",
-                      padding: "5px 10px",
-                      fontWeight: "bold",
-                      // marginBottom: "10px",
-                    }}
+                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
                     onClick={() => setShowActors(!showActors)}
                   >
                     Top Actors
                   </button>
-
                   {showActors && actors.length > 0 && (
                     <div className="episode-cards">
                       {actors.map((actor, index) => (
                         <div
                           key={actor.id}
-                          className={`flip-card ${
-                            flippedActorCards[index] ? "flipped" : ""
-                          }`}
+                          className={`flip-card ${flippedActorCards[index] ? "flipped" : ""}`}
                           onClick={() => toggleActorFlip(index)}
                         >
                           <div className="flip-card-inner">
@@ -304,58 +314,32 @@ function ShowSearch({ searchQuery }) {
                                   alt={actor.name}
                                 />
                               ) : (
-                                <div className="no-image">
-                                  No Profile Picture
-                                </div>
+                                <div className="no-image">No Profile Picture</div>
                               )}
                               <div className="episode-title">
-                                {actor.name}
-                                <br />
-                                as
-                                <br />
-                                {actor.character}
+                                {actor.name}<br />as<br />{actor.character}
                               </div>
                             </div>
                             <div className="flip-card-back">
                               <div style={{ padding: "0px", fontSize: "14px" }}>
                                 <strong>Age: </strong>
                                 {actor.deathday
-                                  ? `${Math.floor(
-                                      (new Date(actor.deathday) -
-                                        new Date(actor.birthday)) /
-                                        (1000 * 60 * 60 * 24 * 365.25),
-                                    )} (d)`
+                                  ? `${Math.floor((new Date(actor.deathday) - new Date(actor.birthday)) / (1000 * 60 * 60 * 24 * 365.25))} (d)`
                                   : actor.birthday
-                                    ? `${Math.floor(
-                                        (new Date() -
-                                          new Date(actor.birthday)) /
-                                          (1000 * 60 * 60 * 24 * 365.25),
-                                      )}`
-                                    : "unknown"}
-                                <br />
-                                <br />
-                                {actor.knownFor &&
-                                  actor.knownFor.length > 0 && (
-                                    <>
-                                      <strong>Known for:</strong>
-
-                                      <ul
-                                        style={{
-                                          textAlign: "left",
-                                          paddingLeft: "0px",
-                                          margin: "0px 0",
-                                        }}
-                                      >
-                                        {actor.knownFor.map((title, i) => (
-                                          <li key={i}>{title}</li>
-                                        ))}
-                                      </ul>
-                                    </>
-                                  )}
-                                {!actor.birthday &&
-                                  actor.knownFor.length === 0 && (
-                                    <p>No additional info available</p>
-                                  )}
+                                  ? `${Math.floor((new Date() - new Date(actor.birthday)) / (1000 * 60 * 60 * 24 * 365.25))}`
+                                  : "unknown"}
+                                <br /><br />
+                                {actor.knownFor?.length > 0 && (
+                                  <>
+                                    <strong>Known for:</strong>
+                                    <ul style={{ textAlign: "left", paddingLeft: "0px", margin: "0px 0" }}>
+                                      {actor.knownFor.map((title, i) => <li key={i}>{title}</li>)}
+                                    </ul>
+                                  </>
+                                )}
+                                {!actor.birthday && actor.knownFor.length === 0 && (
+                                  <p>No additional info available</p>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -363,19 +347,14 @@ function ShowSearch({ searchQuery }) {
                       ))}
                     </div>
                   )}
-
-                  {certification ? (
-                    <h4>Rated {certification}</h4>
-                  ) : (
-                    <h4>Unrated</h4>
-                  )}
+                  {certification ? <h4>Rated {certification}</h4> : <h4>Unrated</h4>}
                   <h4>
                     {searchResult.vote_average
                       ? `⭐ ${searchResult.vote_average.toFixed(1)} / 10 ⭐`
                       : "No Rating Available"}
                   </h4>
                   {numSeasons === 1 ? "1 Season" : `${numSeasons} Seasons`}
-                  <br></br>
+                  <br />
                   <div style={{ margin: "10px 0" }}>
                     <Dropdown
                       value={selectedSeason}
@@ -400,11 +379,7 @@ function ShowSearch({ searchQuery }) {
                   </div>
                   {seasonInfo && (
                     <div className="season-info">
-                      {seasonInfo.air_date ? (
-                        <h4>{seasonInfo.air_date}</h4>
-                      ) : (
-                        <h4>Release date TBA</h4>
-                      )}
+                      {seasonInfo.air_date ? <h4>{seasonInfo.air_date}</h4> : <h4>Release date TBA</h4>}
                     </div>
                   )}
                   {showSeasons && (
@@ -412,13 +387,10 @@ function ShowSearch({ searchQuery }) {
                       {episodeNames?.map((name, index) => (
                         <div
                           key={index}
-                          className={`flip-card ${
-                            flippedCards[index] ? "flipped" : ""
-                          }`}
+                          className={`flip-card ${flippedCards[index] ? "flipped" : ""}`}
                           onClick={() => toggleFlip(index)}
                         >
                           <div className="flip-card-inner">
-                            {/* Front */}
                             <div className="flip-card-front">
                               {episodeStills?.[index] ? (
                                 <img
@@ -429,35 +401,16 @@ function ShowSearch({ searchQuery }) {
                                 <div className="no-image">No Image</div>
                               )}
                               <div className="episode-title">
-                                {index + 1}
-                                <br></br> {name}
+                                {index + 1}<br />{name}
                               </div>
                             </div>
-
-                            {/* Back */}
                             <div className="flip-card-back">
-                              {episodeRatings?.[index] === 0 ? (
-                                <div
-                                  style={{
-                                    fontWeight: "bold",
-                                    marginBottom: "8px",
-                                  }}
-                                ></div>
-                              ) : (
-                                <div
-                                  style={{
-                                    fontWeight: "bold",
-                                    marginBottom: "8px",
-                                  }}
-                                >
-                                  ⭐{" "}
-                                  {` ${episodeRatings?.[index]?.toFixed(
-                                    1,
-                                  )} / 10 ⭐` || ""}
+                              {episodeRatings?.[index] !== 0 && (
+                                <div style={{ fontWeight: "bold", marginBottom: "8px" }}>
+                                  ⭐ {episodeRatings?.[index]?.toFixed(1)} / 10 ⭐
                                 </div>
                               )}
-                              {episodeOverviews?.[index] ||
-                                "No description available."}
+                              {episodeOverviews?.[index] || "No description available."}
                             </div>
                           </div>
                         </div>
@@ -467,16 +420,13 @@ function ShowSearch({ searchQuery }) {
                   <br />
                   {watchProviders?.flatrate?.length > 0 ? (
                     <div>
-                      {watchProviders.flatrate.map((provider) => (
+                      {watchProviders.flatrate.map((p) => (
                         <img
-                          style={{
-                            width: "45px",
-                            height: "45px",
-                          }}
-                          key={provider.provider_id}
-                          src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
-                          alt={provider.provider_name}
-                          title={provider.provider_name}
+                          key={p.provider_id}
+                          style={{ width: "45px", height: "45px" }}
+                          src={`https://image.tmdb.org/t/p/w500${p.logo_path}`}
+                          alt={p.provider_name}
+                          title={p.provider_name}
                         />
                       ))}
                     </div>
@@ -484,7 +434,7 @@ function ShowSearch({ searchQuery }) {
                     <h4>Unavailable to Stream</h4>
                   )}
                   <br />
-                  <hr></hr>
+                  <hr />
                   <p>{searchResult.overview}</p>
                   <h5>
                     Data provided by{" "}
@@ -500,8 +450,7 @@ function ShowSearch({ searchQuery }) {
               </tr>
             </tbody>
           </table>
-          <br />
-          <br />
+          <br /><br />
         </div>
       )}
     </div>

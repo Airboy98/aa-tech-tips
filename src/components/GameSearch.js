@@ -130,11 +130,11 @@ function GameSearch() {
                 </form>
 
                 {showDropdown && (
-                  <div className="game-search-dropdown">
+                  <div className="search-dropdown">
                     {searchResults.map((game, i) => (
                       <div
                         key={game.id ?? i}
-                        className="game-search-dropdown-item"
+                        className="search-dropdown-item"
                         onClick={() => handleSelect(game)}
                       >
                         {game.cover ? (
@@ -146,14 +146,14 @@ function GameSearch() {
                             alt={game.name}
                           />
                         ) : (
-                          <div className="game-search-no-cover" />
+                          <div className="search-no-cover" />
                         )}
-                        <div className="game-search-dropdown-info">
-                          <span className="game-search-dropdown-name">
+                        <div className="search-dropdown-info">
+                          <span className="search-dropdown-name">
                             {game.name}
                           </span>
                           {getYear(game.first_release_date) && (
-                            <span className="game-search-dropdown-year">
+                            <span className="search-dropdown-year">
                               {getYear(game.first_release_date)}
                             </span>
                           )}
