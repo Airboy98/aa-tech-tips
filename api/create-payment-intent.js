@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   }
 
   const allowedModels = {
-    "claude-sonnet-4-6": { amount: 300, label: "Claude Sonnet 4.6" },
+    "claude-sonnet-4-6": { amount: 50, label: "Claude Sonnet 4.6" },
     "claude-opus-4-7": { amount: 50, label: "Claude Opus 4.7" },
   };
   const tier = allowedModels[model] || allowedModels["claude-sonnet-4-6"];

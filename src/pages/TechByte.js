@@ -18,7 +18,7 @@ const TIERS = [
   {
     model: "claude-sonnet-4-6",
     label: "Sonnet 4.6",
-    price: "$3",
+    price: "$0.50",
     description: "This model excels at being fast, accurate, and thorough.",
   },
   {
@@ -219,7 +219,7 @@ function TechByteForm({ model, price, description }) {
   };
 
   const charCount = question.length;
-  const isReady = charCount >= MIN_CHARS && charCount <= MAX_CHARS;
+  const isReady = charCount > 0 && charCount <= MAX_CHARS;
 
   const handleQuestionSubmit = async (e) => {
     e.preventDefault();
@@ -490,11 +490,11 @@ function TechByteForm({ model, price, description }) {
               <span
                 style={{
                   fontSize: "12px",
-                  color: charCount < MIN_CHARS ? "#e07070" : "#7ec87e",
+                  color: charCount < MIN_CHARS ? "#e0c060" : "#7ec87e",
                 }}
               >
                 {charCount < MIN_CHARS
-                  ? `${MIN_CHARS - charCount} more characters needed`
+                  ? `${MIN_CHARS - charCount} more characters recommended`
                   : `${charCount} / ${MAX_CHARS}`}
               </span>
               {charCount > 0 && charCount < MIN_CHARS && (
