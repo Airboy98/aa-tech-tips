@@ -24,7 +24,7 @@ const TIERS = [
   {
     model: "claude-opus-4-7",
     label: "Opus 4.7",
-    price: "$5",
+    price: "$0.50",
     description:
       "This is Anthropic's most powerful model. Supplement your question with a picture for the best results.",
   },
