@@ -18,13 +18,13 @@ const TIERS = [
   {
     model: "claude-sonnet-4-6",
     label: "Sonnet 4.6",
-    price: "$0.50",
+    price: "$3",
     description: "This model excels at being fast, accurate, and thorough.",
   },
   {
     model: "claude-opus-4-7",
     label: "Opus 4.7",
-    price: "$0.50",
+    price: "$5",
     description:
       "This is Anthropic's most powerful model. Supplement your question with a picture for the best results.",
   },
@@ -138,7 +138,9 @@ function CheckoutForm({ price, onSuccess }) {
         borderRadius: 0,
       }}
     >
-      <PaymentElement options={{ wallets: { applePay: "auto", googlePay: "auto" } }} />
+      <PaymentElement
+        options={{ wallets: { applePay: "auto", googlePay: "auto" } }}
+      />
       <button
         type="submit"
         disabled={!stripe || loading}

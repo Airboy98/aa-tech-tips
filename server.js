@@ -302,13 +302,13 @@ app.get("/api/lyrics", async (req, res) => {
 // TECH BYTE — create Payment Intent
 app.post("/api/create-payment-intent", async (req, res) => {
   const { question, model } = req.body;
-  if (!question || question.trim().length < 100) {
-    return res.status(400).json({ error: "Question too short" });
+  if (!question || question.trim().length === 0) {
+    return res.status(400).json({ error: "Question is required" });
   }
 
   const allowedModels = {
     "claude-sonnet-4-6": { amount: 300, label: "Claude Sonnet 4.6" },
-    "claude-opus-4-7": { amount: 50, label: "Claude Opus 4.7" },
+    "claude-opus-4-7": { amount: 500, label: "Claude Opus 4.7" },
   };
   const tier = allowedModels[model] || allowedModels["claude-sonnet-4-6"];
 

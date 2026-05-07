@@ -6,8 +6,8 @@ export default async function handler(req, res) {
   }
 
   const { question, model, origin } = req.body;
-  if (!question || question.trim().length < 100) {
-    return res.status(400).json({ error: "Question too short" });
+  if (!question || question.trim().length === 0) {
+    return res.status(400).json({ error: "Question is required" });
   }
 
   const allowedModels = {
