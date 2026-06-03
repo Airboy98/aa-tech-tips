@@ -18,13 +18,13 @@ const TIERS = [
   {
     model: "claude-sonnet-4-6",
     label: "Sonnet 4.6",
-    price: "$3",
+    price: "$2",
     description: "This model excels at being fast, accurate, and thorough.",
   },
   {
-    model: "claude-opus-4-7",
-    label: "Opus 4.7",
-    price: "$5",
+    model: "claude-opus-4-8",
+    label: "Opus 4.8",
+    price: "$3",
     description:
       "This is Anthropic's most powerful model. Supplement your question with a picture for the best results.",
   },
@@ -189,7 +189,7 @@ function TechByteForm({ model, price, description }) {
   const [imagePreview, setImagePreview] = useState(null);
   const [imageError, setImageError] = useState(null);
 
-  const isOpus = model === "claude-opus-4-7";
+  const isOpus = model === "claude-opus-4-8";
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -699,7 +699,15 @@ export default function TechByte() {
       <div className="section-header">
         <h1>Tech Byte</h1>
       </div>
-      <h2>Claude AI</h2>
+      {/* <h2>Ask Me</h2>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">Send a Message</button>
+        }
+      >
+        test
+      </Collapsible> */}
+      <h2>Ask Claude AI</h2>
       {/* <Collapsible
         trigger={<button className="collapsible-trigger">Instructions</button>}
       >

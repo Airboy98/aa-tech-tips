@@ -18,17 +18,17 @@ export default function Appointment() {
       <h2>Details</h2>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Basic Consultation</button>
+          <button className="collapsible-trigger">Ask a Question</button>
         }
       >
         <h3>Free!</h3>
         <h4>
-          To find out how I can assist further, send an email to{" "}
+          Send a question to{" "}
           <a href="mailto:appointment@aatechtips.com">
             appointment@aatechtips.com
           </a>{" "}
-          for a free email consultation to gather information about your IT
-          issues and determine the next best course of action:
+          for a free consultation to gather information about your IT issues and
+          determine the next best course of action:
         </h4>
         <ul>
           <li>
@@ -44,14 +44,14 @@ export default function Appointment() {
       <Collapsible
         trigger={<button className="collapsible-trigger">In-Person</button>}
       >
-        <h1>
+        <h3>
           Instructional Package
           <span class="subtitle">
             <u>Learn while resolving</u> your tech issues step-by-step
           </span>
           <span class="subtitle">Zelle, Apple Pay, Cash or Check</span>
           <span class="subtitle">$100/hr</span>
-        </h1>
+        </h3>
         <h4>
           For the most comprehensive IT assistance, I offer one-on-one sessions
           with clear, step-by-step instructions to help with...
