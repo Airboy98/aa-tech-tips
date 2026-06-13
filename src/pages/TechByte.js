@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Collapsible from "react-collapsible";
+import ChatBox from "../components/ChatBox";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -699,14 +700,14 @@ export default function TechByte() {
       <div className="section-header">
         <h1>Tech Byte</h1>
       </div>
-      {/* <h2>Ask Me</h2>
+      <h2>Ask Me</h2>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Send a Message</button>
         }
       >
-        test
-      </Collapsible> */}
+        <ChatBox />
+      </Collapsible>
       <h2>Ask Claude AI</h2>
       {/* <Collapsible
         trigger={<button className="collapsible-trigger">Instructions</button>}

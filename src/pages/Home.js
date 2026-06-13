@@ -41,10 +41,8 @@ export default function Home() {
           <img src="images/hamburger.png" height="20" width="20" /> menu on
           smartphones).
           <br></br>
-          <br></br>Tap Tech Byte below to ask ANY tech question and get a
+          <br></br>Tap Tech Byte below to ask me ANY tech question or get a
           comprehensive AI powered answer.
-          {/* <br></br>Tap Tech Byte below to ask me ANY tech question or get a
-          comprehensive AI powered answer. */}
         </h4>
       </Collapsible>
 

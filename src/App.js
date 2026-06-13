@@ -14,6 +14,7 @@ import Appointment from "./pages/Appointment";
 import Baby from "./pages/baby";
 import TechByte from "./pages/TechByte";
 import TechByteSuccess from "./pages/TechByteSuccess";
+import Admin from "./pages/Admin";
 // import Sonic from "/Sonic";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/baby" element={<Baby />} />
             <Route path="/tech-byte" element={<TechByte />} />
             <Route path="/tech-byte/success" element={<TechByteSuccess />} />
+            <Route path="/admin" element={<Admin />} />
             {/* <Route path="/sonic" element={<Sonic />} /> */}
           </Routes>
         </BrowserRouter>

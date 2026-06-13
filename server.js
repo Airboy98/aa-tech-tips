@@ -4,7 +4,38 @@ const fetch = require("node-fetch");
 const cheerio = require("cheerio");
 const Stripe = require("stripe");
 const Anthropic = require("@anthropic-ai/sdk");
+const Pusher = require("pusher");
+const mongoose = require("mongoose");
 require("dotenv").config();
+
+// MongoDB connection
+let mongoConnected = false;
+async function connectDB() {
+  if (mongoConnected) return;
+  await mongoose.connect(process.env.MONGODB_URI, { bufferCommands: false });
+  mongoConnected = true;
+}
+
+const messageSchema = new mongoose.Schema({
+  sessionId: { type: String, required: true, index: true },
+  sender: { type: String, enum: ["visitor", "admin"], required: true },
+  name: String,
+  email: String,
+  text: { type: String, required: true },
+  timestamp: { type: Date, default: Date.now },
+});
+const Message =
+  mongoose.models.Message || mongoose.model("Message", messageSchema);
+
+function makePusher() {
+  return new Pusher({
+    appId: process.env.PUSHER_APP_ID,
+    key: process.env.PUSHER_KEY,
+    secret: process.env.PUSHER_SECRET,
+    cluster: process.env.PUSHER_CLUSTER,
+    useTLS: true,
+  });
+}
 
 const app = express();
 app.use(express.json({ limit: "5mb" }));
@@ -385,6 +416,106 @@ app.post("/api/tech-byte-answer", async (req, res) => {
   } catch (err) {
     console.error("Tech Byte error:", err);
     res.status(500).json({ error: "Failed to generate answer" });
+  }
+});
+
+// CHAT — send message (visitor)
+app.post("/api/send-message", async (req, res) => {
+  const { sessionId, name, email, text } = req.body;
+  if (!sessionId || !text)
+    return res.status(400).json({ error: "Missing required fields" });
+  try {
+    await connectDB();
+    const message = await Message.create({ sessionId, sender: "visitor", name, email, text });
+    await makePusher().trigger(`chat-${sessionId}`, "new-message", {
+      sender: "visitor", text, timestamp: message.timestamp,
+    });
+    res.json({ success: true, message });
+  } catch (err) {
+    console.error("send-message error:", err);
+    res.status(500).json({ error: "Failed to send message" });
+  }
+});
+
+// CHAT — get messages for a session
+app.get("/api/get-messages", async (req, res) => {
+  const { sessionId } = req.query;
+  if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
+  try {
+    await connectDB();
+    const messages = await Message.find({ sessionId }).sort({ timestamp: 1 });
+    res.json({ messages });
+  } catch (err) {
+    console.error("get-messages error:", err);
+    res.status(500).json({ error: "Failed to fetch messages" });
+  }
+});
+
+// CHAT — admin reply
+app.post("/api/send-reply", async (req, res) => {
+  const { sessionId, text, adminPassword } = req.body;
+  if (adminPassword !== process.env.ADMIN_PASSWORD)
+    return res.status(401).json({ error: "Unauthorized" });
+  if (!sessionId || !text)
+    return res.status(400).json({ error: "Missing required fields" });
+  try {
+    await connectDB();
+    const message = await Message.create({ sessionId, sender: "admin", text });
+    await makePusher().trigger(`chat-${sessionId}`, "new-message", {
+      sender: "admin", text, timestamp: message.timestamp,
+    });
+    res.json({ success: true, message });
+  } catch (err) {
+    console.error("send-reply error:", err);
+    res.status(500).json({ error: "Failed to send reply" });
+  }
+});
+
+// CHAT — get all sessions (admin)
+app.get("/api/get-sessions", async (req, res) => {
+  const { adminPassword } = req.query;
+  if (adminPassword !== process.env.ADMIN_PASSWORD)
+    return res.status(401).json({ error: "Unauthorized" });
+  try {
+    await connectDB();
+    const sessionGroups = await Message.aggregate([
+      { $sort: { timestamp: -1 } },
+      { $group: { _id: "$sessionId", latestMessage: { $first: "$text" }, latestTimestamp: { $first: "$timestamp" } } },
+      { $sort: { latestTimestamp: -1 } },
+    ]);
+    const sessions = await Promise.all(
+      sessionGroups.map(async (s) => {
+        const firstVisitor = await Message.findOne({ sessionId: s._id, sender: "visitor" }).sort({ timestamp: 1 });
+        return {
+          sessionId: s._id,
+          name: firstVisitor?.name || "Unknown",
+          email: firstVisitor?.email || "",
+          latestMessage: s.latestMessage,
+          latestTimestamp: s.latestTimestamp,
+        };
+      })
+    );
+    res.json({ sessions });
+  } catch (err) {
+    console.error("get-sessions error:", err);
+    res.status(500).json({ error: "Failed to fetch sessions" });
+  }
+});
+
+// CHAT — delete session
+app.delete("/api/delete-session", async (req, res) => {
+  const { sessionId, adminPassword } = req.body;
+  if (adminPassword !== process.env.ADMIN_PASSWORD)
+    return res.status(401).json({ error: "Unauthorized" });
+  if (!sessionId)
+    return res.status(400).json({ error: "Missing sessionId" });
+  try {
+    await connectDB();
+    await Message.deleteMany({ sessionId });
+    res.json({ success: true });
+  } catch (err) {
+    console.error("delete-session error:", err);
+    res.status(500).json({ error: "Failed to delete session" });
   }
 });
 
