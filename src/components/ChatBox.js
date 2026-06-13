@@ -31,7 +31,7 @@ export default function ChatBox() {
   useEffect(() => {
     if (!sessionId) return;
 
-    fetch(`/api/get-messages?sessionId=${sessionId}`)
+    fetch(`/api/chat?action=get-messages&sessionId=${sessionId}`)
       .then((r) => r.json())
       .then((data) => setMessages(data.messages || []));
 
@@ -69,7 +69,7 @@ export default function ChatBox() {
     setSending(true);
     setError(null);
     try {
-      const res = await fetch("/api/send-message", {
+      const res = await fetch("/api/chat?action=send-message", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

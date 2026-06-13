@@ -34,7 +34,7 @@ export default function Admin() {
     e.preventDefault();
     setAuthError("");
     const res = await fetch(
-      `/api/get-sessions?adminPassword=${encodeURIComponent(password)}`,
+      `/api/chat?action=get-sessions&adminPassword=${encodeURIComponent(password)}`,
     );
     if (res.ok) {
       const data = await res.json();
@@ -49,7 +49,7 @@ export default function Admin() {
   const loadSession = async (session) => {
     setSelectedSession(session);
     setMessages([]);
-    const res = await fetch(`/api/get-messages?sessionId=${session.sessionId}`);
+    const res = await fetch(`/api/chat?action=get-messages&sessionId=${session.sessionId}`);
     const data = await res.json();
     setMessages(data.messages || []);
   };
@@ -77,7 +77,7 @@ export default function Admin() {
 
   const handleDelete = async (sessionId) => {
     if (!window.confirm("Delete this conversation?")) return;
-    await fetch("/api/delete-session", {
+    await fetch("/api/chat?action=delete-session", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ sessionId, adminPassword: adminPasswordRef.current }),
@@ -93,7 +93,7 @@ export default function Admin() {
     e.preventDefault();
     if (!replyText.trim() || sending) return;
     setSending(true);
-    await fetch("/api/send-reply", {
+    await fetch("/api/chat?action=send-reply", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
