@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Collapsible from "react-collapsible";
+import { Link } from "react-router-dom";
 import ChatBox from "../components/ChatBox";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -452,6 +453,7 @@ function TechByteForm({ model, price, description }) {
               alignItems: "stretch",
               background: "none",
               borderRadius: 0,
+              padding: 0,
             }}
           >
             <textarea
@@ -698,7 +700,7 @@ export default function TechByte() {
   return (
     <>
       <div className="section-header">
-        <h1>Tech Byte</h1>
+        <h1><Link to="/admin" style={{ color: "inherit", textDecoration: "none" }}>Tech Byte</Link></h1>
       </div>
       <h2>Ask Me</h2>
       <Collapsible
@@ -706,6 +708,7 @@ export default function TechByte() {
           <button className="collapsible-trigger">Send a Message</button>
         }
       >
+        <h4>Responses usually within 24 hours.</h4>
         <ChatBox />
       </Collapsible>
       <h2>Ask Claude AI</h2>
