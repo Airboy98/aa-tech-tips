@@ -217,10 +217,10 @@ h5 {
 .admin-delete-btn {
   background: none;
   border: none;
+  border-left: 1px solid #1e3a5f;
   color: #6b8fab;
   cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
+  padding: 0 16px;
   transition:
     color 0.15s,
     background 0.15s;
@@ -228,6 +228,7 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: stretch;
 }
 
 .admin-delete-btn:hover {
@@ -425,7 +426,7 @@ h5 {
 }
 
 .admin-session-list {
-  width: 260px;
+  width: 350px;
   border-right: 1px solid #3c709f;
   overflow-y: auto;
   flex-shrink: 0;
@@ -457,12 +458,19 @@ h5 {
 }
 
 .admin-session-item {
-  padding: 14px 16px;
+  display: flex;
+  align-items: stretch;
   border-bottom: 1px solid #1e3a5f;
   border-left: 3px solid transparent;
   cursor: pointer;
   background: #0d2d4a;
   text-align: left;
+}
+
+.admin-session-item-content {
+  flex: 1;
+  padding: 14px 16px;
+  min-width: 0;
 }
 
 .admin-session-item--selected {
@@ -521,6 +529,10 @@ h5 {
 
 .admin-chat-header {
   margin-bottom: 14px;
+}
+
+.admin-chat-header-top {
+  display: block;
 }
 
 .admin-chat-header-name {
@@ -586,4 +598,138 @@ h5 {
   border: none;
   outline: none;
   color: #fff;
+}
+
+.admin-back-btn {
+  display: none;
+}
+
+.admin-next-btn {
+  display: none;
+}
+
+.admin-chat-header-center {
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .admin-layout {
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  .admin-panels {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .admin-session-list {
+    width: 100%;
+    border-right: none;
+    overflow-y: auto;
+  }
+
+  .admin-chat-panel {
+    display: none;
+  }
+
+  .admin-panels--chat-active .admin-session-list {
+    display: none;
+  }
+
+  .admin-panels--chat-active .admin-chat-panel {
+    display: flex;
+    width: 100%;
+    padding: 4px 0 0 0;
+    min-height: 0;
+  }
+
+  .admin-chat-header {
+    padding: 0 12px 6px 12px;
+  }
+
+  .admin-messages {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+    max-height: calc(100svh - 250px);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .admin-reply-form {
+    margin: 8px 12px;
+    flex-shrink: 0;
+  }
+
+  .admin-chat-header {
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .admin-chat-header-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 0;
+  }
+
+  .admin-chat-header-name {
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .admin-chat-header-email {
+    color: #aac4e0;
+    text-align: center;
+    display: block;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .admin-back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 14px;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .admin-next-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 14px;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .admin-next-btn:disabled {
+    opacity: 0.25;
+    cursor: default;
+  }
+
+  .admin-session-item-content {
+    padding: 10px 14px;
+  }
+
+  .admin-session-header {
+    padding: 10px 14px;
+  }
 }

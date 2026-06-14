@@ -18,6 +18,7 @@ function formatTimestamp(ts) {
   return date.toLocaleDateString();
 }
 
+
 export default function Admin() {
   const [password, setPassword] = useState("");
   const [authed, setAuthed] = useState(false);
@@ -89,6 +90,15 @@ export default function Admin() {
     }
   };
 
+  const handleNext = () => {
+    const idx = sessions.findIndex((s) => s.sessionId === selectedSession.sessionId);
+    if (idx < sessions.length - 1) loadSession(sessions[idx + 1]);
+  };
+
+  const hasNext = selectedSession
+    ? sessions.findIndex((s) => s.sessionId === selectedSession.sessionId) < sessions.length - 1
+    : false;
+
   const handleReply = async (e) => {
     e.preventDefault();
     if (!replyText.trim() || sending) return;
@@ -136,7 +146,7 @@ export default function Admin() {
       <div className="section-header">
         <h1>Admin</h1>
       </div>
-      <div className="admin-panels">
+      <div className={`admin-panels${selectedSession ? " admin-panels--chat-active" : ""}`}>
         {/* Session list */}
         <div className="admin-session-list">
           <div className="admin-session-header">
@@ -154,27 +164,27 @@ export default function Admin() {
                 onClick={() => loadSession(session)}
                 className={`admin-session-item${isSelected ? " admin-session-item--selected" : ""}`}
               >
-                <div className="admin-session-item-top">
-                  <div className="admin-session-name">{session.name}</div>
-                  <span className="admin-session-time">
-                    {formatTimestamp(session.latestTimestamp)}
-                  </span>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); handleDelete(session.sessionId); }}
-                    className="admin-delete-btn"
-                    title="Delete conversation"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="3 6 5 6 21 6" />
-                      <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
-                      <path d="M10 11v6" />
-                      <path d="M14 11v6" />
-                      <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
-                    </svg>
-                  </button>
+                <div className="admin-session-item-content">
+                  <div className="admin-session-item-top">
+                    <div className="admin-session-name">{session.name}</div>
+                    <span className="admin-session-time">{formatTimestamp(session.latestTimestamp)}</span>
+                  </div>
+                  <div className="admin-session-email">{session.email}</div>
+                  <div className="admin-session-preview">{session.latestMessage}</div>
                 </div>
-                <div className="admin-session-email">{session.email}</div>
-                <div className="admin-session-preview">{session.latestMessage}</div>
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleDelete(session.sessionId); }}
+                  className="admin-delete-btn"
+                  title="Delete conversation"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="3 6 5 6 21 6" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                    <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+                  </svg>
+                </button>
               </div>
             );
           })}
@@ -187,8 +197,20 @@ export default function Admin() {
           ) : (
             <>
               <div className="admin-chat-header">
-                <h3 className="admin-chat-header-name">{selectedSession.name}</h3>
-                <span className="admin-chat-header-email">{selectedSession.email}</span>
+                <button onClick={() => setSelectedSession(null)} className="admin-back-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
+                </button>
+                <div className="admin-chat-header-center">
+                  <h3 className="admin-chat-header-name">{selectedSession.name}</h3>
+                  <span className="admin-chat-header-email">{selectedSession.email}</span>
+                </div>
+                <button onClick={handleNext} disabled={!hasNext} className="admin-next-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </button>
               </div>
               <div ref={messagesContainerRef} className="admin-messages">
                 {messages.map((msg, i) => (
