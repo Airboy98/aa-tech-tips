@@ -64,9 +64,10 @@ export default function ChatBox() {
     setVisitorInfo(info);
   };
 
-  const handleSend = async (e) => {
-    e.preventDefault();
+  const handleSend = async () => {
     if (!newMessage.trim() || sending) return;
+    const text = newMessage.trim();
+    setNewMessage("");
     setSending(true);
     setError(null);
     try {
@@ -77,11 +78,10 @@ export default function ChatBox() {
           sessionId,
           name: visitorInfo.name,
           email: visitorInfo.email,
-          text: newMessage.trim(),
+          text,
         }),
       });
       if (!res.ok) throw new Error("Failed to send");
-      setNewMessage("");
     } catch {
       setError("Failed to send message. Please try again.");
     }
@@ -136,7 +136,7 @@ export default function ChatBox() {
         ))}
       </div>
       {error && <p className="chat-error">{error}</p>}
-      <form onSubmit={handleSend} className="chat-send-form">
+      <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="chat-send-form">
         <input
           type="text"
           placeholder="Type a message..."
@@ -144,20 +144,11 @@ export default function ChatBox() {
           onChange={(e) => setNewMessage(e.target.value)}
           className="chat-send-input"
         />
-        <button type="submit" disabled={sending} className="chat-send-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="white"
-          >
-            <path
-              d="M12 4l-1.41 1.41L17.17 11H4v2h13.17l-6.58 6.59L12 21l9-9z"
-              transform="rotate(-90 12 12)"
-            />
+        <div role="button" onTouchStart={(e) => e.preventDefault()} onTouchEnd={(e) => { e.preventDefault(); handleSend(); }} onClick={handleSend} className="chat-send-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
+            <path d="M12 4l-1.41 1.41L17.17 11H4v2h13.17l-6.58 6.59L12 21l9-9z" transform="rotate(-90 12 12)" />
           </svg>
-        </button>
+        </div>
       </form>
     </div>
   );

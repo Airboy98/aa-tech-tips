@@ -150,20 +150,20 @@ export default function Admin() {
     setEditingSession(null);
   };
 
-  const handleReply = async (e) => {
-    e.preventDefault();
+  const handleReply = async () => {
     if (!replyText.trim() || sending) return;
+    const text = replyText.trim();
+    setReplyText("");
     setSending(true);
     await fetch("/api/chat?action=send-reply", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         sessionId: selectedSession.sessionId,
-        text: replyText.trim(),
+        text,
         adminPassword: adminPasswordRef.current,
       }),
     });
-    setReplyText("");
     setSending(false);
   };
 
@@ -299,7 +299,7 @@ export default function Admin() {
                   </div>
                 ))}
               </div>
-              <form onSubmit={handleReply} className="admin-reply-form">
+              <form onSubmit={(e) => { e.preventDefault(); handleReply(); }} className="admin-reply-form">
                 <input
                   type="text"
                   placeholder="Type a reply..."
@@ -307,11 +307,11 @@ export default function Admin() {
                   onChange={(e) => setReplyText(e.target.value)}
                   className="admin-reply-input"
                 />
-                <button type="submit" disabled={sending} className="chat-send-btn">
+                <div role="button" onTouchStart={(e) => e.preventDefault()} onTouchEnd={(e) => { e.preventDefault(); handleReply(); }} onClick={handleReply} className="chat-send-btn">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
                     <path d="M12 4l-1.41 1.41L17.17 11H4v2h13.17l-6.58 6.59L12 21l9-9z" transform="rotate(-90 12 12)" />
                   </svg>
-                </button>
+                </div>
               </form>
             </>
           )}
