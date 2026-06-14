@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     if (adminPassword !== process.env.ADMIN_PASSWORD) return res.status(401).json({ error: "Unauthorized" });
     const sessionGroups = await Message.aggregate([
       { $sort: { timestamp: -1 } },
-      { $group: { _id: "$sessionId", latestMessage: { $first: "$text" }, latestTimestamp: { $first: "$timestamp" } } },
+      { $group: { _id: "$sessionId", latestMessage: { $first: "$text" }, latestTimestamp: { $first: "$timestamp" }, latestSender: { $first: "$sender" } } },
       { $sort: { latestTimestamp: -1 } },
     ]);
     const sessions = await Promise.all(
@@ -43,6 +43,7 @@ export default async function handler(req, res) {
           email: firstVisitor?.email || "",
           latestMessage: s.latestMessage,
           latestTimestamp: s.latestTimestamp,
+          latestSender: s.latestSender,
         };
       })
     );
@@ -68,6 +69,16 @@ export default async function handler(req, res) {
     const message = await Message.create({ sessionId, sender: "admin", text });
     await getPusher().trigger(`chat-${sessionId}`, "new-message", { sender: "admin", text, timestamp: message.timestamp });
     return res.json({ success: true, message });
+  }
+
+  // POST /api/chat?action=update-session
+  if (action === "update-session") {
+    if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+    const { sessionId, name, email, adminPassword } = req.body;
+    if (adminPassword !== process.env.ADMIN_PASSWORD) return res.status(401).json({ error: "Unauthorized" });
+    if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
+    await Message.updateMany({ sessionId, sender: "visitor" }, { $set: { name, email } });
+    return res.json({ success: true });
   }
 
   // DELETE /api/chat?action=delete-session
