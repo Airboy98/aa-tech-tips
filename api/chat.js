@@ -1,5 +1,5 @@
 import Pusher from "pusher";
-import { connectDB, Message } from "./_db.js";
+import { connectDB, Message, Session } from "./_db.js";
 
 function getPusher() {
   return new Pusher({
@@ -20,8 +20,11 @@ export default async function handler(req, res) {
     if (req.method !== "GET") return res.status(405).json({ error: "Method not allowed" });
     const { sessionId } = req.query;
     if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
-    const messages = await Message.find({ sessionId }).sort({ timestamp: 1 });
-    return res.json({ messages });
+    const [messages, sessionRecord] = await Promise.all([
+      Message.find({ sessionId }).sort({ timestamp: 1 }),
+      Session.findOne({ sessionId }),
+    ]);
+    return res.json({ messages, visitorLastReadAt: sessionRecord?.visitorLastReadAt || null });
   }
 
   // GET /api/chat?action=get-sessions&adminPassword=xxx
@@ -34,19 +37,26 @@ export default async function handler(req, res) {
       { $group: { _id: "$sessionId", latestMessage: { $first: "$text" }, latestTimestamp: { $first: "$timestamp" }, latestSender: { $first: "$sender" } } },
       { $sort: { latestTimestamp: -1 } },
     ]);
-    const sessions = await Promise.all(
-      sessionGroups.map(async (s) => {
-        const firstVisitor = await Message.findOne({ sessionId: s._id, sender: "visitor" }).sort({ timestamp: 1 });
-        return {
-          sessionId: s._id,
-          name: firstVisitor?.name || "Unknown",
-          email: firstVisitor?.email || "",
-          latestMessage: s.latestMessage,
-          latestTimestamp: s.latestTimestamp,
-          latestSender: s.latestSender,
-        };
-      })
-    );
+    const sessionIds = sessionGroups.map(s => s._id);
+    const [firstVisitors, readRecords] = await Promise.all([
+      Promise.all(sessionIds.map(id => Message.findOne({ sessionId: id, sender: "visitor" }).sort({ timestamp: 1 }))),
+      Session.find({ sessionId: { $in: sessionIds } }),
+    ]);
+    const readMap = Object.fromEntries(readRecords.map(r => [r.sessionId, r.lastReadAt]));
+    const sessions = sessionGroups.map((s, i) => {
+      const firstVisitor = firstVisitors[i];
+      const lastReadAt = readMap[s._id] || null;
+      const unread = s.latestSender === "visitor" && (!lastReadAt || s.latestTimestamp > lastReadAt);
+      return {
+        sessionId: s._id,
+        name: firstVisitor?.name || "Unknown",
+        email: firstVisitor?.email || "",
+        latestMessage: s.latestMessage,
+        latestTimestamp: s.latestTimestamp,
+        latestSender: s.latestSender,
+        unread,
+      };
+    });
     return res.json({ sessions });
   }
 
@@ -71,6 +81,26 @@ export default async function handler(req, res) {
     return res.json({ success: true, message });
   }
 
+  // POST /api/chat?action=mark-read
+  if (action === "mark-read") {
+    if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+    const { sessionId, adminPassword } = req.body;
+    if (adminPassword !== process.env.ADMIN_PASSWORD) return res.status(401).json({ error: "Unauthorized" });
+    if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
+    await Session.findOneAndUpdate({ sessionId }, { lastReadAt: new Date() }, { upsert: true });
+    return res.json({ success: true });
+  }
+
+  // POST /api/chat?action=mark-visitor-read
+  if (action === "mark-visitor-read") {
+    if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+    const { sessionId } = req.body;
+    if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
+    await Session.findOneAndUpdate({ sessionId }, { visitorLastReadAt: new Date() }, { upsert: true });
+    await getPusher().trigger(`chat-${sessionId}`, "visitor-read-receipt", {});
+    return res.json({ success: true });
+  }
+
   // POST /api/chat?action=update-session
   if (action === "update-session") {
     if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
@@ -78,6 +108,7 @@ export default async function handler(req, res) {
     if (adminPassword !== process.env.ADMIN_PASSWORD) return res.status(401).json({ error: "Unauthorized" });
     if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
     await Message.updateMany({ sessionId, sender: "visitor" }, { $set: { name, email } });
+    await getPusher().trigger(`chat-${sessionId}`, "visitor-info-update", { name, email });
     return res.json({ success: true });
   }
 

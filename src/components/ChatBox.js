@@ -32,9 +32,22 @@ export default function ChatBox() {
   useEffect(() => {
     if (!sessionId) return;
 
+    const markRead = () => fetch("/api/chat?action=mark-visitor-read", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sessionId }),
+    });
+
     fetch(`/api/chat?action=get-messages&sessionId=${sessionId}`)
       .then((r) => r.json())
       .then((data) => setMessages(data.messages || []));
+
+    if (document.visibilityState === "visible") markRead();
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") markRead();
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     const pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
       cluster: process.env.REACT_APP_PUSHER_CLUSTER,
@@ -42,9 +55,16 @@ export default function ChatBox() {
     const channel = pusher.subscribe(`chat-${sessionId}`);
     channel.bind("new-message", (data) => {
       setMessages((prev) => [...prev, data]);
+      if (data.sender === "admin" && document.visibilityState === "visible") markRead();
+    });
+    channel.bind("visitor-info-update", (data) => {
+      const updated = { name: data.name, email: data.email };
+      localStorage.setItem("chatVisitorInfo", JSON.stringify(updated));
+      setVisitorInfo(updated);
     });
 
     return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       channel.unbind_all();
       pusher.unsubscribe(`chat-${sessionId}`);
     };
@@ -128,9 +148,9 @@ export default function ChatBox() {
         )}
         {messages.map((msg, i) => (
           <div key={i} className={`chat-bubble chat-bubble--${msg.sender}`}>
-            {msg.sender === "admin" && (
-              <div className="chat-bubble-sender">Aaron</div>
-            )}
+            <div className="chat-bubble-sender">
+              {msg.sender === "admin" ? "Aaron" : visitorInfo.name}
+            </div>
             {msg.text}
           </div>
         ))}

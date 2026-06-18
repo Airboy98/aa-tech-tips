@@ -9,11 +9,10 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 // MongoDB connection
-let mongoConnected = false;
+let dbPromise = null;
 async function connectDB() {
-  if (mongoConnected) return;
-  await mongoose.connect(process.env.MONGODB_URI, { bufferCommands: false });
-  mongoConnected = true;
+  if (!dbPromise) dbPromise = mongoose.connect(process.env.MONGODB_URI, { bufferCommands: false });
+  await dbPromise;
 }
 
 const messageSchema = new mongoose.Schema({
@@ -26,6 +25,14 @@ const messageSchema = new mongoose.Schema({
 });
 const Message =
   mongoose.models.Message || mongoose.model("Message", messageSchema);
+
+const sessionSchema = new mongoose.Schema({
+  sessionId: { type: String, required: true, unique: true },
+  lastReadAt: { type: Date },
+  visitorLastReadAt: { type: Date },
+});
+const Session =
+  mongoose.models.Session || mongoose.model("Session", sessionSchema);
 
 function makePusher() {
   return new Pusher({
@@ -428,8 +435,11 @@ app.all("/api/chat", async (req, res) => {
     if (action === "get-messages") {
       const { sessionId } = req.query;
       if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
-      const messages = await Message.find({ sessionId }).sort({ timestamp: 1 });
-      return res.json({ messages });
+      const [messages, sessionRecord] = await Promise.all([
+        Message.find({ sessionId }).sort({ timestamp: 1 }),
+        Session.findOne({ sessionId }),
+      ]);
+      return res.json({ messages, visitorLastReadAt: sessionRecord?.visitorLastReadAt || null });
     }
 
     if (action === "get-sessions") {
@@ -440,19 +450,26 @@ app.all("/api/chat", async (req, res) => {
         { $group: { _id: "$sessionId", latestMessage: { $first: "$text" }, latestTimestamp: { $first: "$timestamp" }, latestSender: { $first: "$sender" } } },
         { $sort: { latestTimestamp: -1 } },
       ]);
-      const sessions = await Promise.all(
-        sessionGroups.map(async (s) => {
-          const firstVisitor = await Message.findOne({ sessionId: s._id, sender: "visitor" }).sort({ timestamp: 1 });
-          return {
-            sessionId: s._id,
-            name: firstVisitor?.name || "Unknown",
-            email: firstVisitor?.email || "",
-            latestMessage: s.latestMessage,
-            latestTimestamp: s.latestTimestamp,
-            latestSender: s.latestSender,
-          };
-        })
-      );
+      const sessionIds = sessionGroups.map(s => s._id);
+      const [firstVisitors, readRecords] = await Promise.all([
+        Promise.all(sessionIds.map(id => Message.findOne({ sessionId: id, sender: "visitor" }).sort({ timestamp: 1 }))),
+        Session.find({ sessionId: { $in: sessionIds } }),
+      ]);
+      const readMap = Object.fromEntries(readRecords.map(r => [r.sessionId, r.lastReadAt]));
+      const sessions = sessionGroups.map((s, i) => {
+        const firstVisitor = firstVisitors[i];
+        const lastReadAt = readMap[s._id] || null;
+        const unread = s.latestSender === "visitor" && (!lastReadAt || s.latestTimestamp > lastReadAt);
+        return {
+          sessionId: s._id,
+          name: firstVisitor?.name || "Unknown",
+          email: firstVisitor?.email || "",
+          latestMessage: s.latestMessage,
+          latestTimestamp: s.latestTimestamp,
+          latestSender: s.latestSender,
+          unread,
+        };
+      });
       return res.json({ sessions });
     }
 
@@ -473,11 +490,28 @@ app.all("/api/chat", async (req, res) => {
       return res.json({ success: true, message });
     }
 
+    if (action === "mark-read") {
+      const { sessionId, adminPassword } = req.body;
+      if (adminPassword !== process.env.ADMIN_PASSWORD) return res.status(401).json({ error: "Unauthorized" });
+      if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
+      await Session.findOneAndUpdate({ sessionId }, { lastReadAt: new Date() }, { upsert: true });
+      return res.json({ success: true });
+    }
+
+    if (action === "mark-visitor-read") {
+      const { sessionId } = req.body;
+      if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
+      await Session.findOneAndUpdate({ sessionId }, { visitorLastReadAt: new Date() }, { upsert: true });
+      await makePusher().trigger(`chat-${sessionId}`, "visitor-read-receipt", {});
+      return res.json({ success: true });
+    }
+
     if (action === "update-session") {
       const { sessionId, name, email, adminPassword } = req.body;
       if (adminPassword !== process.env.ADMIN_PASSWORD) return res.status(401).json({ error: "Unauthorized" });
       if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
       await Message.updateMany({ sessionId, sender: "visitor" }, { $set: { name, email } });
+      await makePusher().trigger(`chat-${sessionId}`, "visitor-info-update", { name, email });
       return res.json({ success: true });
     }
 

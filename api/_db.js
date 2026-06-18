@@ -24,3 +24,12 @@ const messageSchema = new mongoose.Schema({
 
 export const Message =
   mongoose.models.Message || mongoose.model("Message", messageSchema);
+
+const sessionSchema = new mongoose.Schema({
+  sessionId: { type: String, required: true, unique: true },
+  lastReadAt: { type: Date },
+  visitorLastReadAt: { type: Date },
+});
+
+export const Session =
+  mongoose.models.Session || mongoose.model("Session", sessionSchema);

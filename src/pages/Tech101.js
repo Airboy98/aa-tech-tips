@@ -1118,7 +1118,11 @@ export default function Tech101() {
             </tr>
             <tr>
               <td>Copilot</td>
-              <td>Generate a picture of the grand canyon full of plant life</td>
+              <td>
+                <ol>
+                  <li>Generate a picture of the grand canyon full of plant life</li>
+                </ol>
+              </td>
               <td>
                 <img
                   src="images/ai/prompt2.png"
@@ -1148,7 +1152,9 @@ export default function Tech101() {
             <tr>
               <td>Grok</td>
               <td>
-                Summarize the attempted assassination of Donald Trump in Butler
+                <ol>
+                  <li>Summarize the attempted assassination of Donald Trump in Butler</li>
+                </ol>
               </td>
               <td>
                 <img

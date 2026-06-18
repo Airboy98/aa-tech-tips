@@ -69,6 +69,18 @@ table {
   color: black;
 }
 
+td {
+  text-align: left;
+}
+
+td:has(img) {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+
 a {
   color: rgb(209, 209, 70);
   font-weight: bold;
@@ -226,7 +238,9 @@ h5 {
   align-items: center;
   justify-content: center;
   align-self: stretch;
-  transition: color 0.15s, background 0.15s;
+  transition:
+    color 0.15s,
+    background 0.15s;
 }
 
 .admin-edit-btn:hover {
@@ -300,7 +314,7 @@ h5 {
 /* ===== Chat feature ===== */
 
 .chat-info-wrapper {
-  max-width: 640px;
+  max-width: 340px;
   margin: 0 auto;
   padding: 0 20px 20px;
 }
@@ -393,6 +407,12 @@ h5 {
   font-size: 11px;
   color: #aac4e0;
   margin-bottom: 3px;
+}
+
+.admin-read-receipt {
+  align-self: flex-end;
+  font-size: 11px;
+  color: #6b8fab;
 }
 
 .chat-error {
@@ -598,7 +618,7 @@ h5 {
 }
 
 .admin-chat-empty {
-  color: #6b8fab;
+  color: #fff;
   margin: auto;
   font-size: 14px;
   padding: 0;

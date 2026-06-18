@@ -14,7 +14,6 @@ td,
 th {
   border: 1px solid rgb(90, 83, 83);
   padding: 5px;
-  /* text-align: center; */
 }
 
 ul {
@@ -40,4 +39,16 @@ ol {
   display: inline-block;
   /* list-style-position:inside; */
   text-align: left;
+}
+
+.tech table td ol {
+  padding-left: 20px;
+  margin: 0;
+}
+
+@media (max-width: 430px) {
+  .tech table td img {
+    width: 100px;
+    height: auto;
+  }
 }
