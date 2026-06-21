@@ -33,3 +33,13 @@ const sessionSchema = new mongoose.Schema({
 
 export const Session =
   mongoose.models.Session || mongoose.model("Session", sessionSchema);
+
+const pushSubscriptionSchema = new mongoose.Schema({
+  endpoint: { type: String, required: true, unique: true },
+  keys: { p256dh: String, auth: String },
+  createdAt: { type: Date, default: Date.now },
+});
+
+export const PushSubscription =
+  mongoose.models.PushSubscription ||
+  mongoose.model("PushSubscription", pushSubscriptionSchema);

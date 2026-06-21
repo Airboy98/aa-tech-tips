@@ -1,5 +1,12 @@
 import Pusher from "pusher";
-import { connectDB, Message, Session } from "./_db.js";
+import webpush from "web-push";
+import { connectDB, Message, Session, PushSubscription } from "./_db.js";
+
+webpush.setVapidDetails(
+  "mailto:aaron.turner117@gmail.com",
+  process.env.VAPID_PUBLIC_KEY,
+  process.env.VAPID_PRIVATE_KEY
+);
 
 function getPusher() {
   return new Pusher({
@@ -60,13 +67,48 @@ export default async function handler(req, res) {
     return res.json({ sessions });
   }
 
+  // POST /api/chat?action=subscribe-push
+  if (action === "subscribe-push") {
+    if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+    const { adminPassword, subscription } = req.body;
+    if (adminPassword !== process.env.ADMIN_PASSWORD) return res.status(401).json({ error: "Unauthorized" });
+    if (!subscription?.endpoint) return res.status(400).json({ error: "Missing subscription" });
+    await PushSubscription.findOneAndUpdate(
+      { endpoint: subscription.endpoint },
+      { endpoint: subscription.endpoint, keys: subscription.keys },
+      { upsert: true }
+    );
+    return res.json({ success: true });
+  }
+
+  // POST /api/chat?action=unsubscribe-push
+  if (action === "unsubscribe-push") {
+    if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+    const { endpoint } = req.body;
+    if (endpoint) await PushSubscription.deleteOne({ endpoint });
+    return res.json({ success: true });
+  }
+
   // POST /api/chat?action=send-message
   if (action === "send-message") {
     if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
     const { sessionId, name, email, text } = req.body;
     if (!sessionId || !text) return res.status(400).json({ error: "Missing required fields" });
     const message = await Message.create({ sessionId, sender: "visitor", name, email, text });
-    await getPusher().trigger(`chat-${sessionId}`, "new-message", { sender: "visitor", text, timestamp: message.timestamp });
+    const [, subs] = await Promise.all([
+      getPusher().trigger(`chat-${sessionId}`, "new-message", { sender: "visitor", text, timestamp: message.timestamp }),
+      PushSubscription.find(),
+    ]);
+    if (subs.length > 0) {
+      const payload = JSON.stringify({ title: `Message from ${name || "visitor"}`, body: text, url: "/admin" });
+      await Promise.allSettled(subs.map(async sub => {
+        try {
+          await webpush.sendNotification({ endpoint: sub.endpoint, keys: sub.keys }, payload);
+        } catch (err) {
+          if (err.statusCode === 410) await PushSubscription.deleteOne({ endpoint: sub.endpoint });
+        }
+      }));
+    }
     return res.json({ success: true, message });
   }
 
@@ -118,7 +160,10 @@ export default async function handler(req, res) {
     const { sessionId, adminPassword } = req.body;
     if (adminPassword !== process.env.ADMIN_PASSWORD) return res.status(401).json({ error: "Unauthorized" });
     if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
-    await Message.deleteMany({ sessionId });
+    await Promise.all([
+      Message.deleteMany({ sessionId }),
+      Session.deleteOne({ sessionId }),
+    ]);
     return res.json({ success: true });
   }
 

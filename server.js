@@ -5,8 +5,15 @@ const cheerio = require("cheerio");
 const Stripe = require("stripe");
 const Anthropic = require("@anthropic-ai/sdk");
 const Pusher = require("pusher");
+const webpush = require("web-push");
 const mongoose = require("mongoose");
 require("dotenv").config();
+
+webpush.setVapidDetails(
+  "mailto:aaron.turner117@gmail.com",
+  process.env.VAPID_PUBLIC_KEY,
+  process.env.VAPID_PRIVATE_KEY
+);
 
 // MongoDB connection
 let dbPromise = null;
@@ -33,6 +40,15 @@ const sessionSchema = new mongoose.Schema({
 });
 const Session =
   mongoose.models.Session || mongoose.model("Session", sessionSchema);
+
+const pushSubscriptionSchema = new mongoose.Schema({
+  endpoint: { type: String, required: true, unique: true },
+  keys: { p256dh: String, auth: String },
+  createdAt: { type: Date, default: Date.now },
+});
+const PushSubscription =
+  mongoose.models.PushSubscription ||
+  mongoose.model("PushSubscription", pushSubscriptionSchema);
 
 function makePusher() {
   return new Pusher({
@@ -473,11 +489,42 @@ app.all("/api/chat", async (req, res) => {
       return res.json({ sessions });
     }
 
+    if (action === "subscribe-push") {
+      const { adminPassword, subscription } = req.body;
+      if (adminPassword !== process.env.ADMIN_PASSWORD) return res.status(401).json({ error: "Unauthorized" });
+      if (!subscription?.endpoint) return res.status(400).json({ error: "Missing subscription" });
+      await PushSubscription.findOneAndUpdate(
+        { endpoint: subscription.endpoint },
+        { endpoint: subscription.endpoint, keys: subscription.keys },
+        { upsert: true }
+      );
+      return res.json({ success: true });
+    }
+
+    if (action === "unsubscribe-push") {
+      const { endpoint } = req.body;
+      if (endpoint) await PushSubscription.deleteOne({ endpoint });
+      return res.json({ success: true });
+    }
+
     if (action === "send-message") {
       const { sessionId, name, email, text } = req.body;
       if (!sessionId || !text) return res.status(400).json({ error: "Missing required fields" });
       const message = await Message.create({ sessionId, sender: "visitor", name, email, text });
-      await makePusher().trigger(`chat-${sessionId}`, "new-message", { sender: "visitor", text, timestamp: message.timestamp });
+      const [, subs] = await Promise.all([
+        makePusher().trigger(`chat-${sessionId}`, "new-message", { sender: "visitor", text, timestamp: message.timestamp }),
+        PushSubscription.find(),
+      ]);
+      if (subs.length > 0) {
+        const payload = JSON.stringify({ title: `Message from ${name || "visitor"}`, body: text, url: "/admin" });
+        await Promise.allSettled(subs.map(async sub => {
+          try {
+            await webpush.sendNotification({ endpoint: sub.endpoint, keys: sub.keys }, payload);
+          } catch (err) {
+            if (err.statusCode === 410) await PushSubscription.deleteOne({ endpoint: sub.endpoint });
+          }
+        }));
+      }
       return res.json({ success: true, message });
     }
 
@@ -519,7 +566,10 @@ app.all("/api/chat", async (req, res) => {
       const { sessionId, adminPassword } = req.body;
       if (adminPassword !== process.env.ADMIN_PASSWORD) return res.status(401).json({ error: "Unauthorized" });
       if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
-      await Message.deleteMany({ sessionId });
+      await Promise.all([
+        Message.deleteMany({ sessionId }),
+        Session.deleteOne({ sessionId }),
+      ]);
       return res.json({ success: true });
     }
 

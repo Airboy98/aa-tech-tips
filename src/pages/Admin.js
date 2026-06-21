@@ -2,6 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import Pusher from "pusher-js";
 import "../styles.css";
 
+function urlBase64ToUint8Array(base64String) {
+  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
+  const rawData = atob(base64);
+  return Uint8Array.from([...rawData].map((c) => c.charCodeAt(0)));
+}
+
 function formatTimestamp(ts) {
   if (!ts) return "";
   const date = new Date(ts);
@@ -51,8 +58,30 @@ export default function Admin() {
       setUnreadSessions(
         new Set(data.sessions.filter((s) => s.unread).map((s) => s.sessionId)),
       );
+      subscribeToPush(password);
     } else {
       setAuthError("Incorrect password.");
+    }
+  };
+
+  const subscribeToPush = async (pwd) => {
+    if (!("serviceWorker" in navigator) || !("PushManager" in window)) return;
+    try {
+      const reg = await navigator.serviceWorker.register("/sw.js");
+      const permission = await Notification.requestPermission();
+      if (permission !== "granted") return;
+      const existing = await reg.pushManager.getSubscription();
+      const subscription = existing || await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(process.env.REACT_APP_VAPID_PUBLIC_KEY),
+      });
+      await fetch("/api/chat?action=subscribe-push", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ adminPassword: pwd, subscription }),
+      });
+    } catch (err) {
+      console.error("Push subscription failed:", err);
     }
   };
 
@@ -89,6 +118,10 @@ export default function Admin() {
       setVisitorRead(false);
     }
   };
+
+  useEffect(() => {
+    if (authed && "clearAppBadge" in navigator) navigator.clearAppBadge();
+  }, [authed]);
 
   useEffect(() => {
     sessionsRef.current = sessions;
