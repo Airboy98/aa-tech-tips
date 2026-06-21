@@ -10,7 +10,7 @@ self.addEventListener("push", (event) => {
   event.waitUntil(
     Promise.all([
       self.registration.showNotification(title, options),
-      navigator.setAppBadge?.(),
+      navigator.setAppBadge?.(data.badge ?? 1),
     ])
   );
 });

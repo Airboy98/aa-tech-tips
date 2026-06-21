@@ -100,7 +100,7 @@ export default async function handler(req, res) {
       PushSubscription.find(),
     ]);
     if (subs.length > 0) {
-      const payload = JSON.stringify({ title: `Message from ${name || "visitor"}`, body: text, url: "/admin" });
+      const payload = JSON.stringify({ title: `Message from ${name || "visitor"}`, body: text, url: "/admin", badge: 1 });
       await Promise.allSettled(subs.map(async sub => {
         try {
           await webpush.sendNotification({ endpoint: sub.endpoint, keys: sub.keys }, payload);
