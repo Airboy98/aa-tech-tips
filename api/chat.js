@@ -8,6 +8,21 @@ webpush.setVapidDetails(
   process.env.VAPID_PRIVATE_KEY
 );
 
+async function getUnreadCount() {
+  const visitorLatest = await Message.aggregate([
+    { $sort: { timestamp: -1 } },
+    { $group: { _id: "$sessionId", latestSender: { $first: "$sender" }, latestTimestamp: { $first: "$timestamp" } } },
+    { $match: { latestSender: "visitor" } },
+  ]);
+  if (visitorLatest.length === 0) return 0;
+  const readRecords = await Session.find({ sessionId: { $in: visitorLatest.map(s => s._id) } });
+  const readMap = Object.fromEntries(readRecords.map(r => [r.sessionId, r.lastReadAt]));
+  return visitorLatest.filter(s => {
+    const lastReadAt = readMap[s._id];
+    return !lastReadAt || s.latestTimestamp > lastReadAt;
+  }).length;
+}
+
 function getPusher() {
   return new Pusher({
     appId: process.env.PUSHER_APP_ID,
@@ -95,12 +110,13 @@ export default async function handler(req, res) {
     const { sessionId, name, email, text } = req.body;
     if (!sessionId || !text) return res.status(400).json({ error: "Missing required fields" });
     const message = await Message.create({ sessionId, sender: "visitor", name, email, text });
-    const [, subs] = await Promise.all([
+    const [, subs, unreadCount] = await Promise.all([
       getPusher().trigger(`chat-${sessionId}`, "new-message", { sender: "visitor", text, timestamp: message.timestamp }),
       PushSubscription.find(),
+      getUnreadCount(),
     ]);
     if (subs.length > 0) {
-      const payload = JSON.stringify({ title: `Message from ${name || "visitor"}`, body: text, url: "/admin", badge: 1 });
+      const payload = JSON.stringify({ title: `Message from ${name || "visitor"}`, body: text, url: "/admin", badge: unreadCount });
       await Promise.allSettled(subs.map(async sub => {
         try {
           await webpush.sendNotification({ endpoint: sub.endpoint, keys: sub.keys }, payload);

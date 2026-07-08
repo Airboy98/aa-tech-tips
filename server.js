@@ -50,6 +50,21 @@ const PushSubscription =
   mongoose.models.PushSubscription ||
   mongoose.model("PushSubscription", pushSubscriptionSchema);
 
+async function getUnreadCount() {
+  const visitorLatest = await Message.aggregate([
+    { $sort: { timestamp: -1 } },
+    { $group: { _id: "$sessionId", latestSender: { $first: "$sender" }, latestTimestamp: { $first: "$timestamp" } } },
+    { $match: { latestSender: "visitor" } },
+  ]);
+  if (visitorLatest.length === 0) return 0;
+  const readRecords = await Session.find({ sessionId: { $in: visitorLatest.map(s => s._id) } });
+  const readMap = Object.fromEntries(readRecords.map(r => [r.sessionId, r.lastReadAt]));
+  return visitorLatest.filter(s => {
+    const lastReadAt = readMap[s._id];
+    return !lastReadAt || s.latestTimestamp > lastReadAt;
+  }).length;
+}
+
 function makePusher() {
   return new Pusher({
     appId: process.env.PUSHER_APP_ID,
