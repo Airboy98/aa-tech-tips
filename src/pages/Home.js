@@ -75,8 +75,8 @@ export default function Home() {
           <CustomLink to="/wearable">
             <button>Wearable</button>
           </CustomLink>
-          <CustomLink to="/appointment">
-            <button>Appointment</button>
+          <CustomLink to="/services">
+            <button>Services</button>
           </CustomLink>
         </div>
 

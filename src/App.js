@@ -10,7 +10,7 @@ import Wearable from "./pages/Wearable";
 import Gaming from "./pages/Gaming";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
-import Appointment from "./pages/Appointment";
+import Services from "./pages/Services";
 import Baby from "./pages/baby";
 import TechByte from "./pages/TechByte";
 import TechByteSuccess from "./pages/TechByteSuccess";
@@ -35,7 +35,7 @@ function App() {
             <Route path="/streaming" element={<Streaming />} />
             <Route path="/wearable" element={<Wearable />} />
             <Route path="/about" element={<About />} />
-            <Route path="/appointment" element={<Appointment />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/baby" element={<Baby />} />
             <Route path="/tech-byte" element={<TechByte />} />
             <Route path="/tech-byte/success" element={<TechByteSuccess />} />

@@ -1,0 +1,56 @@
+.package-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 16px;
+  justify-content: center;
+}
+
+.package-card {
+  background: #0a1e33;
+  border: 1px solid #3c709f;
+  border-radius: 10px;
+  padding: 20px 24px;
+  text-align: left;
+  flex: 1 1 220px;
+  max-width: 320px;
+}
+
+.package-card h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.3rem;
+  color: #fff;
+  text-align: center;
+}
+
+.package-card h4 {
+  margin: 0 0 12px 0;
+  padding: 0;
+  font-size: 0.95rem;
+  color: #aac4e0;
+  font-weight: 400;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.package-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #D1D146;
+}
+
+.package-card ul {
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+.package-card li {
+  margin-bottom: 5px;
+  color: #d0dde8;
+  font-size: 0.95rem;
+}
+
+.package-payment {
+  font-size: 0.78rem;
+  color: #6b8fab;
+}

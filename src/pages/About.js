@@ -26,7 +26,7 @@ export default function About() {
           <br></br>
           <br></br>
           Feel free to{" "}
-          <a href="https://www.aatechtips.com/appointment">
+          <a href="https://www.aatechtips.com/services">
             book an appointment
           </a>{" "}
           (in-person exclusive to DFW residents) or send any suggestions,
