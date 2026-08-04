@@ -18,17 +18,18 @@ const MAX_CHARS = 1000;
 
 const TIERS = [
   {
-    model: "claude-sonnet-4-6",
-    label: "Sonnet 4.6",
+    model: "claude-sonnet-5",
+    label: "Standard",
     price: "$2",
-    description: "This model excels at being fast, accurate, and thorough.",
+    description:
+      "This uses the Claude Sonnet model which excels at being fast, accurate, and thorough.",
   },
   {
-    model: "claude-opus-4-8",
-    label: "Opus 4.8",
+    model: "claude-opus-5",
+    label: "Detailed",
     price: "$3",
     description:
-      "This is Anthropic's most powerful model. Supplement your question with a picture for the best results.",
+      "This uses the Claude Opus model which excels at providing complex multi-step answers and deep analysis. Supplement your question with a picture for the best results.",
   },
 ];
 
@@ -191,7 +192,7 @@ function TechByteForm({ model, price, description }) {
   const [imagePreview, setImagePreview] = useState(null);
   const [imageError, setImageError] = useState(null);
 
-  const isOpus = model === "claude-opus-4-8";
+  const isOpus = model === "claude-opus-5";
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -700,7 +701,14 @@ export default function TechByte() {
   return (
     <>
       <div className="section-header">
-        <h1><Link to="/admin" style={{ color: "inherit", textDecoration: "none" }}>Tech Byte</Link></h1>
+        <h1>
+          <Link
+            to="/admin"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            Tech Byte
+          </Link>
+        </h1>
       </div>
       <h2>Ask Me</h2>
       <Collapsible

@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
     const question =
       (paymentIntent.metadata.question_1 || "") + (paymentIntent.metadata.question_2 || "");
-    const model = paymentIntent.metadata.model || "claude-sonnet-4-6";
+    const model = paymentIntent.metadata.model || "claude-sonnet-5";
 
     const userContent =
       image_base64 && image_media_type

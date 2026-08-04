@@ -11,10 +11,10 @@ export default async function handler(req, res) {
   }
 
   const allowedModels = {
-    "claude-sonnet-4-6": { amount: 300, label: "Claude Sonnet 4.6" },
-    "claude-opus-4-8": { amount: 500, label: "Claude Opus 4.7" },
+    "claude-sonnet-5": { amount: 300, label: "Claude Sonnet 5" },
+    "claude-opus-5": { amount: 500, label: "Claude Opus 5" },
   };
-  const tier = allowedModels[model] || allowedModels["claude-sonnet-4-6"];
+  const tier = allowedModels[model] || allowedModels["claude-sonnet-5"];
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   const q = question.trim();
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
       success_url: `${origin}/tech-byte/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/tech-byte`,
       metadata: {
-        model: model || "claude-sonnet-4-6",
+        model: model || "claude-sonnet-5",
         question_1: q.substring(0, 500),
         question_2: q.substring(500, 1000),
       },
