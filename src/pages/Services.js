@@ -79,14 +79,35 @@ export default function Services() {
               Fast, no-fuss IT support — I handle it for you
             </h4>
             <ul>
-              <li>
-                Device setup (smartphone, TV, printer, home network, etc.)
-              </li>
-              <li>Malware/virus removal</li>
-              <li>Account setup (email inbox, Microsoft 365, etc.)</li>
+              <li>Device setup (smartphone, TV, printer, home network, etc.)</li>
+              <li>Internet/cable provider setup and account management</li>
+              <li>Smart TV and streaming platform configuration</li>
+              <li>Account setup (email, Microsoft 365, streaming services, etc.)</li>
               <li>Password management</li>
-
+              <li>Malware/virus removal</li>
               <li>Other tech troubleshooting</li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Tech Concierge</u>
+            </h3>
+            <h4>
+              <span className="package-price">$125/hr</span>
+              <br />
+              <span className="package-payment">
+                Zelle, Apple Pay, Cash or Check
+              </span>
+              <br />
+              I'll shop with or for you so you get exactly what you need
+            </h4>
+            <ul>
+              <li>Go to the store on your behalf based on your pre-defined needs</li>
+              <li>Accompany you to Microcenter, Best Buy, Apple Store, etc.</li>
+              <li>Find the right product for your needs and budget</li>
+              <li>Cut through tech jargon and marketing language</li>
+              <li>Avoid unnecessary upsells, subscriptions, and add-ons</li>
+              <li>Assist with initial setup once home</li>
             </ul>
           </div>
         </div>

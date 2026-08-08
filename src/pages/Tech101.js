@@ -264,6 +264,24 @@ export default function Tech101() {
       <Collapsible
         trigger={
           <button className="collapsible-trigger">
+            Anatomy of a Scam Text
+          </button>
+        }
+      >
+        <h4>
+          Frequency of scam texts, also known as smishing attempts, is on the
+          rise. There are several clues to look out for to determine if a text
+          is authentic or not.
+        </h4>
+        <img src="images/tech101/scam-text.png" alt="Scam Text" />
+        <h5>
+          NOTE: When you receive a scam text, DO NOT respond and DO NOT click
+          any links. When in doubt, manually type in the website in a browser.
+        </h5>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">
             Anatomy of a Scam Email
           </button>
         }
@@ -285,27 +303,12 @@ export default function Tech101() {
           website in a browser.
         </h5>
       </Collapsible>
+
       <Collapsible
         trigger={
           <button className="collapsible-trigger">
-            Anatomy of a Scam Text
+            Remove Compromised Data
           </button>
-        }
-      >
-        <h4>
-          Frequency of scam texts, also known as smishing attempts, is on the
-          rise. There are several clues to look out for to determine if a text
-          is authentic or not.
-        </h4>
-        <img src="images/tech101/scam-text.png" alt="Scam Text" />
-        <h5>
-          NOTE: When you receive a scam text, DO NOT respond and DO NOT click
-          any links. When in doubt, manually type in the website in a browser.
-        </h5>
-      </Collapsible>
-      <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Remove Personal Data</button>
         }
       >
         <h4>
@@ -343,27 +346,103 @@ export default function Tech101() {
             </li>
           </ul>
 
-          <a
-            href="https://www.de33watrk.com/M1MJJW/KMKS9/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-block",
-              marginTop: "0px",
-              marginBottom: "16px",
-              padding: "12px 14px",
-              backgroundColor: "#0f3455",
-              color: "#fff",
-              fontWeight: "bold",
-              fontSize: "16px",
-              borderRadius: "8px",
-              textDecoration: "none",
-              border: "2px solid #3c709f",
-              letterSpacing: "0.5px",
-            }}
-          >
-            Join DeleteMe Now!
-          </a>
+          <div>
+            <a
+              href="https://www.de33watrk.com/M1MJJW/KMKS9/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                marginTop: "0px",
+                marginBottom: "16px",
+                padding: "12px 14px",
+                backgroundColor: "#0f3455",
+                color: "#fff",
+                fontWeight: "bold",
+                fontSize: "16px",
+                borderRadius: "8px",
+                textDecoration: "none",
+                border: "2px solid #3c709f",
+                letterSpacing: "0.5px",
+              }}
+            >
+              Join DeleteMe Now!
+            </a>
+          </div>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={
+          <button className="collapsible-trigger">
+            Identity Theft Protection
+          </button>
+        }
+      >
+        <h4>
+          Norton 360 with LifeLock combines antivirus protection with identity
+          theft monitoring and recovery support, so you'll know quickly if your
+          identity is at risk and get expert help fixing it.
+        </h4>
+        <div className="tech">
+          <ul>
+            <li>
+              <b>Identity Monitoring:</b> Alerts you if your Social Security
+              number, bank accounts, credit cards, or personal info show up on
+              the dark web or are used to open new accounts in your name.
+            </li>
+            <li>
+              <b>Credit Monitoring:</b> Tracks changes to your credit file and
+              notifies you of new credit inquiries, accounts, and other activity
+              that could signal fraud.
+            </li>
+            <li>
+              <b>Stolen Wallet Protection:</b> Helps cancel and replace lost or
+              stolen credit cards, ID cards, and other wallet contents.
+            </li>
+            <li>
+              <b>Identity Restoration:</b> If your identity is stolen, a U.S.
+              based restoration specialist works on your behalf to help fix the
+              damage.
+            </li>
+            <li>
+              <b>Million Dollar Protection Package:</b> Reimbursement for stolen
+              funds and coverage for personal expenses and lawyer fees incurred
+              in resolving identity theft, up to plan limits.
+            </li>
+            <li>
+              <b>Antivirus Included:</b> Plans bundle Norton's antivirus,
+              firewall, and Secure VPN to protect your devices while you browse.
+            </li>
+            <li>
+              <b>Pricing:</b> Plans start around $9.99/month for the first year,
+              with higher tiers adding more identity and credit monitoring
+              coverage.
+            </li>
+          </ul>
+
+          {/* <div>
+            <a
+              href="#norton-lifelock-affiliate-link-placeholder"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                marginTop: "0px",
+                marginBottom: "16px",
+                padding: "12px 14px",
+                backgroundColor: "#0f3455",
+                color: "#fff",
+                fontWeight: "bold",
+                fontSize: "16px",
+                borderRadius: "8px",
+                textDecoration: "none",
+                border: "2px solid #3c709f",
+                letterSpacing: "0.5px",
+              }}
+            >
+              Get Norton LifeLock Now!
+            </a>
+          </div> */}
         </div>
       </Collapsible>
       <Collapsible
@@ -1120,7 +1199,9 @@ export default function Tech101() {
               <td>Copilot</td>
               <td>
                 <ol>
-                  <li>Generate a picture of the grand canyon full of plant life</li>
+                  <li>
+                    Generate a picture of the grand canyon full of plant life
+                  </li>
                 </ol>
               </td>
               <td>
@@ -1153,7 +1234,10 @@ export default function Tech101() {
               <td>Grok</td>
               <td>
                 <ol>
-                  <li>Summarize the attempted assassination of Donald Trump in Butler</li>
+                  <li>
+                    Summarize the attempted assassination of Donald Trump in
+                    Butler
+                  </li>
                 </ol>
               </td>
               <td>
