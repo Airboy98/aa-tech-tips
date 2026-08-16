@@ -94,10 +94,10 @@ export default function Services() {
           </div>
           <div className="package-card">
             <h3>
-              <u>Tech Concierge</u>
+              <u>Purchase Assistance</u>
             </h3>
             <h4>
-              <span className="package-price">$125/hr</span>
+              <span className="package-price">$50/hr</span>
               <br />
               <span className="package-payment">
                 Zelle, Apple Pay, Cash or Check
