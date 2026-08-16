@@ -76,7 +76,7 @@ export default function Services() {
                 Zelle, Apple Pay, Cash or Check
               </span>
               <br />
-              Fast, no-fuss IT support — I handle it for you
+              Fast, no-fuss IT support, I handle it for you
             </h4>
             <ul>
               <li>
@@ -103,14 +103,16 @@ export default function Services() {
                 Zelle, Apple Pay, Cash or Check
               </span>
               <br />
-              I'll shop with or for you so you get exactly what you need
+              I'll shop with or for you to find exactly what you need
             </h4>
             <ul>
               <li>
                 Go to the store on your behalf based on your pre-defined needs
               </li>
               <li>Accompany you to Microcenter, Best Buy, Apple Store, etc.</li>
-              <li>Find the right product for your needs and budget</li>
+              <li>
+                Find the right product for your needs and within your budget
+              </li>
               <li>Cut through tech jargon and marketing language</li>
               <li>Avoid unnecessary upsells, subscriptions, and add-ons</li>
               <li>Assist with initial setup once home</li>
