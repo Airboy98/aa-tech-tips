@@ -1,4 +1,5 @@
 import Collapsible from "react-collapsible";
+import { Link } from "react-router-dom";
 import "./internet.css";
 
 export default function Internet() {

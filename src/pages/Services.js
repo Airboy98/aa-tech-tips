@@ -225,11 +225,11 @@ export default function Services() {
             </h4>
             <ul>
               <li>
-                Basic IT Lessons (ex: organize files and folders, use programs
+                Basic IT lessons (ex: organize files and folders, use programs
                 like MS Office, web browser, etc.)
               </li>
-              <li>Data Transfer (flash/thumb drive required)</li>
-              <li>Program/App Installation or Removal</li>
+              <li>Data transfer (flash drive required)</li>
+              <li>Program/app installation or removal</li>
               <li>Any tech related questions</li>
             </ul>
           </div>

@@ -59,9 +59,8 @@ export default function Computer() {
         <h5>
           NOTE: Symptoms of malware (such as viruses and trojans) include random
           pop-ups, slow loading, phishing emails requesting to change password,
-          compromised accounts, and fraulent transactions.
+          compromised accounts, and fraudulent transactions.
         </h5>
-        {/* </div> */}
       </Collapsible>
       <Collapsible
         trigger={

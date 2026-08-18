@@ -1,6 +1,7 @@
 import Collapsible from "react-collapsible";
 import "./tech101.css";
 import { CustomLink } from "../components/Navbar";
+import { Link } from "react-router-dom";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Tooltip } from "primereact/tooltip";
@@ -480,7 +481,7 @@ export default function Tech101() {
                 Brave
               </a>{" "}
               that includes a built-in ad blocker. Check the{" "}
-              <a href="https://www.aatechtips.com/internet">Internet page</a>{" "}
+              <Link to="/internet">Internet page</Link>{" "}
               for more info and tips.
             </li>
             <li>

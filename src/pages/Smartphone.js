@@ -612,7 +612,6 @@ export default function Smartphone() {
           </li>
           <li>Share this link of the shared album with your contacts</li>
         </ol>
-        {/* <h5>NOTE: The above feature is available after pairing a Google account.</h5> */}
       </Collapsible>
       <Collapsible
         trigger={
