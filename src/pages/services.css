@@ -54,3 +54,34 @@
   font-size: 0.78rem;
   color: #6b8fab;
 }
+
+.package-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent;
+  margin-bottom: 12px;
+}
+
+.package-table th,
+.package-table td {
+  padding: 6px 4px;
+  border: none;
+  border-bottom: 1px solid #1e3a54;
+  background-color: transparent;
+  font-size: 0.9rem;
+  text-align: left;
+  color: #d0dde8;
+}
+
+.package-table th {
+  color: #6b8fab;
+  font-weight: 400;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.package-table td:last-child {
+  color: #D1D146;
+  font-weight: 700;
+}

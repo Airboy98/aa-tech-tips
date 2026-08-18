@@ -121,6 +121,94 @@ export default function Services() {
         </div>
       </Collapsible>
       <Collapsible
+        trigger={<button className="collapsible-trigger">Drop-Off</button>}
+      >
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Digitization</u>
+            </h3>
+            <h4>
+              <span className="package-price">Starting at $30</span>
+              <br />
+              <span className="package-price">$0.99/photo or document</span>
+              <br />
+              <span className="package-payment">
+                Zelle, Apple Pay, Cash or Check
+              </span>
+              <br />
+              Drop off your photos or documents and I'll scan and organize them
+              for you
+            </h4>
+            <ul>
+              <li>
+                Digitize printed photos like family pictures into
+                high-resolution scans
+              </li>
+              <li>Digitize documents into organized PDF or image files</li>
+              <li>Files delivered on flash drive or cloud folder</li>
+              <li>Optional organization by date or event (additional fee)</li>
+              <li>
+                Originals handled with care and returned in the same condition
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Computer Servicing</u>
+            </h3>
+            <h4>
+              <span className="package-price">Starting at $20</span>
+              <br />
+              <span className="package-payment">
+                Zelle, Apple Pay, Cash or Check
+              </span>
+              <br />
+              Drop off your computer and I'll assess it and handle the repairs
+              and upgrades
+            </h4>
+            <table className="package-table">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hardware assessment</td>
+                  <td>$20</td>
+                </tr>
+                <tr>
+                  <td>Hardware upgrade</td>
+                  <td>$40</td>
+                </tr>
+                <tr>
+                  <td>Malware/virus removal</td>
+                  <td>$50</td>
+                </tr>
+                <tr>
+                  <td>OS install or reinstall</td>
+                  <td>$100</td>
+                </tr>
+                <tr>
+                  <td>Data backup and transfer</td>
+                  <td>$100</td>
+                </tr>
+                <tr>
+                  <td>Product recommendations</td>
+                  <td>Included</td>
+                </tr>
+                <tr>
+                  <td>Parts (RAM/HDD/SSD)</td>
+                  <td>Varies</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </Collapsible>
+      <Collapsible
         trigger={<button className="collapsible-trigger">Virtual</button>}
       >
         <div className="package-grid">
@@ -147,6 +235,7 @@ export default function Services() {
           </div>
         </div>
       </Collapsible>
+
       <h2>Priority Support</h2>
       <Collapsible
         trigger={<button className="collapsible-trigger">Details</button>}
