@@ -15,7 +15,7 @@ export default function Internet() {
         }
       >
         <div className="tech">
-          <table>
+          <table className="browser-table">
             <tr>
               <th>Browser</th>
               <th>Icon</th>
@@ -36,7 +36,11 @@ export default function Internet() {
                 <img src="images/logos/safari.png" height="20" width="20"></img>
               </td>
               <td style={{ textAlign: "left" }}>
-                <img src="images/logos/apple.png" height="20" width="20"></img>{" "}
+                <img
+                  src="images/logos/apple.png"
+                  height="20"
+                  width="20"
+                ></img>{" "}
               </td>
               <td>
                 <span className="material-symbols-outlined">check_circle</span>
@@ -473,7 +477,7 @@ export default function Internet() {
           Service Provider):
         </h4>
         <div className="tech">
-          <table>
+          <table className="glossary-table">
             <thead>
               <tr>
                 <th>Phrase</th>
@@ -590,7 +594,7 @@ export default function Internet() {
         }
       >
         <div className="tech">
-          <table>
+          <table className="method-table">
             <thead>
               <tr>
                 <th>Method</th>
@@ -728,6 +732,12 @@ export default function Internet() {
             </tr>
           </table>
         </div>
+        <h5>
+          NOTE: Most people do not need a VPN for regular internet use unless
+          you need to connect securely to a server for work purposes, want to
+          avoid your ISP tracking you or want to access content (like streaming)
+          that is restricted in your country.
+        </h5>
       </Collapsible>
       <Collapsible
         trigger={
@@ -735,13 +745,14 @@ export default function Internet() {
         }
       >
         <h4>
-          With modern devices and a standard ISP package, for most uses, a Wi-Fi
-          connection to your devices is adequate. However, if you want to fully
-          utilize your internet speed, a wired connection to your router with an
-          Ethernet cable is the way to go with the devices that support it.
+          With modern devices and a typical ISP package, connecting your devices
+          to Wi-Fi is adequate for most use cases. However, if you want to
+          reliably utilize your internet speed consistently, a wired connection
+          to your router with an Ethernet cable is the way to go with the
+          devices that support it.
         </h4>
         <div className="tech">
-          <table>
+          <table className="comparison-table">
             <thead>
               <tr>
                 <th>Category</th>

@@ -18,7 +18,7 @@ export default function Smartphone() {
           Keep in mind the following when browsing around for a mobile carrier:
         </h4>
         <div className="tech">
-          <table>
+          <table className="glossary-table">
             <thead>
               <tr>
                 <th>Phrase</th>

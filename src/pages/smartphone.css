@@ -2,6 +2,10 @@ li {
   /* padding: 0px; */
 }
 
+.glossary-table td:first-child {
+  text-align: center;
+}
+
 ol {
   /* background-color: #920f0f; */
   /* padding: 10px; */

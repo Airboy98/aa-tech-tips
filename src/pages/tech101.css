@@ -28,6 +28,22 @@ ul {
   padding: 10px;
 }
 
+.glossary-table td:first-child,
+.glossary-table td:last-child,
+.comparison-table td:first-child,
+.ai-examples-table td:first-child,
+.computer-vocab-table td:first-child {
+  text-align: center;
+}
+
+.distro-table td {
+  text-align: center;
+}
+
+.cloud-storage-table td {
+  text-align: center;
+}
+
 ol {
   /* background-color: #920f0f; */
   /* padding: 10px; */

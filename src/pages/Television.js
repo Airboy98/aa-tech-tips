@@ -265,7 +265,7 @@ export default function Television() {
           below and may have HDMI and USB ports on the back and side.
         </h4>
         <div className="television">
-          <table>
+          <table className="inputs-table">
             <tr>
               <th>Input</th>
               <th>Example Devices</th>

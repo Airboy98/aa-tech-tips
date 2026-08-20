@@ -73,7 +73,8 @@ td {
   text-align: left;
 }
 
-td:has(img) {
+td:has(img),
+td:has(.material-symbols-outlined) {
   text-align: center;
 }
 

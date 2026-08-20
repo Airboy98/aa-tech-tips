@@ -117,7 +117,7 @@ export default function Computer() {
         }
       >
         <div className="tech">
-          <table>
+          <table className="shortcut-table">
             <th>Action</th>
             <th>Windows</th>
             <th>macOS</th>
@@ -246,7 +246,7 @@ export default function Computer() {
           external drives using various file systems.
         </h4>
         <div className="tech">
-          <table>
+          <table className="filesystem-table">
             <th>File System</th>
             <th>Windows</th>
             <th>macOS</th>
@@ -593,7 +593,7 @@ export default function Computer() {
           provide access to more common ports.
         </h4>
         <div className="television">
-          <table>
+          <table className="inputs-table">
             <tr>
               <th>Input</th>
               <th>Example Devices</th>

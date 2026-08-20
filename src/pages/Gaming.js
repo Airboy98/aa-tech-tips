@@ -195,7 +195,7 @@ export default function Gaming() {
           price tag and a few tradeoffs.
         </h4>
         <div className="tech">
-          <table>
+          <table className="comparison-table">
             <thead>
               <tr>
                 <th>Category</th>

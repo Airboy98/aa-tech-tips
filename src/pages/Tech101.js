@@ -32,7 +32,7 @@ export default function Tech101() {
         }
       >
         <div className="tech">
-          <table>
+          <table className="glossary-table">
             <thead>
               <tr>
                 <th>Word or Phrase</th>
@@ -618,7 +618,7 @@ export default function Tech101() {
         }
       >
         <div className="tech">
-          <table>
+          <table className="computer-vocab-table">
             <thead>
               <tr>
                 <th>Word or Phrase</th>
@@ -930,7 +930,7 @@ export default function Tech101() {
           your items or pets to track their location using a smart phone.
         </h4>
         <div className="tech">
-          <table>
+          <table className="comparison-table">
             <thead>
               <tr>
                 <th>Category</th>
@@ -1012,7 +1012,7 @@ export default function Tech101() {
         }
       >
         <div className="tech">
-          <table>
+          <table className="glossary-table">
             <thead>
               <tr>
                 <th>Word or Phrase</th>
@@ -1175,7 +1175,7 @@ export default function Tech101() {
         </div>
         <h3>Examples</h3>
         <div className="tech">
-          <table>
+          <table className="ai-examples-table">
             <th>AI</th>
             <th>Prompt(s) </th>
             <th>Final Output</th>
@@ -1263,7 +1263,7 @@ export default function Tech101() {
           <b>iCloud</b> on Windows or <b>Google Drive</b> on iPhone.
         </h4>
         <div className="tech">
-          <table>
+          <table className="cloud-storage-table">
             <thead>
               <tr>
                 <th>Cloud Service</th>
@@ -1504,7 +1504,7 @@ export default function Tech101() {
           needs.
         </h4>
         <div className="tech">
-          <table>
+          <table className="distro-table">
             <thead>
               <tr>
                 <th>Distro</th>
