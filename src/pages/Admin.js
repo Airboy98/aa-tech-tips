@@ -313,11 +313,12 @@ export default function Admin() {
         {/* Session list */}
         <div className="admin-session-list">
           <div className="admin-session-header">
-            <span className="admin-session-header-title">Conversations</span>
+            <span className="admin-session-header-title">Chats</span>
             <span className="admin-session-header-count">
               {sessions.length}
             </span>
           </div>
+          <div className="admin-session-items">
           {sessions.length === 0 && (
             <p className="admin-session-empty">No conversations yet.</p>
           )}
@@ -434,6 +435,7 @@ export default function Admin() {
               </div>
             );
           })}
+          </div>
         </div>
 
         {/* Chat panel */}

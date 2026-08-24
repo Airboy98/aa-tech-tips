@@ -63,7 +63,7 @@ ol {
 }
 
 @media (max-width: 430px) {
-  .tech table td img {
+  .ai-examples-table td img {
     width: 100px;
     height: auto;
   }
