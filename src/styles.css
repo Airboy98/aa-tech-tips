@@ -722,6 +722,11 @@ h5 {
 }
 
 @media (max-width: 640px) {
+  .admin-layout {
+    height: auto;
+    overflow: visible;
+  }
+
   .admin-panels {
     overflow: visible;
   }
@@ -729,6 +734,11 @@ h5 {
   .admin-session-list {
     width: 100%;
     border-right: none;
+  }
+
+  .admin-session-items {
+    overflow-y: visible;
+    flex: none;
   }
 
   .admin-chat-panel {
