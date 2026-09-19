@@ -50,15 +50,46 @@ export default function Tech101() {
               </tr>
               <tr>
                 <td>App</td>
-                <td>
-                  Commonly used to refer to smartphone-based installed programs
-                </td>
+                <td>A program installed on a smartphone or tablet</td>
                 <td>Phone, Contacts, Mail</td>
+              </tr>
+
+              <tr>
+                <td>Badge</td>
+                <td>
+                  A numerical visual indicator on an app icon showing new
+                  notifications
+                </td>
+                <td>Messages app showing "3" in a red circle</td>
+              </tr>
+              <tr>
+                <td>Bluetooth</td>
+                <td>
+                  A short-range wireless connection used to link devices to
+                  accessories without cables
+                </td>
+                <td>Wireless headphones, car audio</td>
+              </tr>
+              <tr>
+                <td>Browser</td>
+                <td>A program used to visit websites</td>
+                <td>Safari, Chrome, Firefox</td>
               </tr>
               <tr>
                 <td>Cloud</td>
                 <td>Remote internet-connected computers in data warehouses</td>
                 <td>iCloud, OneDrive, Google Drive</td>
+              </tr>
+
+              <tr>
+                <td>Download</td>
+                <td>Pulling a file from the internet onto a device</td>
+                <td>Installing an app</td>
+              </tr>
+              <tr>
+                <td>Hotspot</td>
+                <td>Broadcasting a phone's cellular data as a Wi-Fi network</td>
+                <td>Personal Hotspot, Mobile Hotspot</td>
               </tr>
               <tr>
                 <td>iOS</td>
@@ -76,13 +107,28 @@ export default function Tech101() {
                 <td>macOS 26 Tahoe</td>
               </tr>
               <tr>
+                <td>Notification</td>
+                <td>An alert message that displays on screen from an app</td>
+                <td>Text message, calendar reminders</td>
+              </tr>
+              <tr>
                 <td>Passkey</td>
                 <td>
-                  An alternative to a password that uses biometric
-                  authentication
+                  A way to sign in using a fingerprint or facial recognition
+                  instead of a password
                 </td>
                 <td>Google Passkey</td>
               </tr>
+
+              <tr>
+                <td>QR Code</td>
+                <td>
+                  A square barcode website link accessed by scanning with a
+                  phone camera
+                </td>
+                <td>Restaurant menus, event tickets</td>
+              </tr>
+
               <tr>
                 <td>Streaming</td>
                 <td>
@@ -99,9 +145,28 @@ export default function Tech101() {
                 <td>iPhone 17, Galaxy S25</td>
               </tr>
               <tr>
+                <td>Sync</td>
+                <td>
+                  Keeping data on a device consistent with data in the cloud
+                </td>
+                <td>Photos and contacts across devices</td>
+              </tr>
+              <tr>
                 <td>Tablet</td>
                 <td>An internet connected, large screen app-based device</td>
                 <td>iPad</td>
+              </tr>
+              <tr>
+                <td>Upload</td>
+                <td>Sending a file from a device to the internet</td>
+                <td>Attaching a file to an email</td>
+              </tr>
+              <tr>
+                <td>Voice Assistant</td>
+                <td>
+                  A built-in helper controlled by voice to interact with devices
+                </td>
+                <td>Siri, Google Assistant, Alexa</td>
               </tr>
               <tr>
                 <td>watchOS</td>
@@ -110,14 +175,34 @@ export default function Tech101() {
               </tr>
               <tr>
                 <td>Wearable</td>
-                <td>A wearable device with built-in sensors and other tech</td>
+                <td>A body-worn device with built-in sensors</td>
                 <td>Apple Watch, Fitbit, Google Glass</td>
               </tr>
-
+              <tr>
+                <td>Widget</td>
+                <td>A small home-screen panel showing info from an app</td>
+                <td>Weather, calendar, battery widgets</td>
+              </tr>
+              <tr>
+                <td>Wi-Fi</td>
+                <td>
+                  A wireless internet connection using a router and usually
+                  protected by a password
+                </td>
+                <td>Home or public network</td>
+              </tr>
               <tr>
                 <td>Windows</td>
                 <td>Microsoft's proprietary operating system</td>
                 <td>Windows XP, Windows 11</td>
+              </tr>
+              <tr>
+                <td>2FA</td>
+                <td>
+                  Two-factor authentication, a security measure used for
+                  accounts requiring a code
+                </td>
+                <td>Texted codes, Google Authenticator</td>
               </tr>
             </tbody>
           </table>
@@ -481,8 +566,7 @@ export default function Tech101() {
                 Brave
               </a>{" "}
               that includes a built-in ad blocker. Check the{" "}
-              <Link to="/internet">Internet page</Link>{" "}
-              for more info and tips.
+              <Link to="/internet">Internet page</Link> for more info and tips.
             </li>
             <li>
               <b>Take advantage of bookmarks!</b> Create bookmarks for commonly
@@ -627,6 +711,68 @@ export default function Tech101() {
             </thead>
             <tbody>
               <tr>
+                <td>Bandwidth</td>
+                <td>
+                  The maximum rate of data an internet connection can transfer,
+                  affecting speed
+                </td>
+              </tr>
+              <tr>
+                <td>BIOS / UEFI</td>
+                <td>
+                  Low-level software on the motherboard that starts the computer
+                  before the operating system loads
+                </td>
+              </tr>
+              <tr>
+                <td>Cache</td>
+                <td>
+                  Temporary files a device stores to load apps and websites
+                  faster on return visits
+                </td>
+              </tr>
+              <tr>
+                <td>Cookies</td>
+                <td>
+                  Small files a website saves in the browser to remember logins
+                  and preferences
+                </td>
+              </tr>
+              <tr>
+                <td>CPU (Central Processing Unit)</td>
+                <td>
+                  A computer's main chip that carries out instructions for
+                  programs
+                </td>
+              </tr>
+              <tr>
+                <td>Driver</td>
+                <td>
+                  Software that lets the OS communicate with a piece of hardware
+                </td>
+              </tr>
+              <tr>
+                <td>Encryption</td>
+                <td>
+                  Scrambling data so only someone with the correct key or
+                  password can read it
+                </td>
+              </tr>
+              <tr>
+                <td>Firewall</td>
+                <td>
+                  A security barrier that monitors and blocks unwanted network
+                  traffic
+                </td>
+              </tr>
+              <tr>
+                <td>Firmware</td>
+                <td>
+                  Software built into a device that controls how its hardware
+                  operates
+                </td>
+              </tr>
+              <tr>
                 <td>GPU (Graphics Processing Unit) / Graphics Card</td>
                 <td>
                   A computer peripheral dedicated to rendering graphics on a
@@ -648,6 +794,13 @@ export default function Tech101() {
                 </td>
               </tr>
               <tr>
+                <td>IP Address</td>
+                <td>
+                  A unique number identifying a device on a network or the
+                  internet
+                </td>
+              </tr>
+              <tr>
                 <td>ISP (Internet Service Provider)</td>
                 <td>
                   A company (like AT&T) that provides internet connection over
@@ -659,9 +812,23 @@ export default function Tech101() {
                 <td>A local network of interconnected devices</td>
               </tr>
               <tr>
+                <td>Malware</td>
+                <td>
+                  Harmful software (like viruses) designed to damage a device or
+                  steal data
+                </td>
+              </tr>
+              <tr>
                 <td>Modem</td>
                 <td>
                   A device connected to an ISP that enables internet access
+                </td>
+              </tr>
+              <tr>
+                <td>Motherboard</td>
+                <td>
+                  A computer's main circuit board that connects and links other
+                  hardware
                 </td>
               </tr>
 
@@ -670,6 +837,20 @@ export default function Tech101() {
                 <td>
                   A screen connected by a video cable to a desktop or built-in
                   to a laptop
+                </td>
+              </tr>
+              <tr>
+                <td>OS (Operating System)</td>
+                <td>
+                  A computer's core software that the user interacts with to run
+                  programs
+                </td>
+              </tr>
+              <tr>
+                <td>Peripheral</td>
+                <td>
+                  A piece of hardware attached to a computer, either external or
+                  internal
                 </td>
               </tr>
               <tr>
@@ -718,6 +899,20 @@ export default function Tech101() {
                 </td>
               </tr>
               <tr>
+                <td>USB (Universal Serial Bus)</td>
+                <td>
+                  A common connector standard for plugging in peripherals to a
+                  computer
+                </td>
+              </tr>
+              <tr>
+                <td>VPN (Virtual Private Network)</td>
+                <td>
+                  A service that changes a device's IP address for privacy and
+                  security
+                </td>
+              </tr>
+              <tr>
                 <td>Wired Internet (Ethernet)</td>
                 <td>
                   A wired connection using an Ethernet cable to connect to the
@@ -748,65 +943,7 @@ export default function Tech101() {
         <div className="tech">
           <ul>
             <li>
-              <b>Don't keep it simple!</b> The simpler a password is (such as
-              "Password123"), the less secure the account is and you run the
-              risk of your data being compromised! Choose a word or sentence you
-              can easily remember and mix in a few numbers or special characters
-              in place of letters (ex: swap "e" for "3" or "a" for "@"). Salt
-              your password with extra numbers or characters at the end for an
-              added level of security.
-            </li>
-            <li>
-              <b>Use a password manager!</b> Most common web browsers have a
-              built-in password manager but using a dedicated password manager
-              service is even more secure and most have a mobile app too. Some
-              common ones are{" "}
-              <a
-                href="https://1password.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                1Password
-              </a>
-              ,{" "}
-              <a
-                href="https://www.dashlane.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Dashlane
-              </a>
-              ,{" "}
-              <a
-                href="https://keepass.info/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                KeePass
-              </a>
-              ,{" "}
-              <a
-                href="https://www.lastpass.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LastPass
-              </a>
-              , and{" "}
-              <a
-                href="https://www.roboform.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                RoboForm
-              </a>
-              . Keep in mind that while these are secure services, they have a
-              small chance of being compromised if servers are breached so one
-              of the below options may be preferred if you want a non-cloud
-              solution.
-            </li>
-            <li>
-              <b>Keep a physical copy in a binder!</b> Physically record your
+              <b>Keep a physical copy in a binder.</b> Physically record your
               passwords on standard 8.5x11 inch ruled filler paper to fit in a
               standard binder. Use the lines on the paper to neatly arrange your
               accounts in a table and sort them by category. For example, you
@@ -821,7 +958,7 @@ export default function Tech101() {
               place, away from your computer.
             </li>
             <li>
-              <b>Store a digital copy on a flash drive!</b> Use a spreadsheet
+              <b>Store a digital copy on a flash drive.</b> Use a spreadsheet
               program (Google Sheets, Microsoft Excel, iWork Numbers) to create
               a similar table mentioned above with the same headers. At the top
               of the spreadsheet:{" "}
@@ -834,13 +971,22 @@ export default function Tech101() {
               away from your computer.
             </li>
             <li>
-              <b>Be redundant!</b> Employ a few strategies above to have
-              multiple secure copies of your account passwords. It may be a pain
-              but just remember to keep them in sync and update them
-              simultaneously when an account needs a password change!
+              <b>Don't keep it simple.</b> The simpler a password is (such as
+              "Password123"), the less secure the account is and you run the
+              risk of your data being compromised. Choose a word or sentence you
+              can easily remember and mix in a few numbers or special characters
+              in place of letters (ex: swap "e" for "3" or "a" for "@"). Salt
+              your password with extra numbers or characters at the end for an
+              added level of security.
             </li>
             <li>
-              <b>Make use of MFA!</b> In addition to just a password, some
+              <b>Be redundant.</b> Employ a few strategies above to have
+              multiple secure copies of your account passwords. It may be a pain
+              but just remember to keep them in sync and update them
+              simultaneously when an account needs a password change.
+            </li>
+            <li>
+              <b>Make use of MFA.</b> In addition to just a password, some
               websites require MFA which stands for multi-factor authentication.
               Even though it can be a bit tedious to setup, it is highly
               recommended to add an extra layer of security. MFA can be done a
@@ -848,7 +994,47 @@ export default function Tech101() {
               and another way uses an authenticator app paired with your account
               to generate a temporary code that lasts a few seconds.
             </li>
+            <li>
+              <b>Use a password manager.</b> Services like NordPass keep all
+              your usernames and passwords in one place so you only have to
+              remember a single master password. It's available on all devices
+              with browser extensions that keep everything in sync, fills in
+              your username and password automatically when you visit a site,
+              offers to save new logins as you create them, and can generate
+              long, random passwords so every account is unique. It also flags
+              weak, reused, or old passwords, warns you if any of your accounts
+              show up in a known data breach, and can store credit cards and
+              secure notes for quick, safe entry on forms. Everything is guarded
+              by zero-knowledge encryption, so only you can unlock it, giving
+              you a single secure home for your passwords and genuine peace of
+              mind. Paid plans start at about $2 per month on a yearly plan for
+              unlimited devices, breach scanning, and secure sharing.
+            </li>
           </ul>
+
+          <div>
+            <a
+              href="https://go.nordpass.io/aff_c?offer_id=488&aff_id=34741&url_id=9356"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              style={{
+                display: "inline-block",
+                marginTop: "0px",
+                marginBottom: "16px",
+                padding: "12px 14px",
+                backgroundColor: "#0f3455",
+                color: "#fff",
+                fontWeight: "bold",
+                fontSize: "16px",
+                borderRadius: "8px",
+                textDecoration: "none",
+                border: "2px solid #3c709f",
+                letterSpacing: "0.5px",
+              }}
+            >
+              Get NordPass Now!
+            </a>
+          </div>
         </div>
       </Collapsible>
       <Collapsible
