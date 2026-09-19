@@ -1,11 +1,22 @@
 * {
   box-sizing: border-box;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: 100%;
 }
 
 input,
 textarea,
 select {
   font-size: 16px;
+}
+
+img {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 :root {
@@ -172,6 +183,21 @@ h5 {
 
 .flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
+}
+
+/* backface-visibility only hides the non-shown face visually - iOS Safari can
+   still hit-test it, so the hidden .flip-card-back's overflow-y:auto swallows
+   swipe gestures meant for page scroll. Only the visible face may receive touch. */
+.flip-card-back {
+  pointer-events: none;
+}
+
+.flip-card.flipped .flip-card-back {
+  pointer-events: auto;
+}
+
+.flip-card.flipped .flip-card-front {
+  pointer-events: none;
 }
 
 /* Front and Back */

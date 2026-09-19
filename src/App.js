@@ -8,7 +8,7 @@ import Internet from "./pages/Internet";
 import Streaming from "./pages/Streaming";
 import Wearable from "./pages/Wearable";
 import Gaming from "./pages/Gaming";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Baby from "./pages/baby";
@@ -41,6 +41,7 @@ function App() {
             <Route path="/tech-byte/success" element={<TechByteSuccess />} />
             <Route path="/admin" element={<Admin />} />
             {/* <Route path="/sonic" element={<Sonic />} /> */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
       </div>
