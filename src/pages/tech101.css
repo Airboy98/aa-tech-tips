@@ -31,7 +31,6 @@ ul {
 .glossary-table td:first-child,
 .glossary-table td:last-child,
 .comparison-table td:first-child,
-.ai-examples-table td:first-child,
 .computer-vocab-table td:first-child {
   text-align: center;
 }
@@ -60,11 +59,4 @@ ol {
 .tech table td ol {
   padding-left: 20px;
   margin: 0;
-}
-
-@media (max-width: 430px) {
-  .ai-examples-table td img {
-    width: 100px;
-    height: auto;
-  }
 }

@@ -694,6 +694,30 @@ export default function Tech101() {
             (@roadrunner.com, @rr.com, @twc.com, @brighthouse.com, @charter.net)
           </li>
         </ul>
+        {/* <h3>Dealing with Unwanted Emails</h3> */}
+        <h4>Not every unwanted email is a scam but can be managed easily.</h4>
+        <ul>
+          <li>
+            <strong>Disregard it.</strong> If the email comes from a legitimate
+            address as a simple notification and has no call to action, simply
+            leave it in your inbox and ignore it.
+          </li>
+          <li>
+            <strong>Unsubscribe from it.</strong> For emails from legitimate
+            companies you no longer wish to hear from, scroll to the bottom of
+            the email and click the "Unsubscribe" link.
+          </li>
+          <li>
+            <strong>Mark it as spam.</strong> If the email looks suspicious or
+            is from an unknown sender, DO NOT OPEN IT. Mark it as spam (or junk)
+            which autodeletes it.
+          </li>
+          <li>
+            <strong>Mass delete.</strong> Most email inboxes accessed through a
+            website have a checkbox next to each email that allows you to select
+            one or more emails to delete in bulk.
+          </li>
+        </ul>
       </Collapsible>
       <h2>Intermediate</h2>
       <Collapsible
