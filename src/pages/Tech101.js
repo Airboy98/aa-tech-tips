@@ -1234,10 +1234,10 @@ export default function Tech101() {
               <tr>
                 <td>AI (Artificial Intelligence)</td>
                 <td>
-                  A complex program using an LLM to generate human-like
-                  responses, code, pictures, etc.
+                  A field of computer science focused on simulating
+                  machine-based intelligence
                 </td>
-                <td>ChatGPT, Gemini, Grok</td>
+                <td>LLMs, self-driving cars</td>
               </tr>
               <tr>
                 <td>AR (Augmented Reality)</td>
@@ -1267,13 +1267,6 @@ export default function Tech101() {
                 <td>IoT (Internet of Things)</td>
                 <td>A network of smart devices connected to the internet</td>
                 <td>Nest thermostat, Ring doorbell</td>
-              </tr>
-              <tr>
-                <td>LLM (Large Language Model)</td>
-                <td>
-                  A deep learning model pre-trained on vast amounts of data
-                </td>
-                <td>GPT, LLaMa, LaMDA</td>
               </tr>
               <tr>
                 <td>ML (Machine Learning)</td>

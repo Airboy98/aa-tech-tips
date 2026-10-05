@@ -75,14 +75,16 @@ export default function Home() {
           <CustomLink to="/wearable">
             <button>Wearable</button>
           </CustomLink>
+          <CustomLink to="/ai">
+            <button>AI / SI</button>
+          </CustomLink>
           <CustomLink to="/services">
             <button>Services</button>
           </CustomLink>
+          <CustomLink to="/about">
+            <button>About</button>
+          </CustomLink>
         </div>
-
-        <CustomLink to="/about">
-          <button>About</button>
-        </CustomLink>
       </div>
 
       <h5>
