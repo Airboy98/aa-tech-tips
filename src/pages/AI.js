@@ -31,6 +31,14 @@ export default function AI() {
             </thead>
             <tbody>
               <tr>
+                <td>Agent</td>
+                <td>
+                  AI that can independently and autonomously plan and carry out
+                  multi-step tasks
+                </td>
+                <td>Muse, Grok Bot, Dots</td>
+              </tr>
+              <tr>
                 <td>AI (Artificial Intelligence)</td>
                 <td>
                   A field of computer science focused on simulating
@@ -45,6 +53,21 @@ export default function AI() {
                   your activity
                 </td>
                 <td>Netflix recommending movies</td>
+              </tr>
+              <tr>
+                <td>Assistant</td>
+                <td>
+                  A voice-activated tool that can be summoned by a phrase and
+                  commanded to perform simple tasks
+                </td>
+                <td>Siri, Alexa, Google Assistant</td>
+              </tr>
+              <tr>
+                <td>Chatbot</td>
+                <td>
+                  A program powered by an LLM and interacted with by text or voice
+                </td>
+                <td>ChatGPT, Claude, Grok</td>
               </tr>
               <tr>
                 <td>Context Window</td>
@@ -75,11 +98,6 @@ export default function AI() {
                   A deep learning model pre-trained on vast amounts of data
                 </td>
                 <td>ChatGPT, Claude, Gemini</td>
-              </tr>
-              <tr>
-                <td>Model</td>
-                <td>A specific version of an LLM</td>
-                <td>ChatGPT-6 Sol, Claude Opus 5.5</td>
               </tr>
               <tr>
                 <td>Multimodal</td>
@@ -130,12 +148,12 @@ export default function AI() {
                 with it
               </li>
               <li>
-                Responds with content catered to you, such as an answer (LLM) or
-                recommendations (algorithm) based on your habits and preferences
+                Responds with content catered to you, such as an answer to a
+                prompt or recommendations based on your habits and preferences
               </li>
               <li>
-                LLMs like ChatGPT can be used as a chatbot which is the most
-                common way people use AI today
+                A chatbot like ChatGPT is the most common way people use AI
+                today
               </li>
             </ul>
           </div>
@@ -199,7 +217,7 @@ export default function AI() {
       >
         <div className="ai">
           <table className="ai-examples-table">
-            <th>LLM</th>
+            <th>Chatbot</th>
             <th>Prompt(s) </th>
             <th>Final Output</th>
             <tr>
@@ -218,7 +236,10 @@ export default function AI() {
                   height="100"
                   className="ai-zoomable"
                   onClick={() =>
-                    setZoomedImage({ src: "images/ai/prompt1.png", alt: "prompt1" })
+                    setZoomedImage({
+                      src: "images/ai/prompt1.png",
+                      alt: "prompt1",
+                    })
                   }
                 />
               </td>
@@ -240,7 +261,10 @@ export default function AI() {
                   height="150"
                   className="ai-zoomable"
                   onClick={() =>
-                    setZoomedImage({ src: "images/ai/prompt5.png", alt: "prompt5" })
+                    setZoomedImage({
+                      src: "images/ai/prompt5.png",
+                      alt: "prompt5",
+                    })
                   }
                 />
               </td>
@@ -262,7 +286,10 @@ export default function AI() {
                   height="150"
                   className="ai-zoomable"
                   onClick={() =>
-                    setZoomedImage({ src: "images/ai/prompt2.png", alt: "prompt2" })
+                    setZoomedImage({
+                      src: "images/ai/prompt2.png",
+                      alt: "prompt2",
+                    })
                   }
                 />
               </td>
@@ -283,7 +310,10 @@ export default function AI() {
                   height="120"
                   className="ai-zoomable"
                   onClick={() =>
-                    setZoomedImage({ src: "images/ai/prompt3.png", alt: "prompt3" })
+                    setZoomedImage({
+                      src: "images/ai/prompt3.png",
+                      alt: "prompt3",
+                    })
                   }
                 />
               </td>
@@ -306,7 +336,10 @@ export default function AI() {
                   height="150"
                   className="ai-zoomable"
                   onClick={() =>
-                    setZoomedImage({ src: "images/ai/prompt4.png", alt: "prompt4" })
+                    setZoomedImage({
+                      src: "images/ai/prompt4.png",
+                      alt: "prompt4",
+                    })
                   }
                 />
               </td>
@@ -329,9 +362,8 @@ export default function AI() {
                 search results
               </li>
               <li>Draft or proofread emails, letters, and messages</li>
-              <li>Summarize long articles, emails, or documents</li>
-              <li>Explain confusing topics in plain language</li>
-              <li>Brainstorm ideas, recipes, or gift suggestions</li>
+              <li>Summarize long articles, emails, documents or difficult topics</li>
+              <li>Brainstorm ideas, itineraries, recipes, or gift suggestions</li>
               <li>Generate images, videos, or music from a description</li>
               <li>Delegate complex tasks to an agent</li>
             </ul>
@@ -369,9 +401,7 @@ export default function AI() {
 
       <h2>Tools</h2>
       <Collapsible
-        trigger={
-          <button className="collapsible-trigger">Large Language Models</button>
-        }
+        trigger={<button className="collapsible-trigger">Chatbots</button>}
       >
         <div className="package-grid">
           <div className="package-card">
@@ -392,11 +422,37 @@ export default function AI() {
                 />
               </a>
             </div>
-            <h4>The most widely used LLM and a solid all-around choice</h4>
+            <h4>The most widely used chatbot and a solid all-around choice</h4>
             <ul>
               <li>General questions, emails, letters, and trip planning</li>
               <li>Generate pictures from a description</li>
             </ul>
+            <table className="package-table">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Free</td>
+                  <td>$0</td>
+                </tr>
+                <tr>
+                  <td>Go</td>
+                  <td>$8/mo</td>
+                </tr>
+                <tr>
+                  <td>Plus</td>
+                  <td>$20/mo</td>
+                </tr>
+                <tr>
+                  <td>Pro</td>
+                  <td>$200/mo</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div className="package-card">
             <h3>
@@ -421,6 +477,32 @@ export default function AI() {
               <li>Writing help and summarizing long documents</li>
               <li>Great for topics where accuracy matters most</li>
             </ul>
+            <table className="package-table">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Free</td>
+                  <td>$0</td>
+                </tr>
+                <tr>
+                  <td>Pro</td>
+                  <td>$20/mo</td>
+                </tr>
+                <tr>
+                  <td>Max 5x</td>
+                  <td>$100/mo</td>
+                </tr>
+                <tr>
+                  <td>Max 20x</td>
+                  <td>$200/mo</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div className="package-card">
             <h3>
@@ -443,11 +525,36 @@ export default function AI() {
             <h4>Built into Windows 11 and the Edge web browser</h4>
             <ul>
               <li>
-                Seamless integration with Microsoft 365 products like Teams and
-                Outlook
+                Seamless integration with Microsoft 365 products like Teams
               </li>
               <li>Can summarize or draft content right inside Office apps</li>
             </ul>
+            <table className="package-table">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Free</td>
+                  <td>$0</td>
+                </tr>
+                <tr>
+                  <td>Microsoft 365 Personal</td>
+                  <td>$9.99/mo</td>
+                </tr>
+                <tr>
+                  <td>Microsoft 365 Premium</td>
+                  <td>$19.99/mo</td>
+                </tr>
+                <tr>
+                  <td>365 Copilot Business</td>
+                  <td>$21/user/mo</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div className="package-card">
             <h3>
@@ -472,6 +579,32 @@ export default function AI() {
               <li>Good at pulling in up-to-date information from the web</li>
               <li>AI summary provided with Google searches</li>
             </ul>
+            <table className="package-table">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Free</td>
+                  <td>$0</td>
+                </tr>
+                <tr>
+                  <td>AI Plus</td>
+                  <td>$4.99/mo</td>
+                </tr>
+                <tr>
+                  <td>AI Pro</td>
+                  <td>$19.99/mo</td>
+                </tr>
+                <tr>
+                  <td>AI Ultra</td>
+                  <td>$99.99/mo</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div className="package-card">
             <h3>
@@ -494,8 +627,158 @@ export default function AI() {
             <h4>Known for facts and blunter, less biased responses</h4>
             <ul>
               <li>Also built into the X (formerly Twitter) app</li>
-              <li>Aware of real-time posts on X</li>
+              <li>Aware of real-time news and posts on X</li>
             </ul>
+            <table className="package-table">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Free</td>
+                  <td>$0</td>
+                </tr>
+                <tr>
+                  <td>SuperGrok Lite</td>
+                  <td>$10/mo</td>
+                </tr>
+                <tr>
+                  <td>SuperGrok</td>
+                  <td>$30/mo</td>
+                </tr>
+                <tr>
+                  <td>SuperGrok Heavy</td>
+                  <td>$300/mo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Agents</button>}
+      >
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>OpenAI</u>
+            </h3>
+            <div className="ai-logo ai-logo-fit">
+              <a
+                href="https://chatgpt.com/dots"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="images/ai/chatgpt-icon.png"
+                  alt="ChatGPT"
+                  width="60"
+                  height="60"
+                />
+              </a>
+            </div>
+            <h4>Dots</h4>
+            <table className="package-table">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ChatGPT Pro</td>
+                  <td>$100/mo</td>
+                </tr>
+                <tr>
+                  <td>Business Premium</td>
+                  <td>Varies</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Meta</u>
+            </h3>
+            <div className="ai-logo ai-logo-fit">
+              <a
+                href="https://ai.meta.com/muse/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="images/ai/muse.png"
+                  alt="Muse"
+                  width="60"
+                  height="60"
+                />
+              </a>
+            </div>
+            <h4>Muse</h4>
+            <table className="package-table">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Free (100M tokens/week)</td>
+                  <td>$0</td>
+                </tr>
+                <tr>
+                  <td>Power</td>
+                  <td>$20/mo</td>
+                </tr>
+                <tr>
+                  <td>Maximum</td>
+                  <td>$100/mo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>xAI</u>
+            </h3>
+            <div className="ai-logo ai-logo-fit">
+              <a
+                href="https://x.ai/bot"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="images/ai/grok-bot.png"
+                  alt="Grok Bot"
+                  width="60"
+                  height="60"
+                />
+              </a>
+            </div>
+            <h4>Grok Bot</h4>
+            <table className="package-table">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SuperGrok</td>
+                  <td>$30/mo</td>
+                </tr>
+                <tr>
+                  <td>New users (first month)</td>
+                  <td>Free</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </Collapsible>
