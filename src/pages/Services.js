@@ -4,7 +4,6 @@ import { useAppointmentsContext } from "../hooks/useAppointmentsContext";
 // components
 import Collapsible from "react-collapsible";
 import Calendly from "../components/Calendly";
-import "./services.css";
 
 export default function Services() {
   const { appointments, dispatch } = useAppointmentsContext();

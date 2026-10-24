@@ -903,7 +903,8 @@ h5 {
   text-align: center;
 }
 
-.package-card ul {
+.package-card ul,
+.package-card ol {
   margin: 0;
   padding: 0 0 0 20px;
 }

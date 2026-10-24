@@ -81,14 +81,16 @@ export default function About() {
         <div className="package-grid">
           <div className="package-card">
             <h3>
-              <u>My Faith</u>
+              <u>Faith & Family</u>
             </h3>
-            <h4>Maker Magnifier</h4>
+            <h4>Made to magnify my Maker</h4>
             <ul>
               <li>Professing Bible-believing Christian</li>
               <li>Jesus Christ is my Lord and Savior</li>
               <li>Striving to glorify the Lord with my abilities</li>
               <li>Serving others as a vessel for Him</li>
+              <li>Married back in May to a God-fearing woman</li>
+              <li>Expecting a son in March 2027</li>
             </ul>
           </div>
 
@@ -98,9 +100,12 @@ export default function About() {
             </h3>
             <h4>Years of hands-on IT work</h4>
             <ul>
-              <li>BS in Computer Science from Texas Tech in 2019</li>
+              <li>
+                Graduated from Texas Tech in 2019 with a BS in Computer
+                Science{" "}
+              </li>
               <li>4 years of on-campus IT support for dorm hall students</li>
-              <li>3 technical consulting jobs</li>
+              <li>3 technical consulting jobs in Dallas</li>
 
               <li>
                 Projects in software development, SQL database management, cloud
