@@ -35,8 +35,13 @@ ul {
   text-align: center;
 }
 
-.distro-table td {
-  text-align: center;
+.wide-card {
+  max-width: 480px;
+}
+
+.wide-card .package-table td:nth-child(2):not(:last-child) {
+  color: #d0dde8;
+  font-weight: 400;
 }
 
 .cloud-storage-table td {
@@ -59,4 +64,29 @@ ol {
 .tech table td ol {
   padding-left: 20px;
   margin: 0;
+}
+
+.tracker-img {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 12px;
+}
+
+.tracker-img img {
+  display: block;
+  max-width: 100%;
+  max-height: 120px;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  transition: box-shadow 0.2s;
+}
+
+.tracker-img:hover img {
+  box-shadow: 0 0 0 3px #d1d146;
+}
+
+.package-table.plain-table td:not(:first-child) {
+  color: #d0dde8;
+  font-weight: 400;
 }
