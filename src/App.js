@@ -16,6 +16,8 @@ import Baby from "./pages/baby";
 import TechByte from "./pages/TechByte";
 import TechByteSuccess from "./pages/TechByteSuccess";
 import Admin from "./pages/Admin";
+import NotFound from "./pages/NotFound";
+import PageMeta from "./components/PageMeta";
 // import Sonic from "/Sonic";
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
     <>
       <div className="container">
         <BrowserRouter>
+          <PageMeta />
           <Navbar />
           <Routes>
             {/* add home to the below path="/" to force the homepage at /home */}
@@ -43,7 +46,8 @@ function App() {
             <Route path="/tech-byte/success" element={<TechByteSuccess />} />
             <Route path="/admin" element={<Admin />} />
             {/* <Route path="/sonic" element={<Sonic />} /> */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/appointment" element={<Navigate to="/services" replace />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </div>

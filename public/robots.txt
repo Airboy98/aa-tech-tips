@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /tech-byte/success
+Disallow: /api/
+
+Sitemap: https://www.aatechtips.com/sitemap.xml
