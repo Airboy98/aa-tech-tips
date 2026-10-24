@@ -562,7 +562,7 @@ export default function Streaming() {
               <tr>
                 <td>
                   <a
-                    href="https://onntvsupport.com/"
+                    href="https://www.onntvsupport.com/s/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

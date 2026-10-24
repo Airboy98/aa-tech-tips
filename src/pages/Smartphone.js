@@ -111,7 +111,7 @@ export default function Smartphone() {
               </td>
               <td>
                 <a
-                  href="https://www.tmobile.com/"
+                  href="https://www.t-mobile.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -174,7 +174,7 @@ export default function Smartphone() {
               </td>
               <td>
                 <a
-                  href="https://www.puretalkusa.com/"
+                  href="https://www.puretalk.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -188,20 +188,6 @@ export default function Smartphone() {
               </td>
             </tr>
             <tr>
-              <td>
-                <a
-                  href="https://www.uscellular.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/smartphones/uscellular.svg"
-                    alt="US Cellular"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
               <td>
                 <a
                   href="https://www.consumercellular.com/"
@@ -230,8 +216,6 @@ export default function Smartphone() {
                   />
                 </a>
               </td>
-            </tr>
-            <tr>
               <td>
                 <a
                   href="https://patriotmobile.com/"
@@ -246,6 +230,8 @@ export default function Smartphone() {
                   />
                 </a>
               </td>
+            </tr>
+            <tr>
               <td>
                 <a
                   href="https://www.straighttalk.com/"

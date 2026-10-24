@@ -1,5 +1,6 @@
 import React from "react";
 import Collapsible from "react-collapsible";
+import { Link } from "react-router-dom";
 import { CustomLink } from "../components/Navbar";
 import "./home.css";
 
@@ -25,25 +26,71 @@ export default function Home() {
           /> */}
         </h1>
       </div>
-      {/* <hr></hr> */}
       <h2>Menu</h2>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">Click or Tap Here</button>
         }
       >
-        <h4>
-          Need IT help or looking for some tips? Select a category below or
-          start with the basics and tap Tech 101. Tap the buttons on each page
-          to expand and collapse the tips.<br></br>
-          <br></br>Tap the logo in the top left corner to return here and
-          navigate the site with the links in the top right corner (or{" "}
-          <img src="images/hamburger.png" height="20" width="20" /> menu on
-          smartphones).
-          <br></br>
-          <br></br>Tap Tech Byte below to ask me ANY tech question or get a
-          comprehensive AI powered answer.
-        </h4>
+        <div className="package-grid home-guide">
+          <div className="package-card">
+            <h3>
+              <u>Get Around</u>
+            </h3>
+            <h4>
+              Tap the logo in the top left corner to return here. Use the links
+              in the top right corner (or the{" "}
+              <img
+                src="images/hamburger.png"
+                alt="menu"
+                height="20"
+                width="20"
+              />{" "}
+              menu on smartphones) to visit other pages.
+            </h4>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Find Tips</u>
+            </h3>
+            <h4>
+              Select a category below, or start with the basics in{" "}
+              <Link to="/tech101">Tech 101</Link>. Tap the buttons on each page
+              to open and close the tips.
+            </h4>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Use Tools</u>
+            </h3>
+            <h4>
+              Visit <Link to="/streaming">Streaming</Link> to find where a movie
+              or show is streaming, see what's in theaters now, music info and
+              more. Visit <Link to="/gaming">Gaming</Link> to search games and
+              see new and upcoming releases.
+            </h4>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Ask a Question</u>
+            </h3>
+            <h4>
+              Use <Link to="/tech-byte">Tech Byte</Link> to ask me ANY tech
+              question or get a comprehensive AI powered "byte-sized"
+              appointment.
+            </h4>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Get Service</u>
+            </h3>
+            <h4>
+              Visit <Link to="/services#booking">Services</Link> to book
+              in-person tech help in the DFW area, remotely via Zoom, or various
+              other tech support and services.
+            </h4>
+          </div>
+        </div>
       </Collapsible>
 
       <div className="links">

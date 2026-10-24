@@ -1,20 +1,20 @@
-import { useEffect } from "react";
-import { useAppointmentsContext } from "../hooks/useAppointmentsContext";
+import { Link, useLocation } from "react-router-dom";
 
 // components
 import Collapsible from "react-collapsible";
 import Calendly from "../components/Calendly";
 
 export default function Services() {
-  const { appointments, dispatch } = useAppointmentsContext();
+  const { hash } = useLocation();
 
   return (
     <>
       <div className="section-header">
         <h1>Services</h1>
       </div>
-      <h2>Appointment</h2>
+      <h2 id="booking">Appointment</h2>
       <Collapsible
+        open={hash === "#booking"}
         trigger={
           <button className="collapsible-trigger">Booking Schedule</button>
         }
@@ -53,7 +53,7 @@ export default function Services() {
               <li>Specific program training (ex: MS Office products)</li>
               <li>
                 Data backup/transfer (external drive not provided, refer to{" "}
-                <a href="https://aatechtips.com/tech101">Tech 101</a> for
+                <Link to="/tech101">Tech 101</Link> for
                 retailers)
               </li>
               <li>

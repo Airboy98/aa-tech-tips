@@ -1544,7 +1544,7 @@ export default function Tech101() {
             </h3>
             <h4>
               <a
-                href="https://www.skylightframe.com/"
+                href="https://myskylight.com/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -1809,7 +1809,7 @@ export default function Tech101() {
                   </a>
                   <br></br>
                   <a
-                    href="https://play.google.com/store/apps/details?id=mt.io.syncforicloud"
+                    href="https://www.icloud.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

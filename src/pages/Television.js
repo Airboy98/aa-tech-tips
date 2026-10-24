@@ -234,7 +234,7 @@ export default function Television() {
               </td>
               <td>
                 <a
-                  href="https://onntvsupport.com/roku-tv"
+                  href="https://www.onntvsupport.com/s/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

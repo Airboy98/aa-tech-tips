@@ -1,3 +1,35 @@
+.home-guide .package-card h4 {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.home-guide .package-card img {
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  .home-guide {
+    gap: 6px;
+    padding: 6px 10px;
+  }
+
+  .home-guide .package-card {
+    padding: 8px 12px;
+    max-width: none;
+  }
+
+  .home-guide .package-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 2px;
+  }
+
+  .home-guide .package-card h4 {
+    font-size: 0.95rem;
+    line-height: 1.35;
+    margin: 0;
+  }
+}
+
 .links {
   display: flex;
   flex-direction: column;

@@ -25,7 +25,7 @@ export default function Internet() {
             <tr>
               <td>
                 <a
-                  href="https://support.apple.com/downloads/safari"
+                  href="https://www.apple.com/safari/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
