@@ -108,7 +108,7 @@ export default function Services() {
               <li>
                 Go to the store on your behalf based on your pre-defined needs
               </li>
-              <li>Accompany you to Microcenter, Best Buy, Apple Store, etc.</li>
+              <li>Accompany you to Micro Center, Best Buy, Apple Store, etc.</li>
               <li>
                 Find the right product for your needs and within your budget
               </li>
@@ -229,7 +229,7 @@ export default function Services() {
               </li>
               <li>Data transfer (flash drive required)</li>
               <li>Program/app installation or removal</li>
-              <li>Any tech related questions</li>
+              <li>Any tech-related questions</li>
             </ul>
           </div>
         </div>

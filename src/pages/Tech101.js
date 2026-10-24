@@ -790,7 +790,7 @@ export default function Tech101() {
                   uBlock
                 </a>{" "}
                 to block ads and trackers, including the ones that play before
-                videos like on Youtube
+                videos like on YouTube
               </li>
               <li>
                 Alternatively, use a browser like{" "}
@@ -1612,7 +1612,7 @@ export default function Tech101() {
         }
       >
         <h4>
-          Airtags and Tile trackers are small devices that can be attached to
+          AirTags and Tile trackers are small devices that can be attached to
           your items or pets to track their location using a smart phone.
         </h4>
         <div className="package-grid">

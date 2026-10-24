@@ -616,7 +616,7 @@ export default function Internet() {
                     </li>
                     <li>
                       Downsides: broadcasts a separate network and cheaper ones
-                      won't carry the full bandwith
+                      won't carry the full bandwidth
                     </li>
                   </ol>
                 </td>

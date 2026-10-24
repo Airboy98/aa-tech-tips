@@ -114,7 +114,7 @@ export default function Appointment() {
           </li>
           <li>Data Transfer (flash/thumb drive required)</li>
           <li>Program/App Installation or Removal</li>
-          <li>Any tech related questions</li>
+          <li>Any tech-related questions</li>
         </ul>
       </Collapsible>
       <h2>Booking</h2>

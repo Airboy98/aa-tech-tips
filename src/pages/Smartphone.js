@@ -260,6 +260,20 @@ export default function Smartphone() {
                   />
                 </a>
               </td>
+              <td>
+                <a
+                  href="https://www.tracfone.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/smartphones/tracfone.svg"
+                    alt="Tracfone"
+                    width="100"
+                    height="50"
+                  />
+                </a>
+              </td>
             </tr>
           </table>
         </div>

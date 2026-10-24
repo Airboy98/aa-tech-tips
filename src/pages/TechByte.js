@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Collapsible from "react-collapsible";
 import { Link } from "react-router-dom";
 import ChatBox from "../components/ChatBox";
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js/pure";
 import {
   Elements,
   PaymentElement,
@@ -11,7 +11,9 @@ import {
 } from "@stripe/react-stripe-js";
 import ReactMarkdown from "react-markdown";
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+let stripePromise;
+const getStripe = () =>
+  (stripePromise ??= loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY));
 
 const MIN_CHARS = 100;
 const MAX_CHARS = 1000;
@@ -657,7 +659,7 @@ function TechByteForm({ model, price, description }) {
             </p>
           </div>
           <Elements
-            stripe={stripePromise}
+            stripe={getStripe()}
             options={{
               clientSecret,
               appearance: {

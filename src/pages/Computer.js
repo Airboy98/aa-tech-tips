@@ -334,7 +334,7 @@ export default function Computer() {
             Navigate to <b>My Drive</b> on the left side panel
           </li>
           <li>
-            Open up Finder (macOS) or Windows Explorer (Windows) and find the
+            Open up Finder (macOS) or File Explorer (Windows) and find the
             photos you'd like to share
           </li>
           <li>
@@ -715,7 +715,7 @@ export default function Computer() {
           <li>Connect the drive via USB to your laptop/desktop computer</li>
           <li>
             In macOS, open <b>Disk Utility</b> or Windows, open{" "}
-            <b>Windows Explorer</b>
+            <b>File Explorer</b>
           </li>
           <li>Find the drive in the side panel on the left and select it</li>
           <li>
@@ -765,7 +765,7 @@ export default function Computer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              fbackup
+              FBackup
             </a>
             .
           </li>

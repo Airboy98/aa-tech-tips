@@ -56,7 +56,7 @@ export default function Streaming() {
                   >
                     <img
                       src="images/streaming/youtube.png"
-                      alt="Youtube"
+                      alt="YouTube"
                       width="100"
                       height="50"
                     />
@@ -70,7 +70,7 @@ export default function Streaming() {
                   >
                     <img
                       src="images/streaming/youtubetv.png"
-                      alt="Youtube TV"
+                      alt="YouTube TV"
                       width="100"
                       height="50"
                     />
