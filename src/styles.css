@@ -1006,3 +1006,8 @@ h5 {
   user-select: none;
   -webkit-user-select: none;
 }
+
+.card-icon {
+  filter: invert(1);
+  vertical-align: middle;
+}
