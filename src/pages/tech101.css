@@ -35,11 +35,7 @@ ul {
   text-align: center;
 }
 
-.wide-card {
-  max-width: 480px;
-}
-
-.wide-card .package-table td:nth-child(2):not(:last-child) {
+.package-table.plain-middle td:nth-child(2) {
   color: #d0dde8;
   font-weight: 400;
 }

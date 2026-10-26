@@ -8,7 +8,7 @@ export default function AI() {
   return (
     <>
       {zoomedImage && (
-        <div className="ai-lightbox" onClick={() => setZoomedImage(null)}>
+        <div className="lightbox" onClick={() => setZoomedImage(null)}>
           <img src={zoomedImage.src} alt={zoomedImage.alt} />
         </div>
       )}
@@ -234,7 +234,7 @@ export default function AI() {
                   alt="prompt1"
                   width="150"
                   height="100"
-                  className="ai-zoomable"
+                  className="zoomable"
                   onClick={() =>
                     setZoomedImage({
                       src: "images/ai/prompt1.png",
@@ -259,7 +259,7 @@ export default function AI() {
                   alt="prompt5"
                   width="150"
                   height="150"
-                  className="ai-zoomable"
+                  className="zoomable"
                   onClick={() =>
                     setZoomedImage({
                       src: "images/ai/prompt5.png",
@@ -284,7 +284,7 @@ export default function AI() {
                   alt="prompt2"
                   width="150"
                   height="150"
-                  className="ai-zoomable"
+                  className="zoomable"
                   onClick={() =>
                     setZoomedImage({
                       src: "images/ai/prompt2.png",
@@ -308,7 +308,7 @@ export default function AI() {
                   alt="prompt3"
                   width="150"
                   height="120"
-                  className="ai-zoomable"
+                  className="zoomable"
                   onClick={() =>
                     setZoomedImage({
                       src: "images/ai/prompt3.png",
@@ -334,7 +334,7 @@ export default function AI() {
                   alt="prompt4"
                   width="150"
                   height="150"
-                  className="ai-zoomable"
+                  className="zoomable"
                   onClick={() =>
                     setZoomedImage({
                       src: "images/ai/prompt4.png",

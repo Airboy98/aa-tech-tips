@@ -57,3 +57,47 @@ ol {
   padding: 0.5rem;
   color: #0f3455;
 }
+
+.fs-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  padding: 4px 0;
+}
+
+.fs-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.screenshot-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.screenshot-row figure {
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.screenshot-row img {
+  width: 100%;
+  height: auto;
+  margin: auto 0;
+  border: 1px solid #3c709f;
+  border-radius: 6px;
+}
+
+.screenshot-row figcaption {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: #aac4e0;
+}

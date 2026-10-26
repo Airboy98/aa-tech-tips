@@ -2023,7 +2023,7 @@ export default function Tech101() {
               <u>Distributions</u>
             </h3>
             <h4>Pick one that fits your needs</h4>
-            <table className="package-table">
+            <table className="package-table plain-middle">
               <thead>
                 <tr>
                   <th>Distro</th>

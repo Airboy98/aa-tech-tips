@@ -1,10 +1,17 @@
-import React from "react";
+import { useState } from "react";
 import Collapsible from "react-collapsible";
 import "./computer.css";
 import { Card } from "primereact/card";
 export default function Computer() {
+  const [zoomedImage, setZoomedImage] = useState(null);
+
   return (
     <>
+      {zoomedImage && (
+        <div className="lightbox" onClick={() => setZoomedImage(null)}>
+          <img src={zoomedImage.src} alt={zoomedImage.alt} />
+        </div>
+      )}
       <div className="section-header">
         <h1>
           {/* <img
@@ -31,83 +38,134 @@ export default function Computer() {
           <button className="collapsible-trigger">Malware Removal</button>
         }
       >
-        {/* <div className="collapsible-content"> */}
-        <ol>
-          <li>
-            Click{" "}
-            <a
-              href="https://www.malwarebytes.com/mwb-download/thankyou"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              here
-            </a>{" "}
-            to download Malwarebytes (automatically detects Windows or Mac)
-          </li>
-          <li>
-            Once downloaded (check Downloads folder), double click the MBSetup
-            file (.exe for Windows and .dmg for Mac)
-          </li>
-          <li>
-            Follow on screen prompts to install Malwarebytes (you may need to
-            enable full access on MacOS or run as admin on Windows)
-          </li>
-          <li>Open Malwarebytes if it doesn't automatically open</li>
-          <li>Click "Scan Now" button to scan your system for any malware</li>
-          <li>Quarantine any detected files once the scan is complete</li>
-        </ol>
-        <h5>
-          NOTE: Symptoms of malware (such as viruses and trojans) include random
-          pop-ups, slow loading, phishing emails requesting to change password,
-          compromised accounts, and fraudulent transactions.
-        </h5>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Signs of Malware</u>
+            </h3>
+            <h4>Symptoms of viruses and trojans</h4>
+            <ul>
+              <li>Random pop-ups</li>
+              <li>Slow loading, freezing or crashing</li>
+              <li>
+                Fake virus warnings asking you to call a number or pay to fix
+                your computer
+              </li>
+              <li>
+                Your browser's homepage or search engine changed on its own
+              </li>
+              <li>New toolbars, extensions or programs you didn't install</li>
+              <li>Your antivirus turned off without your doing</li>
+              <li>Phishing emails requesting to change your password</li>
+              <li>Contacts receiving mysterious emails from</li>
+              <li>Compromised accounts</li>
+              <li>Fraudulent transactions</li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Malwarebytes</u>
+            </h3>
+            <h4>Comprehensive malware scanner tool</h4>
+            <ol>
+              <li>
+                Click{" "}
+                <a
+                  href="https://www.malwarebytes.com/mwb-download/thankyou"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  here
+                </a>{" "}
+                to download Malwarebytes (automatically detects Windows or Mac)
+              </li>
+              <li>
+                Once downloaded (check Downloads folder), double click the
+                MBSetup file (.exe for Windows and .dmg for Mac)
+              </li>
+              <li>
+                Follow on screen prompts to install Malwarebytes (you may need
+                to enable full access on macOS or run as admin on Windows)
+              </li>
+              <li>Open Malwarebytes if it doesn't automatically open</li>
+              <li>Click the "Scan Now" button to scan for any malware</li>
+              <li>Quarantine any detected files once the scan is complete</li>
+            </ol>
+          </div>
+        </div>
       </Collapsible>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">
-            Installing Apps (macOS)
+            Installing Apps on a Mac
           </button>
         }
       >
-        <ol>
-          <li>
-            Navigate to the APP STORE that is logged in with your Apple ID
-          </li>
-          <li>Search for the desired app</li>
-          <li>Select the app in the results and click Install</li>
-        </ol>
-        <br></br>
-        OR
-        <br></br>
-        <ol>
-          <li>Navigate to the website to find the desired app</li>
-          <li>
-            Once downloaded, click the .dmg installer on the desktop to install
-          </li>
-        </ol>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>App Store</u>
+            </h3>
+            <h4>The safest place to get apps</h4>
+            <ol>
+              <li>Open the App Store, signed in with your Apple ID</li>
+              <li>Search for the desired app</li>
+              <li>
+                Select the app in the results and click Get (or the price)
+              </li>
+            </ol>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>From a Website</u>
+            </h3>
+            <h4>For apps not in the App Store</h4>
+            <ol>
+              <li>Navigate to the app's official website and download it</li>
+              <li>Open the .dmg installer from your Downloads folder</li>
+              <li>Drag the app into your Applications folder</li>
+            </ol>
+          </div>
+        </div>
       </Collapsible>
       <Collapsible
         trigger={
           <button className="collapsible-trigger">
-            Installing Programs (Windows)
+            Installing Programs on a PC
           </button>
         }
       >
-        <ol>
-          <li>
-            Navigate to the MICROSOFT STORE that is logged in with your
-            Microsoft Account
-          </li>
-          <li>Search for the desired app</li>
-          <li>Select the app in the results and click Install</li>
-        </ol>
-        <br></br>
-        OR
-        <br></br>
-        <ol>
-          <li>Navigate to the website to find the desired program</li>
-          <li>Once downloaded, click the .exe installer to install</li>
-        </ol>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Microsoft Store</u>
+            </h3>
+            <h4>The safest place to get programs</h4>
+            <ol>
+              <li>
+                Open the Microsoft Store, signed in with your Microsoft account
+              </li>
+              <li>Search for the desired program</li>
+              <li>
+                Select the program in the results and click Get (or the price)
+              </li>
+            </ol>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>From a Website</u>
+            </h3>
+            <h4>For programs not in the Microsoft Store</h4>
+            <ol>
+              <li>
+                Navigate to the program's official website and download it
+              </li>
+              <li>Open the .exe installer from your Downloads folder</li>
+              <li>Click "Yes" if Windows asks to allow changes</li>
+              <li>Follow the on screen prompts to install</li>
+            </ol>
+          </div>
+        </div>
       </Collapsible>
       <Collapsible
         trigger={
@@ -194,46 +252,61 @@ export default function Computer() {
           <button className="collapsible-trigger">Remote Desktop Access</button>
         }
       >
-        <ol>
-          <li>
-            Install{" "}
-            <a
-              href="https://www.realvnc.com/en/connect/download/vnc/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              VNC Server
-            </a>{" "}
-            (Windows, macOS, and Linux compatible) on the computer you want to
-            remotely access
-          </li>
-          <li>Create a RealVNC account and login to VNC Server</li>
-          <li>
-            Add the computer to your RealVNC address book as a cloud connection
-          </li>
-          <li>
-            Install VNC Viewer{" ("}
-            <a
-              href="https://www.realvnc.com/en/connect/download/viewer/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              desktop client
-            </a>{" "}
-            or{" "}
-            <a
-              href="https://apps.apple.com/us/app/realvnc-viewer-remote-desktop/id352019548"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              app
-            </a>
-            {") "}
-            on the device you want to remotely connect from
-          </li>
-          <li>Login to your RealVNC account in VNC Viewer</li>
-          <li>Open VNC Viewer and select the computer to remotely access</li>
-        </ol>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>VNC Server</u>
+            </h3>
+            <h4>On the computer you want to remotely access</h4>
+            <ol>
+              <li>
+                Install{" "}
+                <a
+                  href="https://www.realvnc.com/en/connect/download/vnc/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  VNC Server
+                </a>{" "}
+                (Windows, macOS, and Linux compatible)
+              </li>
+              <li>Create a RealVNC account and login to VNC Server</li>
+              <li>
+                Add the computer to your RealVNC address book as a cloud
+                connection
+              </li>
+            </ol>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>VNC Viewer</u>
+            </h3>
+            <h4>On the device you want to remotely connect from</h4>
+            <ol>
+              <li>
+                Install VNC Viewer{" ("}
+                <a
+                  href="https://www.realvnc.com/en/connect/download/viewer/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  desktop client
+                </a>{" "}
+                or{" "}
+                <a
+                  href="https://apps.apple.com/us/app/realvnc-viewer-remote-desktop/id352019548"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  app
+                </a>
+                {")"}
+              </li>
+              <li>Login to your RealVNC account in VNC Viewer</li>
+              <li>Select the computer to remotely access</li>
+            </ol>
+          </div>
+        </div>
       </Collapsible>
       <Collapsible
         trigger={
@@ -241,9 +314,8 @@ export default function Computer() {
         }
       >
         <h4>
-          Modern operating systems use specific file systems for OS installation
-          (see green checks below) but also support reading/writing data on
-          external drives using various file systems.
+          A file system is how an OS organizes its files. Use this table to pick
+          one that works with your computers.
         </h4>
         <div className="tech">
           <table className="filesystem-table">
@@ -280,7 +352,9 @@ export default function Computer() {
               <td style={{ color: "green" }}>
                 <span className="material-symbols-outlined">check_circle</span>
               </td>
-              <td />
+              <td>
+                <span className="material-symbols-outlined">visibility</span>
+              </td>
               <td>
                 <span className="material-symbols-outlined">check_circle</span>
               </td>
@@ -292,7 +366,7 @@ export default function Computer() {
                 <span className="material-symbols-outlined">check_circle</span>
               </td>
               <td>
-                <span className="material-symbols-outlined">check_circle</span>
+                <span className="material-symbols-outlined">visibility</span>
               </td>
             </tr>
             <tr>
@@ -311,6 +385,36 @@ export default function Computer() {
                 <span className="material-symbols-outlined">check_circle</span>
               </td>
             </tr>
+            <tfoot>
+              <tr>
+                <td colSpan={4}>
+                  <div className="fs-legend">
+                    <span>
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ color: "green" }}
+                      >
+                        check_circle
+                      </span>
+                      Used to install the OS
+                    </span>
+                    <span>
+                      <span className="material-symbols-outlined">
+                        check_circle
+                      </span>
+                      Open and save files
+                    </span>
+                    <span>
+                      <span className="material-symbols-outlined">
+                        visibility
+                      </span>
+                      Open files only
+                    </span>
+                    <span>Blank: Not supported</span>
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </div>
         <h5>NOTE: FAT32 has a maximum file size limit of 4GB.</h5>
@@ -318,39 +422,60 @@ export default function Computer() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Photo Sharing</button>}
       >
-        <ol>
-          <li>
-            Login to{" "}
-            <a
-              href="https://drive.google.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Google Drive
-            </a>{" "}
-            with your Google Account or create one if necessary
-          </li>
-          <li>
-            Navigate to <b>My Drive</b> on the left side panel
-          </li>
-          <li>
-            Open up Finder (macOS) or File Explorer (Windows) and find the
-            photos you'd like to share
-          </li>
-          <li>
-            Drag and drop the folder or picture files from Finder or Windows
-            Explorer into <b>My Drive</b>
-          </li>
-          <li>
-            Right click the folder or picture files and hover over <b>Share</b>{" "}
-            in the context menu
-          </li>
-          <li>
-            Select <b>Copy Link</b> to copy the picture URL to share or select{" "}
-            <b>Share</b> to choose an account to share to
-          </li>
-        </ol>
-        {/* </div> */}
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Upload</u>
+            </h3>
+            <h4>Add your photos to Google Drive</h4>
+            <ol>
+              <li>
+                Login to{" "}
+                <a
+                  href="https://drive.google.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google Drive
+                </a>{" "}
+                with your Google Account or create one if necessary
+              </li>
+              <li>
+                Navigate to <b>My Drive</b> on the left side panel
+              </li>
+              <li>
+                Open up Finder (macOS) or File Explorer (Windows) and find the
+                photos you'd like to share
+              </li>
+              <li>
+                Drag and drop the folder or picture files into <b>My Drive</b>
+              </li>
+            </ol>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Share</u>
+            </h3>
+            <h4>Send them to family and friends</h4>
+            <ol>
+              <li>
+                Right click the folder or picture files, and select <b>Share</b>{" "}
+                in the context menu
+              </li>
+              <li>
+                To share with specific people, type their email and click{" "}
+                <b>Send</b>
+              </li>
+              <li>
+                To share with anyone, change <b>General access</b> to{" "}
+                <b>Anyone with the link</b>
+              </li>
+              <li>
+                Click <b>Copy link</b> and paste it into a text or email
+              </li>
+            </ol>
+          </div>
+        </div>
       </Collapsible>
       <h2>Hardware</h2>
       <Collapsible
@@ -492,105 +617,181 @@ export default function Computer() {
             </tr>
           </table>
         </div>
-        <ul className="tech">
-          <li>
-            <b>Print with a cable:</b> Depending on your computer's OS, plugging
-            in a printer with a USB Type-B cable (see below Common Inputs tip)
-            to your computer may be enough to use your printer. Otherwise,
-            you'll have to download drivers using the above links for your
-            printer's brand.
-          </li>
-          <li>
-            <b>Print wirelessly:</b> This setup is a little more involved and
-            varies greatly based on the printer brand and model. Drivers and
-            printer utilities have to be installed based on your specific model.
-            Use the above links to navigate to your printer brand's website to
-            download them. You may have to connect your printer to your home
-            network by navigating the printer's interface as well and manually
-            typing in your Wi-Fi password.
-          </li>
-          <li>
-            <b>Wi-Fi Direct:</b> If the printer has Wi-Fi Direct capability, you
-            can connect your computer or phone directly to the printer as if
-            connecting to a Wi-Fi network. Once Wi-Fi Direct is enabled, look
-            for the name of your printer in the list of available networks and
-            connect to it. Then proceed to print as usual.
-          </li>
-        </ul>
-        <h5>
-          NOTE: Printer model number/names are usually found on a sticker on the
-          back of the printer or printed on the front. Navigate to your brand's
-          website above and input the model number/name.
-        </h5>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Print With a Cable</u>
+            </h3>
+            <h4>The most reliable connection</h4>
+            <ul>
+              <li>
+                Plug the printer into your computer with a USB Type-B cable (see
+                Common Inputs below)
+              </li>
+              <li>Depending on your computer, this may be enough to print</li>
+              <li>
+                Otherwise, download drivers using the links above for your
+                printer's brand
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Print Wirelessly</u>
+            </h3>
+            <h4>The most convenient connection</h4>
+            <ul>
+              <li>
+                Connect the printer to your home Wi-Fi using the printer's
+                screen or buttons
+              </li>
+              <li>You may need to type in your Wi-Fi password manually</li>
+              <li>
+                Download the drivers and printer utilities for your model using
+                the links above
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Wi-Fi Direct</u>
+            </h3>
+            <h4>Broadcast your printer as a network</h4>
+            <ol>
+              <li>Enable Wi-Fi Direct on the printer</li>
+              <li>
+                On your computer or phone, find the printer's name in the list
+                of available Wi-Fi networks and connect to it
+              </li>
+              <li>Print as usual</li>
+            </ol>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Find Your Model</u>
+            </h3>
+            <h4>Needed for drivers and support</h4>
+            <ul>
+              <li>
+                Look for a sticker on the back of the printer or the name
+                printed on the front
+              </li>
+              <li>Enter the model number on your brand's website above</li>
+              <li>
+                Some printer models also require a password listed on the back
+              </li>
+            </ul>
+          </div>
+        </div>
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Monitors</button>}
       >
-        <div className="tech">
-          <ul>
-            <li>
-              <b>Extend your desktop.</b> Both Windows and macOS include support
-              for a multi-monitor setup. If your laptop or desktop has extra
-              display ports (see Common Inputs below for visual aide), connect
-              the proper cable to your monitor and your computer. Depending on
-              the OS, extra configuration may be required to correctly detect
-              the new monitor and arrange it properly in{" "}
-              <a
-                href="images/monitors/windows.png"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Display settings
-              </a>{" "}
-              for Windows and{" "}
-              <a
-                href="images/monitors/macOS.jpg"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                System Preferences
-              </a>{" "}
-              for macOS.
-            </li>
-            <li>
-              <b>Refresh your monitor.</b> Modern day monitors have at least a
-              60hz refresh rate which means the screen refreshes 60 times per
-              second. Simply put, the higher the refresh rate, the smoother the
-              experience is. This makes for a more pleasant experience when
-              viewing high framerate videos and playing games. The refresh rate
-              of your monitor can be found in{" "}
-              <a
-                href="images/monitors/windows2.png"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Advanced display settings
-              </a>{" "}
-              in Windows and{" "}
-              <a
-                href="images/monitors/macOS2.jpg"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                System Preferences
-              </a>{" "}
-              in macOS. Sometimes the refresh rate needs to be toggled in the
-              monitor's OSD (on-screen display) menu as well, using the
-              monitor's physical buttons.
-            </li>
-            {/* <li>
-              <b>Increase the resolution.</b>
-            </li> */}
-          </ul>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Extend Your Desktop</u>
+            </h3>
+            <h4>Use more than one screen</h4>
+            <ul>
+              <li>Both Windows and macOS support a multi-monitor setup</li>
+              <li>
+                Connect your monitor to an extra display port on your computer
+                (see Common Inputs below)
+              </li>
+              <li>
+                Arrange your monitors in Display settings on Windows or System
+                Settings on macOS
+              </li>
+            </ul>
+            <div className="screenshot-row">
+              <figure>
+                <img
+                  src="images/monitors/windows.webp"
+                  alt="Windows display settings"
+                  className="zoomable"
+                  onClick={() =>
+                    setZoomedImage({
+                      src: "images/monitors/windows.webp",
+                      alt: "Windows display settings",
+                    })
+                  }
+                />
+                <figcaption>Windows 11</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="images/monitors/macOS.jpg"
+                  alt="macOS display settings"
+                  className="zoomable"
+                  onClick={() =>
+                    setZoomedImage({
+                      src: "images/monitors/macOS.jpg",
+                      alt: "macOS display settings",
+                    })
+                  }
+                />
+                <figcaption>macOS</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Refresh Your Monitor</u>
+            </h3>
+            <h4>Smoother videos and games</h4>
+            <ul>
+              <li>Most monitors refresh at least 60 times per second (60Hz)</li>
+              <li>The higher the refresh rate, the smoother the experience</li>
+              <li>
+                Change it in Advanced display on Windows or System Settings on
+                macOS
+              </li>
+              <li>
+                Some monitors also need it changed in their on-screen menu using
+                the physical buttons
+              </li>
+            </ul>
+            <div className="screenshot-row">
+              <figure>
+                <img
+                  src="images/monitors/windows2.webp"
+                  alt="Windows display settings"
+                  className="zoomable"
+                  onClick={() =>
+                    setZoomedImage({
+                      src: "images/monitors/windows2.webp",
+                      alt: "Windows display settings",
+                    })
+                  }
+                />
+                <figcaption>Windows 11</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="images/monitors/macOS2.jpg"
+                  alt="macOS display settings"
+                  className="zoomable"
+                  onClick={() =>
+                    setZoomedImage({
+                      src: "images/monitors/macOS2.jpg",
+                      alt: "macOS display settings",
+                    })
+                  }
+                />
+                <figcaption>macOS</figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Common Inputs</button>}
       >
         <h4>
-          A myriad of devices can be connected to a computer although modern
-          laptops usually need the aid of a USB Type-C dock or adapter to
-          provide access to more common ports.
+          Use this table to find the right port for your device. Many newer
+          laptops only have USB Type-C ports, so you may need a dock or adapter
+          for the others.
         </h4>
         <div className="television">
           <table className="inputs-table">
@@ -617,7 +818,7 @@ export default function Computer() {
                 USB Type-B<br></br>
                 <img
                   src="images/ports/usb-type-b.png"
-                  alt="USB Type-b"
+                  alt="USB Type-B"
                   width="100"
                   height="75"
                 />
@@ -655,7 +856,7 @@ export default function Computer() {
                 DisplayPort<br></br>
                 <img
                   src="images/ports/dp.png"
-                  alt="HDMI"
+                  alt="DisplayPort"
                   width="125"
                   height="50"
                 />
@@ -667,7 +868,7 @@ export default function Computer() {
                 DVI<br></br>
                 <img
                   src="images/ports/dvi.png"
-                  alt="HDMI"
+                  alt="DVI"
                   width="200"
                   height="75"
                 />
@@ -679,7 +880,7 @@ export default function Computer() {
                 VGA<br></br>
                 <img
                   src="images/ports/vga.png"
-                  alt="HDMI"
+                  alt="VGA"
                   width="200"
                   height="75"
                 />
@@ -711,18 +912,47 @@ export default function Computer() {
           <button className="collapsible-trigger">Drive Formatting</button>
         }
       >
-        <ol>
-          <li>Connect the drive via USB to your laptop/desktop computer</li>
-          <li>
-            In macOS, open <b>Disk Utility</b> or Windows, open{" "}
-            <b>File Explorer</b>
-          </li>
-          <li>Find the drive in the side panel on the left and select it</li>
-          <li>
-            Click the <b>Format</b> option and specify a file system type
-          </li>
-          <li>See above tech tip Common File Systems for more details</li>
-        </ol>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Windows</u>
+            </h3>
+            <h4>Using File Explorer</h4>
+            <ol>
+              <li>Connect the drive via USB to your computer</li>
+              <li>
+                Open <b>File Explorer</b> and click <b>This PC</b>
+              </li>
+              <li>
+                Right-click the drive and select <b>Format</b>
+              </li>
+              <li>Choose a file system (see Common File Systems above)</li>
+              <li>
+                Click <b>Start</b>, then <b>OK</b> to confirm
+              </li>
+            </ol>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>macOS</u>
+            </h3>
+            <h4>Using Disk Utility</h4>
+            <ol>
+              <li>Connect the drive via USB to your computer</li>
+              <li>
+                Open <b>Disk Utility</b> (Applications {"->"} Utilities)
+              </li>
+              <li>Select the drive in the side panel on the left</li>
+              <li>
+                Click <b>Erase</b> and choose a format (see Common File Systems
+                above)
+              </li>
+              <li>
+                Click <b>Erase</b> again to confirm
+              </li>
+            </ol>
+          </div>
+        </div>
         <h5>
           NOTE: Use caution when formatting as ALL drive contents will be
           erased!
@@ -732,58 +962,94 @@ export default function Computer() {
       <Collapsible
         trigger={<button className="collapsible-trigger">Local Backup</button>}
       >
-        <h4>
-          In case of hardware failure, it is highly advised to keep a backup of
-          your files locally.
-        </h4>
-        <ul className="tech">
-          <li>
-            <b>
-              Full system backups and manual backups are options for any
-              platform
-            </b>
-            . For quick read/write speeds and durability, it is recommended to
-            use an SSD as an external drive but HDDs are the more cost efficient
-            option for mass storage.
-          </li>
-          <li>
-            <b>Use a utility program to keep full system backups.</b> macOS has
-            a built-in utility called Time Machine that allows you to use an
-            entire external drive as a Time Machine Backup and can periodically
-            perform a backup automatically for you based on configuration. For
-            Windows users, there's a{" "}
-            <a
-              href="https://www.pcworld.com/article/407021/best-windows-backup-software.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              number of options
-            </a>{" "}
-            available, most of them paid. The top free one is{" "}
-            <a
-              href="https://www.fbackup.com/fbackup.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              FBackup
-            </a>
-            .
-          </li>
-          <li>
-            <b>
-              Drag and drop files onto an external drive for manual backups.
-            </b>{" "}
-            Ensure that the drive is properly formatted for your OS using the
-            above tip and connect it your computer via USB. Once detected, you
-            can essentially treat the drive just like you would the built-in
-            drive as it should show up similarly under drives connected. Try to
-            stay organized and create concise and succinct folder names to hold
-            any important files you'd like to keep as a backup. Copy (not cut)
-            files from your computer's drive and paste them onto the external
-            drive. Alternatively, you can drag and drop files easily if you have
-            2 file explorer windows open.
-          </li>
-        </ul>
+        <h4>Keep a local backup of your files in case your computer fails.</h4>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Pick a Backup Drive</u>
+            </h3>
+            <h4>Verify your drive before you buy</h4>
+            <ul>
+              <li>
+                <b>SSD:</b> Faster and more durable since it has no moving parts
+              </li>
+              <li>
+                <b>HDD:</b> Slower and more fragile, but more storage for the
+                money
+              </li>
+              <li>
+                Get at least twice as much storage as your computer is using
+              </li>
+              <li>
+                Make sure its cable fits your computer's ports (see Common
+                Inputs above)
+              </li>
+              <li>
+                Stick with trusted brands like Samsung, SanDisk, WD or Seagate
+              </li>
+              <li>
+                If backing up manually, keep it unplugged and stored safely
+                between backups
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Automatic Backups</u>
+            </h3>
+            <h4>Let a program back up for you</h4>
+            <ul>
+              <li>
+                <b>Windows:</b>{" "}
+                <a
+                  href="https://www.fbackup.com/fbackup.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  FBackup
+                </a>{" "}
+                is the top free option among a{" "}
+                <a
+                  href="https://www.pcworld.com/article/407021/best-windows-backup-software.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  number of others
+                </a>
+                , most of them paid
+              </li>
+              <li>
+                <b>Windows:</b> File History is built into Windows 11,
+                configured in Control Panel and needs an external drive
+              </li>
+              <li>
+                <b>macOS:</b> Time Machine is built into macOS, configured in System Settings and needs an external drive
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Manual Backups</u>
+            </h3>
+            <h4>Drag and drop your files</h4>
+            <ul>
+              <li>
+                Format the drive for your computer (see Drive Formatting above)
+              </li>
+              <li>
+                Connect it via USB and it shows up just like your built-in drive
+              </li>
+              <li>Create folders with short, clear names</li>
+              <li>
+                Copy (not cut) files from your computer and paste them onto the
+                drive
+              </li>
+              <li>
+                Or drag and drop files between 2 open file explorer windows
+              </li>
+            </ul>
+          </div>
+        </div>
       </Collapsible>
     </>
   );
