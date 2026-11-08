@@ -2,6 +2,21 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./navbar.css";
 
+export const MENU_PAGES = [
+  { to: "/tech-byte", label: "Tech Byte", icon: "chat" },
+  { to: "/tech101", label: "Tech 101", icon: "school" },
+  { to: "/computer", label: "Computer", icon: "computer" },
+  { to: "/television", label: "Television", icon: "tv" },
+  { to: "/gaming", label: "Gaming", icon: "sports_esports" },
+  { to: "/internet", label: "Internet", icon: "wifi" },
+  { to: "/smartphone", label: "Smartphone", icon: "smartphone" },
+  { to: "/streaming", label: "Streaming", icon: "live_tv" },
+  { to: "/wearable", label: "Wearable", icon: "watch" },
+  { to: "/ai", label: "AI / SI", icon: "smart_toy" },
+  { to: "/services", label: "Services", icon: "support_agent" },
+  { to: "/about", label: "About", icon: "info" },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showBurger, setshowBurger] = useState(false);
@@ -43,43 +58,14 @@ export default function Navbar() {
         {showBurger ? (
           <div className={`sidebar ${isOpen ? "open" : ""}`}>
             <ul>
-              <CustomLink to="/tech-byte" onClick={closeMenu}>
-                Tech Byte
-              </CustomLink>
-              <CustomLink to="/tech101" onClick={closeMenu}>
-                Tech 101
-              </CustomLink>
-              <CustomLink to="/computer" onClick={closeMenu}>
-                Computer
-              </CustomLink>
-              <CustomLink to="/television" onClick={closeMenu}>
-                Television
-              </CustomLink>
-              <CustomLink to="/gaming" onClick={closeMenu}>
-                Gaming
-              </CustomLink>
-              <CustomLink to="/internet" onClick={closeMenu}>
-                Internet
-              </CustomLink>
-              <CustomLink to="/smartphone" onClick={closeMenu}>
-                Smartphone
-              </CustomLink>
-              <CustomLink to="/streaming" onClick={closeMenu}>
-                Streaming
-              </CustomLink>
-              <CustomLink to="/wearable" onClick={closeMenu}>
-                Wearable
-              </CustomLink>
-              <CustomLink to="/ai" onClick={closeMenu}>
-                AI / SI
-              </CustomLink>
-              <CustomLink to="/services" onClick={closeMenu}>
-                Services
-              </CustomLink>
-
-              <CustomLink to="/about" onClick={closeMenu}>
-                About
-              </CustomLink>
+              {MENU_PAGES.map(({ to, label, icon }) => (
+                <CustomLink key={to} to={to} onClick={closeMenu}>
+                  <span className="material-symbols-outlined" aria-hidden="true">
+                    {icon}
+                  </span>
+                  {label}
+                </CustomLink>
+              ))}
             </ul>
           </div>
         ) : (

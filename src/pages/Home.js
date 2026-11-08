@@ -1,7 +1,7 @@
 import React from "react";
 import Collapsible from "react-collapsible";
 import { Link } from "react-router-dom";
-import { CustomLink } from "../components/Navbar";
+import { CustomLink, MENU_PAGES } from "../components/Navbar";
 import "./home.css";
 
 export default function Home() {
@@ -95,42 +95,16 @@ export default function Home() {
 
       <div className="links">
         <div className="button-grid">
-          <CustomLink to="/tech-byte">
-            <button>Tech Byte</button>
-          </CustomLink>
-          <CustomLink to="/tech101">
-            <button>Tech 101</button>
-          </CustomLink>
-          <CustomLink to="/computer">
-            <button>Computer</button>
-          </CustomLink>
-          <CustomLink to="/television">
-            <button>Television</button>
-          </CustomLink>
-          <CustomLink to="/gaming">
-            <button>Gaming</button>
-          </CustomLink>
-          <CustomLink to="/internet">
-            <button>Internet</button>
-          </CustomLink>
-          <CustomLink to="/smartphone">
-            <button>Smartphone</button>
-          </CustomLink>
-          <CustomLink to="/streaming">
-            <button>Streaming</button>
-          </CustomLink>
-          <CustomLink to="/wearable">
-            <button>Wearable</button>
-          </CustomLink>
-          <CustomLink to="/ai">
-            <button>AI / SI</button>
-          </CustomLink>
-          <CustomLink to="/services">
-            <button>Services</button>
-          </CustomLink>
-          <CustomLink to="/about">
-            <button>About</button>
-          </CustomLink>
+          {MENU_PAGES.map(({ to, label, icon }) => (
+            <CustomLink key={to} to={to}>
+              <button>
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  {icon}
+                </span>
+                {label}
+              </button>
+            </CustomLink>
+          ))}
         </div>
       </div>
 

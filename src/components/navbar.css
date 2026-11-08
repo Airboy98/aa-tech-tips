@@ -161,6 +161,14 @@ header {
   translate: 0;
 }
 
+.sidebar a {
+  gap: 10px;
+}
+
+.sidebar .material-symbols-outlined {
+  font-size: 26px;
+}
+
 .sidebar ul.menu-items {
   display: flex;
   flex-direction: column;

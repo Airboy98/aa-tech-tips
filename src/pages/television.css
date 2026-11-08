@@ -38,3 +38,34 @@ ol {
   /* list-style-position:inside; */
   text-align: left;
 }
+
+.console-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 12px;
+  padding: 12px;
+  background: white;
+  border-radius: 10px;
+  transition: box-shadow 0.2s;
+}
+
+.console-tile:hover {
+  box-shadow: 0 0 0 3px #d1d146;
+}
+
+.console-tile img {
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.console-tile img:first-child {
+  height: 100px;
+}
+
+.console-tile img:last-child {
+  height: 200px;
+  object-position: center bottom;
+}

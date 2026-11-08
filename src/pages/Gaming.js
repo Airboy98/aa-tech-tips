@@ -42,145 +42,98 @@ export default function Gaming() {
           <button className="collapsible-trigger">Current Consoles</button>
         }
       >
-        <div className="television">
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <h1>Sony</h1>
-                  <a
-                    href="https://www.playstation.com/en-us/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="images/consoles/PS5.png"
-                      alt="PS5"
-                      width="200"
-                      height="100"
-                    />
-                    <br></br>
-                    <img
-                      src="images/consoles/PS5console.jpg"
-                      alt="PS5 console"
-                      width="200"
-                      height="200"
-                    />
-                  </a>
-
-                  <h4>5th generation PlayStation console</h4>
-                  <h4>Released 11.12.2020</h4>
-                  <h4>Optional 4K Ultra Blu-ray drive</h4>
-                  <h4>16GB GDDR6 RAM</h4>
-                  <h4>1TB M.2 SSD</h4>
-                  <h4>Supports 8K/60 Hz and 4K/120 Hz</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h1>Microsoft</h1>
-                  <a
-                    href="https://www.xbox.com/en-US/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="images/consoles/XboxSeries.png"
-                      alt="Xbox Series X | S"
-                      width="200"
-                      height="100"
-                    />
-                    <br></br>
-                    <img
-                      src="images/consoles/Xboxconsole2.png"
-                      alt="Xbox Series X | S console"
-                      width="200"
-                      height="200"
-                    />
-                  </a>
-
-                  <h4>4th generation Xbox console</h4>
-                  <h4>Released 11.10.2020</h4>
-                  <h4>4K Ultra Blu-ray drive (XSX only)</h4>
-                  <h4>16GB GDDR6 RAM (XSX)</h4>
-                  <h4>10GB GDDR6 RAM (XSS)</h4>
-                  <h4>1TB M.2 SSD</h4>
-                  <h4>Supports 8K/60 Hz and 4K/120 Hz (XSX)</h4>
-                  <h4>Supports 2K/120 Hz (XSS)</h4>
-                </td>
-              </tr>
-              {/* <tr>
-                <td>
-                  <h1>Nintendo</h1>
-                  <a
-                    href="https://www.nintendo.com/switch/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="images/consoles/NintendoSwitch.png"
-                      alt="Nintendo Switch"
-                      width="200"
-                      height="100"
-                    />
-                    <br></br>
-                    <img
-                      src="images/consoles/Switchconsole.jpg"
-                      alt="Nintendo Switch console"
-                      width="200"
-                      height="200"
-                    />
-                  </a>
-
-                  <h4>1st generation Switch console</h4>
-                  <h4>Released 03.03.2017</h4>
-                  <h4>Proprietary game cartridge slot</h4>
-                  <h4>4GB LPDDR4 RAM</h4>
-                  <h4>32GB eMMC</h4>
-                  <h4>microSD card slot</h4>
-                  <h4>Supports 1080p/60 Hz (docked)</h4>
-                </td>
-              </tr> */}
-              <tr>
-                <td>
-                  <h1>Nintendo</h1>
-                  <a
-                    href="https://www.nintendo.com/us/gaming-systems/switch-2/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="images/consoles/NintendoSwitch2.png"
-                      alt="Nintendo Switch 2"
-                      width="100"
-                      height="100"
-                    />
-                    <br></br>
-                    <img
-                      src="images/consoles/Switch2console.jpg"
-                      alt="Nintendo Switch 2 console"
-                      width="200"
-                      height="133"
-                    />
-                  </a>
-
-                  <h4>2nd generation Switch console</h4>
-                  <h4>Released 06.05.2025</h4>
-                  <h4>Switch 1 compatible game cartridge slot</h4>
-                  <h4>12GB LPDDR5X RAM</h4>
-                  <h4>256GB UFS</h4>
-                  <h4>microSD Express card slot</h4>
-                  <h4>Supports 4K/60 Hz and 2K/120 Hz (docked)</h4>
-                  <h4>Supports 1080p/120 Hz (handheld)</h4>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Sony</u>
+            </h3>
+            <a
+              className="console-tile"
+              href="https://www.playstation.com/en-us/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="images/consoles/PS5.png" alt="PS5" width="200" height="100" />
+              <img
+                src="images/consoles/PS5console.jpg"
+                alt="PS5 console"
+                width="200"
+                height="200"
+              />
+            </a>
+            <h4>5th generation PlayStation console</h4>
+            <ul>
+              <li>Released November 12, 2020</li>
+              <li>Optional 4K Ultra Blu-ray drive</li>
+              <li>16GB GDDR6 RAM</li>
+              <li>1TB SSD (2TB on PS5 Pro) with an M.2 expansion slot</li>
+              <li>Supports 8K/60 Hz and 4K/120 Hz</li>
+              <li>Plays nearly all PS4 games</li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Microsoft</u>
+            </h3>
+            <a
+              className="console-tile"
+              href="https://www.xbox.com/en-US/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="images/consoles/XboxSeries.png" alt="Xbox Series X | S" width="200" height="100" />
+              <img
+                src="images/consoles/Xboxconsole2.png"
+                alt="Xbox Series X | S console"
+                width="200"
+                height="200"
+              />
+            </a>
+            <h4>4th generation Xbox console</h4>
+            <ul>
+              <li>Released November 10, 2020</li>
+              <li>4K Ultra Blu-ray drive (XSX disc edition only)</li>
+              <li>16GB GDDR6 RAM (XSX)</li>
+              <li>10GB GDDR6 RAM (XSS)</li>
+              <li>1TB SSD (XSX), 512GB or 1TB SSD (XSS)</li>
+              <li>Supports 8K/60 Hz and 4K/120 Hz (XSX)</li>
+              <li>Supports 2K/120 Hz (XSS)</li>
+              <li>
+                Plays nearly all Xbox One games and many Xbox 360 and original
+                Xbox games
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Nintendo</u>
+            </h3>
+            <a
+              className="console-tile"
+              href="https://www.nintendo.com/us/gaming-systems/switch-2/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="images/consoles/NintendoSwitch2.png" alt="Nintendo Switch 2" width="100" height="100" />
+              <img
+                src="images/consoles/Switch2console.jpg"
+                alt="Nintendo Switch 2 console"
+                width="200"
+                height="133"
+              />
+            </a>
+            <h4>2nd generation Switch console</h4>
+            <ul>
+              <li>Released June 5, 2025</li>
+              <li>12GB LPDDR5X RAM</li>
+              <li>256GB UFS</li>
+              <li>microSD Express card slot</li>
+              <li>Supports 4K/60 Hz and 2K/120 Hz (docked)</li>
+              <li>Supports 1080p/120 Hz (handheld)</li>
+              <li>Plays most Switch 1 games, including physical cartridges</li>
+            </ul>
+          </div>
         </div>
-        <h5>
-          NOTE: It is quite common for consoles and games to be heavily
-          discounted during Black Friday, Cyber Monday, and other holidays.
-        </h5>
       </Collapsible>
       <Collapsible
         trigger={

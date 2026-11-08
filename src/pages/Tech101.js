@@ -109,7 +109,7 @@ export default function Tech101() {
               <tr>
                 <td>Notification</td>
                 <td>An alert message that displays on screen from an app</td>
-                <td>Text message, calendar reminders</td>
+                <td>Text message, calendar event</td>
               </tr>
               <tr>
                 <td>Passkey</td>
@@ -181,7 +181,7 @@ export default function Tech101() {
               <tr>
                 <td>Widget</td>
                 <td>A small home-screen panel showing info from an app</td>
-                <td>Weather, calendar, battery widgets</td>
+                <td>Weather, calendar, pedometer</td>
               </tr>
               <tr>
                 <td>Wi-Fi</td>
@@ -340,17 +340,42 @@ export default function Tech101() {
             <h4>Compare before you commit</h4>
             <ul>
               <li>
-                Many options are available when it comes to buying a new device
-                and stores often have plenty of sales going on around holidays
+                Many options are available when purchasing new tech and there
+                are plenty of retailers to choose from, both online and
+                in-person
               </li>
               <li>
                 Don't be pressured to make a quick decision in-store with a
-                pushy sales rep but at least try to view the device in-person
-                before pulling the trigger
+                pushy sales rep
+              </li>
+              <li>
+                Try to view the device in-person before pulling the trigger
               </li>
               <li>
                 Compare prices between at least 2 physical and 2 online-retail
                 stores like the ones listed above
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Holiday Sales</u>
+            </h3>
+            <h4>The best times to buy</h4>
+            <ul>
+              <li>
+                Computers, TVs, consoles and games are often discounted during
+                Black Friday and Cyber Monday
+              </li>
+              <li>
+                Many stores start their Black Friday deals early in November
+              </li>
+              <li>
+                Amazon Prime Day in July and other holidays bring big sales too
+              </li>
+              <li>
+                Not every "deal" is a real discount, so compare prices before
+                buying
               </li>
             </ul>
           </div>

@@ -72,7 +72,7 @@ export default function Services() {
               <span className="package-price">$75/hr</span>
               <br />
               <span className="package-payment">
-                Zelle, Apple Pay, Cash or Check
+                Stripe, Zelle, Apple Pay, Cash or Check
               </span>
               <br />
               Fast, no-fuss IT support, I handle it for you
@@ -99,7 +99,7 @@ export default function Services() {
               <span className="package-price">$50/hr</span>
               <br />
               <span className="package-payment">
-                Zelle, Apple Pay, Cash or Check
+                Stripe, Zelle, Apple Pay, Cash or Check
               </span>
               <br />
               I'll shop with or for you to find exactly what you need
@@ -133,7 +133,7 @@ export default function Services() {
               <span className="package-price">$0.99/photo or document</span>
               <br />
               <span className="package-payment">
-                Zelle, Apple Pay, Cash or Check
+                Stripe, Zelle, Apple Pay, Cash or Check
               </span>
               <br />
               Drop off your photos or documents and I'll scan and organize them
@@ -160,7 +160,7 @@ export default function Services() {
               <span className="package-price">Starting at $20</span>
               <br />
               <span className="package-payment">
-                Zelle, Apple Pay, Cash or Check
+                Stripe, Zelle, Apple Pay, Cash or Check
               </span>
               <br />
               Drop off your computer and I'll assess it and handle the repairs
