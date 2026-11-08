@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Pusher from "pusher-js";
+import AdminAppointments from "../components/AdminAppointments";
+import AdminTransactions from "../components/AdminTransactions";
 import "../styles.css";
 
 function urlBase64ToUint8Array(base64String) {
@@ -39,6 +41,8 @@ export default function Admin() {
   const [editingSession, setEditingSession] = useState(null);
   const [editName, setEditName] = useState("");
   const [editEmail, setEditEmail] = useState("");
+  const [tab, setTab] = useState("chats");
+  const [visitedTabs, setVisitedTabs] = useState(new Set(["chats"]));
   const adminPasswordRef = useRef("");
   const messagesContainerRef = useRef(null);
   const selectedSessionRef = useRef(null);
@@ -121,6 +125,11 @@ export default function Admin() {
 
   useEffect(() => {
     if (authed && "clearAppBadge" in navigator) navigator.clearAppBadge();
+  }, [authed]);
+
+  useEffect(() => {
+    document.body.classList.toggle("admin-page", authed);
+    return () => document.body.classList.remove("admin-page");
   }, [authed]);
 
   useEffect(() => {
@@ -307,6 +316,42 @@ export default function Admin() {
       <div className="section-header">
         <h1>Admin</h1>
       </div>
+      <div className="admin-tabs" role="tablist">
+        {[
+          ["chats", "Chats", "chat"],
+          ["appointments", "Appointments", "event"],
+          ["transactions", "Transactions", "payments"],
+        ].map(([key, label, icon]) => (
+          <button
+            key={key}
+            role="tab"
+            aria-selected={tab === key}
+            className={`admin-tab${tab === key ? " admin-tab--active" : ""}`}
+            onClick={() => {
+              setTab(key);
+              setVisitedTabs((prev) => new Set(prev).add(key));
+            }}
+          >
+            <span className="material-symbols-outlined" aria-hidden="true">
+              {icon}
+            </span>
+            {label}
+          </button>
+        ))}
+      </div>
+      {visitedTabs.has("appointments") && (
+        <AdminAppointments
+          adminPassword={adminPasswordRef.current}
+          hidden={tab !== "appointments"}
+        />
+      )}
+      {visitedTabs.has("transactions") && (
+        <AdminTransactions
+          adminPassword={adminPasswordRef.current}
+          hidden={tab !== "transactions"}
+        />
+      )}
+      {tab === "chats" && (
       <div
         className={`admin-panels${selectedSession ? " admin-panels--chat-active" : ""}`}
       >
@@ -556,6 +601,7 @@ export default function Admin() {
           )}
         </div>
       </div>
+      )}
     </div>
   );
 }

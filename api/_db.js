@@ -43,3 +43,40 @@ const pushSubscriptionSchema = new mongoose.Schema({
 export const PushSubscription =
   mongoose.models.PushSubscription ||
   mongoose.model("PushSubscription", pushSubscriptionSchema);
+
+const appointmentNoteSchema = new mongoose.Schema({
+  eventUri: { type: String, required: true, unique: true },
+  notes: { type: String, default: "" },
+  updatedAt: { type: Date, default: Date.now },
+});
+
+export const AppointmentNote =
+  mongoose.models.AppointmentNote ||
+  mongoose.model("AppointmentNote", appointmentNoteSchema);
+
+const transactionSchema = new mongoose.Schema({
+  date: { type: String, required: true },
+  type: String,
+  package: String,
+  client: String,
+  details: String,
+  miles: Number,
+  rate: Number,
+  hours: Number,
+  fee: { type: Number, required: true },
+});
+
+export const Transaction =
+  mongoose.models.Transaction ||
+  mongoose.model("Transaction", transactionSchema);
+
+const expenseSchema = new mongoose.Schema({
+  date: { type: String, required: true },
+  vendor: String,
+  category: String,
+  description: String,
+  amount: { type: Number, required: true },
+});
+
+export const Expense =
+  mongoose.models.Expense || mongoose.model("Expense", expenseSchema);
