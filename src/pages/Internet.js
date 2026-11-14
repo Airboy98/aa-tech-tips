@@ -256,215 +256,284 @@ export default function Internet() {
       </Collapsible>
       <Collapsible
         trigger={
-          <button className="collapsible-trigger">Installing Extensions</button>
-        }
-      >
-        <ol>
-          <li>
-            Using your browser of choice, navigate to the Manage Extensions menu
-            in your browser settings
-          </li>
-          <li>
-            Find the link to the extension store in Manage Extensions menu
-          </li>
-          <li>Search for the desired extension in the store</li>
-          <li>Click the Add to browser button</li>
-        </ol>
-        <h5>
-          NOTE: Adding ad blocking extensions like uBlock Origin or AdBlock Plus
-          is a great way to improve your security while browsing.
-        </h5>
-      </Collapsible>
-      <Collapsible
-        trigger={
           <button className="collapsible-trigger">Search Engines</button>
         }
       >
-        <div className="internet">
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <img
-                    src="images/logos/google.png"
-                    alt="Google logo"
-                    width="75"
-                    height="25"
-                  />
-                </td>
-                <td>
-                  <form
-                    action="https://www.google.com/search"
-                    method="get"
-                    target="_blank"
-                  >
-                    <div className="search">
-                      <input type="text" name="q" placeholder="Search" />
-                    </div>
-                    <button type="submit">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: "24px", color: "white" }}
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Search the Web</u>
+            </h3>
+            <h4>Searches open in a new tab</h4>
+            <div className="internet">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <img
+                        src="images/logos/google.png"
+                        alt="Google logo"
+                        width="75"
+                        height="25"
+                      />
+                    </td>
+                    <td>
+                      <form
+                        action="https://www.google.com/search"
+                        method="get"
+                        target="_blank"
                       >
-                        search
-                      </span>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img
-                    src="images/logos/yahoo.png"
-                    alt="Yahoo logo"
-                    width="75"
-                    height="25"
-                  />
-                </td>
-                <td>
-                  <form
-                    action="https://search.yahoo.com/search"
-                    method="get"
-                    target="_blank"
-                  >
-                    <div className="search">
-                      <input type="text" name="p" placeholder="Search" />
-                    </div>
-                    <button type="submit">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: "24px", color: "white" }}
+                        <div className="search">
+                          <input type="text" name="q" placeholder="Search" />
+                        </div>
+                        <button type="submit">
+                          <span
+                            className="material-symbols-outlined"
+                            style={{ fontSize: "24px", color: "white" }}
+                          >
+                            search
+                          </span>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="images/logos/yahoo.png"
+                        alt="Yahoo logo"
+                        width="75"
+                        height="25"
+                      />
+                    </td>
+                    <td>
+                      <form
+                        action="https://search.yahoo.com/search"
+                        method="get"
+                        target="_blank"
                       >
-                        search
-                      </span>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img
-                    src="images/logos/bing.png"
-                    alt="Bing logo"
-                    width="75"
-                    height="25"
-                  />
-                </td>
-                <td>
-                  <form
-                    action="https://www.bing.com/search"
-                    method="get"
-                    target="_blank"
-                  >
-                    <div className="search">
-                      <input type="text" name="q" placeholder="Search" />
-                    </div>
-                    <button type="submit">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: "24px", color: "white" }}
+                        <div className="search">
+                          <input type="text" name="p" placeholder="Search" />
+                        </div>
+                        <button type="submit">
+                          <span
+                            className="material-symbols-outlined"
+                            style={{ fontSize: "24px", color: "white" }}
+                          >
+                            search
+                          </span>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="images/logos/bing.png"
+                        alt="Bing logo"
+                        width="75"
+                        height="25"
+                      />
+                    </td>
+                    <td>
+                      <form
+                        action="https://www.bing.com/search"
+                        method="get"
+                        target="_blank"
                       >
-                        search
-                      </span>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img
-                    src="images/logos/duckduckgo2.png"
-                    alt="DuckDuckGo logo"
-                    width="75"
-                    height="25"
-                  />
-                </td>
-                <td>
-                  <form
-                    action="https://duckduckgo.com/html"
-                    method="get"
-                    target="_blank"
-                  >
-                    <div className="search">
-                      <input type="text" name="q" placeholder="Search" />
-                    </div>
-                    <button type="submit">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: "24px", color: "white" }}
+                        <div className="search">
+                          <input type="text" name="q" placeholder="Search" />
+                        </div>
+                        <button type="submit">
+                          <span
+                            className="material-symbols-outlined"
+                            style={{ fontSize: "24px", color: "white" }}
+                          >
+                            search
+                          </span>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="images/logos/duckduckgo2.png"
+                        alt="DuckDuckGo logo"
+                        width="75"
+                        height="25"
+                      />
+                    </td>
+                    <td>
+                      <form
+                        action="https://duckduckgo.com/html"
+                        method="get"
+                        target="_blank"
                       >
-                        search
-                      </span>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img
-                    src="images/logos/bravesearch.png"
-                    alt="Brave logo"
-                    width="75"
-                    height="25"
-                  />
-                </td>
-                <td>
-                  <form
-                    action="https://search.brave.com/search"
-                    method="get"
-                    target="_blank"
-                  >
-                    <div className="search">
-                      <input type="text" name="q" placeholder="Search" />
-                    </div>
-                    <button type="submit">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: "24px", color: "white" }}
+                        <div className="search">
+                          <input type="text" name="q" placeholder="Search" />
+                        </div>
+                        <button type="submit">
+                          <span
+                            className="material-symbols-outlined"
+                            style={{ fontSize: "24px", color: "white" }}
+                          >
+                            search
+                          </span>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="images/logos/bravesearch.png"
+                        alt="Brave logo"
+                        width="75"
+                        height="25"
+                      />
+                    </td>
+                    <td>
+                      <form
+                        action="https://search.brave.com/search"
+                        method="get"
+                        target="_blank"
                       >
-                        search
-                      </span>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img
-                    src="images/logos/yandex.png"
-                    alt="Yandex logo"
-                    width="75"
-                    height="25"
-                  />
-                </td>
-                <td>
-                  <form
-                    action="https://yandex.com/search"
-                    method="get"
-                    target="_blank"
-                  >
-                    <div className="search">
-                      <input type="text" name="text" placeholder="Search" />
-                    </div>
-                    <button type="submit">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: "24px", color: "white" }}
+                        <div className="search">
+                          <input type="text" name="q" placeholder="Search" />
+                        </div>
+                        <button type="submit">
+                          <span
+                            className="material-symbols-outlined"
+                            style={{ fontSize: "24px", color: "white" }}
+                          >
+                            search
+                          </span>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        src="images/logos/yandex.png"
+                        alt="Yandex logo"
+                        width="75"
+                        height="25"
+                      />
+                    </td>
+                    <td>
+                      <form
+                        action="https://yandex.com/search"
+                        method="get"
+                        target="_blank"
                       >
-                        search
-                      </span>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                        <div className="search">
+                          <input type="text" name="text" placeholder="Search" />
+                        </div>
+                        <button type="submit">
+                          <span
+                            className="material-symbols-outlined"
+                            style={{ fontSize: "24px", color: "white" }}
+                          >
+                            search
+                          </span>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
         <h5>
           NOTE: Popular search engines like Google, Bing and Yahoo are notorious
           for taking a left-wing bias and censoring search results.
         </h5>
+      </Collapsible>
+      <Collapsible
+        trigger={<button className="collapsible-trigger">Extensions</button>}
+      >
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Install an Extension</u>
+            </h3>
+            <h4>Add new features to your browser</h4>
+            <ol>
+              <li>
+                Open your browser's menu (the three dots or lines in the top
+                corner)
+              </li>
+              <li>
+                Select <b>Extensions</b> (<b>Add-ons</b> in Firefox) and open
+                the extension store
+              </li>
+              <li>
+                Search for the extension you want, like{" "}
+                <a
+                  href="https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  uBlock Origin Lite
+                </a>
+              </li>
+              <li>
+                Click <b>Add to...</b>, or <b>Get</b>, then confirm
+              </li>
+            </ol>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Extension Stores</u>
+            </h3>
+            <h4>Use the browser's official store</h4>
+            <div className="store-grid">
+              <a
+                className="store-tile"
+                href="https://chromewebstore.google.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Chrome Web Store (Chrome and Brave)"
+              >
+                <img
+                  src="images/logos/chrome.png"
+                  alt="Chrome Web Store (Chrome and Brave)"
+                />
+              </a>
+              <a
+                className="store-tile"
+                href="https://microsoftedge.microsoft.com/addons"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Edge Add-ons"
+              >
+                <img src="images/logos/edge.png" alt="Edge Add-ons" />
+              </a>
+              <a
+                className="store-tile"
+                href="https://addons.mozilla.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Firefox Add-ons"
+              >
+                <img src="images/logos/firefox.png" alt="Firefox Add-ons" />
+              </a>
+              <a
+                className="store-tile"
+                href="https://support.apple.com/guide/safari/get-extensions-sfri32508/mac"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Safari Extensions"
+              >
+                <img src="images/logos/safari.png" alt="Safari Extensions" />
+              </a>
+            </div>
+          </div>
+        </div>
       </Collapsible>
       <h2>Connections</h2>
       <Collapsible
@@ -582,9 +651,10 @@ export default function Internet() {
             </tbody>
           </table>
           <h5>
-            NOTE: Most ISP packages include a modem/router combo device for free
-            because of the cheap older hardware inside. Use a dedicated router
-            to fully utilize your Wi-Fi speeds and increase coverage.
+            NOTE: Most ISP packages include a modem/router combo device, often
+            for a monthly rental fee, with cheap older hardware inside. Use a
+            dedicated router to fully utilize your Wi-Fi speeds and increase
+            coverage.
           </h5>
         </div>
       </Collapsible>
@@ -593,81 +663,94 @@ export default function Internet() {
           <button className="collapsible-trigger">Extending Wi-Fi Range</button>
         }
       >
-        <div className="tech">
-          <table className="method-table">
-            <thead>
-              <tr>
-                <th>Method</th>
-                <th>Features</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Wi-Fi Extender</td>
-                <td style={{ textAlign: "left" }}>
-                  <ol>
-                    <li>
-                      Picks up your router's signal and re-broadcasts it to
-                      cover dead zones
-                    </li>{" "}
-                    <li>
-                      Ideal placement is halfway between your router and the
-                      weak spot
-                    </li>
-                    <li>
-                      Downsides: broadcasts a separate network and cheaper ones
-                      won't carry the full bandwidth
-                    </li>
-                  </ol>
-                </td>
-              </tr>
-              <tr>
-                <td>Mesh Network</td>
-                <td style={{ textAlign: "left" }}>
-                  <ol>
-                    <li>
-                      Seamlessly broadcasts your router's signal on the same
-                      network
-                    </li>
-                    <li>Utilizes multiple "nodes" placed around your home</li>
-                    <li>Higher starting cost but reliable and user-friendly</li>
-                  </ol>
-                </td>
-              </tr>
-              <tr>
-                <td>Powerline Adapter</td>
-                <td style={{ textAlign: "left" }}>
-                  <ol>
-                    <li>
-                      Utilizes your home's electrical wiring to connect devices
-                    </li>
-                    <li>
-                      Provides a wired connection with minimal latency and
-                      interference
-                    </li>
-                    <li>Requires a power outlet for each device</li>
-                  </ol>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  5Ghz &<br></br>2.4Ghz<br></br>Bands
-                </td>
-                <td style={{ textAlign: "left" }}>
-                  <ol>
-                    <li>
-                      5Ghz: higher frequency, shorter range, less interference,
-                      faster speeds
-                    </li>
-                    <li>
-                      2.4Ghz: lower frequency, longer range, more interference,
-                      slower speeds
-                    </li>
-                  </ol>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Wi-Fi Extender</u>
+            </h3>
+            <h4>The most affordable option</h4>
+            <ul>
+              <li>
+                Picks up your router's signal and re-broadcasts it to cover dead
+                zones
+              </li>
+              <li>
+                Ideal placement is halfway between your router and the weak spot
+              </li>
+              <li>
+                Downsides: broadcasts a separate EXT network and cheaper ones
+                won't carry the full bandwidth
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Mesh Network</u>
+            </h3>
+            <h4>The most seamless option</h4>
+            <ul>
+              <li>
+                Seamlessly broadcasts your router's signal on the same network
+              </li>
+              <li>Utilizes multiple "nodes" placed around your home</li>
+              <li>Higher starting cost but reliable and user-friendly</li>
+              <li>
+                Popular options include{" "}
+                <a
+                  href="https://www.tp-link.com/us/whole-home-mesh/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  TP-Link Deco
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://eero.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Amazon eero
+                </a>{" "}
+                devices
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Powerline Adapter</u>
+            </h3>
+            <h4>A wired connection through your home</h4>
+            <ul>
+              <li>
+                Uses your home's electrical wiring to carry your internet
+                connection
+              </li>
+              <li>
+                Provides a wired connection with minimal latency and
+                interference
+              </li>
+              <li>
+                Requires adapters to be plugged in to power outlets on the same
+                breaker
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>5GHz & 2.4GHz</u>
+            </h3>
+            <h4>Pick the right band for each device</h4>
+            <ul>
+              <li>
+                <b>5GHz:</b> higher frequency, shorter range, less interference,
+                faster speeds
+              </li>
+              <li>
+                <b>2.4GHz:</b> lower frequency, longer range, more interference,
+                slower speeds
+              </li>
+            </ul>
+          </div>
         </div>
       </Collapsible>
       <Collapsible
@@ -677,67 +760,71 @@ export default function Internet() {
           </button>
         }
       >
-        <h4>
-          A virtual private network (VPN) is a secure connection that allows you
-          to access the internet from a private network, such as your home or
-          office. It encrypts your internet traffic and re-routes your IP
-          address, making it more difficult for hackers and other third parties
-          to track your online activities.
-        </h4>
-        <div className="television">
-          <table>
-            <tr>
-              <td>
-                <a
-                  href="https://protonvpn.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/vpns/proton.png"
-                    alt="ProtonVPN"
-                    width="100"
-                    height="25"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://nordvpn.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/vpns/nord.png"
-                    alt="NordVPN"
-                    width="100"
-                    height="25"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://www.expressvpn.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/vpns/express.png"
-                    alt="ExpressVPN"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-            </tr>
-          </table>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>What It Is</u>
+            </h3>
+            <h4>More than a buzzword</h4>
+            <ul>
+              <li>A secure connection that encrypts your internet traffic</li>
+              <li>
+                Routes your traffic through the VPN company's server, masking
+                your IP address
+              </li>
+              <li>
+                Makes it more difficult for hackers, ISPs and other third
+                parties to track your online activities
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Do You Need One?</u>
+            </h3>
+            <h4>Overkill for most people unless you...</h4>
+            <ul>
+              <li>Need to connect securely to a server for work purposes</li>
+              <li>Want to avoid your ISP tracking you</li>
+              <li>
+                Want to access content (like streaming) that is restricted in
+                your country
+              </li>
+              <li>
+                Regularly use public Wi-Fi at airports, hotels or coffee shops
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Providers</u>
+            </h3>
+            <h4>Popular paid VPN services</h4>
+            <div className="vpn-logos">
+              <a
+                href="https://protonvpn.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="images/vpns/proton.png" alt="ProtonVPN" />
+              </a>
+              <a
+                href="https://nordvpn.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="images/vpns/nord.png" alt="NordVPN" />
+              </a>
+              <a
+                href="https://www.expressvpn.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="images/vpns/express.png" alt="ExpressVPN" />
+              </a>
+            </div>
+          </div>
         </div>
-        <h5>
-          NOTE: Most people do not need a VPN for regular internet use unless
-          you need to connect securely to a server for work purposes, want to
-          avoid your ISP tracking you or want to access content (like streaming)
-          that is restricted in your country.
-        </h5>
       </Collapsible>
       <Collapsible
         trigger={
@@ -745,11 +832,8 @@ export default function Internet() {
         }
       >
         <h4>
-          With modern devices and a typical ISP package, connecting your devices
-          to Wi-Fi is adequate for most use cases. However, if you want to
-          reliably utilize your internet speed consistently, a wired connection
-          to your router with an Ethernet cable is the way to go with the
-          devices that support it.
+          Wi-Fi is adequate for most use cases, but a wired connection with an
+          Ethernet cable reliably delivers your full internet speed.
         </h4>
         <div className="tech">
           <table className="comparison-table">
@@ -820,159 +904,167 @@ export default function Internet() {
           <button className="collapsible-trigger">Smart Speakers</button>
         }
       >
-        <h4>
-          Most Big Tech companies these days have a Smart Speaker that allows
-          you to interact with their proprietary smart assistant. For example,
-          Apple has Siri, Amazon uses Alexa and Google uses Google Assistant and
-          they can each be summoned by name.
-        </h4>
-        <div className="television">
-          <table>
-            <tr>
-              <td>
-                <a
-                  href="https://www.amazon.com/smart-home-devices/b?ie=UTF8&node=9818047011"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/iot/echo.png"
-                    alt="Samsung"
-                    width="100"
-                    height="25"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://www.apple.com/homepod/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/iot/homepod.png"
-                    alt="LG"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="https://www.sonos.com/en-us/shop/smart-speakers"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/iot/sonos.png"
-                    alt="Sony"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://store.google.com/us/category/nest_speakers?hl=en-US"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/iot/nest.png"
-                    alt="Toshiba"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-            </tr>
-          </table>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>What They Do</u>
+            </h3>
+            <h4>Dedicated speaker for a voice assistant</h4>
+            <ul>
+              <li>Talk to a voice assistant, each summoned by name</li>
+              <li>Amazon's Alexa, Apple's Siri or Google's Gemini</li>
+              <li>
+                Ask questions, play music, set timers and control smart home
+                devices
+              </li>
+            </ul>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Brands</u>
+            </h3>
+            <h4>Popular smart speakers</h4>
+            <div className="store-grid">
+              <a
+                className="store-tile logo-tile"
+                href="https://www.amazon.com/echo"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Amazon Echo"
+              >
+                <img src="images/iot/echo.png" alt="Amazon Echo" />
+              </a>
+              <a
+                className="store-tile logo-tile"
+                href="https://www.apple.com/homepod/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Apple HomePod"
+              >
+                <img src="images/iot/homepod.png" alt="Apple HomePod" />
+              </a>
+              <a
+                className="store-tile logo-tile"
+                href="https://www.sonos.com/en-us/shop/smart-speakers"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Sonos"
+              >
+                <img src="images/iot/sonos.png" alt="Sonos" />
+              </a>
+              <a
+                className="store-tile logo-tile"
+                href="https://store.google.com/us/category/nest_speakers?hl=en-US"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Google Nest"
+              >
+                <img src="images/iot/nest.png" alt="Google Nest" />
+              </a>
+            </div>
+          </div>
         </div>
       </Collapsible>
       <Collapsible
         trigger={<button className="collapsible-trigger">Smart Home</button>}
       >
-        <h4>
-          It is easier now than ever before to create a unified experience with
-          a wide range of Smart Home devices all connected to and interacted
-          with via your smartphone. Most devices can be integrated with{" "}
-          <a href="https://support.google.com/chromecast/answer/7071794?hl=en&co=GENIE.Platform%3DAndroid">
-            Google Home
-          </a>
-          {", "}
-          <a href="https://www.samsung.com/us/support/owners/app/smartthings">
-            Samsung SmartThings
-          </a>
-          {", "}
-          and <a href="https://www.apple.com/home-app/">Apple Home</a> or a more
-          privacy focused alternative such as{" "}
-          <a href="https://www.home-assistant.io/">Home Assistant</a>.
-        </h4>
-        <div className="television">
-          <table>
-            <tr>
-              <td>
-                <a
-                  href="https://store.google.com/us/category/connected_home?hl=en-US"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/iot/nest.png"
-                    alt="Nest"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://ring.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/iot/ring.svg"
-                    alt="Ring"
-                    width="100"
-                    height="50"
-                  />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="https://www.philips-hue.com/en-us"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/iot/hue.png"
-                    alt="Philips Hue"
-                    width="75"
-                    height="50"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://www.lg.com/us/lg-thinq"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="images/iot/thinq.png"
-                    alt="LG Thinq"
-                    width="100"
-                    height="15"
-                  />
-                </a>
-              </td>
-            </tr>
-          </table>
+        <div className="package-grid">
+          <div className="package-card">
+            <h3>
+              <u>Smart Home Apps</u>
+            </h3>
+            <h4>Unified control of smart devices</h4>
+            <div className="store-grid">
+              <a
+                className="store-tile logo-tile captioned"
+                href="https://support.google.com/chromecast/answer/7071794?hl=en&co=GENIE.Platform%3DAndroid"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Google Home"
+              >
+                <img src="images/iot/google-home.svg" alt="Google Home" />
+                <span>Google Home</span>
+              </a>
+              <a
+                className="store-tile logo-tile captioned"
+                href="https://www.samsung.com/us/support/owners/app/smartthings"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Samsung SmartThings"
+              >
+                <img
+                  src="images/iot/smartthings.svg"
+                  alt="Samsung SmartThings"
+                />
+                <span>SmartThings</span>
+              </a>
+              <a
+                className="store-tile logo-tile captioned"
+                href="https://www.apple.com/home-app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Apple Home"
+              >
+                <img src="images/iot/apple-home.svg" alt="Apple Home" />
+                <span>Apple Home</span>
+              </a>
+              <a
+                className="store-tile logo-tile captioned"
+                href="https://www.home-assistant.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Home Assistant (privacy-focused)"
+              >
+                <img src="images/iot/home-assistant.svg" alt="Home Assistant" />
+                <span>Home Assistant</span>
+              </a>
+            </div>
+          </div>
+          <div className="package-card">
+            <h3>
+              <u>Brands</u>
+            </h3>
+            <h4>Popular smart home devices</h4>
+            <div className="store-grid">
+              <a
+                className="store-tile logo-tile"
+                href="https://ring.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Ring"
+              >
+                <img src="images/iot/ring.svg" alt="Ring" />
+              </a>
+              <a
+                className="store-tile logo-tile"
+                href="https://www.apple.com/apple-homeview/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Apple HomeView"
+              >
+                <img src="images/iot/homeview.png" alt="Apple HomeView" />
+              </a>
+              <a
+                className="store-tile logo-tile"
+                href="https://www.philips-hue.com/en-us"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Philips Hue"
+              >
+                <img src="images/iot/hue.png" alt="Philips Hue" />
+              </a>
+
+              <a
+                className="store-tile logo-tile"
+                href="https://store.google.com/us/category/connected_home?hl=en-US"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Nest"
+              >
+                <img src="images/iot/nest.png" alt="Nest" />
+              </a>
+            </div>
+          </div>
         </div>
       </Collapsible>
     </>
