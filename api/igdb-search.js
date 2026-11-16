@@ -19,7 +19,9 @@ export default async function handler(req, res) {
       platforms.name,
       platforms.platform_logo.url,
       involved_companies.company.name,
-      involved_companies.developer;
+      involved_companies.developer,
+      age_ratings.organization,
+      age_ratings.rating_category.rating;
     limit 10;
   `;
 

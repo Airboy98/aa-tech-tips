@@ -18,18 +18,3 @@ ol {
   /* list-style-position:inside; */
   text-align: left;
 }
-
-.hover-logos td {
-  position: relative;
-}
-
-.hover-logos a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  transition: box-shadow 0.2s;
-}
-
-.hover-logos a:hover::after {
-  box-shadow: inset 0 0 0 3px #d1d146;
-}

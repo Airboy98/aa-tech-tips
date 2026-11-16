@@ -220,7 +220,7 @@ export default function Tech101() {
           need to purchase a new computer or replacement TV. Keep in mind these
           tips during the buying process.
         </h4>
-        <div className="television">
+        <div className="television hover-logos">
           <table>
             <tbody>
               <tr>

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import formatDate from "../utils/formatDate";
 
 function GameSearch() {
   const [query, setQuery] = useState("");
@@ -7,14 +8,6 @@ function GameSearch() {
   const [showDropdown, setShowDropdown] = useState(false);
   const wrapperRef = useRef(null);
 
-  const formatDate = (unix) => {
-    if (!unix) return "Coming Soon";
-    return new Date(unix * 1000).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
 
   const getYear = (unix) => {
     if (!unix) return null;
@@ -204,13 +197,30 @@ function GameSearch() {
 
                   <h1>{selectedGame.name}</h1>
                   <hr />
+                  <div className="media-badges">
+                    {(() => {
+                      const esrb = selectedGame.age_ratings?.find(
+                        (a) => (a.organization?.id ?? a.organization) === 1
+                      )?.rating_category?.rating;
+                      return (
+                        esrb && (
+                          <span>{esrb === "RP" ? "Rating Pending" : `Rated ${esrb}`}</span>
+                        )
+                      );
+                    })()}
+                    <span>{formatDate(selectedGame.first_release_date, "Coming Soon")}</span>
+                    <span>
+                      {selectedGame.rating ? (
+                        <>
+                          <span className="media-star">⭐</span>
+                          {(selectedGame.rating / 10).toFixed(1)}
+                        </>
+                      ) : (
+                        "Rating TBD"
+                      )}
+                    </span>
+                  </div>
                   <h4>Developed by {getDevelopers(selectedGame)}</h4>
-                  <h4>{formatDate(selectedGame.first_release_date)}</h4>
-                  <h4>
-                    {selectedGame.rating
-                      ? `⭐ ${selectedGame.rating.toFixed(1)} / 100 ⭐`
-                      : "Rating TBD"}
-                  </h4>
 
                   <div
                     style={{

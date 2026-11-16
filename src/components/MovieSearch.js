@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import formatDate from "../utils/formatDate";
 
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
@@ -16,9 +17,7 @@ function MovieSearch() {
   const [actors, setActors] = useState([]);
   const [runtime, setRuntime] = useState(null);
   const [showActors, setShowActors] = useState(false);
-  const [showWatchProviders, setShowWatchProviders] = useState(false);
-  const [showRentProviders, setShowRentProviders] = useState(false);
-  const [showPurchaseProviders, setShowPurchaseProviders] = useState(false);
+  const [providerTab, setProviderTab] = useState(null);
   const [flippedCards, setFlippedCards] = useState({});
   const wrapperRef = useRef(null);
 
@@ -33,18 +32,14 @@ function MovieSearch() {
     setRuntime(null);
     setFlippedCards({});
     setShowActors(false);
-    setShowWatchProviders(false);
-    setShowRentProviders(false);
-    setShowPurchaseProviders(false);
+    setProviderTab(null);
   };
 
   const loadMovieById = (movie) => {
     setSearchResult(movie);
     setFlippedCards({});
     setShowActors(false);
-    setShowWatchProviders(false);
-    setShowRentProviders(false);
-    setShowPurchaseProviders(false);
+    setProviderTab(null);
     fetchWatchProviders(movie.id);
     fetchRentProviders(movie.id);
     fetchPurchaseProviders(movie.id);
@@ -273,16 +268,33 @@ function MovieSearch() {
                   </a>
                   <h1>{searchResult.title}</h1>
                   <hr />
+                  <div className="media-badges">
+                    {certification && <span>{certification}</span>}
+                    {runtime > 0 && (
+                      <span>
+                        {runtime >= 60 ? `${Math.floor(runtime / 60)}h ` : ""}
+                        {runtime % 60}m
+                      </span>
+                    )}
+                    {searchResult.release_date && (
+                      <span>
+                        {formatDate(searchResult.release_date)}
+                      </span>
+                    )}
+                    <span>
+                      {searchResult.vote_average ? (
+                        <>
+                          <span className="media-star">⭐</span>
+                          {searchResult.vote_average.toFixed(1)}
+                        </>
+                      ) : (
+                        "Not yet rated"
+                      )}
+                    </span>
+                  </div>
                   {director && <h4>Directed by {director}</h4>}
                   <button
-                    style={{
-                      backgroundColor: "#ddd",
-                      color: "black",
-                      borderRadius: "20px",
-                      fontSize: "16px",
-                      padding: "5px 10px",
-                      fontWeight: "bold",
-                    }}
+                    className={`media-btn ${showActors ? "active" : ""}`}
                     onClick={() => setShowActors(!showActors)}
                   >
                     Top Actors
@@ -337,96 +349,51 @@ function MovieSearch() {
                       ))}
                     </div>
                   )}
-                  {certification && <h4>Rated {certification}</h4>}
-                  {runtime && (
-                    <h4>
-                      {runtime >= 60 ? `${Math.floor(runtime / 60)}h ` : ""}
-                      {runtime % 60}m
-                    </h4>
-                  )}
-                  <h4>{searchResult.release_date}</h4>
-                  <h4>
-                    {searchResult.vote_average
-                      ? `⭐ ${searchResult.vote_average.toFixed(1)} / 10 ⭐`
-                      : "No Rating Available"}
-                  </h4>
-                  <button
-                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
-                    onClick={() => setShowWatchProviders(!showWatchProviders)}
-                  >
-                    Streaming
-                  </button>
-                  {showWatchProviders && watchProviders && (
-                    <div>
-                      <br />
-                      {watchProviders.flatrate?.length > 0 ? (
-                        <div>
-                          {watchProviders.flatrate.map((p) => (
+                  <div className="media-tabs">
+                    {[
+                      ["rent", "Rent"],
+                      ["stream", "Stream"],
+                      ["buy", "Buy"],
+                    ].map(([key, label]) => (
+                      <button
+                        key={key}
+                        className={providerTab === key ? "active" : ""}
+                        onClick={() =>
+                          setProviderTab(providerTab === key ? null : key)
+                        }
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                  {providerTab &&
+                    (() => {
+                      const list =
+                        providerTab === "stream"
+                          ? watchProviders?.flatrate
+                          : providerTab === "rent"
+                          ? rentProviders
+                          : purchaseProviders;
+                      const verb = {
+                        stream: "Stream",
+                        rent: "Rent",
+                        buy: "Purchase",
+                      }[providerTab];
+                      return list?.length > 0 ? (
+                        <div className="media-providers">
+                          {list.map((p) => (
                             <img
                               key={p.provider_id}
-                              style={{ width: "45px", height: "45px" }}
-                              src={`https://image.tmdb.org/t/p/w500${p.logo_path}`}
+                              src={`https://image.tmdb.org/t/p/w154${p.logo_path}`}
                               alt={p.provider_name}
                               title={p.provider_name}
                             />
                           ))}
                         </div>
                       ) : (
-                        <h4>Unavailable to Stream</h4>
-                      )}
-                    </div>
-                  )}
-                  <br />
-                  <button
-                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
-                    onClick={() => setShowRentProviders(!showRentProviders)}
-                  >
-                    Renting
-                  </button>
-                  {showRentProviders && rentProviders && (
-                    <div>
-                      <br />
-                      {rentProviders.length > 0 ? (
-                        rentProviders.map((p) => (
-                          <img
-                            key={p.provider_id}
-                            style={{ width: "45px", height: "45px" }}
-                            src={`https://image.tmdb.org/t/p/w500${p.logo_path}`}
-                            alt={p.provider_name}
-                            title={p.provider_name}
-                          />
-                        ))
-                      ) : (
-                        <h4>Unavailable to Rent</h4>
-                      )}
-                    </div>
-                  )}
-                  <br />
-                  <button
-                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
-                    onClick={() => setShowPurchaseProviders(!showPurchaseProviders)}
-                  >
-                    Purchase
-                  </button>
-                  {showPurchaseProviders && purchaseProviders && (
-                    <div>
-                      <br />
-                      {purchaseProviders.length > 0 ? (
-                        purchaseProviders.map((p) => (
-                          <img
-                            key={p.provider_id}
-                            style={{ width: "45px", height: "45px" }}
-                            src={`https://image.tmdb.org/t/p/w500${p.logo_path}`}
-                            alt={p.provider_name}
-                            title={p.provider_name}
-                          />
-                        ))
-                      ) : (
-                        <h4>Unavailable to Purchase</h4>
-                      )}
-                    </div>
-                  )}
-                  <br />
+                        <h4>Unavailable to {verb}</h4>
+                      );
+                    })()}
                   <hr />
                   <p>{searchResult.overview}</p>
                   <h5>

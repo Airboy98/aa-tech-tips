@@ -98,7 +98,7 @@ export default function Wearable() {
           <button className="collapsible-trigger">Wearable Devices</button>
         }
       >
-        <div className="television">
+        <div className="television hover-logos">
           <table>
             <tr>
               <td>

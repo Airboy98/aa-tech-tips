@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import formatDate from "../utils/formatDate";
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_SPOTIFY;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET_SPOTIFY;
@@ -78,11 +79,31 @@ function AudiobookSearch() {
 
   const loadAudiobook = (audiobook) => {
     setSearchResult(audiobook);
+    const headers = { Authorization: `Bearer ${token}` };
     axios
-      .get(`${BASE_URL}audiobooks/${audiobook.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
+      .get(`${BASE_URL}audiobooks/${audiobook.id}`, { headers })
+      .then(async (res) => {
+        const details = res.data;
+        setAudiobookDetails(details);
+        const items = [...(details.chapters?.items || [])];
+        let next = details.chapters?.next;
+        try {
+          while (next) {
+            const page = await axios.get(next, { headers });
+            items.push(...page.data.items);
+            next = page.data.next;
+          }
+        } catch {
+          return;
+        }
+        if (items.length > (details.chapters?.items?.length || 0)) {
+          setAudiobookDetails((prev) =>
+            prev?.id === details.id
+              ? { ...details, chapters: { ...details.chapters, items } }
+              : prev
+          );
+        }
       })
-      .then((res) => setAudiobookDetails(res.data))
       .catch(() => setAudiobookDetails(null));
   };
 
@@ -178,22 +199,28 @@ function AudiobookSearch() {
                   </a>
                   <h1>{searchResult.name}</h1>
                   <hr />
+                  <div className="media-badges">
+                    {audiobookDetails?.total_chapters > 0 && (
+                      <span>
+                        {audiobookDetails.total_chapters === 1
+                          ? "1 Chapter"
+                          : `${audiobookDetails.total_chapters} Chapters`}
+                      </span>
+                    )}
+                    {audiobookDetails?.chapters?.items && (
+                      <span>
+                        {formatDuration(
+                          audiobookDetails.chapters.items.reduce((total, chapter) => total + (chapter.duration_ms || 0), 0)
+                        )}
+                      </span>
+                    )}
+                    {audiobookDetails?.chapters?.items?.[0]?.release_date && (
+                      <span>{formatDate(audiobookDetails.chapters.items[0].release_date)}</span>
+                    )}
+                  </div>
                   <h4>By {searchResult.authors?.map((a) => a.name).join(", ") || "Unknown Author"}</h4>
                   {searchResult.narrators?.length > 0 && (
                     <h4>Narrated by {searchResult.narrators.map((n) => n.name).join(", ")}</h4>
-                  )}
-                  {audiobookDetails?.total_chapters && (
-                    <h4>{audiobookDetails.total_chapters} Chapters</h4>
-                  )}
-                  {audiobookDetails?.chapters?.items && (
-                    <h4>
-                      {formatDuration(
-                        audiobookDetails.chapters.items.reduce((total, chapter) => total + (chapter.duration_ms || 0), 0)
-                      )}
-                    </h4>
-                  )}
-                  {audiobookDetails?.chapters?.items?.[0]?.release_date && (
-                    <h4>{audiobookDetails.chapters.items[0].release_date}</h4>
                   )}
                   <hr />
                   {searchResult.description && <p>{getSummary(searchResult.description)}</p>}

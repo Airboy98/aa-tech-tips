@@ -394,7 +394,7 @@ export default function Television() {
           <button className="collapsible-trigger">TV Manufacturers</button>
         }
       >
-        <div className="television">
+        <div className="television hover-logos">
           <table>
             <tr>
               <td>

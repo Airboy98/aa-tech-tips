@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import formatDate from "../utils/formatDate";
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_SPOTIFY;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET_SPOTIFY;
@@ -78,11 +79,22 @@ function AlbumSearch() {
 
   const loadAlbum = (album) => {
     setSearchResult(album);
+    setTracks(null);
+    const headers = { Authorization: `Bearer ${token}` };
     axios
-      .get(`${BASE_URL}albums/${album.id}/tracks`, {
-        headers: { Authorization: `Bearer ${token}` },
+      .get(`${BASE_URL}albums/${album.id}/tracks?limit=50`, { headers })
+      .then(async (res) => {
+        const items = [...(res.data?.items || [])];
+        let next = res.data?.next;
+        try {
+          while (next) {
+            const page = await axios.get(next, { headers });
+            items.push(...page.data.items);
+            next = page.data.next;
+          }
+        } catch {}
+        setTracks(items);
       })
-      .then((res) => setTracks(res.data?.items || null))
       .catch(() => setTracks(null));
   };
 
@@ -157,8 +169,30 @@ function AlbumSearch() {
                   </a>
                   <h1>{searchResult.name}</h1>
                   <hr />
+                  <div className="media-badges">
+                    {searchResult.total_tracks > 0 && (
+                      <span>
+                        {searchResult.total_tracks === 1
+                          ? "1 Track"
+                          : `${searchResult.total_tracks} Tracks`}
+                      </span>
+                    )}
+                    {tracks?.length > 0 &&
+                      (() => {
+                        const mins = Math.round(
+                          tracks.reduce((t, tr) => t + (tr.duration_ms || 0), 0) / 60000
+                        );
+                        return (
+                          <span>
+                            {mins >= 60 ? `${Math.floor(mins / 60)}h ${mins % 60}m` : `${mins}m`}
+                          </span>
+                        );
+                      })()}
+                    {searchResult.release_date && (
+                      <span>{formatDate(searchResult.release_date)}</span>
+                    )}
+                  </div>
                   <h4>{searchResult.artists[0].name}</h4>
-                  <h4>{searchResult.release_date}</h4>
                   {tracks && (
                     <ol>
                       {tracks.map((track) => (

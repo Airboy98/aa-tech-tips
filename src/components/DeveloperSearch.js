@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import formatDate from "../utils/formatDate";
 
 function DeveloperSearch() {
   const [query, setQuery] = useState("");
@@ -8,17 +9,10 @@ function DeveloperSearch() {
   const [hoveredGame, setHoveredGame] = useState(null);
   const [tappedGame, setTappedGame] = useState(null);
   const [selectedGame, setSelectedGame] = useState(null);
+  const [gameTab, setGameTab] = useState(null);
   const isTouching = useRef(false);
   const wrapperRef = useRef(null);
 
-  const formatDate = (unix) => {
-    if (!unix) return "Unknown";
-    return new Date(unix * 1000).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
 
   const getOfficialWebsite = (websites) => {
     if (!websites || websites.length === 0) return null;
@@ -62,6 +56,7 @@ function DeveloperSearch() {
       .then((json) => {
         if (json.results && json.results.length > 0) {
           setSearchResult(json.results[0]);
+          setGameTab(null);
         } else {
           setSearchResult(null);
         }
@@ -106,9 +101,12 @@ function DeveloperSearch() {
     searchResult?.developed?.filter((g) => g.first_release_date) ?? [];
   const publishedGames =
     searchResult?.published?.filter((g) => g.first_release_date) ?? [];
-  const games = developedGames.length > 0 ? developedGames : publishedGames;
-  const gamesLabel =
-    developedGames.length > 0 ? "Games Developed" : "Games Published";
+  const games =
+    gameTab === "developed"
+      ? developedGames
+      : gameTab === "published"
+      ? publishedGames
+      : [];
   const sortedGames = [...games].sort(
     (a, b) => a.first_release_date - b.first_release_date,
   );
@@ -208,8 +206,20 @@ function DeveloperSearch() {
                   )}
 
                   <hr />
-                  <h4>{gamesLabel}</h4>
-                  <h4>{sortedGames.length} Credits</h4>
+                  <div className="media-tabs">
+                    {[
+                      ["developed", "Developed", developedGames],
+                      ["published", "Published", publishedGames],
+                    ].map(([key, label, list]) => (
+                      <button
+                        key={key}
+                        className={gameTab === key ? "active" : ""}
+                        onClick={() => setGameTab(gameTab === key ? null : key)}
+                      >
+                        {list.length} {label}
+                      </button>
+                    ))}
+                  </div>
 
                   {sortedGames.length > 0 && (
                     <div
@@ -283,7 +293,6 @@ function DeveloperSearch() {
                     </div>
                   )}
 
-                  <br />
                   <h5>
                     Data provided by{" "}
                     <a

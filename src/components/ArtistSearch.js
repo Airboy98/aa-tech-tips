@@ -14,9 +14,7 @@ function ArtistSearch() {
   const [EPs, setEPs] = useState(null);
   const [singles, setSingles] = useState(null);
   const [token, setToken] = useState(null);
-  const [showAlbums, setShowAlbums] = useState(false);
-  const [showEPs, setShowEPs] = useState(false);
-  const [showSingles, setShowSingles] = useState(false);
+  const [releaseTab, setReleaseTab] = useState(null);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -29,7 +27,7 @@ function ArtistSearch() {
             Authorization: `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`,
             "Content-Type": "application/x-www-form-urlencoded",
           },
-        }
+        },
       )
       .then((res) => setToken(res.data.access_token))
       .catch(() => setToken(null));
@@ -49,9 +47,12 @@ function ArtistSearch() {
     e.preventDefault();
     if (!query.trim() || !token) return;
     axios
-      .get(`${BASE_URL}search?q=${encodeURIComponent(query)}&type=artist&limit=10`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .get(
+        `${BASE_URL}search?q=${encodeURIComponent(query)}&type=artist&limit=10`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      )
       .then((res) => {
         const items = res.data.artists?.items || [];
         if (items.length === 0) {
@@ -85,9 +86,7 @@ function ArtistSearch() {
 
   const loadArtist = (artist) => {
     setSearchResult(artist);
-    setShowAlbums(false);
-    setShowEPs(false);
-    setShowSingles(false);
+    setReleaseTab(null);
     fetchAlbums(artist.id);
     fetchEPs(artist.id);
     fetchSingles(artist.id);
@@ -99,7 +98,11 @@ function ArtistSearch() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        setAlbums(res.data?.items ? res.data.items.filter((item) => item.album_group === "album") : null);
+        setAlbums(
+          res.data?.items
+            ? res.data.items.filter((item) => item.album_group === "album")
+            : null,
+        );
       })
       .catch(() => setAlbums(null));
   };
@@ -110,7 +113,14 @@ function ArtistSearch() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        setEPs(res.data?.items ? res.data.items.filter((item) => item.album_group === "single" && item.total_tracks >= 3) : null);
+        setEPs(
+          res.data?.items
+            ? res.data.items.filter(
+                (item) =>
+                  item.album_group === "single" && item.total_tracks >= 3,
+              )
+            : null,
+        );
       })
       .catch(() => setEPs(null));
   };
@@ -121,7 +131,14 @@ function ArtistSearch() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        setSingles(res.data?.items ? res.data.items.filter((item) => item.album_group === "single" && item.total_tracks < 3) : null);
+        setSingles(
+          res.data?.items
+            ? res.data.items.filter(
+                (item) =>
+                  item.album_group === "single" && item.total_tracks < 3,
+              )
+            : null,
+        );
       })
       .catch(() => setSingles(null));
   };
@@ -143,7 +160,10 @@ function ArtistSearch() {
                     />
                   </div>
                   <button type="submit">
-                    <span className="material-symbols-outlined" style={{ fontSize: "24px", color: "white" }}>
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: "24px", color: "white" }}
+                    >
                       search
                     </span>
                   </button>
@@ -158,13 +178,21 @@ function ArtistSearch() {
                         onClick={() => handleSelect(artist)}
                       >
                         <img
-                          src={artist.images?.length > 0 ? artist.images[artist.images.length - 1].url : "nopicture.png"}
+                          src={
+                            artist.images?.length > 0
+                              ? artist.images[artist.images.length - 1].url
+                              : "nopicture.png"
+                          }
                           alt={artist.name}
                         />
                         <div className="search-dropdown-info">
-                          <span className="search-dropdown-name">{artist.name}</span>
+                          <span className="search-dropdown-name">
+                            {artist.name}
+                          </span>
                           {artist.genres?.length > 0 && (
-                            <span className="search-dropdown-year">{artist.genres[0]}</span>
+                            <span className="search-dropdown-year">
+                              {artist.genres[0]}
+                            </span>
                           )}
                         </div>
                       </div>
@@ -190,74 +218,70 @@ function ArtistSearch() {
                   >
                     <img
                       style={{ width: "200px", height: "200px" }}
-                      src={searchResult.images?.length > 0 ? searchResult.images[0].url : "nopicture.png"}
+                      src={
+                        searchResult.images?.length > 0
+                          ? searchResult.images[0].url
+                          : "nopicture.png"
+                      }
                       alt={searchResult.name}
                     />
                   </a>
                   <h1>{searchResult.name}</h1>
                   <hr />
                   <h4>{searchResult.genres.join(", ")}</h4>
-                  <button
-                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
-                    onClick={() => setShowAlbums(!showAlbums)}
-                  >
-                    {albums && albums.length > 0 ? "Albums" : "No Albums"}
-                  </button>
-                  <br />
-                  {showAlbums && albums && (
-                    <ul style={{ display: "block" }}>
-                      {albums.map((album) => (
-                        <li key={album.id}>
-                          <a href={album.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-                            {album.name}
-                          </a>
-                          <br />({album.release_date.substring(0, 4)})
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  <button
-                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
-                    onClick={() => setShowEPs(!showEPs)}
-                  >
-                    {EPs && EPs.length > 0 ? "EPs" : "No EPs"}
-                  </button>
-                  <br />
-                  {showEPs && EPs && (
-                    <ul style={{ display: "block" }}>
-                      {EPs.map((EP) => (
-                        <li key={EP.id}>
-                          <a href={EP.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-                            {EP.name}
-                          </a>
-                          <br />({EP.release_date.substring(0, 4)})
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  <button
-                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
-                    onClick={() => setShowSingles(!showSingles)}
-                  >
-                    {singles && singles.length > 0 ? "Singles" : "No Singles"}
-                  </button>
-                  <br />
-                  {showSingles && singles && (
-                    <ul style={{ display: "block" }}>
-                      {singles.map((single) => (
-                        <li key={single.id}>
-                          <a href={single.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-                            {single.name}
-                          </a>
-                          <br />
-                          {` (${single.release_date.substring(0, 4)})`}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  <div className="media-tabs">
+                    {[
+                      ["albums", "Albums", albums, "Album"],
+                      ["eps", "EPs", EPs, "EP"],
+                      ["singles", "Singles", singles, "Single"],
+                    ].map(([key, label, list, one]) => (
+                      <button
+                        key={key}
+                        className={releaseTab === key ? "active" : ""}
+                        onClick={() =>
+                          setReleaseTab(releaseTab === key ? null : key)
+                        }
+                      >
+                        {list
+                          ? `${list.length} ${list.length === 1 ? one : label}`
+                          : label}
+                      </button>
+                    ))}
+                  </div>
+                  {releaseTab &&
+                    (() => {
+                      const list = { albums, eps: EPs, singles }[releaseTab];
+                      const label = {
+                        albums: "Albums",
+                        eps: "EPs",
+                        singles: "Singles",
+                      }[releaseTab];
+                      return list?.length > 0 ? (
+                        <ul style={{ display: "block" }}>
+                          {list.map((release) => (
+                            <li key={release.id}>
+                              <a
+                                href={release.external_urls.spotify}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {release.name}
+                              </a>
+                              <br />({release.release_date.substring(0, 4)})
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <h4>No {label}</h4>
+                      );
+                    })()}
                   <h5>
                     Data provided by{" "}
-                    <a href={`https://open.spotify.com/artist/${searchResult.id}`} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={`https://open.spotify.com/artist/${searchResult.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Spotify
                     </a>
                   </h5>

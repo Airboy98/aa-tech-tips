@@ -132,3 +132,84 @@
   flex-shrink: 0;
   white-space: nowrap;
 }
+
+.media-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.media-badges > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1;
+  padding: 6px 12px;
+  background: #0a1e33;
+  border: 1px solid #3c709f;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.media-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.streaming2 .media-tabs button,
+.streaming2 .media-btn {
+  margin: 0;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.streaming2 .media-tabs button.active,
+.streaming2 .media-btn.active {
+  border-color: #d1d146;
+  color: #d1d146;
+}
+
+.media-providers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.media-providers img {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+}
+
+.streaming2 .media-btn {
+  margin-bottom: 14px;
+}
+
+.media-btn + .episode-cards {
+  margin-bottom: 14px;
+}
+
+.streaming2 .media-tabs {
+  margin-bottom: 14px;
+}
+
+.media-star {
+  font-size: 0.8em;
+  line-height: 1;
+}
+
+.streaming2 hr + .media-tabs {
+  margin-top: 24px;
+}
+
+.streaming2 ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import formatDate from "../utils/formatDate";
 
 function NewReleases() {
   const [newReleases, setNewReleases] = useState(null);
@@ -38,14 +39,6 @@ function NewReleases() {
     };
   }, [selectedGame]);
 
-  const formatDate = (unix) => {
-    if (!unix) return "Unknown";
-    return new Date(unix * 1000).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
 
   return (
     <div>

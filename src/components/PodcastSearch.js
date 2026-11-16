@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import formatDate from "../utils/formatDate";
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID_SPOTIFY;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET_SPOTIFY;
@@ -164,7 +165,7 @@ function PodcastSearch() {
                               {episode.name}
                             </a>
                             <br />(
-                            {new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(new Date(episode.release_date))}
+                            {formatDate(episode.release_date)}
                             )
                           </li>
                         ))}

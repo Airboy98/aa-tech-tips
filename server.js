@@ -233,7 +233,7 @@ app.get("/api/igdb-search", async (req, res) => {
 
   const body = `
     search "${query}";
-    fields name, cover.url, first_release_date, summary, rating, url, platforms.name, platforms.platform_logo.url, involved_companies.company.name, involved_companies.developer;
+    fields name, cover.url, first_release_date, summary, rating, url, platforms.name, platforms.platform_logo.url, involved_companies.company.name, involved_companies.developer, age_ratings.organization, age_ratings.rating_category.rating;
     limit 10;
   `;
 

@@ -895,6 +895,8 @@ input[type="date"].admin-tx-input::-webkit-date-and-time-value {
 
 .admin-tx-year {
   width: auto;
+  height: 36px;
+  padding: 0 10px;
 }
 
 .admin-tx-totals {
@@ -923,12 +925,14 @@ input[type="date"].admin-tx-input::-webkit-date-and-time-value {
 }
 
 .admin-tx-add {
+  height: 36px;
+  min-width: 80px;
   background: none;
   border: 1px solid #5a8fc4;
   border-radius: 6px;
-  padding: 6px 14px;
+  padding: 0 14px;
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -938,15 +942,27 @@ input[type="date"].admin-tx-input::-webkit-date-and-time-value {
 
 .admin-tx-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   background: transparent;
+  border: 1px solid #1e3a5f;
+  border-radius: 10px;
+  overflow: clip;
   color: #fff;
   font-size: 14px;
 }
 
+.admin-tx-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-tx-table tbody tr:hover td {
+  background: rgba(170, 196, 224, 0.05);
+}
+
 .admin-tx-table th,
 .admin-tx-table td {
-  padding: 8px 10px;
+  padding: 10px 14px;
   border: none;
   border-bottom: 1px solid #2c5582;
   background: transparent;
@@ -1039,6 +1055,27 @@ input[type="date"].admin-tx-input::-webkit-date-and-time-value {
   min-width: 120px;
 }
 
+.admin-tx-table td.admin-tx-icons {
+  height: 1px;
+  padding: 0;
+}
+
+.admin-tx-icons > div {
+  display: flex;
+  height: 100%;
+}
+
+.admin-tx-table td.admin-tx-icons {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.admin-tx-icons .admin-edit-btn,
+.admin-tx-icons .admin-delete-btn {
+  padding: 0 10px;
+  border-left: none;
+}
+
 .admin-tx-actions button + button {
   margin-left: 6px;
 }
@@ -1046,6 +1083,12 @@ input[type="date"].admin-tx-input::-webkit-date-and-time-value {
 @media (max-width: 640px) {
   .admin-tx-table thead {
     display: none;
+  }
+
+  .admin-tx-table {
+    border: none;
+    border-radius: 0;
+    overflow: visible;
   }
 
   .admin-tx-table,
@@ -1084,6 +1127,26 @@ input[type="date"].admin-tx-input::-webkit-date-and-time-value {
 
   .admin-tx-actions {
     padding-top: 8px !important;
+  }
+
+  .admin-tx-table td.admin-tx-icons {
+    height: auto;
+    margin-top: 6px;
+    border-top: 1px solid #1e3a5f;
+  }
+
+  .admin-tx-icons > div {
+    width: 100%;
+    height: 44px;
+  }
+
+  .admin-tx-icons .admin-edit-btn,
+  .admin-tx-icons .admin-delete-btn {
+    flex: 1;
+  }
+
+  .admin-tx-icons .admin-edit-btn {
+    border-left: none;
   }
 }
 
@@ -1472,4 +1535,84 @@ input[type="date"].admin-tx-input::-webkit-date-and-time-value {
 .card-icon {
   filter: invert(1);
   vertical-align: middle;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 220px;
+  margin: 12px auto 0;
+}
+
+.store-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  background: #0f3455;
+  border: 1px solid #3c709f;
+  border-radius: 12px;
+  transition: box-shadow 0.2s;
+}
+
+.store-tile:hover {
+  box-shadow: 0 0 0 3px #d1d146;
+}
+
+.store-tile img {
+  width: 60%;
+  height: auto;
+}
+
+.store-tile.logo-tile {
+  background: white;
+}
+
+.store-tile.logo-tile img {
+  width: 80%;
+  max-height: 70%;
+  object-fit: contain;
+}
+
+.store-tile.captioned {
+  flex-direction: column;
+  gap: 6px;
+}
+
+.store-tile.captioned img {
+  width: 55%;
+  max-height: 55%;
+}
+
+.store-tile.captioned {
+  text-decoration: none;
+}
+
+.store-tile.captioned span {
+  color: #0f3455;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.store-grid.three {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: none;
+}
+
+.hover-logos td {
+  position: relative;
+}
+
+.hover-logos a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: box-shadow 0.2s;
+}
+
+.hover-logos a:hover::after {
+  box-shadow: inset 0 0 0 3px #d1d146;
 }

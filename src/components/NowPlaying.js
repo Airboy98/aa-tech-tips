@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import formatDate from "../utils/formatDate";
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
 
@@ -55,15 +56,6 @@ function NowPlaying() {
 
 
 
-  const formatDate = (dateStr) => {
-    if (!dateStr) return "Unknown";
-    return new Date(dateStr).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      timeZone: "UTC",
-    });
-  };
 
   return (
     <div>

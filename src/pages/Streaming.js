@@ -44,7 +44,7 @@ export default function Streaming() {
         }
       >
         <h4>Big Media</h4>
-        <div className="streaming1">
+        <div className="streaming1 hover-logos">
           <table>
             <tbody>
               <tr>
@@ -94,7 +94,7 @@ export default function Streaming() {
                 </td>
                 <td>
                   <a
-                    href="https://www.amazon.com/Amazon-Video/b?ie=UTF8&node=2858778011"
+                    href="https://www.primevideo.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -110,7 +110,7 @@ export default function Streaming() {
               <tr>
                 <td>
                   <a
-                    href="https://www.max.com/"
+                    href="https://www.hbomax.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -205,9 +205,9 @@ export default function Streaming() {
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="images/streaming/appletvplus.png"
-                      alt="Apple TV+"
-                      width="100"
+                      src="images/streaming/appletv.svg"
+                      alt="Apple TV"
+                      width="80"
                       height="40"
                     />
                   </a>
@@ -231,7 +231,7 @@ export default function Streaming() {
           </table>
         </div>
         <h4>Alternative Media</h4>
-        <div className="streaming1">
+        <div className="streaming1 hover-logos">
           <table>
             <tbody>
               <tr>
@@ -393,7 +393,7 @@ export default function Streaming() {
           <button className="collapsible-trigger">Music Streaming</button>
         }
       >
-        <div className="streaming1">
+        <div className="streaming1 hover-logos">
           <table>
             <tbody>
               <tr>
@@ -479,7 +479,7 @@ export default function Streaming() {
                   >
                     <img
                       src="images/streaming/youtube-music.png"
-                      alt="Deezer"
+                      alt="YouTube Music"
                       width="100"
                       height="33"
                     />
@@ -496,7 +496,7 @@ export default function Streaming() {
           <button className="collapsible-trigger">Streaming Devices</button>
         }
       >
-        <div className="television">
+        <div className="television hover-logos">
           <table>
             <tbody>
               <tr>
@@ -568,7 +568,7 @@ export default function Streaming() {
                   >
                     <img
                       src="images/televisions/onn.png"
-                      alt="Apple TV"
+                      alt="Onn"
                       width="100"
                       height="50"
                     />
@@ -582,7 +582,7 @@ export default function Streaming() {
                   >
                     <img
                       src="images/devices/tivo.png"
-                      alt="Apple TV"
+                      alt="TiVo Stream 4K"
                       width="100"
                       height="40"
                     />

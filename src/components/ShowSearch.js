@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
+import formatDate from "../utils/formatDate";
 
 const API_KEY = process.env.REACT_APP_API_KEY_TMDB;
 const BASE_URL = process.env.REACT_APP_BASE_URL_TMDB;
@@ -287,13 +288,36 @@ function ShowSearch() {
                   </a>
                   <h1>{searchResult.name}</h1>
                   <hr />
+                  <div className="media-badges">
+                    <span>{certification || "Unrated"}</span>
+                    {numSeasons > 0 && (
+                      <span>
+                        {numSeasons === 1 ? "1 Season" : `${numSeasons} Seasons`}
+                      </span>
+                    )}
+                    {searchResult.first_air_date && (
+                      <span>
+                        {formatDate(searchResult.first_air_date)}
+                      </span>
+                    )}
+                    <span>
+                      {searchResult.vote_average ? (
+                        <>
+                          <span className="media-star">⭐</span>
+                          {searchResult.vote_average.toFixed(1)}
+                        </>
+                      ) : (
+                        "Not yet rated"
+                      )}
+                    </span>
+                  </div>
                   {creators && creators.length > 0 && (
                     <div className="creators">
                       <h4>Created by {creators.map((c) => c.name).join(", ")}</h4>
                     </div>
                   )}
                   <button
-                    style={{ backgroundColor: "#ddd", color: "black", borderRadius: "20px", fontSize: "16px", padding: "5px 10px", fontWeight: "bold" }}
+                    className={`media-btn ${showActors ? "active" : ""}`}
                     onClick={() => setShowActors(!showActors)}
                   >
                     Top Actors
@@ -347,14 +371,6 @@ function ShowSearch() {
                       ))}
                     </div>
                   )}
-                  {certification ? <h4>Rated {certification}</h4> : <h4>Unrated</h4>}
-                  <h4>
-                    {searchResult.vote_average
-                      ? `⭐ ${searchResult.vote_average.toFixed(1)} / 10 ⭐`
-                      : "No Rating Available"}
-                  </h4>
-                  {numSeasons === 1 ? "1 Season" : `${numSeasons} Seasons`}
-                  <br />
                   <div style={{ margin: "10px 0" }}>
                     <Dropdown
                       value={selectedSeason}
@@ -379,7 +395,13 @@ function ShowSearch() {
                   </div>
                   {seasonInfo && (
                     <div className="season-info">
-                      {seasonInfo.air_date ? <h4>{seasonInfo.air_date}</h4> : <h4>Release date TBA</h4>}
+                      {seasonInfo.air_date ? (
+                        <h4>
+                          {formatDate(seasonInfo.air_date)}
+                        </h4>
+                      ) : (
+                        <h4>Release date TBA</h4>
+                      )}
                     </div>
                   )}
                   {showSeasons && (
@@ -419,12 +441,11 @@ function ShowSearch() {
                   )}
                   <br />
                   {watchProviders?.flatrate?.length > 0 ? (
-                    <div>
+                    <div className="media-providers">
                       {watchProviders.flatrate.map((p) => (
                         <img
                           key={p.provider_id}
-                          style={{ width: "45px", height: "45px" }}
-                          src={`https://image.tmdb.org/t/p/w500${p.logo_path}`}
+                          src={`https://image.tmdb.org/t/p/w154${p.logo_path}`}
                           alt={p.provider_name}
                           title={p.provider_name}
                         />
@@ -433,7 +454,6 @@ function ShowSearch() {
                   ) : (
                     <h4>Unavailable to Stream</h4>
                   )}
-                  <br />
                   <hr />
                   <p>{searchResult.overview}</p>
                   <h5>

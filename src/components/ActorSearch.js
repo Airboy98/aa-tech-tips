@@ -13,6 +13,7 @@ function ActorSearch() {
   const [hoveredCredit, setHoveredCredit] = useState(null);
   const [tappedCredit, setTappedCredit] = useState(null);
   const [selectedCredit, setSelectedCredit] = useState(null);
+  const [creditTab, setCreditTab] = useState(null);
   const isTouching = useRef(false);
   const wrapperRef = useRef(null);
 
@@ -37,6 +38,7 @@ function ActorSearch() {
   }, []);
 
   const loadActorById = (id) => {
+    setCreditTab(null);
     fetch(`${BASE_URL}/person/${id}?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
@@ -204,9 +206,23 @@ function ActorSearch() {
                       : "Age unknown"}
                   </h4>
                   <hr />
-                  <h4>Movies</h4>
-                  <h4>{movieCredits ? movieCredits.length : 0} Credits</h4>
-                  {movieCredits && (
+                  <div className="media-tabs">
+                    {[
+                      ["movies", "Movies", movieCredits, "Movie"],
+                      ["shows", "Shows", tvCredits, "Show"],
+                    ].map(([key, label, list, one]) => (
+                      <button
+                        key={key}
+                        className={creditTab === key ? "active" : ""}
+                        onClick={() => setCreditTab(creditTab === key ? null : key)}
+                      >
+                        {list
+                          ? `${list.length} ${list.length === 1 ? one : label}`
+                          : label}
+                      </button>
+                    ))}
+                  </div>
+                  {creditTab === "movies" && movieCredits && (
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }}>
                       {movieCredits
                         .sort((a, b) => (a.release_date < b.release_date ? -1 : 1))
@@ -231,9 +247,7 @@ function ActorSearch() {
                         })}
                     </div>
                   )}
-                  <h4>Shows</h4>
-                  <h4>{tvCredits ? tvCredits.length : 0} Credits</h4>
-                  {tvCredits && (
+                  {creditTab === "shows" && tvCredits && (
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }}>
                       {tvCredits
                         .sort((a, b) => (a.first_air_date < b.first_air_date ? -1 : 1))
@@ -258,7 +272,6 @@ function ActorSearch() {
                         })}
                     </div>
                   )}
-                  <br />
                   <h5>
                     Data provided by{" "}
                     <a href={`https://www.themoviedb.org/person/${searchResult.id}`} target="_blank" rel="noopener noreferrer">
