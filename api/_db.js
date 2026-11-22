@@ -54,6 +54,15 @@ export const AppointmentNote =
   mongoose.models.AppointmentNote ||
   mongoose.model("AppointmentNote", appointmentNoteSchema);
 
+const calendlyInviteeSchema = new mongoose.Schema({
+  eventUri: { type: String, required: true, unique: true },
+  data: mongoose.Schema.Types.Mixed,
+});
+
+export const CalendlyInvitee =
+  mongoose.models.CalendlyInvitee ||
+  mongoose.model("CalendlyInvitee", calendlyInviteeSchema);
+
 const transactionSchema = new mongoose.Schema({
   date: { type: String, required: true },
   type: String,

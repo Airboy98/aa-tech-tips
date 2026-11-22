@@ -59,6 +59,14 @@ const AppointmentNote =
   mongoose.models.AppointmentNote ||
   mongoose.model("AppointmentNote", appointmentNoteSchema);
 
+const calendlyInviteeSchema = new mongoose.Schema({
+  eventUri: { type: String, required: true, unique: true },
+  data: mongoose.Schema.Types.Mixed,
+});
+const CalendlyInvitee =
+  mongoose.models.CalendlyInvitee ||
+  mongoose.model("CalendlyInvitee", calendlyInviteeSchema);
+
 const transactionSchema = new mongoose.Schema({
   date: { type: String, required: true },
   type: String,
@@ -634,7 +642,6 @@ const CALENDLY_API = "https://api.calendly.com";
 const ADDRESS_LOCATION_TYPES = ["physical", "ask_invitee", "custom"];
 
 const CONCURRENCY = 5;
-const inviteeCache = new Map();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function calendly(path, body, attempt = 0) {
@@ -668,14 +675,36 @@ async function mapLimit(items, fn) {
   return results;
 }
 
-async function getInvitee(eventUri) {
-  if (!inviteeCache.has(eventUri)) {
+// Invitee details never change for a booking, so each one is fetched from
+// Calendly once and stored in MongoDB.
+async function getInvitees(uris) {
+  const stored = await CalendlyInvitee.find({ eventUri: { $in: uris } }).lean();
+  const map = new Map(stored.map((s) => [s.eventUri, s.data]));
+  const missing = uris.filter((u) => !map.has(u));
+
+  await mapLimit(missing, async (uri) => {
     const { collection } = await calendly(
-      `/scheduled_events/${eventUri.split("/").pop()}/invitees`,
+      `/scheduled_events/${uri.split("/").pop()}/invitees`,
     );
-    inviteeCache.set(eventUri, collection[0] || {});
-  }
-  return inviteeCache.get(eventUri);
+    const i = collection[0] || {};
+    const data = {
+      name: i.name,
+      email: i.email,
+      text_reminder_number: i.text_reminder_number,
+      reschedule_url: i.reschedule_url,
+      questions_and_answers: (i.questions_and_answers || []).map(
+        ({ question, answer }) => ({ question, answer }),
+      ),
+    };
+    await CalendlyInvitee.updateOne(
+      { eventUri: uri },
+      { $set: { data } },
+      { upsert: true },
+    );
+    map.set(uri, data);
+  });
+
+  return uris.map((u) => map.get(u) || {});
 }
 
 function findAddress(location, questions) {
@@ -700,7 +729,7 @@ async function listAppointments(year) {
   }
 
   const [invitees, notes] = await Promise.all([
-    mapLimit(events, (e) => getInvitee(e.uri)),
+    getInvitees(events.map((e) => e.uri)),
     AppointmentNote.find({ eventUri: { $in: events.map((e) => e.uri) } }),
   ]);
   const noteMap = Object.fromEntries(notes.map((n) => [n.eventUri, n.notes]));

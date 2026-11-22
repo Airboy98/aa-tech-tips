@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { CogIcon, TrashIcon } from "./AdminIcons";
 
 const TYPES = ["In-person", "Remote"];
 const PACKAGES = [
@@ -357,19 +358,23 @@ export default function AdminTransactions({ adminPassword, hidden }) {
                         {display(col, t[col.key])}
                       </td>
                     ))}
-                    <td className="admin-tx-actions">
-                      <button
-                        className="admin-session-edit-cancel"
-                        onClick={() => edit(t)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="admin-appt-cancel-btn"
-                        onClick={() => remove(t)}
-                      >
-                        Delete
-                      </button>
+                    <td className="admin-tx-icons">
+                      <div>
+                        <button
+                          className="admin-edit-btn"
+                          onClick={() => edit(t)}
+                          title="Edit"
+                        >
+                          <CogIcon />
+                        </button>
+                        <button
+                          className="admin-delete-btn"
+                          onClick={() => remove(t)}
+                          title="Delete"
+                        >
+                          <TrashIcon />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ),
