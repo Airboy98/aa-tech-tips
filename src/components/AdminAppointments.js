@@ -162,7 +162,15 @@ export default function AdminAppointments({ adminPassword, hidden }) {
               <div className="admin-session-item-content">
                 <div className="admin-session-item-top">
                   <div className="admin-session-name">{appt.name}</div>
-                  {appt.notes && <span className="admin-unread-dot" />}
+                  {appt.notes && (
+                    <span
+                      className="material-symbols-outlined admin-appt-notes-icon"
+                      title="Has notes"
+                      aria-label="Has notes"
+                    >
+                      sticky_note_2
+                    </span>
+                  )}
                 </div>
                 <div className="admin-session-email">
                   {formatWhen(appt.start)}
@@ -190,19 +198,9 @@ export default function AdminAppointments({ adminPassword, hidden }) {
                 onClick={() => setSelected(null)}
                 className="admin-back-btn"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="15 18 9 12 15 6" />
-                </svg>
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  chevron_left
+                </span>
               </button>
               <div className="admin-chat-header-center">
                 <h3 className="admin-chat-header-name">{selected.name}</h3>

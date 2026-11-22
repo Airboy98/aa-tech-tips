@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Pusher from "pusher-js";
-import "../styles.css";
+import LinkifiedText from "./LinkifiedText";
+import "./chatbox.css";
 
 function generateSessionId() {
   return "visitor_" + Math.random().toString(36).substr(2, 9);
@@ -151,7 +152,7 @@ export default function ChatBox() {
             <div className="chat-bubble-sender">
               {msg.sender === "admin" ? "Aaron" : visitorInfo.name}
             </div>
-            {msg.text}
+            <LinkifiedText text={msg.text} />
           </div>
         ))}
       </div>
@@ -165,9 +166,9 @@ export default function ChatBox() {
           className="chat-send-input"
         />
         <div role="button" onTouchStart={(e) => e.preventDefault()} onTouchEnd={(e) => { e.preventDefault(); handleSend(); }} onClick={handleSend} className="chat-send-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
-            <path d="M12 4l-1.41 1.41L17.17 11H4v2h13.17l-6.58 6.59L12 21l9-9z" transform="rotate(-90 12 12)" />
-          </svg>
+          <span className="material-symbols-outlined" aria-hidden="true">
+            arrow_upward
+          </span>
         </div>
       </form>
     </div>

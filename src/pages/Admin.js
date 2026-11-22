@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Pusher from "pusher-js";
 import AdminAppointments from "../components/AdminAppointments";
 import AdminTransactions from "../components/AdminTransactions";
-import { CogIcon, TrashIcon } from "../components/AdminIcons";
-import "../styles.css";
+import LinkifiedText from "../components/LinkifiedText";
+import "../components/chatbox.css";
+import "./admin.css";
 
 function urlBase64ToUint8Array(base64String) {
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
@@ -11,6 +12,8 @@ function urlBase64ToUint8Array(base64String) {
   const rawData = atob(base64);
   return Uint8Array.from([...rawData].map((c) => c.charCodeAt(0)));
 }
+
+const SESSION_KEY = "adminPassword";
 
 function formatTimestamp(ts) {
   if (!ts) return "";
@@ -44,30 +47,64 @@ export default function Admin() {
   const [editEmail, setEditEmail] = useState("");
   const [tab, setTab] = useState("chats");
   const [visitedTabs, setVisitedTabs] = useState(new Set(["chats"]));
+  const [savedPassword] = useState(() => {
+    try {
+      return sessionStorage.getItem(SESSION_KEY);
+    } catch {
+      return null;
+    }
+  });
+  const [restoring, setRestoring] = useState(!!savedPassword);
   const adminPasswordRef = useRef("");
   const messagesContainerRef = useRef(null);
   const selectedSessionRef = useRef(null);
   const sessionsRef = useRef([]);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const login = async (pwd, remembered) => {
     setAuthError("");
-    const res = await fetch(
-      `/api/chat?action=get-sessions&adminPassword=${encodeURIComponent(password)}`,
-    );
+    let res;
+    try {
+      res = await fetch(
+        `/api/chat?action=get-sessions&adminPassword=${encodeURIComponent(pwd)}`,
+      );
+    } catch {
+      setAuthError("Couldn't reach the server. Try again.");
+      setRestoring(false);
+      return;
+    }
     if (res.ok) {
       const data = await res.json();
-      adminPasswordRef.current = password;
+      adminPasswordRef.current = pwd;
+      try {
+        sessionStorage.setItem(SESSION_KEY, pwd);
+      } catch {}
       setAuthed(true);
       setSessions(data.sessions);
       setUnreadSessions(
         new Set(data.sessions.filter((s) => s.unread).map((s) => s.sessionId)),
       );
-      subscribeToPush(password);
+      subscribeToPush(pwd);
+    } else if (res.status !== 401) {
+      setAuthError("Couldn't reach the server. Try again.");
+    } else if (remembered) {
+      try {
+        sessionStorage.removeItem(SESSION_KEY);
+      } catch {}
     } else {
       setAuthError("Incorrect password.");
     }
+    setRestoring(false);
   };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login(password, false);
+  };
+
+  useEffect(() => {
+    if (savedPassword) login(savedPassword, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const subscribeToPush = async (pwd) => {
     if (!("serviceWorker" in navigator) || !("PushManager" in window)) return;
@@ -285,6 +322,14 @@ export default function Admin() {
     setSending(false);
   };
 
+  if (!authed && restoring) {
+    return (
+      <div className="section-header">
+        <h1>Admin</h1>
+      </div>
+    );
+  }
+
   if (!authed) {
     return (
       <>
@@ -437,7 +482,9 @@ export default function Admin() {
                   className="admin-edit-btn"
                   title="Edit contact"
                 >
-                  <CogIcon />
+                  <span className="material-symbols-outlined" aria-hidden="true">
+                    settings
+                  </span>
                 </button>
                 <button
                   onClick={(e) => {
@@ -447,7 +494,9 @@ export default function Admin() {
                   className="admin-delete-btn"
                   title="Delete conversation"
                 >
-                  <TrashIcon />
+                  <span className="material-symbols-outlined" aria-hidden="true">
+                    delete
+                  </span>
                 </button>
               </div>
             );
@@ -471,19 +520,9 @@ export default function Admin() {
                   }}
                   className="admin-back-btn"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="15 18 9 12 15 6" />
-                  </svg>
+                  <span className="material-symbols-outlined" aria-hidden="true">
+                    chevron_left
+                  </span>
                 </button>
                 <div className="admin-chat-header-center">
                   <h3 className="admin-chat-header-name">
@@ -498,19 +537,9 @@ export default function Admin() {
                   disabled={!hasNext}
                   className="admin-next-btn"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="9 18 15 12 9 6" />
-                  </svg>
+                  <span className="material-symbols-outlined" aria-hidden="true">
+                    chevron_right
+                  </span>
                 </button>
               </div>
               <div ref={messagesContainerRef} className="admin-messages">
@@ -524,7 +553,7 @@ export default function Admin() {
                         {selectedSession.name}
                       </div>
                     )}
-                    {msg.text}
+                    <LinkifiedText text={msg.text} />
                   </div>
                 ))}
                 {visitorRead && messages.length > 0 && messages[messages.length - 1].sender === "admin" && (
@@ -555,18 +584,9 @@ export default function Admin() {
                   onClick={handleReply}
                   className="chat-send-btn"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="white"
-                  >
-                    <path
-                      d="M12 4l-1.41 1.41L17.17 11H4v2h13.17l-6.58 6.59L12 21l9-9z"
-                      transform="rotate(-90 12 12)"
-                    />
-                  </svg>
+                  <span className="material-symbols-outlined" aria-hidden="true">
+                    arrow_upward
+                  </span>
                 </div>
               </form>
             </>

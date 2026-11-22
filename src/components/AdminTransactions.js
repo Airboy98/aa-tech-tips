@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { CogIcon, TrashIcon } from "./AdminIcons";
 
 const TYPES = ["In-person", "Remote"];
 const PACKAGES = [
@@ -68,9 +67,20 @@ const KINDS = {
     columns: [
       { key: "date", label: "Date", input: "date" },
       { key: "vendor", label: "Vendor" },
-      { key: "category", label: "Category", input: "select", options: CATEGORIES },
+      {
+        key: "category",
+        label: "Category",
+        input: "select",
+        options: CATEGORIES,
+      },
       { key: "description", label: "Description", input: "textarea" },
-      { key: "amount", label: "Amount", input: "number", money: true, amount: true },
+      {
+        key: "amount",
+        label: "Amount",
+        input: "number",
+        money: true,
+        amount: true,
+      },
     ],
     blank: { category: CATEGORIES[0] },
   },
@@ -136,7 +146,10 @@ export default function AdminTransactions({ adminPassword, hidden }) {
   const totalIncome = sum(income, (t) => t.fee);
   const totalExpenses = sum(expenses, (t) => t.amount);
   const totalMiles = sum(income, (t) => t.miles);
-  const mileageDeduction = sum(income, (t) => (t.miles || 0) * mileageRate(t.date));
+  const mileageDeduction = sum(
+    income,
+    (t) => (t.miles || 0) * mileageRate(t.date),
+  );
   const totalHours = sum(income, (t) => t.hours);
 
   const adding = editing && !editing._id;
@@ -365,14 +378,24 @@ export default function AdminTransactions({ adminPassword, hidden }) {
                           onClick={() => edit(t)}
                           title="Edit"
                         >
-                          <CogIcon />
+                          <span
+                            className="material-symbols-outlined"
+                            aria-hidden="true"
+                          >
+                            settings
+                          </span>
                         </button>
                         <button
                           className="admin-delete-btn"
                           onClick={() => remove(t)}
                           title="Delete"
                         >
-                          <TrashIcon />
+                          <span
+                            className="material-symbols-outlined"
+                            aria-hidden="true"
+                          >
+                            delete
+                          </span>
                         </button>
                       </div>
                     </td>
@@ -382,8 +405,8 @@ export default function AdminTransactions({ adminPassword, hidden }) {
               {shown.length === 0 && !adding && (
                 <tr>
                   <td colSpan={columns.length + 1} className="admin-tx-empty">
-                    No {kind === "income" ? "income" : "expenses"} for this
-                    year yet.
+                    No {kind === "income" ? "income" : "expenses"} for this year
+                    yet.
                   </td>
                 </tr>
               )}
